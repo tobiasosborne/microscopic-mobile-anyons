@@ -16,8 +16,10 @@ refs-out: []
 
 ## Project Overview
 - Goal: build microscopic lattice models for itinerant anyons from fusion categories, culminating in a publication-ready paper with verified code.
+- Agentic: this is an experiment using best-practice agentic coding in order to see if vibe coding is mature enough to deploy to serious physics research problems.
 - Inputs: categorical data (simples, fusion multiplicities $N_{ab}^c$, $F$/$R$ symbols) plus lattice geometry for a 1D open chain.
 - Outputs: rigorous definitions of Hilbert spaces with variable particle number, local Hamiltonians (hard-core, interacting, braided/free, creation/annihilation), and reductions to known limits (bosons/fermions, golden chain).
+- Enjoy the show: get some popcorn and hang around and watch to see if (and how) this crashes and burns (very likely). Hopefully we can learn something on the way!
 
 ## Core Requirements (from PRD)
 - Variable anyon number and mobility on a 1D open chain.
