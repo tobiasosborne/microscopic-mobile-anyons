@@ -1,0 +1,39 @@
+# Global symbol table for mobile anyons project
+# Fields: sym (TeX), type (informal), desc, defined_in (markdown file path)
+symbols:
+  - sym: "\\mathcal{C}"
+    type: FusionCategory
+    desc: Input fusion category
+    defined_in: docs/fusion_category.md
+  - sym: "\\mathbf{1}"
+    type: SimpleObject
+    desc: Tensor unit (vacuum)
+    defined_in: docs/fusion_category.md
+  - sym: "N_{ab}^c"
+    type: Int
+    desc: Fusion multiplicities
+    defined_in: docs/fusion_category.md
+  - sym: "F"
+    type: Tensor
+    desc: Associator (F-symbols) including multiplicity indices
+    defined_in: docs/fusion_category.md
+  - sym: "R"
+    type: Tensor
+    desc: Braiding (R-symbols) including multiplicity indices
+    defined_in: docs/fusion_category.md
+  - sym: "\\mathcal{H}"
+    type: HilbertSpace
+    desc: Total Hilbert space for mobile anyons (direct sum over N)
+    defined_in: docs/hilbert_space.md
+  - sym: "\\mathcal{H}_N"
+    type: HilbertSpace
+    desc: N-anyon Hilbert space with unspecified total charge
+    defined_in: docs/hilbert_space.md
+  - sym: "\\mathcal{H}_N^{(c)}"
+    type: HilbertSpace
+    desc: N-anyon Hilbert space with fixed total charge c
+    defined_in: docs/hilbert_space.md
+  - sym: "X_i"
+    type: SimpleObject
+    desc: Simple objects of the fusion category (anyon labels)
+    defined_in: docs/fusion_category.md

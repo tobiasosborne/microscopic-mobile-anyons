@@ -1,0 +1,59 @@
+# Citation registry with verification status
+# Fields: id, title, authors, year, venue, verified_by, verified_date, sections_used
+citations:
+  - id: TensorCategories2015
+    title: "Tensor Categories"
+    authors: [Etingof, Gelaki, Nikshych, Ostrik]
+    year: 2015
+    venue: AMS Mathematical Surveys and Monographs
+    verified_by: null
+    verified_date: null
+    sections_used: []
+  - id: Kitaev2006
+    title: "Anyons in an exactly solved model and beyond"
+    authors: [Kitaev]
+    year: 2006
+    venue: Annals of Physics
+    verified_by: null
+    verified_date: null
+    sections_used: []
+  - id: Girardeau1960
+    title: "Relationship between Systems of Impenetrable Bosons and Fermions in One Dimension"
+    authors: [Girardeau]
+    year: 1960
+    venue: Journal of Mathematical Physics
+    verified_by: null
+    verified_date: null
+    sections_used: []
+  - id: Girardeau2006
+    title: "Anyon-Fermion Mapping and Applications"
+    authors: [Girardeau]
+    year: 2006
+    venue: Physical Review Letters
+    verified_by: null
+    verified_date: null
+    sections_used: []
+  - id: LeinaasMyrheim1977
+    title: "On the theory of identical particles"
+    authors: [Leinaas, Myrheim]
+    year: 1977
+    venue: Il Nuovo Cimento B
+    verified_by: null
+    verified_date: null
+    sections_used: []
+  - id: Wilczek1982
+    title: "Quantum Mechanics of Fractional-Spin Particles"
+    authors: [Wilczek]
+    year: 1982
+    venue: Physical Review Letters
+    verified_by: null
+    verified_date: null
+    sections_used: []
+  - id: LevinWen2005
+    title: "String-net condensation: A physical mechanism for topological phases"
+    authors: [Levin, Wen]
+    year: 2005
+    venue: Physical Review B
+    verified_by: null
+    verified_date: null
+    sections_used: []
