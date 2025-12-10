@@ -16,7 +16,7 @@ refs-out:
 
 **Definition 3.1** (Fusion ring). A fusion ring is a free $\mathbb{Z}$-module $R$ with basis $\{X_1, \ldots, X_d\}$ containing a distinguished unit $\mathbf{1}$ such that for all basis elements $X_a, X_b$ the product decomposes as
 \[
-  X_a \cdot X_b = \sum_{c=1}^d N_{ab}^c\, X_c,\quad N_{ab}^c \in \mathbb{N},
+  X_a \cdot X_b = \sum_{c=1}^d N_{ab}^c\, X_c,\quad N_{ab}^c \in \mathbb{Z}_{\ge 0},
 \]
 with associativity $\sum_e N_{ab}^e N_{ec}^f = \sum_e N_{bc}^e N_{ae}^f$, commutativity $N_{ab}^c = N_{ba}^c$, and an involution $a \mapsto \bar{a}$ implementing duals with $N_{a\bar{a}}^{\mathbf{1}} \ge 1$. [TensorCategories2015, §2.3] `[unverified]`
 

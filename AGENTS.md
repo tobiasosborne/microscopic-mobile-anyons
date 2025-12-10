@@ -390,6 +390,11 @@ end
 
 Use $\mathrm{Mor}(A, B)$ for morphisms from object $A$ to object $B$ (not $\mathrm{Hom}$).
 
+**Set definitions:**
+- $\mathbb{N} = \{1, 2, 3, \ldots\}$ (Natural numbers exclude zero)
+- $\mathbb{Z}_{\ge 0} = \{0, 1, 2, 3, \ldots\}$ (Non-negative integers include zero)
+- **Requirement:** Agents must strictly obey these definitions to avoid off-by-one errors.
+
 Key symbols (see `symbols.yaml` for full list):
 - $\mathcal{C}$ — Fusion category
 - $\mathbf{1}$ — Tensor unit (vacuum)
