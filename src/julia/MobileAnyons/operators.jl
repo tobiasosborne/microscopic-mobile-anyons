@@ -2,6 +2,11 @@
 # Planning ref: §4.3
 # See: docs/operators.md
 
+# Include hilbert.jl to define MobileAnyonHilbert if not already defined (e.g., when run standalone)
+if !isdefined(@__MODULE__, :MobileAnyonHilbert)
+    include("hilbert.jl")
+end
+
 """
     MorphismTerm
 

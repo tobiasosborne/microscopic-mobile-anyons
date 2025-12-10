@@ -52,16 +52,16 @@ For mobile anyons, a 2-local operator has components:
 
 abstract type AnyonOperator end
 
-struct LocalOperator <: AnyonOperator
-    site::Int                           # leftmost site
-    width::Int                          # number of sites (locality)
-    components::Vector{MorphismTerm}    # Mor(A,B) terms
-end
-
 struct MorphismTerm
     source::Vector{Int}    # object A as list of simple labels
     target::Vector{Int}    # object B as list of simple labels  
     matrix::Matrix{ComplexF64}
+end
+
+struct LocalOperator <: AnyonOperator
+    site::Int                           # leftmost site
+    width::Int                          # number of sites (locality)
+    components::Vector{MorphismTerm}    # Mor(A,B) terms
 end
 
 is_particle_conserving(op::LocalOperator) = all(

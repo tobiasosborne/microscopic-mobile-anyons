@@ -80,6 +80,7 @@ $$\dim \mathcal{H}_N^{(c)} = \sum_{(\mathbf{x},\mathbf{k})} \dim \mathrm{Mor}(\m
 
 ```julia
 # file: src/julia/MobileAnyons/hilbert.jl
+using .MobileAnyons
 
 struct AnyonBasisState
     config::LabelledConfig      # positions and labels

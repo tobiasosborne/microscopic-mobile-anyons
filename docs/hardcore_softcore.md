@@ -71,6 +71,7 @@ where $\mathcal{H}_N^{\mathrm{HC}}$ uses $\mathrm{Conf}_N^{\mathrm{HC}}$.
 
 ```julia
 # file: src/julia/MobileAnyons/hardcore.jl
+using .MobileAnyons
 
 struct HardcoreHilbert
     hilbert::MobileAnyonHilbert

@@ -4,8 +4,10 @@
 
 using LinearAlgebra
 
-# Import HilbertSpace from basics.jl
-# include("basics.jl") # Commented out to prevent redefinition in module context
+# Import HilbertSpace from basics.jl if not already defined
+if !isdefined(@__MODULE__, :HilbertSpace)
+    include("basics.jl")
+end
 
 """
     tensor_product(H1::HilbertSpace, H2::HilbertSpace) -> HilbertSpace
