@@ -166,7 +166,6 @@ Manifest.toml
 *.ji
 .julia/
 
-# LocalPreferences.toml (if project-specific)
 LocalPreferences.toml
 
 # =============================================================================
@@ -188,19 +187,14 @@ pom.xml.asc
 .cpcache/
 *.hprof
 
-# Leiningen
 profiles.clj
 
-# Boot
 .boot/
 
-# deps.edn / tools.deps
 .cpcache/
 
-# Calva (VS Code)
 .calva/
 
-# CIDER
 .cider-repl-history
 
 # =============================================================================
@@ -243,29 +237,33 @@ venv/
 ENV/
 
 # =============================================================================
-# Beads
+# Beads (bd)
 # =============================================================================
-# Beads cache and temporary files
-.beads/
-*.beads.tmp
-beads-cache/
-.beads-history
+# Local-only: DO NOT COMMIT
+.beads/beads.db
+.beads/beads.db-*
+.beads/bd.sock
+.beads/bd.pipe
+.beads/.exclusive-lock
+
+# bd protected-branch workflows
+.git/beads-worktrees/
+
+# (Tracked Beads files like .beads/beads.jsonl, deletions.jsonl, config.yaml,
+#  metadata.json, README.md are intentionally NOT ignored.)
 
 # =============================================================================
 # IDEs and Editors
 # =============================================================================
-# JetBrains (IntelliJ, Cursive, etc.)
 .idea/
 *.iml
 *.ipr
 *.iws
 out/
 
-# VS Code
 .vscode/
 *.code-workspace
 
-# Sublime Text
 *.sublime-workspace
 *.sublime-project
 
@@ -280,25 +278,21 @@ out/
 # =============================================================================
 # Project-Specific
 # =============================================================================
-# PDF outputs (keep source, regenerate outputs)
-# Uncomment if you want to exclude generated PDFs:
+# Generated PDFs (optional)
 # tex/*.pdf
 # tex/sections/*.pdf
 
-# Large data files
 *.hdf5
 *.h5
 *.mat
 *.npy
 *.npz
 
-# Temporary files
 *.tmp
 *.temp
 *.bak
 *.backup
 
-# Log files
 *.log
 logs/
 
