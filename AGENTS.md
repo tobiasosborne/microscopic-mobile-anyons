@@ -250,22 +250,29 @@ PROOF SKELETON:
 
 ## Beads Issue Tracking
 
-This project uses [Beads](https://github.com/steveyegge/beads) via the `bd` CLI tool.
+This project uses [Beads](https://github.com/steveyegge/beads) via the `bd` CLI tool for **all** issue tracking—no markdown TODO lists or alternative trackers.
 
-### bd Tool Basics
+### Why bd?
+
+- Dependency-aware with blockers/relationships
+- Git-friendly JSONL sync
+- AI-optimized CLI with ready-work detection
+- Prevents duplicate tracking systems
+
+### Quick Start
 
 ```bash
-bd init --prefix ma           # Initialize with prefix "ma" (mobile-anyons)
-bd create "Title" -d "..."    # Create issue → ma-1, ma-2, ...
-bd list                       # List all issues
-bd ready                      # Show unblocked work (agents: use this!)
-bd update ma-5 --status in_progress
-bd close ma-5 --reason "Done"
+bd init --prefix ma                            # One-time prefix ("ma" = mobile-anyons)
+bd ready --json                                # Show unblocked work
+bd create "Issue title" -t bug|feature|task -p 0-4 --json
+bd create "Subtask" --parent <epic-id> --json  # Hierarchical subtask (id like epic-id.1)
+bd update ma-5 --status in_progress --json
+bd close ma-5 --reason "Done" --json
 ```
 
 ### Planning IDs vs bd IDs
 
-The research plan uses **planning IDs** (e.g., `§3.1.1`, `§P1.2`, `§F3.4`) for logical organization. When registering with `bd`, these become sequential `ma-N` IDs. Include the planning reference in the description:
+The research plan uses **planning IDs** (e.g., `§3.1.1`, `§P1.2`, `§F3.4`). When registering with `bd`, these become sequential `ma-N` IDs. Include the planning reference in the description:
 
 ```bash
 bd create "Define hopping operator for Fibonacci anyons" \
@@ -273,7 +280,7 @@ bd create "Define hopping operator for Fibonacci anyons" \
       adjacent sites while respecting fusion constraints. Must reduce to standard 
       tight-binding in bosonic limit. Acceptance: (1) Well-defined on H from §4.2, 
       (2) Hermitian, (3) Local, (4) Passes test_hopping.jl" \
-  -t task -p 1
+  -t task -p 1 --json
 ```
 
 ### Mandatory in Description
@@ -293,11 +300,59 @@ bd dep cycles                 # Check for cycles
 
 ### Agent Workflow
 
-1. Run `bd ready` to find unblocked work
-2. Claim: `bd update ma-N --status in_progress`
+1. Run `bd ready --json` to find unblocked work
+2. Claim: `bd update ma-N --status in_progress --json`
 3. Do the work
-4. Reference in commits: `Add F-symbols [ma-14]`
-5. Close: `bd close ma-N --reason "Completed in docs/fusion_category.md"`
+4. Discover new work? `bd create "Found bug" -p 1 --deps discovered-from:ma-N --json`
+5. Reference in commits: `Add F-symbols [ma-14]`
+6. Close: `bd close ma-N --reason "Completed in docs/fusion_category.md" --json`
+
+### Auto-Sync
+
+bd exports to `.beads/issues.jsonl` after changes (5s debounce) and imports newer JSONL on pull—no manual sync needed. Always commit `.beads/issues.jsonl` with code changes.
+
+### GitHub Copilot Integration
+
+If using GitHub Copilot, create `.github/copilot-instructions.md` (content below) so Copilot loads bd instructions automatically.
+
+### MCP Server (Recommended)
+
+Install the beads MCP server for Claude or other MCP clients:
+
+```bash
+pip install beads-mcp
+```
+
+Add to MCP config (e.g., `~/.config/claude/config.json`):
+
+```json
+{
+  "beads": {
+    "command": "beads-mcp",
+    "args": []
+  }
+}
+```
+
+Use `mcp__beads__*` functions instead of CLI commands when available.
+
+### Managing AI-Generated Planning Documents
+
+Store temporary AI planning/design docs in a dedicated `history/` directory to keep the repo root clean. Optional `.gitignore` entry:
+
+```
+# AI planning documents (ephemeral)
+history/
+```
+
+### Important Rules
+
+- ✅ Use bd for all task tracking
+- ✅ Always use `--json` for programmatic use
+- ✅ Link discovered work with `discovered-from` dependencies
+- ✅ Check `bd ready` before asking for work
+- ✅ Commit `.beads/issues.jsonl` with code changes
+- ❌ Do not create markdown TODO lists or alternate trackers
 
 ---
 
@@ -382,7 +437,3 @@ Key symbols (see `symbols.yaml` for full list):
 - Check `literature/overview.md` for paper summaries
 - Reference `symbols.yaml` for notation
 - Reference `citations.yaml` for source verification status
-
----
-
-BEFORE ANYTHING ELSE: run 'bd onboard' and follow the instructions
