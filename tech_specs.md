@@ -199,31 +199,53 @@ Verification is tracked in `citations.yaml`:
 
 **Issue/task tracking:** [Beads](https://github.com/steveyegge/beads)
 
-Beads are embedded in source files as structured comments:
+### bd Tool Format
 
-```markdown
-<!-- BEAD: id=0042 status=open priority=high
-     title="Define hopping operator for Fibonacci anyons"
-     description="Construct the hopping operator H_hop that moves Fibonacci anyons 
-     between adjacent sites while respecting fusion constraints. Must reduce to 
-     standard tight-binding hopping in the bosonic limit."
-     refs="hilbert_space.md, hamiltonian.md"
--->
+The `bd` tool uses sequential IDs with a project prefix:
+
+```bash
+bd init --prefix ma    # Issues will be: ma-1, ma-2, ma-3, ...
+bd create "Define fusion ring" -d "..."
+bd list
+bd ready               # Show unblocked work
 ```
 
-**Mandatory fields for all BEADs:**
-- `id`: Globally unique identifier
-- `status`: `open`, `in-progress`, `blocked`, `done`
-- `title`: Brief descriptive title
-- `description`: Detailed description of the task scope, acceptance criteria, and any relevant context. This is **required**—BEADs without descriptions will not be accepted.
+### Planning IDs vs bd IDs
 
-**Optional fields:**
-- `priority`: `low`, `medium`, `high`, `critical`
-- `refs`: Comma-separated list of related files
-- `depends`: Comma-separated list of blocking BEAD IDs
-- `assignee`: Who is working on this
+The research plan uses **planning IDs** (e.g., `§3.1.1`, `§P1.2`, `§F3.4`) for logical organization. When registering issues with `bd`, these become sequential `ma-N` IDs. Track the mapping via the description field:
 
-Bead IDs are globally unique across the project.
+```bash
+bd create "Define fusion ring" \
+  -d "Planning ref: §3.1.1. Define fusion ring with simple objects and fusion rules N_{ab}^c. 
+      Must handle both multiplicity-free and general cases. 
+      Ref: arXiv:1509.03275, Etingof." \
+  -t task
+```
+
+### Mandatory Fields
+
+When creating issues, always include:
+- **Title:** Brief descriptive title
+- **Description (`-d`):** Detailed scope, acceptance criteria, planning reference
+
+### Dependencies
+
+Use `bd dep add` to track blocking relationships:
+
+```bash
+bd dep add ma-15 ma-10    # ma-10 blocks ma-15
+bd dep tree ma-15         # Visualize dependencies
+bd ready                  # Show unblocked work
+```
+
+### Workflow
+
+```bash
+bd ready                          # Find next task
+bd update ma-5 --status in_progress
+# ... do work ...
+bd close ma-5 --reason "Completed in docs/fusion_category.md"
+```
 
 ---
 
@@ -277,10 +299,10 @@ mobile-anyons/
 - `main` branch: stable, reviewed material only
 - `dev` branch: work in progress
 - Feature branches: `feature/<topic>` for exploratory work
-- Commit messages: imperative mood, reference bead IDs where applicable
+- Commit messages: imperative mood, reference bd issue IDs where applicable
 
 ```
-Add Fibonacci fusion rules and F-symbols [BEAD-0012]
+Add Fibonacci fusion rules and F-symbols [ma-14]
 ```
 
 ---

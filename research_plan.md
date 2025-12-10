@@ -10,6 +10,10 @@
 
 This document outlines the research plan structured around the target publication. Each step and substep corresponds to a Beads issue. Steps marked `[refine]` require further decomposition based on complexity discovered during execution.
 
+### Note on Issue IDs
+
+This plan uses **planning IDs** (e.g., `§3.1.1`, `§P1.2`) for logical organization. When issues are registered with the `bd` tool, they receive sequential IDs (e.g., `ma-1`, `ma-2`). The planning reference should be included in each issue's description for traceability. See `tech_specs.md` §10 for details.
+
 ---
 
 ## Pre-Flight: Project Setup
@@ -605,33 +609,35 @@ LaTeX     Compile   Code       Figures    Assemble   Review     Integrate
 
 ---
 
-## BEAD Summary
+## Planning Reference Summary
 
-Total BEADs defined: ~120
+These are **planning IDs** for logical organization. When registered with `bd`, they become sequential `ma-N` IDs. Include the planning reference (e.g., `§3.1.1`) in each issue description.
 
-| Phase | Section | BEAD Range | Count |
-|-------|---------|------------|-------|
-| **Pre-Flight** | P1. Agents | P001–P013 | 4 |
-| | P2. Repository | P002–P025 | 6 |
-| | P3. Beads Registration | P003–P033 | 4 |
-| **Research** | 0. Literature | 0001 | 1 |
-| | 1. Abstract | 0002 | 1 |
-| | 2. Introduction | 0003 | 1 |
-| | 3. Preliminaries | 0010–0056 | ~25 |
-| | 4. Hilbert Space | 0100–0134 | ~20 |
-| | 5. Dynamics | 0200–0244 | ~20 |
-| | 6. Properties | 0300–0333 | ~15 |
-| | 7. Discussion | 0400–0416 | ~7 |
-| | 8. Conclusions | 0500 | 1 |
-| | 9. Bibliography | 0600–0604 | 4 |
-| | Papers | 0701–0705 | 5 |
-| **Post-Flight** | F1. LaTeX Conversion | F100–F108 | 9 |
-| | F2. Compilation | F200–F203 | 4 |
-| | F3. Code Appendices | F300–F304 | 5 |
-| | F4. Figures | F400–F405 | 6 |
-| | F5. Assembly | F500–F504 | 5 |
-| | F6. Review | F600–F605 | 6 |
-| | F7. Integration | F700–F705 | 6 |
+Total planning items: ~120
+
+| Phase | Section | Planning Refs | Count |
+|-------|---------|---------------|-------|
+| **Pre-Flight** | P1. Agents | §P1.1–§P1.3 | 4 |
+| | P2. Repository | §P2.1–§P2.5 | 6 |
+| | P3. Beads Registration | §P3.1–§P3.3 | 4 |
+| **Research** | 0. Literature | §0 | 1 |
+| | 1. Abstract | §1 | 1 |
+| | 2. Introduction | §2.1–§2.4 | 4 |
+| | 3. Preliminaries | §3.1.1–§3.5.6 | ~25 |
+| | 4. Hilbert Space | §4.1.1–§4.4.4 | ~20 |
+| | 5. Dynamics | §5.1.1.1–§5.1.4.4 | ~20 |
+| | 6. Properties | §6.1.1–§6.4.3 | ~15 |
+| | 7. Discussion | §7.1.1–§7.1.6 | ~7 |
+| | 8. Conclusions | §8 | 1 |
+| | 9. Bibliography | §9.1–§9.4 | 4 |
+| | Papers | §Lit.1–§Lit.5 | 5 |
+| **Post-Flight** | F1. LaTeX Conversion | §F1.1–§F1.8 | 9 |
+| | F2. Compilation | §F2.1–§F2.3 | 4 |
+| | F3. Code Appendices | §F3.1–§F3.4 | 5 |
+| | F4. Figures | §F4.1–§F4.5 | 6 |
+| | F5. Assembly | §F5.1–§F5.4 | 5 |
+| | F6. Review | §F6.1–§F6.5 | 6 |
+| | F7. Integration | §F7.1–§F7.5 | 6 |
 
 ---
 

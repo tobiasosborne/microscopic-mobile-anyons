@@ -250,36 +250,54 @@ PROOF SKELETON:
 
 ## Beads Issue Tracking
 
-This project uses [Beads](https://github.com/steveyegge/beads) for issue tracking.
+This project uses [Beads](https://github.com/steveyegge/beads) via the `bd` CLI tool.
 
-### BEAD Format
+### bd Tool Basics
 
-```markdown
-<!-- BEAD: id=0042 status=open priority=high
-     title="Define hopping operator for Fibonacci anyons"
-     description="Construct the hopping operator H_hop that moves Fibonacci anyons 
-     between adjacent sites while respecting fusion constraints. Must reduce to 
-     standard tight-binding hopping in the bosonic limit. Acceptance criteria:
-     (1) Well-defined on Hilbert space from §4.2, (2) Hermitian, (3) Local (acts on 
-     adjacent sites only), (4) Passes unit tests in test_hopping.jl"
-     refs="hilbert_space.md, hamiltonian.md"
-     depends="BEAD-0100, BEAD-0110"
--->
+```bash
+bd init --prefix ma           # Initialize with prefix "ma" (mobile-anyons)
+bd create "Title" -d "..."    # Create issue → ma-1, ma-2, ...
+bd list                       # List all issues
+bd ready                      # Show unblocked work (agents: use this!)
+bd update ma-5 --status in_progress
+bd close ma-5 --reason "Done"
 ```
 
-### Mandatory Fields
+### Planning IDs vs bd IDs
 
-- `id`: Globally unique (format: BEAD-XXXX, BEAD-PXXX for pre-flight, BEAD-FXXX for post-flight)
-- `status`: `open`, `in-progress`, `blocked`, `done`
-- `title`: Brief descriptive title
-- `description`: **Required.** Detailed scope, acceptance criteria, context.
+The research plan uses **planning IDs** (e.g., `§3.1.1`, `§P1.2`, `§F3.4`) for logical organization. When registering with `bd`, these become sequential `ma-N` IDs. Include the planning reference in the description:
 
-### Working with BEADs
+```bash
+bd create "Define hopping operator for Fibonacci anyons" \
+  -d "Planning ref: §5.1.1.2. Construct H_hop that moves Fibonacci anyons between 
+      adjacent sites while respecting fusion constraints. Must reduce to standard 
+      tight-binding in bosonic limit. Acceptance: (1) Well-defined on H from §4.2, 
+      (2) Hermitian, (3) Local, (4) Passes test_hopping.jl" \
+  -t task -p 1
+```
 
-1. Before starting any task, check if there's an associated BEAD
-2. Update BEAD status when starting work: `status=in-progress`
-3. Reference BEAD IDs in commit messages: `Add F-symbol computation [BEAD-0014]`
-4. Mark `status=done` only when all acceptance criteria met
+### Mandatory in Description
+
+- Planning reference (e.g., `§3.1.1`)
+- Detailed scope
+- Acceptance criteria
+- Related files/docs
+
+### Dependencies
+
+```bash
+bd dep add ma-15 ma-10        # ma-10 blocks ma-15
+bd dep tree ma-15             # Visualize
+bd dep cycles                 # Check for cycles
+```
+
+### Agent Workflow
+
+1. Run `bd ready` to find unblocked work
+2. Claim: `bd update ma-N --status in_progress`
+3. Do the work
+4. Reference in commits: `Add F-symbols [ma-14]`
+5. Close: `bd close ma-N --reason "Completed in docs/fusion_category.md"`
 
 ---
 
@@ -331,12 +349,14 @@ Key symbols (see `symbols.yaml` for full list):
 
 ## Workflow
 
-1. **Check BEAD** — Find the relevant BEAD for your task
-2. **Read dependencies** — Check `refs-in` documents
-3. **Follow standards** — Use templates above
-4. **Write code** — Accompany all definitions with Julia
-5. **Cite sources** — Mark as `[unverified]` initially
-6. **Update BEAD** — Mark progress and completion
+1. **Check `bd ready`** — Find unblocked work
+2. **Claim issue** — `bd update ma-N --status in_progress`
+3. **Read dependencies** — Check `refs-in` documents
+4. **Follow standards** — Use templates above
+5. **Write code** — Accompany all definitions with Julia
+6. **Cite sources** — Mark as `[unverified]` initially
+7. **Commit with reference** — `git commit -m "Add F-symbols [ma-14]"`
+8. **Close issue** — `bd close ma-N --reason "..."`
 
 ---
 
@@ -348,10 +368,11 @@ Key symbols (see `symbols.yaml` for full list):
 4. ❌ Basis-dependent definitions where avoidable
 5. ❌ Results without `Claim`/`Conjecture`/`Theorem` labels
 6. ❌ Proofs not in Lamport notation
-7. ❌ BEADs without descriptions
+7. ❌ Issues without descriptions (always use `-d`)
 8. ❌ Documents exceeding 200 lines
 9. ❌ Missing cross-references
 10. ❌ Uncompilable code snippets
+11. ❌ Missing planning reference in issue description
 
 ---
 
