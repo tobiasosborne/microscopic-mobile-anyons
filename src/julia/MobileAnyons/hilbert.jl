@@ -100,5 +100,5 @@ function MobileAnyonHilbert(n_sites::Int, cat::FusionCategory; hardcore=true)
     return MobileAnyonHilbert(n_sites, cat, hardcore, basis, sector_ranges)
 end
 
-dim(H::MobileAnyonHilbert) = length(H.basis)
-dim(H::MobileAnyonHilbert, N::Int, c::Int) = length(get(H.sector_ranges, (N,c), 1:0))
+dim(hilb::MobileAnyonHilbert) = length(hilb.basis)
+dim(hilb::MobileAnyonHilbert, N::Int, c::Int) = length(get(hilb.sector_ranges, (N,c), 1:0))

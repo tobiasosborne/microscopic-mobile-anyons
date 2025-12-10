@@ -216,16 +216,16 @@ PROOF SKELETON:
 ### Example
 
 ```
-THEOREM: The Hilbert space H decomposes as ⊕_n H_n
+THEOREM: The Hilbert space \mathcal{H} decomposes as ⊕_n \mathcal{H}_n
 
 SYMBOLS:
-  - H : Hilbert space (total mobile anyon space)
-  - H_n : Hilbert space (n-anyon sector)
-  - N̂ : H → H (number operator)
-  - H : H → H (Hamiltonian)
+  - \mathcal{H} : Hilbert space (total mobile anyon space)
+  - \mathcal{H}_n : Hilbert space (n-anyon sector)
+  - N̂ : \mathcal{H} → \mathcal{H} (number operator)
+  - H : \mathcal{H} → \mathcal{H} (Hamiltonian)
 
 ASSUMPTIONS:
-  A1. H is constructed per Definition 4.2.3
+  A1. \mathcal{H} is constructed per Definition 4.2.3
   A2. Local terms in H conserve particle number (Definition 5.1.1)
 
 PROOF SKELETON:
@@ -237,7 +237,7 @@ PROOF SKELETON:
      USING: <1>1
      JUSTIFICATION: Spectral theorem for commuting self-adjoint operators
 
-<1>3. CLAIM: Each eigenspace H_n is finite-dimensional
+<1>3. CLAIM: Each eigenspace \mathcal{H}_n is finite-dimensional
      USING: A1, finite sites, finite local dimensions
      JUSTIFICATION: Finite configurations × finite morphism spaces
 

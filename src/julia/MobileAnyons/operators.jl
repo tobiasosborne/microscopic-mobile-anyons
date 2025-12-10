@@ -60,20 +60,20 @@ end
 """
 Build matrix representation of operator on Hilbert space.
 """
-function operator_matrix(op::LocalOperator, H::MobileAnyonHilbert)
-    d = dim(H)
+function operator_matrix(op::LocalOperator, hilb::MobileAnyonHilbert)
+    d = dim(hilb)
     M = zeros(ComplexF64, d, d)
     
-    for (i, bra) in enumerate(H.basis)
-        for (j, ket) in enumerate(H.basis)
-            M[i, j] = matrix_element(op, bra, ket, H)
+    for (i, bra) in enumerate(hilb.basis)
+        for (j, ket) in enumerate(hilb.basis)
+            M[i, j] = matrix_element(op, bra, ket, hilb)
         end
     end
     return M
 end
 
 # Placeholder - actual implementation requires F-symbol data
-function matrix_element(op::LocalOperator, bra::AnyonBasisState, ket::AnyonBasisState, H::MobileAnyonHilbert)
+function matrix_element(op::LocalOperator, bra::AnyonBasisState, ket::AnyonBasisState, hilb::MobileAnyonHilbert)
     # TODO: implement using fusion category F-symbols
     return 0.0 + 0.0im
 end
