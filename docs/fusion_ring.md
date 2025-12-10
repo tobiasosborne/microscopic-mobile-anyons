@@ -12,7 +12,7 @@ refs-out:
 | ID | Assumption | Type | Status |
 |----|------------|------|--------|
 | A1 | Finite set of simple objects $\{X_i\}_{i=1}^d$ | Technical | assumed |
-| A2 | Structure constants $N_{ab}^c \in \mathbb{N}$ are associative and unital with unit $\mathbf{1}$ | Technical | assumed |
+| A2 | Structure constants $N_{ab}^c \in \mathbb{Z}_{\ge 0}$ are associative and unital with unit $\mathbf{1}$ | Technical | assumed |
 
 **Definition 3.1** (Fusion ring). A fusion ring is a free $\mathbb{Z}$-module $R$ with basis $\{X_1, \ldots, X_d\}$ containing a distinguished unit $\mathbf{1}$ such that for all basis elements $X_a, X_b$ the product decomposes as
 \[
