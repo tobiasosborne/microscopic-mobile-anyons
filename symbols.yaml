@@ -9,6 +9,14 @@ symbols:
     type: SimpleObject
     desc: Tensor unit (vacuum)
     defined_in: docs/fusion_category.md
+  - sym: "d"
+    type: Int
+    desc: Number of simple objects (rank of the category)
+    defined_in: docs/fusion_ring.md
+  - sym: "X_i"
+    type: SimpleObject
+    desc: Simple objects of the fusion category (anyon labels)
+    defined_in: docs/fusion_category.md
   - sym: "N_{ab}^c"
     type: Int
     desc: Fusion multiplicities
@@ -21,6 +29,26 @@ symbols:
     type: Tensor
     desc: Braiding (R-symbols) including multiplicity indices
     defined_in: docs/fusion_category.md
+  - sym: "\\Lambda"
+    type: Set
+    desc: Lattice of sites (set of indices)
+    defined_in: docs/lattice.md
+  - sym: "n"
+    type: Int
+    desc: Number of lattice sites
+    defined_in: docs/lattice.md
+  - sym: "\\mathrm{Conf}_N"
+    type: Set
+    desc: Configuration space for N anyons
+    defined_in: docs/config_space.md
+  - sym: "\\mathrm{Conf}_N^{\\mathrm{HC}}"
+    type: Set
+    desc: Hard-core configuration space (distinct positions)
+    defined_in: docs/config_space.md
+  - sym: "\\mathcal{O}(\\mathbf{x}, \\mathbf{k})"
+    type: Object
+    desc: Tensor product object corresponding to a labelled configuration
+    defined_in: docs/hilbert_space.md
   - sym: "\\mathcal{H}"
     type: HilbertSpace
     desc: Total Hilbert space for mobile anyons (direct sum over N)
@@ -33,7 +61,11 @@ symbols:
     type: HilbertSpace
     desc: N-anyon Hilbert space with fixed total charge c
     defined_in: docs/hilbert_space.md
-  - sym: "X_i"
-    type: SimpleObject
-    desc: Simple objects of the fusion category (anyon labels)
-    defined_in: docs/fusion_category.md
+  - sym: "H"
+    type: Operator
+    desc: Hamiltonian operator
+    defined_in: docs/qm_lattice.md
+  - sym: "Z(\beta)"
+    type: Real
+    desc: Partition function at inverse temperature beta
+    defined_in: docs/qm_lattice.md

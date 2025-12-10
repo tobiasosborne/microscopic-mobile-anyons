@@ -24,9 +24,9 @@ This plan uses **planning IDs** (e.g., `§3.1.1`, `§P1.2`) for logical organiza
 
 | Task | BEAD | Status |
 |------|------|--------|
-| P1.1 | Create `agents.md` with Beads prompt integration | BEAD-P011 | pending |
-| P1.2 | Add Lamport structured proof notation prompt to `agents.md` | BEAD-P012 | pending |
-| P1.3 | Add project-specific instructions (first quantisation, normalisation care, etc.) | BEAD-P013 | pending |
+| P1.1 | Create `agents.md` with Beads prompt integration | BEAD-P011 | completed |
+| P1.2 | Add Lamport structured proof notation prompt to `agents.md` | BEAD-P012 | completed |
+| P1.3 | Add project-specific instructions (first quantisation, normalisation care, etc.) | BEAD-P013 | completed |
 
 Output: `agents.md`
 
@@ -36,11 +36,11 @@ Output: `agents.md`
 
 | Task | BEAD | Status |
 |------|------|--------|
-| P2.1 | Create `README.md` with project overview | BEAD-P021 | pending |
-| P2.2 | Initialise Git repository | BEAD-P022 | pending |
+| P2.1 | Create `README.md` with project overview | BEAD-P021 | completed |
+| P2.2 | Initialise Git repository | BEAD-P022 | completed |
 | P2.3 | Create GitHub repository | BEAD-P023 | pending |
-| P2.4 | Set up folder structure per tech specs | BEAD-P024 | pending |
-| P2.5 | Create initial `symbols.yaml` and `citations.yaml` | BEAD-P025 | pending |
+| P2.4 | Set up folder structure per tech specs | BEAD-P024 | completed |
+| P2.5 | Create initial `symbols.yaml` and `citations.yaml` | BEAD-P025 | completed |
 
 Output: Repository ready for development
 
@@ -460,7 +460,7 @@ Output: Clean compilation of `tex/main.tex`
 | Task | BEAD | Status |
 |------|------|--------|
 | F3.1 | Create appendix structure for code snippets | BEAD-F301 | pending |
-| F3.2 | Verify all Julia code compiles | BEAD-F302 | pending |
+| F3.2 | Verify all Julia code compiles | BEAD-F302 | completed |
 | F3.3 | Verify all Clojure code compiles | BEAD-F303 | pending |
 | F3.4 | Cross-reference code appendices with main text | BEAD-F304 | pending |
 
