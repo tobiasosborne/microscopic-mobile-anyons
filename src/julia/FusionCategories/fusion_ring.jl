@@ -2,6 +2,8 @@ module FusionCategories
 
 export FusionRing, fusion_product, is_associative
 
+include("fusion_category.jl")
+
 """
     FusionRing(basis::Vector{Symbol}, N::Dict{NTuple{3,Symbol},Int})
 
