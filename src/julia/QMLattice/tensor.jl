@@ -5,7 +5,7 @@
 using LinearAlgebra
 
 # Import HilbertSpace from basics.jl
-include("basics.jl")
+# include("basics.jl") # Commented out to prevent redefinition in module context
 
 """
     tensor_product(H1::HilbertSpace, H2::HilbertSpace) -> HilbertSpace
