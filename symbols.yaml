@@ -9,9 +9,29 @@ symbols:
     type: Set
     desc: Index set for basis elements of fusion ring (with 0 ∈ I)
     defined_in: docs/fusion_ring.md
+  - sym: "k"
+    type: Field
+    desc: Algebraically closed field (usually k = ℂ) for fusion categories
+    defined_in: docs/fusion_category.md
   - sym: "\\mathcal{C}"
     type: FusionCategory
-    desc: Input fusion category
+    desc: Fusion category (k-linear, semisimple, rigid monoidal category)
+    defined_in: docs/fusion_category.md
+  - sym: "K_0(\\mathcal{C})"
+    type: FusionRing
+    desc: Grothendieck ring of fusion category C (decategorification)
+    defined_in: docs/fusion_category.md
+  - sym: "\\mathrm{Irr}(\\mathcal{C})"
+    type: Set
+    desc: Set of isomorphism classes of simple (irreducible) objects in C
+    defined_in: docs/fusion_category.md
+  - sym: "\\mathrm{Hom}(X,Y)"
+    type: VectorSpace
+    desc: Morphism space from object X to Y (finite-dimensional k-vector space)
+    defined_in: docs/fusion_category.md
+  - sym: "\\mathrm{End}(X)"
+    type: VectorSpace
+    desc: Endomorphism space Hom(X,X) of object X
     defined_in: docs/fusion_category.md
   - sym: "\\mathbf{1}"
     type: SimpleObject
