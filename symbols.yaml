@@ -25,10 +25,10 @@ symbols:
     type: Set
     desc: Set of isomorphism classes of simple (irreducible) objects in C
     defined_in: docs/fusion_category.md
-  - sym: "\\mathrm{Hom}(X,Y)"
+  - sym: "\\mathrm{Mor}(A, B)"
     type: VectorSpace
-    desc: Morphism space from object X to Y (finite-dimensional k-vector space)
-    defined_in: docs/fusion_category.md
+    desc: Morphism space from object A to B (finite-dimensional k-vector space)
+    defined_in: docs/morphism_spaces.md
   - sym: "\\mathrm{End}(X)"
     type: VectorSpace
     desc: Endomorphism space Hom(X,X) of object X
@@ -97,11 +97,31 @@ symbols:
     type: HilbertSpace
     desc: N-anyon Hilbert space with fixed total charge c
     defined_in: docs/hilbert_space.md
+  - sym: "\\mathcal{F}"
+    type: HilbertSpace
+    desc: Standard Fock space (direct sum of n-particle spaces)
+    defined_in: docs/fock_space.md
   - sym: "H"
     type: Operator
     desc: Hamiltonian operator
     defined_in: docs/qm_lattice.md
-  - sym: "Z(\beta)"
+  - sym: "\\mathcal{H}_{\\mathrm{loc}}"
+    type: HilbertSpace
+    desc: Local Hilbert space (isomorphic for all sites)
+    defined_in: docs/lattice.md
+  - sym: "E_n"
+    type: Real
+    desc: Energy eigenvalues (level index n)
+    defined_in: docs/qm_lattice.md
+  - sym: "\\Delta"
+    type: Real
+    desc: Spectral gap (E_1 - E_0)
+    defined_in: docs/qm_lattice.md
+  - sym: "\\beta"
+    type: Real
+    desc: Inverse temperature
+    defined_in: docs/qm_lattice.md
+  - sym: "Z(\\beta)"
     type: Real
     desc: Partition function at inverse temperature beta
     defined_in: docs/qm_lattice.md
