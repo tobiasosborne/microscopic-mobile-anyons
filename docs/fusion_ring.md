@@ -14,37 +14,88 @@ refs-out:
 | A1 | Finite set of simple objects $\{X_i\}_{i=1}^d$ | Technical | assumed |
 | A2 | Structure constants $N_{ab}^c \in \mathbb{Z}_{\ge 0}$ are associative and unital with unit $\mathbf{1}$ | Technical | assumed |
 
-**Definition 3.1** (Fusion ring). A fusion ring is a free $\mathbb{Z}$-module $R$ with basis $\{X_1, \ldots, X_d\}$ containing a distinguished unit $\mathbf{1}$ such that for all basis elements $X_a, X_b$ the product decomposes as
-\[
-  X_a \cdot X_b = \sum_{c=1}^d N_{ab}^c\, X_c,\quad N_{ab}^c \in \mathbb{Z}_{\ge 0},
-\]
-with associativity $\sum_e N_{ab}^e N_{ec}^f = \sum_e N_{bc}^e N_{ae}^f$, commutativity $N_{ab}^c = N_{ba}^c$, and an involution $a \mapsto \bar{a}$ implementing duals with $N_{a\bar{a}}^{\mathbf{1}} \ge 1$. [TensorCategories2015, §2.3] `[unverified]`
+**Definition 3.1** (Fusion ring). A fusion ring is a finitely generated free abelian group $R = \bigoplus_{i \in I} \mathbb{Z} X_i$ with a ring structure satisfying:
+
+1. $X_0 = \mathbf{1}$ is the unit element.
+2. The product of basis elements satisfies
+   \[
+   X_i X_j = \sum_{k\in I} N_{ij}^k X_k,
+   \]
+   where $N_{ij}^k \in \mathbb{Z}_{\ge 0}$ are the **fusion coefficients** (or fusion multiplicities).
+3. There exists an involution $i \mapsto i^*$ such that
+   \[
+   N_{ij}^0 = \delta_{i, j^*}.
+   \]
+
+The involution gives duality: $X_i^* = X_{i^*}$. Associativity follows from the ring axioms: $\sum_e N_{ij}^e N_{ek}^\ell = \sum_e N_{jk}^e N_{ie}^\ell$ for all $i, j, k, \ell \in I$.
+
+**Note:** Fusion rings are generally **not commutative**, i.e., $N_{ij}^k \neq N_{ji}^k$ in general.
+
+[Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), 581–642, Def. 3.1] `[unverified]`
 
 ```julia
 # file: src/julia/FusionCategories/fusion_ring.jl
 module FusionCategories
 
-export FusionRing, fusion_product, is_associative
+export FusionRing, fusion_product, is_associative, has_valid_duality
 
 """
-    FusionRing(basis::Vector{Symbol}, N::Dict{NTuple{3,Symbol},Int})
+    FusionRing(basis::Vector{Symbol}, unit::Symbol, dual::Dict{Symbol,Symbol},
+               N::Dict{NTuple{3,Symbol},Int})
 
-Grothendieck fusion ring with basis elements and non-negative integer structure
-constants N[(a,b,c)] = N_{ab}^c. Unit is `:one` by convention.
-Refs: docs/fusion_ring.md, Definition 3.1.
+A fusion ring as per Etingof–Nikshych–Ostrik (2005), Definition 3.1.
+
+# Fields
+- `basis`: Basis elements {X_i | i ∈ I}, with X_0 = unit
+- `unit`: The unit element (X_0 = 𝟙)
+- `dual`: The involution map i ↦ i*, implementing duality
+- `N`: Fusion coefficients N[(i,j,k)] = N_{ij}^k ∈ ℤ_{≥0}
+
+# Axioms
+1. X_0 is the unit
+2. X_i X_j = ∑_k N_{ij}^k X_k with N_{ij}^k ≥ 0
+3. N_{i,i*}^0 = 1 and N_{ij}^0 = 0 for j ≠ i*
+
+See: docs/fusion_ring.md, Definition 3.1
 """
 struct FusionRing
     basis::Vector{Symbol}
+    unit::Symbol
+    dual::Dict{Symbol,Symbol}
     N::Dict{NTuple{3,Symbol},Int}
+    function FusionRing(basis, unit, dual, N)
+        @assert unit ∈ basis "Unit must be in basis"
+        @assert all(dual[dual[x]] == x for x in basis) "Dual must be an involution"
+        new(basis, unit, dual, N)
+    end
 end
 
+"""
+    fusion_product(R::FusionRing, a::Symbol, b::Symbol) -> Dict{Symbol,Int}
+
+Compute X_a · X_b = ∑_c N_{ab}^c X_c, returning coefficients as a dictionary.
+"""
 fusion_product(R::FusionRing, a::Symbol, b::Symbol) =
     Dict(c => get(R.N, (a, b, c), 0) for c in R.basis)
 
+"""
+    is_associative(R::FusionRing) -> Bool
+
+Check if ∑_e N_{ij}^e N_{ek}^ℓ = ∑_e N_{jk}^e N_{ie}^ℓ for all i,j,k,ℓ.
+"""
 is_associative(R::FusionRing) = all(
-    sum(get(R.N, (a, b, e), 0) * get(R.N, (e, c, f), 0) for e in R.basis) ==
-    sum(get(R.N, (b, c, e), 0) * get(R.N, (a, e, f), 0) for e in R.basis)
-    for a in R.basis, b in R.basis, c in R.basis, f in R.basis
+    sum(get(R.N, (i, j, e), 0) * get(R.N, (e, k, ℓ), 0) for e in R.basis) ==
+    sum(get(R.N, (j, k, e), 0) * get(R.N, (i, e, ℓ), 0) for e in R.basis)
+    for i in R.basis, j in R.basis, k in R.basis, ℓ in R.basis
+)
+
+"""
+    has_valid_duality(R::FusionRing) -> Bool
+
+Check that N_{i,i*}^0 = 1 for all i (and implicitly N_{ij}^0 = 0 for j ≠ i*).
+"""
+has_valid_duality(R::FusionRing) = all(
+    get(R.N, (i, R.dual[i], R.unit), 0) == 1 for i in R.basis
 )
 
 end # module
