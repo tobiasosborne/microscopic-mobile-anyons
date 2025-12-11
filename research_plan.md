@@ -114,16 +114,16 @@ Define fusion rings and fusion categories with full mathematical rigour. **Criti
 
 | Substep | Description | Ref | BEAD | Status |
 |---------|-------------|-----|------|--------|
-| 3.1.1 | Definition of fusion ring: simple objects, fusion rules $N_{ab}^c$ | [arXiv:1509.03275](https://arxiv.org/abs/1509.03275), Etingof | BEAD-0011 | pending |
-| 3.1.2 | Definition of fusion category: monoidal structure, rigidity | ibid. | BEAD-0012 | pending |
-| 3.1.3 | Morphism spaces $\mathrm{Mor}(A, B)$; dimension = multiplicity | ibid. | BEAD-0013 | pending |
+| 3.1.1 | Definition of fusion ring: simple objects, fusion rules $N_{ij}^k$, involution | [Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), Def. 3.1](https://doi.org/10.4007/annals.2005.162.581) | BEAD-0011 | **completed** |
+| 3.1.2 | Definition of fusion category: 5-point axiomatic definition, Grothendieck ring | [Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), Def. 2.1](https://doi.org/10.4007/annals.2005.162.581) | BEAD-0012 | **completed** |
+| 3.1.3 | Morphism spaces $\mathrm{Mor}(A, B)$; dimension = multiplicity; basis independence | [Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), §2](https://doi.org/10.4007/annals.2005.162.581) | BEAD-0013 | **completed** |
 | 3.1.4 | F-symbols and pentagon equation (with multiplicity indices) | ibid. | BEAD-0014 | pending |
 | 3.1.5 | R-symbols and hexagon equations (braiding, with multiplicity) | ibid. | BEAD-0015 | pending |
 | 3.1.6 | Fusion tree basis: when and how to fix a basis | ibid. | BEAD-0016 | pending |
 | 3.1.7 | Examples: Fibonacci (mult-free), Ising (mult-free), $\mathbb{Z}_N$, others with multiplicity | ibid. | BEAD-0017 | pending |
 | 3.1.8 | Julia implementation of fusion category data structure | — | BEAD-0018 | pending |
 
-Output: `docs/fusion_category.md`, `src/julia/FusionCategories/`
+Output: `docs/fusion_ring.md`, `docs/fusion_category.md`, `docs/morphism_spaces.md`, `src/julia/FusionCategories/`, `symbols.yaml`, `symbols.md`
 
 ### 3.2. Fock Space Perspective (First Quantisation)
 
