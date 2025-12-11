@@ -304,3 +304,6 @@ logs/
 *.secret
 secrets/
 credentials/
+
+# Untrack PDFs in literature/
+literature/pdfs/
