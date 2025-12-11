@@ -125,3 +125,15 @@ symbols:
     type: Real
     desc: Partition function at inverse temperature beta
     defined_in: docs/qm_lattice.md
+  - sym: "\\hat{O}"
+    type: Operator
+    desc: General operator on Fock space (sequence of sector operators)
+    defined_in: docs/fock_space.md
+  - sym: "\\oplus"
+    type: Operation
+    desc: Direct sum (logical OR / superposition of sectors)
+    defined_in: docs/fock_space.md
+  - sym: "\\otimes"
+    type: Operation
+    desc: Tensor product (logical AND / composition of parts)
+    defined_in: docs/fock_space.md

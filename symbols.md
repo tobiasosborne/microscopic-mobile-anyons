@@ -56,7 +56,7 @@ This document provides a comprehensive reference for all mathematical symbols us
 
 ---
 
-## Hilbert Spaces
+## Hilbert Spaces and Operations
 
 | Symbol | Type | Description | Defined In |
 |--------|------|-------------|------------|
@@ -64,6 +64,8 @@ This document provides a comprehensive reference for all mathematical symbols us
 | $\mathcal{H}_N$ | HilbertSpace | N-anyon Hilbert space with unspecified total charge | [hilbert_space.md](docs/hilbert_space.md) |
 | $\mathcal{H}_N^{(c)}$ | HilbertSpace | N-anyon Hilbert space with fixed total charge c | [hilbert_space.md](docs/hilbert_space.md) |
 | $\mathcal{F}$ | HilbertSpace | Standard Fock space (direct sum of n-particle spaces) | [fock_space.md](docs/fock_space.md) |
+| $\oplus$ | Operation | Direct sum (logical OR / superposition of sectors) | [fock_space.md](docs/fock_space.md) |
+| $\otimes$ | Operation | Tensor product (logical AND / composition of parts) | [fock_space.md](docs/fock_space.md) |
 
 ---
 
@@ -72,6 +74,7 @@ This document provides a comprehensive reference for all mathematical symbols us
 | Symbol | Type | Description | Defined In |
 |--------|------|-------------|------------|
 | $H$ | Operator | Hamiltonian operator | [qm_lattice.md](docs/qm_lattice.md) |
+| $\hat{O}$ | Operator | General operator on Fock space (sequence of sector operators) | [fock_space.md](docs/fock_space.md) |
 | $E_n$ | Real | Energy eigenvalues (level index n) | [qm_lattice.md](docs/qm_lattice.md) |
 | $\Delta$ | Real | Spectral gap (E_1 - E_0) | [qm_lattice.md](docs/qm_lattice.md) |
 | $\beta$ | Real | Inverse temperature | [qm_lattice.md](docs/qm_lattice.md) |
@@ -86,13 +89,13 @@ This document provides a comprehensive reference for all mathematical symbols us
 - **Morphisms:** Mor(A,B), End(X)
 - **Lattice:** Λ, n, ℋₗₒ꜀
 - **Configuration:** Confₙ, Confₙᴴᶜ, O(x,k)
-- **Hilbert Spaces:** ℋ, ℋₙ, ℋₙ⁽ᶜ⁾, ℱ
-- **Dynamics:** H, Eₙ, Δ, β, Z(β)
+- **Hilbert Spaces:** ℋ, ℋₙ, ℋₙ⁽ᶜ⁾, ℱ, ⊕, ⊗
+- **Dynamics:** H, Ô, Eₙ, Δ, β, Z(β)
 
 ### Alphabetical
-A B C D E F H I K L M N O R X Z Δ Λ β
+A B C D E F H I K L M N O R X Z Δ Λ β ⊕ ⊗
 
 ---
 
 *Last updated: 2025-12-11*
-*Total symbols: 33*
+*Total symbols: 36*
