@@ -2,13 +2,14 @@
 # Planning ref: §3.1.2
 # See: docs/fusion_category.md
 
-export FusionCategory, fusion_multiplicity, associator_value, braiding_value, is_rigid
+export FusionCategory, fusion_multiplicity, associator_value, braiding_value,
+       is_rigid, morphism_dim, multiplicity_basis_labels
 
 """
     FusionCategory(simples, unit, dual, N; F=Dict(), R=Dict())
 
 Semisimple rigid monoidal data: simple labels `simples`, unit label `unit`,
-dual map `dual[a] = ā`, fusion multiplicities `N[(a,b,c)] = N_{ab}^c`, and
+dual map `dual[a] = a_dual`, fusion multiplicities `N[(a,b,c)] = N_{ab}^c`, and
 optional associator/braiding tensors `F` and `R`.
 """
 struct FusionCategory
@@ -44,3 +45,24 @@ function is_rigid(C::FusionCategory)
     all(fusion_multiplicity(C, x, C.dual[x], C.unit) > 0 for x in C.simples)
 end
 
+"""
+    morphism_dim(C::FusionCategory, a::Symbol, b::Symbol, c::Symbol) -> Int
+
+Return dim Mor(X_a \\otimes X_b, X_c) = N_{ab}^c.
+See: docs/morphism_spaces.md, Definition 3.4.
+"""
+morphism_dim(C::FusionCategory, a::Symbol, b::Symbol, c::Symbol) =
+    fusion_multiplicity(C, a, b, c)
+
+"""
+    multiplicity_basis_labels(C::FusionCategory, a::Symbol, b::Symbol, c::Symbol)
+        -> Vector{Tuple{Symbol,Symbol,Symbol,Int}}
+
+Return abstract labels for a multiplicity basis f_{ab->c}^{(mu)} with
+mu = 1,...,N_{ab}^c. This is basis-independent bookkeeping only.
+See: docs/morphism_spaces.md, Definition 3.4.
+"""
+function multiplicity_basis_labels(C::FusionCategory, a::Symbol, b::Symbol, c::Symbol)
+    n = fusion_multiplicity(C, a, b, c)
+    [(a, b, c, mu) for mu in 1:n]
+end

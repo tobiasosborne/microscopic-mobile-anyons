@@ -7,6 +7,7 @@ refs-in:
   - prd.md
   - tech_specs.md
 refs-out:
+  - morphism_spaces.md
   - hilbert_space.md
   - diagrammatic_calculus.md
   - operators.md
@@ -27,7 +28,7 @@ satisfying the following conditions:
 
 1. **Finiteness:** There are finitely many isomorphism classes of simple objects. Every object decomposes as a finite direct sum of simples.
 
-2. **Semisimplicity:** All morphism spaces $\mathrm{Hom}(X,Y)$ are finite-dimensional $k$-vector spaces, and the category is abelian and semisimple.
+2. **Semisimplicity:** All morphism spaces $\mathrm{Mor}(X,Y)$ are finite-dimensional $k$-vector spaces, and the category is abelian and semisimple.
 
 3. **Rigidity:** Every object $X \in \mathcal{C}$ has a left and right dual $X^*$ with evaluation and coevaluation morphisms satisfying the rigidity axioms.
 
@@ -43,7 +44,7 @@ with multiplication
 \[
 [X] \cdot [Y] = \sum_{Z} N_{XY}^{Z} [Z],
 \]
-where $N_{XY}^{Z} = \dim_k \mathrm{Hom}(X \otimes Y, Z)$ is the fusion multiplicity. The Grothendieck ring $K_0(\mathcal{C})$ is a fusion ring (Definition 3.1), establishing that **fusion categories categorify fusion rings**.
+where $N_{XY}^{Z} = \dim_k \mathrm{Mor}(X \otimes Y, Z)$ is the fusion multiplicity. The Grothendieck ring $K_0(\mathcal{C})$ is a fusion ring (Definition 3.1), establishing that **fusion categories categorify fusion rings**.
 
 **Braided fusion categories.** If additionally $\mathcal{C}$ is equipped with a braiding (natural isomorphisms $c_{X,Y}: X \otimes Y \to Y \otimes X$ satisfying hexagon identities), we call $\mathcal{C}$ a **braided fusion category**.
 
@@ -63,13 +64,13 @@ A fusion category as per Etingof–Nikshych–Ostrik (2005), Definition 2.1.
 - `simples`: Simple object labels (isomorphism classes)
 - `unit`: The tensor unit 𝟙 (must be simple: End(𝟙) ≅ ℂ)
 - `dual`: Duality map X ↦ X*, implementing rigidity
-- `N`: Fusion multiplicities N[(X,Y,Z)] = dim Hom(X ⊗ Y, Z)
+- `N`: Fusion multiplicities N[(X,Y,Z)] = dim Mor(X ⊗ Y, Z)
 - `F`: Associator data (F-symbols), optional
 - `R`: Braiding data (R-symbols), optional (for braided fusion categories)
 
 # Axioms (ENO 2005)
 1. Finiteness: finitely many simples
-2. Semisimplicity: all Hom spaces finite-dimensional
+2. Semisimplicity: all Mor spaces finite-dimensional
 3. Rigidity: every object has dual
 4. Simple unit: End(𝟙) ≅ ℂ
 5. Finite ℂ-linearity
@@ -77,7 +78,7 @@ A fusion category as per Etingof–Nikshych–Ostrik (2005), Definition 2.1.
 # Grothendieck Ring
 The Grothendieck ring K₀(C) is the fusion ring with basis {[X]} and product
   [X]·[Y] = ∑_Z N_{XY}^Z [Z]
-where N_{XY}^Z = dim Hom(X ⊗ Y, Z).
+where N_{XY}^Z = dim Mor(X ⊗ Y, Z).
 
 See: docs/fusion_category.md, Definition 3.2
 """
@@ -100,7 +101,7 @@ end
 """
     fusion_multiplicity(C::FusionCategory, X, Y, Z) -> Int
 
-Compute N_{XY}^Z = dim Hom(X ⊗ Y, Z), the fusion multiplicity.
+Compute N_{XY}^Z = dim Mor(X ⊗ Y, Z), the fusion multiplicity.
 """
 fusion_multiplicity(C::FusionCategory, a::Symbol, b::Symbol, c::Symbol) =
     get(C.N, (a, b, c), 0)

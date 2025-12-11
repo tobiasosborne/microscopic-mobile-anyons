@@ -4,6 +4,7 @@ section: "§4.2"
 refs-in:
   - config_space.md
   - fusion_category.md
+  - morphism_spaces.md
   - fock_space.md
 refs-out:
   - operators.md
