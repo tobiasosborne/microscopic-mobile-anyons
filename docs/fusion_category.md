@@ -50,6 +50,33 @@ where $N_{XY}^{Z} = \dim_k \mathrm{Mor}(X \otimes Y, Z)$ is the fusion multiplic
 
 [Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), 581–642, Def. 2.1] `[unverified]`
 
+**Definition 3.3** (F-symbols). The **associator** is a natural isomorphism
+\[
+\alpha_{a,b,c}: (a \otimes b) \otimes c \xrightarrow{\sim} a \otimes (b \otimes c)
+\]
+that satisfies the pentagon equation. In a skeletal category (where objects are direct sums of simple objects $X_i$), the associator is determined by its matrix elements, the **F-symbols**.
+For simple objects $a,b,c,d$, the isomorphism decomposes into blocks indexed by intermediate fusion channels $e$ (for $(a \otimes b) \to e \to d$) and $f$ (for $(b \otimes c) \to f \to d$).
+The change of basis is given by the **F-move**:
+
+![F-move diagram](figures/out/f_move.svg)
+
+Algebraically, the F-symbol $(F_{abc}^d)_{e, \alpha, \beta}^{f, \mu, \nu}$ is the coefficient mapping the basis vector corresponding to the left tree (with intermediate $e$) to the basis vector of the right tree (with intermediate $f$):
+\[
+\left| (a \otimes b) \otimes c \to d ; e, \alpha, \beta \right\rangle = \sum_{f, \mu, \nu} (F_{abc}^d)_{e, \alpha, \beta}^{f, \mu, \nu} \left| a \otimes (b \otimes c) \to d ; f, \mu, \nu \right\rangle
+\]
+where $\alpha, \beta, \mu, \nu$ are multiplicity indices (omitted in the diagram if $N_{xy}^z \le 1$).
+
+**Definition 3.4** (Pentagon Equation). The **pentagon equation** ensures that the two paths to re-associate $((a \otimes b) \otimes c) \otimes d$ to $a \otimes (b \otimes (c \otimes d))$ coincide:
+
+![Pentagon equation diagram](figures/out/pentagon.svg)
+
+In terms of F-symbols (suppressing multiplicity indices for brevity):
+\[
+\sum_{k} (F_{a,b,c}^k)_e^l (F_{a,k,d}^p)_l^m (F_{b,c,d}^p)_k^n = (F_{a,b,n}^p)_e^m (F_{e,c,d}^m)_l^n
+\]
+This coherence condition is required for the fusion category to be well-defined.
+[Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), §2.1] `[unverified]`
+
 ```julia
 # file: src/julia/FusionCategories/fusion_category.jl
 export FusionCategory, fusion_multiplicity, associator_value, braiding_value,
