@@ -38,7 +38,7 @@ Output: `agents.md`
 |------|------|--------|
 | P2.1 | Create `README.md` with project overview | BEAD-P021 | completed |
 | P2.2 | Initialise Git repository | BEAD-P022 | completed |
-| P2.3 | Create GitHub repository | BEAD-P023 | pending |
+| P2.3 | Create GitHub repository | BEAD-P023 | completed |
 | P2.4 | Set up folder structure per tech specs | BEAD-P024 | completed |
 | P2.5 | Create initial `symbols.yaml` and `citations.yaml` | BEAD-P025 | completed |
 
@@ -50,9 +50,9 @@ Output: Repository ready for development
 
 | Task | BEAD | Status |
 |------|------|--------|
-| P3.1 | Go through entire research plan | BEAD-P031 | pending |
-| P3.2 | Register all BEADs as issues (with dependencies) | BEAD-P032 | pending |
-| P3.3 | Verify BEAD coverage (no orphan tasks) | BEAD-P033 | pending |
+| P3.1 | Go through entire research plan | BEAD-P031 | completed |
+| P3.2 | Register all BEADs as issues (with dependencies) | BEAD-P032 | completed |
+| P3.3 | Verify BEAD coverage (no orphan tasks) | BEAD-P033 | completed |
 
 Output: All ~80+ BEADs registered and tracked
 
@@ -66,12 +66,12 @@ Before commencing technical work, assemble and review relevant literature.
 
 | Task | Status |
 |------|--------|
-| Create `literature/` folder | pending |
-| Collect papers on fusion categories (Etingof, Kitaev, etc.) | pending |
-| Collect papers on anyonic chains (golden chain, etc.) | pending |
-| Collect papers on Fock space / second quantisation for anyons | pending |
-| Collect papers on 1D anyons / Bethe ansatz | pending |
-| Write annotated bibliography (`literature/overview.md`) | pending |
+| Create `literature/` folder | completed |
+| Collect papers on fusion categories (Etingof, Kitaev, etc.) | completed |
+| Collect papers on anyonic chains (golden chain, etc.) | completed |
+| Collect papers on Fock space / second quantisation for anyons | completed |
+| Collect papers on 1D anyons / Bethe ansatz | completed |
+| Write annotated bibliography (`literature/overview.md`) | completed |
 
 Key references (initial):
 - Etingof et al., *Tensor Categories* (book)
@@ -117,8 +117,8 @@ Define fusion rings and fusion categories with full mathematical rigour. **Criti
 | 3.1.1 | Definition of fusion ring: simple objects, fusion rules $N_{ij}^k$, involution | [Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), Def. 3.1](https://doi.org/10.4007/annals.2005.162.581) | BEAD-0011 | **completed** |
 | 3.1.2 | Definition of fusion category: 5-point axiomatic definition, Grothendieck ring | [Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), Def. 2.1](https://doi.org/10.4007/annals.2005.162.581) | BEAD-0012 | **completed** |
 | 3.1.3 | Morphism spaces $\mathrm{Mor}(A, B)$; dimension = multiplicity; basis independence | [Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), §2](https://doi.org/10.4007/annals.2005.162.581) | BEAD-0013 | **completed** |
-| 3.1.4 | F-symbols and pentagon equation (with multiplicity indices) | ibid. | BEAD-0014 | pending |
-| 3.1.5 | R-symbols and hexagon equations (braiding, with multiplicity) | ibid. | BEAD-0015 | pending |
+| 3.1.4 | F-symbols and pentagon equation (with multiplicity indices) | ibid. | BEAD-0014 | completed |
+| 3.1.5 | R-symbols and hexagon equations (braiding, with multiplicity) | ibid. | BEAD-0015 | completed |
 | 3.1.6 | Fusion tree basis: when and how to fix a basis | ibid. | BEAD-0016 | pending |
 | 3.1.7 | Examples: Fibonacci (mult-free), Ising (mult-free), $\mathbb{Z}_N$, others with multiplicity | ibid. | BEAD-0017 | pending |
 | 3.1.8 | Julia implementation of fusion category data structure | — | BEAD-0018 | pending |
@@ -193,17 +193,17 @@ Output: `docs/diagrammatic_calculus.md`
 
 ### 4.1. Classical Configuration Space
 
-**BEAD-0100** `[open]`
+**BEAD-0100** `[closed]`
 
 Define the underlying classical configuration space. This provides the foundation for the quantum Hilbert space.
 
 | Substep | Description | BEAD | Status |
 |---------|-------------|------|--------|
-| 4.1.1 | Positions: $0 \leq x_1 \leq x_2 \leq \cdots \leq x_N \leq L$ | BEAD-0101 | pending |
-| 4.1.2 | Each position carries label $k \in \{1, \ldots, d\}$ (anyon type) | BEAD-0102 | pending |
-| 4.1.3 | Lattice: sites $j \in \{0, \ldots, n-1\}$, physical positions $x_j = \epsilon \cdot j$ where $\epsilon = L/n$ | BEAD-0103 | pending |
-| 4.1.4 | Mixed character: "identical" (same-label anyons) and "distinguishable" (different labels) | BEAD-0104 | pending |
-| 4.1.5 | Hard-core: strict inequality $x_1 < x_2 < \cdots < x_N$ | BEAD-0105 | pending |
+| 4.1.1 | Positions: $0 \leq x_1 \leq x_2 \leq \cdots \leq x_N \leq L$ | BEAD-0101 | **completed** |
+| 4.1.2 | Each position carries label $k \in \{1, \ldots, d\}$ (anyon type) | BEAD-0102 | **completed** |
+| 4.1.3 | Lattice: sites $j \in \{0, \ldots, n-1\}$, physical positions $x_j = \epsilon \cdot j$ where $\epsilon = L/n$ | BEAD-0103 | **completed** |
+| 4.1.4 | Mixed character: "identical" (same-label anyons) and "distinguishable" (different labels) | BEAD-0104 | **completed** |
+| 4.1.5 | Hard-core: strict inequality $x_1 < x_2 < \cdots < x_N$ | BEAD-0105 | **completed** |
 
 Output: `docs/config_space.md`
 
@@ -215,11 +215,11 @@ Define the Hilbert space as direct sums over morphism spaces. Use notation $\mat
 
 | Substep | Description | BEAD | Status |
 |---------|-------------|------|--------|
-| 4.2.1 | Space of $N$ anyons with definite total charge $c$: $\mathcal{H}_N^{(c)}$ | BEAD-0111 | pending |
-| 4.2.2 | Space of $N$ anyons with indefinite total charge: $\mathcal{H}_N = \bigoplus_c \mathcal{H}_N^{(c)}$ | BEAD-0112 | pending |
-| 4.2.3 | Total Hilbert space: $\mathcal{H} = \bigoplus_{N=0}^{n} \mathcal{H}_N$ where $n$ = number of sites | BEAD-0113 | pending |
-| 4.2.4 | Explicit construction via $\mathrm{Mor}(\mathbf{1}, X_1 \otimes \cdots \otimes X_N)$ or similar | BEAD-0114 | pending |
-| 4.2.5 | Handle both multiplicity-free and with-multiplicity cases | BEAD-0115 | pending |
+| 4.2.1 | Space of $N$ anyons with definite total charge $c$: $\mathcal{H}_N^{(c)}$ | BEAD-0111 | completed |
+| 4.2.2 | Space of $N$ anyons with indefinite total charge: $\mathcal{H}_N = \bigoplus_c \mathcal{H}_N^{(c)}$ | BEAD-0112 | completed |
+| 4.2.3 | Total Hilbert space: $\mathcal{H} = \bigoplus_{N=0}^{n} \mathcal{H}_N$ where $n$ = number of sites | BEAD-0113 | completed |
+| 4.2.4 | Explicit construction via $\mathrm{Mor}(\mathbf{1}, X_1 \otimes \cdots \otimes X_N)$ or similar | BEAD-0114 | completed |
+| 4.2.5 | Handle both multiplicity-free and with-multiplicity cases | BEAD-0115 | completed |
 
 Output: `docs/hilbert_space.md`
 
@@ -231,10 +231,10 @@ Operators on the Hilbert space belong to direct sums of morphism spaces.
 
 | Substep | Description | BEAD | Status |
 |---------|-------------|------|--------|
-| 4.3.1 | Operators as elements of $\bigoplus \mathrm{Mor}(A, B)$ | BEAD-0121 | pending |
-| 4.3.2 | Objects $A$, $B$ built from tensor products of vacuum $\mathbf{1}$ and simples $X_1, \ldots, X_d$ | BEAD-0122 | pending |
-| 4.3.3 | Particle-number-conserving vs non-conserving operators | BEAD-0123 | pending |
-| 4.3.4 | Local vs global operators | BEAD-0124 | pending |
+| 4.3.1 | Operators as elements of $\bigoplus \mathrm{Mor}(A, B)$ | BEAD-0121 | completed |
+| 4.3.2 | Objects $A$, $B$ built from tensor products of vacuum $\mathbf{1}$ and simples $X_1, \ldots, X_d$ | BEAD-0122 | completed |
+| 4.3.3 | Particle-number-conserving vs non-conserving operators | BEAD-0123 | completed |
+| 4.3.4 | Local vs global operators | BEAD-0124 | completed |
 
 Output: `docs/operators.md`
 
@@ -246,10 +246,10 @@ Two regimes: anyons restricted to separate sites (hard-core) or allowed to coexi
 
 | Substep | Description | BEAD | Status |
 |---------|-------------|------|--------|
-| 4.4.1 | Hard-core constraint: at most one anyon per site | BEAD-0131 | pending |
-| 4.4.2 | Soft-core: multiple anyons per site; local fusion structure | BEAD-0132 | pending |
-| 4.4.3 | Hilbert space modifications for each case | BEAD-0133 | pending |
-| 4.4.4 | Physical motivation for each regime | BEAD-0134 | pending |
+| 4.4.1 | Hard-core constraint: at most one anyon per site | BEAD-0131 | completed |
+| 4.4.2 | Soft-core: multiple anyons per site; local fusion structure | BEAD-0132 | completed |
+| 4.4.3 | Hilbert space modifications for each case | BEAD-0133 | completed |
+| 4.4.4 | Physical motivation for each regime | BEAD-0134 | completed |
 
 Output: `docs/hardcore_softcore.md`
 
@@ -601,9 +601,9 @@ LaTeX     Compile   Code       Figures    Assemble   Review     Integrate
 
 | Paper | BEAD | Status |
 |-------|------|--------|
-| Girardeau 1960 (impenetrable bosons) | BEAD-0701 | pending |
-| Girardeau PRL 97 2006 (anyons generalisation) | BEAD-0702 | pending |
-| Leinaas–Myrheim (original anyons paper) | BEAD-0703 | pending |
+| Girardeau 1960 (impenetrable bosons) | BEAD-0701 | completed |
+| Girardeau PRL 97 2006 (anyons generalisation) | BEAD-0702 | completed |
+| Leinaas–Myrheim (original anyons paper) | BEAD-0703 | completed |
 | Wilczek (anyons / fractional statistics) | BEAD-0704 | pending |
 | Levin–Wen (string-net) | BEAD-0705 | pending |
 
