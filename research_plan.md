@@ -127,46 +127,46 @@ Output: `docs/fusion_ring.md`, `docs/fusion_category.md`, `docs/morphism_spaces.
 
 ### 3.2. Fock Space Perspective (First Quantisation)
 
-**BEAD-0020** `[open]`
+**BEAD-0020** `[closed]`
 
 Reminder/expansion of Fock space formalism with categorical interpretation. **Critical:** We work exclusively in first quantisation. Creation/annihilation operators are a red herring and must not be used.
 
 | Substep | Description | Ref | BEAD | Status |
 |---------|-------------|-----|------|--------|
-| 3.2.1 | Standard Fock space as direct sum of $n$-particle spaces | standard | BEAD-0021 | pending |
-| 3.2.2 | Direct sum as "OR quantifier" (superposition of particle numbers) | [arXiv:1910.10619](https://arxiv.org/abs/1910.10619) §2 | BEAD-0022 | pending |
-| 3.2.3 | Tensor product as "AND quantifier" (multi-site/multi-particle structure) | ibid. | BEAD-0023 | pending |
-| 3.2.4 | First-quantised operators: how operators act on $n$-particle sectors | — | BEAD-0024 | pending |
+| 3.2.1 | Standard Fock space as direct sum of $n$-particle spaces | standard | BEAD-0021 | **completed** |
+| 3.2.2 | Direct sum as "OR quantifier" (superposition of particle numbers) | [arXiv:1910.10619](https://arxiv.org/abs/1910.10619) §2 | BEAD-0022 | **completed** |
+| 3.2.3 | Tensor product as "AND quantifier" (multi-site/multi-particle structure) | ibid. | BEAD-0023 | **completed** |
+| 3.2.4 | First-quantised operators: how operators act on $n$-particle sectors | — | BEAD-0024 | **completed** |
 
 Output: `docs/fock_space.md`
 
 ### 3.3. Quantum Mechanics for Lattice Models
 
-**BEAD-0030** `[open]`
+**BEAD-0030** `[closed]`
 
 Brief reminder of QM formalism oriented towards 1D lattice systems.
 
 | Substep | Description | Ref | BEAD | Status |
 |---------|-------------|-----|------|--------|
-| 3.3.1 | Hilbert space, states, observables | standard | BEAD-0031 | pending |
-| 3.3.2 | Hamiltonians for lattice systems (local terms, nearest-neighbour) | standard | BEAD-0032 | pending |
-| 3.3.3 | Ground states, spectrum, partition function | standard | BEAD-0033 | pending |
-| 3.3.4 | Tensor product structure for multi-site systems | standard | BEAD-0034 | pending |
+| 3.3.1 | Hilbert space, states, observables | standard | BEAD-0031 | **completed** |
+| 3.3.2 | Hamiltonians for lattice systems (local terms, nearest-neighbour) | standard | BEAD-0032 | **completed** |
+| 3.3.3 | Ground states, spectrum, partition function | standard | BEAD-0033 | **completed** |
+| 3.3.4 | Tensor product structure for multi-site systems | standard | BEAD-0034 | **completed** |
 
 Output: `docs/qm_lattice.md`
 
 ### 3.4. Lattice Geometry
 
-**BEAD-0040** `[open]`
+**BEAD-0040** `[closed]`
 
 Define lattice conventions for this work.
 
 | Substep | Description | Ref | BEAD | Status |
 |---------|-------------|-----|------|--------|
-| 3.4.1 | 1D chain: sites labelled $1, \ldots, N$ | — | BEAD-0041 | pending |
-| 3.4.2 | Lattice spacing $a$ (set $a=1$ where convenient) | — | BEAD-0042 | pending |
-| 3.4.3 | Open boundary conditions (no PBCs) | — | BEAD-0043 | pending |
-| 3.4.4 | Notation for local Hilbert spaces $\mathcal{H}_i$ | — | BEAD-0044 | pending |
+| 3.4.1 | 1D chain: sites labelled $1, \ldots, N$ | — | BEAD-0041 | **completed** |
+| 3.4.2 | Lattice spacing $a$ (set $a=1$ where convenient) | — | BEAD-0042 | **completed** |
+| 3.4.3 | Open boundary conditions (no PBCs) | — | BEAD-0043 | **completed** |
+| 3.4.4 | Notation for local Hilbert spaces $\mathcal{H}_i$ | — | BEAD-0044 | **completed** |
 
 Output: `docs/lattice.md`
 
