@@ -1,0 +1,74 @@
+\documentclass[tikz, border=2pt]{standalone}
+\usepackage{amsmath}
+\usetikzlibrary{calc, positioning}
+
+\begin{document}
+\begin{tikzpicture}[thick, scale=1.2, baseline=(current bounding box.center)]
+    % Define object and vertex label styles
+    \tikzset{
+        object_label/.style={font=\normalsize, fill=white, inner sep=1pt},
+        vertex_label/.style={font=\tiny, fill=white, inner sep=0.5pt},
+        fusion_vertex/.style={circle, fill=black, inner sep=1.5pt, outer sep=0pt}
+    }
+
+    % LEFT SIDE: a,b fuse to i, then to c (no crossing)
+    \begin{scope}[shift={(0,0)}]
+        % Input object labels
+        \node[object_label] at (0,3.5) {$a$};
+        \node[object_label] at (1,3.5) {$b$};
+
+        % Coordinates for fusion tree
+        \coordinate (a_in) at (0,3);
+        \coordinate (b_in) at (1,3);
+        \coordinate (v_i) at (0.5,2);
+        \coordinate (c_out) at (0.5,0);
+
+        % Draw tree components
+        \draw (a_in) -- (v_i);
+        \draw (b_in) -- (v_i);
+        \node[fusion_vertex] at (v_i) {}; % Fusion vertex
+        \node[vertex_label, left] at (v_i) {$i$}; % Intermediate channel label
+
+        \draw (v_i) -- (c_out);
+        \node[object_label, right] at ($(v_i)!0.5!(c_out)$) {$c$}; % Output object label
+    \end{scope}
+
+    % EQUALS SIGN
+    \node at (2.5, 1.75) {$=$};
+
+    % R-MATRIX COEFFICIENT
+    \node at (4.5, 1.75) {$\displaystyle \sum_{j} (R_{ab}^c)_{i}^{j}$}; % R-matrix coefficient
+
+    % RIGHT SIDE: b,a fuse to j, then to c (with crossing)
+    \begin{scope}[shift={(7,0)}]
+        % Input object labels (swapped order)
+        \node[object_label] at (0,3.5) {$b$};
+        \node[object_label] at (1,3.5) {$a$};
+
+        % Coordinates for crossing and fusion tree
+        \coordinate (b_top) at (0,3);
+        \coordinate (a_top) at (1,3);
+        \coordinate (cross_bl) at (0.2,2.5); % Bottom-left of crossing
+        \coordinate (cross_tr) at (0.8,2.5); % Top-right of crossing
+        \coordinate (v_j) at (0.5,2);
+        \coordinate (c_out) at (0.5,0);
+
+        % Draw strands with crossing
+        % Strand from 'a' (overpass)
+        \draw (a_top) -- (cross_bl);
+        % Strand from 'b' (underpass - draw with white background to simulate)
+        \draw[white, line width=4pt, line cap=round] (b_top) -- (cross_tr);
+        \draw (b_top) -- (cross_tr);
+
+        % Connect crossing to fusion vertex
+        \draw (cross_bl) -- (v_j);
+        \draw (cross_tr) -- (v_j);
+        \node[fusion_vertex] at (v_j) {}; % Fusion vertex
+        \node[vertex_label, left] at (v_j) {$j$}; % Intermediate channel label
+
+        \draw (v_j) -- (c_out);
+        \node[object_label, right] at ($(v_j)!0.5!(c_out)$) {$c$}; % Output object label
+    \end{scope}
+
+\end{tikzpicture}
+\end{document}

@@ -77,6 +77,27 @@ In terms of F-symbols (suppressing multiplicity indices for brevity):
 This coherence condition is required for the fusion category to be well-defined.
 [Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), §2.1] `[unverified]`
 
+**Definition 3.5** (R-symbols). For a braided fusion category, the **braiding isomorphism** $c_{a,b}: a \otimes b \to b \otimes a$ provides a natural way to permute tensor factors. These isomorphisms satisfy the hexagon equations.
+For simple objects $a,b,c$, the braiding isomorphism is represented by its matrix elements, the **R-symbols**.
+The change of basis due to braiding is given by the **R-move**:
+
+![R-move diagram](figures/out/r_move.svg)
+
+Algebraically, the R-symbol $(R_{ab}^c)_{i}^{j}$ maps the basis vector corresponding to the fusion of $a \otimes b$ (with intermediate channel $i$) to the basis vector of $b \otimes a$ (with intermediate channel $j$), both fusing to $c$. Multiplicity indices are suppressed in the diagram if $N_{xy}^z \le 1$.
+
+**Definition 3.6** (Hexagon Equations). The **hexagon equations** are coherence conditions that relate the associator (F-symbols) and the braiding (R-symbols), ensuring consistency between re-associating and braiding operations. There are two hexagon equations.
+
+The first hexagon equation:
+\[
+c_{a, b \otimes c} \circ (1_a \otimes c_{b,c}) = ((c_{a,b} \otimes 1_c) \circ F_{b,a,c} \circ (1_b \otimes c_{a,c})) \circ F_{a,c,b}^{-1}
+\]
+Diagrammatically, this can be represented as:
+
+![Hexagon equation diagram](figures/out/hexagon.svg)
+
+This equation (and its dual) ensures that braiding past a composite object can be decomposed consistently.
+[Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), §2.1] `[unverified]`
+
 ```julia
 # file: src/julia/FusionCategories/fusion_category.jl
 export FusionCategory, fusion_multiplicity, associator_value, braiding_value,
