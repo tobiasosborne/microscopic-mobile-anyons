@@ -69,13 +69,13 @@ This is handled by the morphism space structure in §4.2.
 
 struct LabelledConfig
     positions::Vector{Int}   # ordered: x₁ ≤ x₂ ≤ ... ≤ xₙ
-    labels::Vector{Int}      # kⱼ ∈ {2,...,d}
+    labels::Vector{Int}      # kⱼ ∈ {1,...,d-1}, where 0 = vacuum
 end
 
 function is_valid_config(c::LabelledConfig, n_sites::Int, d::Int)
     N = length(c.positions)
     length(c.labels) == N || return false
-    all(2 .≤ c.labels .≤ d) || return false
+    all(1 .≤ c.labels .≤ (d-1)) || return false
     all(0 .≤ c.positions .< n_sites) || return false
     issorted(c.positions) || return false
     return true
@@ -86,7 +86,7 @@ is_hardcore(c::LabelledConfig) = allunique(c.positions)
 function enumerate_configs_hc(n_sites::Int, N::Int, d::Int)
     configs = LabelledConfig[]
     for pos in combinations(0:(n_sites-1), N)
-        for labels in Iterators.product(fill(2:d, N)...)
+        for labels in Iterators.product(fill(1:(d-1), N)...)
             push!(configs, LabelledConfig(collect(pos), collect(labels)))
         end
     end

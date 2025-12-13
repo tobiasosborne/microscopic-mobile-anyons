@@ -9,7 +9,7 @@ using Combinatorics
 
 A labelled configuration of N anyons.
 - positions: ordered site indices (x₁ ≤ x₂ ≤ ... ≤ xₙ)
-- labels: anyon types (kⱼ ∈ {2,...,d}, where 1 = vacuum)
+- labels: anyon types (kⱼ ∈ {1,...,d-1}, where 0 = vacuum)
 """
 struct LabelledConfig
     positions::Vector{Int}
@@ -21,7 +21,7 @@ n_anyons(c::LabelledConfig) = length(c.positions)
 function is_valid(c::LabelledConfig, n_sites::Int, d::Int)
     N = n_anyons(c)
     length(c.labels) == N || return false
-    all(2 .≤ c.labels .≤ d) || return false
+    all(1 .≤ c.labels .≤ (d-1)) || return false
     all(0 .≤ c.positions .< n_sites) || return false
     issorted(c.positions) || return false
     return true
@@ -38,7 +38,7 @@ function enumerate_configs_hc(n_sites::Int, N::Int, d::Int)
     
     configs = LabelledConfig[]
     for pos in combinations(0:(n_sites-1), N)
-        for labels in Iterators.product(fill(2:d, N)...)
+        for labels in Iterators.product(fill(1:(d-1), N)...)
             push!(configs, LabelledConfig(collect(pos), collect(labels)))
         end
     end

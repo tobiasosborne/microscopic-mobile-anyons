@@ -22,7 +22,7 @@ refs-out:
 
 **Definition 4.3.2** (Operator as morphism sum). Operators decompose as:
 $$\mathcal{A} \in \bigoplus_{A,B} \mathrm{Mor}(A, B)$$
-where $A, B$ range over tensor products of $\mathbf{1}, X_2, \ldots, X_d$.
+where $A, B$ range over tensor products of $\mathbf{1}, X_1, \ldots, X_{d-1}$.
 
 ---
 
