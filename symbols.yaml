@@ -37,10 +37,14 @@ symbols:
     type: SimpleObject
     desc: Tensor unit (vacuum), equal to X_0
     defined_in: docs/fusion_ring.md
-  - sym: "d"
+  - sym: "d_C"
     type: Int
-    desc: Number of simple objects (rank of the category/ring)
+    desc: Number of simple objects in fusion category (rank of the category/ring)
     defined_in: docs/fusion_ring.md
+  - sym: "d_{\\mathrm{loc}}"
+    type: Int
+    desc: Local Hilbert space dimension for lattice models
+    defined_in: docs/lattice.md
   - sym: "X_i"
     type: SimpleObject
     desc: Simple objects of the fusion ring/category (anyon labels), where i ∈ I and X_0 = 𝟙

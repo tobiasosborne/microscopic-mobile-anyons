@@ -19,7 +19,7 @@ refs-out:
 
 | ID | Assumption | Type | Status |
 |----|------------|------|--------|
-| A4.1.1 | Fusion category $\mathcal{C}$ with simples $\{1, X_2, \ldots, X_d\}$ | Input | assumed |
+| A4.1.1 | Fusion category $\mathcal{C}$ with simples $\{X_0, X_1, \ldots, X_{d-1}\}$ where $X_0 = \mathbf{1}$ | Input | assumed |
 | A4.1.2 | Lattice $\Lambda = \{0, \ldots, n-1\}$ with OBC | From §3.4 | assumed |
 
 ---
@@ -40,7 +40,7 @@ satisfying $0 \leq x_1 \leq x_2 \leq \cdots \leq x_N \leq n-1$.
 - $\mathbf{x} = (x_1, \ldots, x_N)$ is a configuration
 - $\mathbf{k} = (k_1, \ldots, k_N)$ with $k_j \in \{2, \ldots, d\}$ labels the anyon type at position $x_j$
 
-**Convention.** Label $1$ denotes vacuum (no anyon). Labels $2, \ldots, d$ denote the nontrivial simple objects $X_2, \ldots, X_d$.
+**Convention.** Label $0$ denotes vacuum (no anyon). Labels $1, \ldots, d-1$ denote the nontrivial simple objects $X_1, \ldots, X_{d-1}$.
 
 ---
 

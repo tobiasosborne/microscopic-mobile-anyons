@@ -190,8 +190,7 @@ has_obc(L::Lattice1D) = true
 **Definition 3.4.8** (Local Hilbert space). Each site $j \in \Lambda$ carries a *local Hilbert space* $\mathcal{H}_j$. For identical sites:
 $$\mathcal{H}_j \cong \mathcal{H}_{\mathrm{loc}} \quad \forall j$$
 
-**Definition 3.4.9** (Local dimension). The *local dimension* is $d = \dim(\mathcal{H}_{\mathrm{loc}})$.
-
+**Definition 3.4.9** (Local dimension). The *local dimension* is $d_{\mathrm{loc}} = \dim(\mathcal{H}_{\mathrm{loc}})$.
 **Definition 3.4.10** (Total Hilbert space). The *total Hilbert space* for the lattice is
 $$\mathcal{H}_{\mathrm{total}} = \bigotimes_{j=0}^{n-1} \mathcal{H}_j \cong \mathbb{C}^{d^n}$$
 
@@ -262,7 +261,7 @@ end
 | Lattice spacing | $\epsilon$ | $L/n$ |
 | Physical position | $x_j$ | $\epsilon \cdot j$ |
 | Local Hilbert space | $\mathcal{H}_j$ | Space at site $j$ |
-| Local dimension | $d$ | $\dim(\mathcal{H}_{\mathrm{loc}})$ |
+| Local dimension | $d_{\mathrm{loc}}$ | $\dim(\mathcal{H}_{\mathrm{loc}})$ |
 | Total dimension | — | $d^n$ |
 
 ---

@@ -16,9 +16,9 @@ struct LatticeWithHilbert
     lattice::Lattice1D
     local_dim::Int
     
-    function LatticeWithHilbert(n_sites::Int, d::Int)
-        @assert d ≥ 1 "Local dimension must be ≥ 1"
-        new(Lattice1D(n_sites), d)
+    function LatticeWithHilbert(n_sites::Int, d_loc::Int)
+        @assert d_loc ≥ 1 "Local dimension must be ≥ 1"
+        new(Lattice1D(n_sites), d_loc)
     end
 end
 
@@ -27,7 +27,7 @@ end
 
 Construct from existing lattice.
 """
-LatticeWithHilbert(L::Lattice1D, d::Int) = LatticeWithHilbert(L.n_sites, d)
+LatticeWithHilbert(L::Lattice1D, d_loc::Int) = LatticeWithHilbert(L.n_sites, d_loc)
 
 """
     total_dim(L::LatticeWithHilbert) -> Int

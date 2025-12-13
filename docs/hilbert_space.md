@@ -22,7 +22,7 @@ refs-out:
 
 | ID | Assumption | Type | Status |
 |----|------------|------|--------|
-| A4.2.1 | Fusion category $\mathcal{C}$ with unit $\mathbf{1}$ and simples $X_1=\mathbf{1}, X_2, \ldots, X_d$ | Input | assumed |
+| A4.2.1 | Fusion category $\mathcal{C}$ with unit $\mathbf{1}$ and simples $X_0=\mathbf{1}, X_1, \ldots, X_{d-1}$ | Input | assumed |
 | A4.2.2 | $n$ lattice sites, OBC | From §3.4 | assumed |
 
 ---

@@ -19,14 +19,14 @@ Returns: matrix of dimension d^n_sites × d^n_sites
 
 See: docs/qm_lattice.md, Definition 3.3.5
 """
-function embed_local_term(local_h::Matrix, i::Int, n_sites::Int, d::Int)
+function embed_local_term(local_h::Matrix, i::Int, n_sites::Int, d_loc::Int)
     @assert 1 ≤ i < n_sites "Site index out of range: need 1 ≤ i < n_sites"
-    @assert size(local_h) == (d^2, d^2) "Local term has wrong dimension: expected $(d^2)×$(d^2), got $(size(local_h))"
+    @assert size(local_h) == (d_loc^2, d_loc^2) "Local term has wrong dimension: expected $(d_loc^2)×$(d_loc^2), got $(size(local_h))"
     
     # Build: I ⊗ ... ⊗ I ⊗ local_h ⊗ I ⊗ ... ⊗ I
     #        (i-1 sites)              (n-i-1 sites)
-    left_dim = d^(i-1)
-    right_dim = d^(n_sites - i - 1)
+    left_dim = d_loc^(i-1)
+    right_dim = d_loc^(n_sites - i - 1)
     
     result = kron(Matrix{ComplexF64}(I, left_dim, left_dim), 
                   ComplexF64.(local_h),
@@ -43,8 +43,8 @@ H = Σᵢ hᵢ,ᵢ₊₁
 
 See: docs/qm_lattice.md, Definition 3.3.6
 """
-function nn_hamiltonian(local_h::Matrix, n_sites::Int, d::Int)
-    total_dim = d^n_sites
+function nn_hamiltonian(local_h::Matrix, n_sites::Int, d_loc::Int)
+    total_dim = d_loc^n_sites
     H = zeros(ComplexF64, total_dim, total_dim)
     
     for i in 1:(n_sites-1)

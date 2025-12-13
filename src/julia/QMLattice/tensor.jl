@@ -32,7 +32,7 @@ Multi-site Hilbert space: n copies of local space of dimension d.
 
 See: docs/qm_lattice.md, Definition 3.3.12
 """
-multisite_space(d::Int, n::Int) = HilbertSpace(d^n)
+multisite_space(d_loc::Int, n::Int) = HilbertSpace(d_loc^n)
 
 """
     tensor_product(ψ1::Vector, ψ2::Vector) -> Vector
