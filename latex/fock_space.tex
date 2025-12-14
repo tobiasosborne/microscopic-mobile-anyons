@@ -1,0 +1,90 @@
+% fock_space.tex
+% LaTeX counterpart of docs/fock_space.md
+% Section §3.2
+
+\section{Fock Space Perspective (First Quantisation)}\label{sec:fock-space}
+
+\begin{assumption}\label{ass:fock-space}
+\begin{enumerate}[label=(A3.2.\arabic*)]
+    \item First-quantised formalism only (no $a^\dagger, a$).
+    \item Fock space is a direct sum of fixed-number sectors.
+\end{enumerate}
+\end{assumption}
+
+\subsection{Standard Fock Space}\label{subsec:standard-fock}
+
+\begin{definition}[Fock space]\label{def:fock-space}
+The \emph{Fock space} $\mathcal{F}$ is the direct sum of $N$-particle Hilbert spaces $\mathcal{H}_N$ for all possible particle numbers $N \ge 0$:
+\begin{equation}\label{eq:fock-space}
+    \mathcal{F} = \bigoplus_{N=0}^{\infty} \mathcal{H}_N = \mathcal{H}_0 \oplus \mathcal{H}_1 \oplus \mathcal{H}_2 \oplus \cdots
+\end{equation}
+where $\mathcal{H}_0 \cong \mathbb{C}$ is the vacuum sector spanned by the vacuum state $|\Omega\rangle$.
+\end{definition}
+
+\begin{remark}
+In this first-quantised approach, a state $|\Psi\rangle \in \mathcal{F}$ is a sequence of wavefunctions (or categorical states) $|\Psi\rangle = (\psi_0, \psi_1, \psi_2, \ldots)$, where $\psi_N \in \mathcal{H}_N$ is the projection of the state onto the $N$-particle sector.
+\end{remark}
+
+\begin{constraint}
+We strictly avoid the use of second-quantised creation/annihilation operators ($a_i^\dagger, a_i$) as fundamental building blocks. While convenient for bosons/fermions, they obscure the categorical data (braiding, fusion) essential for anyons.
+\end{constraint}
+
+\subsection{Direct Sum as ``OR Quantifier''}\label{subsec:direct-sum}
+
+The direct sum ($\oplus$) operation represents a logical ``OR'' or superposition of different particle number sectors.
+
+\begin{itemize}
+    \item A state in $\mathcal{H}_1 \oplus \mathcal{H}_2$ describes a system that is in a superposition of having 1 particle \textbf{OR} 2 particles.
+    \item This contrasts with the tensor product (see \S\ref{subsec:tensor-product-fock}).
+\end{itemize}
+
+This perspective highlights that the total Hilbert space allows for quantum fluctuations in particle number, even if dynamics (Hamiltonian) conserve it.
+
+\subsection{Tensor Product as ``AND Quantifier''}\label{subsec:tensor-product-fock}
+
+The tensor product ($\otimes$) operation represents a logical ``AND'' or composition of subsystems.
+
+\begin{itemize}
+    \item Within a fixed $N$-particle sector $\mathcal{H}_N$, the structure involves tensor products of single-particle spaces (or local site spaces):
+    \begin{equation}
+        \mathcal{H}_N \sim \mathcal{H}_{\mathrm{loc}} \otimes \cdots \otimes \mathcal{H}_{\mathrm{loc}} \quad \text{(schematically)}
+    \end{equation}
+    \item A state $|\phi\rangle \otimes |\chi\rangle$ describes a system where part A is in state $\phi$ \textbf{AND} part B is in state $\chi$.
+\end{itemize}
+
+\begin{remark}[Anyonic nuance]
+For anyons, $\mathcal{H}_N$ is not a simple tensor product of single-particle spaces due to fusion constraints (fusion spaces are not product spaces). However, the \emph{ambient} space in which $\mathcal{H}_N$ is embedded (before fusion constraints) often has a tensor product structure (e.g., sites on a lattice).
+\end{remark}
+
+\subsection{First-Quantised Operators}\label{subsec:first-quant-ops}
+
+\begin{definition}[Operator on Fock space]\label{def:fock-operator}
+An operator $\hat{O} : \mathcal{F} \to \mathcal{F}$ is defined by its action on each sector $\mathcal{H}_N$ and maps between sectors. It can be represented as a matrix of operators $\hat{O}_{MN} : \mathcal{H}_N \to \mathcal{H}_M$.
+\end{definition}
+
+\begin{definition}[Number-conserving operator]\label{def:number-conserving}
+An operator $\hat{H}$ is \emph{number-conserving} if it maps each sector $\mathcal{H}_N$ to itself ($\hat{H}_{MN} = 0$ for $M \neq N$). It decomposes as a direct sum of operators acting on fixed-number sectors:
+\begin{equation}
+    \hat{H} = \bigoplus_{N=0}^{\infty} \hat{H}_N
+\end{equation}
+where $\hat{H}_N : \mathcal{H}_N \to \mathcal{H}_N$.
+\end{definition}
+
+\begin{example}
+The Hamiltonian for mobile anyons is typically number-conserving (unless studying source terms), so we construct it by defining a sequence of Hamiltonians $H_N$ for each $N$-anyon configuration space.
+\end{example}
+
+\subsection{Summary}
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{Structure} & \textbf{Symbol} & \textbf{Interpretation} & \textbf{Logical Equiv.} \\
+\midrule
+Direct Sum & $\oplus$ & Superposition of sectors & \textbf{OR} \\
+Tensor Product & $\otimes$ & Composition of parts & \textbf{AND} \\
+Fock Space & $\mathcal{F}$ & $\bigoplus_N \mathcal{H}_N$ & Variable particle number \\
+Operator & $\hat{O}$ & $\bigoplus_N \hat{O}_N$ (if conserved) & Collection of $N$-particle ops \\
+\bottomrule
+\end{tabular}
+\end{center}

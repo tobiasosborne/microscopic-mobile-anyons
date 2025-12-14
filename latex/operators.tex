@@ -1,0 +1,50 @@
+% operators.tex
+% LaTeX counterpart of docs/operators.md
+% Section §4.3
+
+\section{Operators as Morphisms}\label{sec:operators}
+
+\subsection{Operator Space}\label{subsec:operator-space}
+
+\begin{definition}[Operator]\label{def:operator}
+An operator on $\mathcal{H}$ is a linear map $\mathcal{H} \to \mathcal{H}$.
+\end{definition}
+
+\begin{definition}[Operator as morphism sum]\label{def:operator-morphism}
+Operators decompose as:
+\begin{equation}
+    \mathcal{A} \in \bigoplus_{A,B} \Mor(A, B)
+\end{equation}
+where $A, B$ range over tensor products of $\mathbf{1}, X_1, \ldots, X_{d-1}$.
+\end{definition}
+
+\subsection{Particle-Number Conservation}\label{subsec:particle-conservation}
+
+\begin{definition}[Particle-conserving operator]\label{def:particle-conserving}
+An operator $\mathcal{A}$ is \emph{particle-conserving} if it maps $\mathcal{H}_N \to \mathcal{H}_N$ for all $N$.
+\end{definition}
+
+\begin{definition}[Particle-changing operator]\label{def:particle-changing}
+An operator with components in $\Mor(A, B)$ where $A$ and $B$ have different numbers of nontrivial factors changes particle number.
+\end{definition}
+
+\begin{example}
+$\Mor(X_a \otimes X_b, X_c \otimes \mathbf{1})$ annihilates a particle (if $X_c$ is nontrivial) or two particles (if $X_c = \mathbf{1}$).
+\end{example}
+
+\subsection{Locality}\label{subsec:locality}
+
+\begin{definition}[Local operator]\label{def:local-operator}
+An operator is \emph{local} if it acts nontrivially only on a bounded number of adjacent sites.
+\end{definition}
+
+\begin{definition}[$k$-local operator]\label{def:k-local}
+A \emph{$k$-local} operator acts on at most $k$ consecutive sites.
+\end{definition}
+
+For mobile anyons, a 2-local operator has components:
+\begin{itemize}
+    \item $\Mor(X_a \otimes X_b, X_c \otimes X_d)$ --- acts on two neighbouring anyons
+    \item $\Mor(X_a \otimes \mathbf{1}, \mathbf{1} \otimes X_a)$ --- hops anyon right
+    \item $\Mor(\mathbf{1} \otimes X_a, X_a \otimes \mathbf{1})$ --- hops anyon left
+\end{itemize}

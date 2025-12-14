@@ -1,0 +1,104 @@
+% qm_lattice.tex
+% LaTeX counterpart of docs/qm_lattice.md
+% Section §3.3
+
+\section{Quantum Mechanics for Lattice Models}\label{sec:qm-lattice}
+
+\begin{assumption}\label{ass:qm-lattice}
+\begin{enumerate}[label=(A3.3.\arabic*)]
+    \item All Hilbert spaces are finite-dimensional.
+    \item Hamiltonians are Hermitian.
+\end{enumerate}
+\end{assumption}
+
+\subsection{Hilbert Spaces, States, Observables}\label{subsec:hilbert-basics}
+
+\begin{definition}[Hilbert space]\label{def:hilbert-space}
+A \emph{Hilbert space} $\mathcal{H}$ is a complex vector space equipped with an inner product $\langle \cdot | \cdot \rangle : \mathcal{H} \times \mathcal{H} \to \mathbb{C}$ that is complete with respect to the induced norm. In this work, all Hilbert spaces are finite-dimensional.
+\end{definition}
+
+\begin{definition}[State]\label{def:state}
+A \emph{state} is a nonzero vector $|\psi\rangle \in \mathcal{H}$. Two states are physically equivalent if they differ by a nonzero scalar. Normalised states satisfy $\langle\psi|\psi\rangle = 1$.
+\end{definition}
+
+\begin{definition}[Observable]\label{def:observable}
+An \emph{observable} is a Hermitian operator $A : \mathcal{H} \to \mathcal{H}$, i.e., $A = A^\dagger$ where $\langle \phi | A \psi \rangle = \langle A\phi | \psi \rangle$ for all $|\phi\rangle, |\psi\rangle$.
+\end{definition}
+
+\subsection{Hamiltonians for Lattice Systems}\label{subsec:hamiltonians}
+
+\begin{definition}[Hamiltonian]\label{def:hamiltonian}
+A \emph{Hamiltonian} is a Hermitian operator $H : \mathcal{H} \to \mathcal{H}$ representing the total energy of the system.
+\end{definition}
+
+\begin{definition}[Local Hamiltonian]\label{def:local-hamiltonian}
+A Hamiltonian $H$ is \emph{local} if it decomposes as a sum of terms, each acting nontrivially on a bounded number of sites:
+\begin{equation}
+    H = \sum_j h_j
+\end{equation}
+where each $h_j$ acts on sites in a neighbourhood of $j$.
+\end{definition}
+
+\begin{definition}[Nearest-neighbour Hamiltonian]\label{def:nn-hamiltonian}
+A Hamiltonian is \emph{nearest-neighbour} if each term $h_j$ acts nontrivially only on sites $j$ and $j+1$.
+\end{definition}
+
+\subsection{Ground States, Spectrum, Partition Function}\label{subsec:spectrum}
+
+\begin{definition}[Spectrum]\label{def:spectrum}
+The \emph{spectrum} of $H$ is the set of eigenvalues $\{E_0, E_1, \ldots\}$ ordered so that $E_0 \leq E_1 \leq \cdots$.
+\end{definition}
+
+\begin{definition}[Ground state]\label{def:ground-state}
+A \emph{ground state} is an eigenvector of $H$ with eigenvalue $E_0$ (the minimum eigenvalue).
+\end{definition}
+
+\begin{definition}[Spectral gap]\label{def:spectral-gap}
+The \emph{spectral gap} is $\Delta = E_1 - E_0$.
+\end{definition}
+
+\begin{definition}[Partition function]\label{def:partition-function}
+The \emph{partition function} at inverse temperature $\beta$ is
+\begin{equation}
+    Z(\beta) = \Tr(e^{-\beta H}) = \sum_n e^{-\beta E_n}
+\end{equation}
+\end{definition}
+
+\subsection{Tensor Product Structure}\label{subsec:tensor-product}
+
+\begin{definition}[Tensor product of Hilbert spaces]\label{def:tensor-hilbert}
+Given Hilbert spaces $\mathcal{H}_1, \mathcal{H}_2$, the \emph{tensor product} $\mathcal{H}_1 \otimes \mathcal{H}_2$ is a Hilbert space with:
+\begin{itemize}
+    \item $\dim(\mathcal{H}_1 \otimes \mathcal{H}_2) = \dim(\mathcal{H}_1) \cdot \dim(\mathcal{H}_2)$
+    \item Basis: $\{|i\rangle \otimes |j\rangle\}$ for bases $\{|i\rangle\}$ of $\mathcal{H}_1$ and $\{|j\rangle\}$ of $\mathcal{H}_2$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Multi-site Hilbert space]\label{def:multi-site-hilbert}
+For $n$ sites with local Hilbert space $\mathcal{H}_{\mathrm{loc}}$ of dimension $d$, the total Hilbert space is
+\begin{equation}
+    \mathcal{H}_{\mathrm{total}} = \bigotimes_{j=1}^{n} \mathcal{H}_{\mathrm{loc}} \cong \mathbb{C}^{d^n}
+\end{equation}
+\end{definition}
+
+\begin{remark}
+The tensor product represents the ``AND quantifier'': a state in $\mathcal{H}_1 \otimes \mathcal{H}_2$ describes a system where both subsystem 1 AND subsystem 2 exist simultaneously. Cf.\ \S\ref{sec:fock-space}.
+\end{remark}
+
+\subsection{Summary}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Concept} & \textbf{Symbol} & \textbf{Definition} \\
+\midrule
+Hilbert space & $\mathcal{H}$ & Finite-dim complex inner product space \\
+State & $|\psi\rangle$ & Nonzero vector in $\mathcal{H}$ \\
+Observable & $A$ & Hermitian operator \\
+Hamiltonian & $H$ & Hermitian operator (energy) \\
+Ground state & $|\psi_0\rangle$ & Eigenvector with minimal eigenvalue \\
+Partition function & $Z(\beta)$ & $\Tr(e^{-\beta H})$ \\
+Tensor product & $\otimes$ & ``AND quantifier'' for composite systems \\
+\bottomrule
+\end{tabular}
+\end{center}

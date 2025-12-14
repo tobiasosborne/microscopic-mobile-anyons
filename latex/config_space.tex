@@ -1,0 +1,70 @@
+% config_space.tex
+% LaTeX counterpart of docs/config_space.md
+% Section §4.1
+
+\section{Classical Configuration Space}\label{sec:config-space}
+
+\begin{assumption}\label{ass:config-space}
+\begin{enumerate}[label=(A4.1.\arabic*)]
+    \item Fusion category $\mathcal{C}$ with simples $\{X_0, X_1, \ldots, X_{d-1}\}$ where $X_0 = \mathbf{1}$.
+    \item Lattice $\Lambda = \{0, \ldots, n-1\}$ with OBC.
+\end{enumerate}
+\end{assumption}
+
+\subsection{Anyon Positions}\label{subsec:anyon-positions}
+
+\begin{definition}[Configuration]\label{def:configuration}
+A \emph{configuration} of $N$ anyons is a tuple
+\begin{equation}
+    \mathbf{x} = (x_1, x_2, \ldots, x_N) \in \Lambda^N
+\end{equation}
+satisfying $0 \leq x_1 \leq x_2 \leq \cdots \leq x_N \leq n-1$.
+\end{definition}
+
+\begin{remark}
+The ordering $x_1 \leq \cdots \leq x_N$ reflects indistinguishability up to exchange. Distinct orderings related by permutation represent the same physical configuration.
+\end{remark}
+
+\subsection{Anyon Labels}\label{subsec:anyon-labels}
+
+\begin{definition}[Labelled configuration]\label{def:labelled-config}
+A \emph{labelled configuration} is a pair $(\mathbf{x}, \mathbf{k})$ where:
+\begin{itemize}
+    \item $\mathbf{x} = (x_1, \ldots, x_N)$ is a configuration
+    \item $\mathbf{k} = (k_1, \ldots, k_N)$ with $k_j \in \{1, \ldots, d-1\}$ labels the anyon type at position $x_j$
+\end{itemize}
+\end{definition}
+
+\begin{convention}
+Label $0$ denotes vacuum (no anyon). Labels $1, \ldots, d-1$ denote the nontrivial simple objects $X_1, \ldots, X_{d-1}$.
+\end{convention}
+
+\subsection{Configuration Space}\label{subsec:config-space-def}
+
+\begin{definition}[$N$-anyon configuration space]\label{def:n-config-space}
+\begin{equation}
+    \mathrm{Conf}_N = \{(\mathbf{x}, \mathbf{k}) : \mathbf{x} \in \Lambda^N \text{ ordered}, \, k_j \in \{1,\ldots,d-1\}\}
+\end{equation}
+\end{definition}
+
+\begin{definition}[Hard-core configuration space]\label{def:hc-config-space}
+With hard-core constraint:
+\begin{equation}
+    \mathrm{Conf}_N^{\mathrm{HC}} = \{(\mathbf{x}, \mathbf{k}) \in \mathrm{Conf}_N : x_1 < x_2 < \cdots < x_N\}
+\end{equation}
+\end{definition}
+
+\begin{claim}\label{claim:config-count}
+$|\mathrm{Conf}_N^{\mathrm{HC}}| = \binom{n}{N}(d-1)^N$.
+\end{claim}
+
+\subsection{Mixed Character}\label{subsec:mixed-character}
+
+\begin{remark}
+Configurations have mixed identical/distinguishable character:
+\begin{itemize}
+    \item Anyons with \emph{same label} $k_i = k_j$ are identical
+    \item Anyons with \emph{different labels} $k_i \neq k_j$ are distinguishable
+\end{itemize}
+This is handled by the morphism space structure in \S\ref{sec:hilbert-space}.
+\end{remark}

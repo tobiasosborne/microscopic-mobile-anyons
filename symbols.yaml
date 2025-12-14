@@ -87,7 +87,11 @@ symbols:
     defined_in: docs/config_space.md
   - sym: "\\mathcal{O}(\\mathbf{x}, \\mathbf{k})"
     type: Object
-    desc: Tensor product object corresponding to a labelled configuration
+    desc: Tensor product object over all n sites for configuration (x,k), with X_0=1 at unoccupied sites
+    defined_in: docs/hilbert_space.md
+  - sym: "s_j"
+    type: Index
+    desc: Site label at site j (anyon label if occupied, 0 if vacuum)
     defined_in: docs/hilbert_space.md
   - sym: "\\mathcal{H}"
     type: HilbertSpace

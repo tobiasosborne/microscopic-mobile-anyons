@@ -1,0 +1,87 @@
+% hardcore_softcore.tex
+% LaTeX counterpart of docs/hardcore_softcore.md
+% Section §4.4
+
+\section{Hard-Core vs Soft-Core Anyons}\label{sec:hardcore-softcore}
+
+\subsection{Hard-Core Constraint}\label{subsec:hardcore}
+
+\begin{definition}[Hard-core anyons]\label{def:hardcore}
+Anyons are \emph{hard-core} if at most one anyon occupies each site:
+\begin{equation}
+    x_1 < x_2 < \cdots < x_N
+\end{equation}
+\end{definition}
+
+\begin{consequence}
+Maximum particle number is $N_{\max} = n$ (number of sites).
+\end{consequence}
+
+\begin{remark}
+Hard-core is natural for:
+\begin{itemize}
+    \item Impenetrable particles (infinite on-site repulsion)
+    \item Lattice models where sites represent localised orbitals
+\end{itemize}
+\end{remark}
+
+\subsection{Soft-Core: Multiple Occupancy}\label{subsec:softcore}
+
+\begin{definition}[Soft-core anyons]\label{def:softcore}
+Anyons are \emph{soft-core} if multiple anyons may occupy the same site:
+\begin{equation}
+    x_1 \leq x_2 \leq \cdots \leq x_N
+\end{equation}
+\end{definition}
+
+\begin{definition}[On-site fusion space]\label{def:onsite-fusion}
+When anyons $X_a, X_b$ occupy the same site, the local state space is:
+\begin{equation}
+    \bigoplus_c N_{ab}^c \cdot \Mor(X_a \otimes X_b, X_c)
+\end{equation}
+representing the possible fusion outcomes.
+\end{definition}
+
+\begin{remark}
+Soft-core requires tracking on-site fusion structure.
+\end{remark}
+
+\subsection{Hilbert Space Modifications}\label{subsec:hilbert-mods}
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{Regime} & \textbf{Config space} & \textbf{Local structure} & $N_{\max}$ \\
+\midrule
+Hard-core & $x_i < x_j$ for $i < j$ & One anyon/site & $n$ \\
+Soft-core & $x_i \leq x_j$ for $i < j$ & Fusion at each site & $\infty$ (needs cutoff) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{definition}[Hard-core Hilbert space]\label{def:hc-hilbert}
+\begin{equation}
+    \mathcal{H}^{\mathrm{HC}} = \bigoplus_{N=0}^{n} \mathcal{H}_N^{\mathrm{HC}}
+\end{equation}
+where $\mathcal{H}_N^{\mathrm{HC}}$ uses $\mathrm{Conf}_N^{\mathrm{HC}}$.
+\end{definition}
+
+\subsection{Physical Motivation}\label{subsec:physical-motivation}
+
+\paragraph{Hard-core regime:}
+\begin{itemize}
+    \item Models impenetrable anyons
+    \item Connection to Girardeau mapping (\S\ref{sec:girardeau})
+    \item Simpler Hilbert space structure
+\end{itemize}
+
+\paragraph{Soft-core regime:}
+\begin{itemize}
+    \item Models ``bosonic'' anyons that can bunch
+    \item Richer on-site physics
+    \item Connection to Levin--Wen models when particles can annihilate
+\end{itemize}
+
+\begin{convention}
+Unless stated otherwise, we work in the \textbf{hard-core} regime.
+\end{convention}

@@ -1,0 +1,89 @@
+% fusion_category.tex
+% LaTeX counterpart of docs/fusion_category.md
+% Section §3.1.2
+
+\section{Fusion Categories}\label{sec:fusion-category}
+
+\begin{assumption}\label{ass:fusion-category}
+\begin{enumerate}[label=(A3.1.2.\arabic*)]
+    \item Fusion ring $(R, \{X_i\}_{i\in I}, \mathbf{1})$ with $X_0 = \mathbf{1}$ and $N_{ij}^k \in \mathbb{Z}_{\ge 0}$ (Definition~\ref{def:fusion-ring}).
+    \item Associator data $F$ (and, when present, braiding data $R$) satisfy the pentagon/hexagon equations.
+\end{enumerate}
+\end{assumption}
+
+\begin{definition}[Fusion category]\label{def:fusion-category}
+A \emph{fusion category} over an algebraically closed field $k$ (usually $k = \mathbb{C}$) is a $k$-linear, semisimple, rigid monoidal category
+\begin{equation}
+    (\mathcal{C}, \otimes, \mathbf{1})
+\end{equation}
+satisfying the following conditions:
+\begin{enumerate}
+    \item \textbf{Finiteness:} There are finitely many isomorphism classes of simple objects. Every object decomposes as a finite direct sum of simples.
+    \item \textbf{Semisimplicity:} All morphism spaces $\Mor(X,Y)$ are finite-dimensional $k$-vector spaces, and the category is abelian and semisimple.
+    \item \textbf{Rigidity:} Every object $X \in \mathcal{C}$ has a left and right dual $X^*$ with evaluation and coevaluation morphisms satisfying the rigidity axioms.
+    \item \textbf{Simple unit:} The tensor unit $\mathbf{1}$ is simple: $\End(\mathbf{1}) \cong k$.
+    \item \textbf{Finite $k$-linearity:} The monoidal structure is bilinear over $k$, and composition and tensor product of morphisms are $k$-linear.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Grothendieck ring]\label{def:grothendieck-ring}
+From any fusion category $\mathcal{C}$, we construct its \emph{Grothendieck ring} $K_0(\mathcal{C})$ by
+\begin{equation}
+    K_0(\mathcal{C}) = \bigoplus_{[X] \in \mathrm{Irr}(\mathcal{C})} \mathbb{Z} [X],
+\end{equation}
+with multiplication
+\begin{equation}
+    [X] \cdot [Y] = \sum_{Z} N_{XY}^{Z} [Z],
+\end{equation}
+where $N_{XY}^{Z} = \dim_k \Mor(X \otimes Y, Z)$ is the fusion multiplicity. The Grothendieck ring $K_0(\mathcal{C})$ is a fusion ring (Definition~\ref{def:fusion-ring}), establishing that \emph{fusion categories categorify fusion rings}.
+\end{definition}
+
+\begin{definition}[Braided fusion category]\label{def:braided-fusion-category}
+If additionally $\mathcal{C}$ is equipped with a braiding (natural isomorphisms $c_{X,Y}: X \otimes Y \to Y \otimes X$ satisfying hexagon identities), we call $\mathcal{C}$ a \emph{braided fusion category}.
+\end{definition}
+
+\begin{citationblock}
+Etingof--Nikshych--Ostrik, \emph{Ann.\ Math.}\ \textbf{162} (2005), 581--642, Def.~2.1 \cite{ENO2005} \unverified
+\end{citationblock}
+
+\subsection{F-Symbols and Pentagon Equation}
+
+\begin{definition}[F-symbols]\label{def:f-symbols}
+The \emph{associator} is a natural isomorphism
+\begin{equation}
+    \alpha_{a,b,c}: (a \otimes b) \otimes c \xrightarrow{\sim} a \otimes (b \otimes c)
+\end{equation}
+that satisfies the pentagon equation. In a skeletal category (where objects are direct sums of simple objects $X_i$), the associator is determined by its matrix elements, the \emph{F-symbols}.
+
+For simple objects $a,b,c,d$, the isomorphism decomposes into blocks indexed by intermediate fusion channels $e$ (for $(a \otimes b) \to e \to d$) and $f$ (for $(b \otimes c) \to f \to d$). The change of basis is given by the \emph{F-move}:
+\begin{equation}\label{eq:f-move}
+    \left| (a \otimes b) \otimes c \to d ; e, \alpha, \beta \right\rangle = \sum_{f, \mu, \nu} (F_{abc}^d)_{e, \alpha, \beta}^{f, \mu, \nu} \left| a \otimes (b \otimes c) \to d ; f, \mu, \nu \right\rangle
+\end{equation}
+where $\alpha, \beta, \mu, \nu$ are multiplicity indices.
+\end{definition}
+
+\begin{definition}[Pentagon equation]\label{def:pentagon}
+The \emph{pentagon equation} ensures that the two paths to re-associate $((a \otimes b) \otimes c) \otimes d$ to $a \otimes (b \otimes (c \otimes d))$ coincide. In terms of F-symbols (suppressing multiplicity indices):
+\begin{equation}\label{eq:pentagon}
+    \sum_{k} (F_{a,b,c}^k)_e^l (F_{a,k,d}^p)_l^m (F_{b,c,d}^p)_k^n = (F_{a,b,n}^p)_e^m (F_{e,c,d}^m)_l^n
+\end{equation}
+This coherence condition is required for the fusion category to be well-defined.
+\end{definition}
+
+\subsection{R-Symbols and Hexagon Equations}
+
+\begin{definition}[R-symbols]\label{def:r-symbols}
+For a braided fusion category, the \emph{braiding isomorphism} $c_{a,b}: a \otimes b \to b \otimes a$ provides a natural way to permute tensor factors. For simple objects $a,b,c$, the braiding isomorphism is represented by its matrix elements, the \emph{R-symbols}.
+\end{definition}
+
+\begin{definition}[Hexagon equations]\label{def:hexagon}
+The \emph{hexagon equations} are coherence conditions that relate the associator (F-symbols) and the braiding (R-symbols), ensuring consistency between re-associating and braiding operations. The first hexagon equation:
+\begin{equation}\label{eq:hexagon}
+    c_{a, b \otimes c} \circ (1_a \otimes c_{b,c}) = ((c_{a,b} \otimes 1_c) \circ F_{b,a,c} \circ (1_b \otimes c_{a,c})) \circ F_{a,c,b}^{-1}
+\end{equation}
+This equation (and its dual) ensures that braiding past a composite object can be decomposed consistently.
+\end{definition}
+
+\begin{citationblock}
+Etingof--Nikshych--Ostrik, \emph{Ann.\ Math.}\ \textbf{162} (2005), \S2.1 \cite{ENO2005} \unverified
+\end{citationblock}

@@ -1,0 +1,40 @@
+% fusion_ring.tex
+% LaTeX counterpart of docs/fusion_ring.md
+% Section §3.1.1
+
+\section{Fusion Ring}\label{sec:fusion-ring}
+
+\begin{assumption}\label{ass:fusion-ring}
+\begin{enumerate}[label=(A\arabic*)]
+    \item Finite set of simple objects $\{X_i\}_{i=0}^{d_{\mathcal{C}}-1}$.
+    \item Structure constants $N_{ab}^c \in \mathbb{Z}_{\ge 0}$ are associative and unital with unit $\mathbf{1}$.
+\end{enumerate}
+\end{assumption}
+
+\begin{definition}[Fusion ring]\label{def:fusion-ring}
+A \emph{fusion ring} is a finitely generated free abelian group $R = \bigoplus_{i \in I} \mathbb{Z} X_i$ with a ring structure satisfying:
+\begin{enumerate}
+    \item $X_0 = \mathbf{1}$ is the unit element.
+    \item The product of basis elements satisfies
+    \begin{equation}\label{eq:fusion-product}
+        X_i X_j = \sum_{k\in I} N_{ij}^k X_k,
+    \end{equation}
+    where $N_{ij}^k \in \mathbb{Z}_{\ge 0}$ are the \emph{fusion coefficients} (or fusion multiplicities).
+    \item There exists an involution $i \mapsto i^*$ such that
+    \begin{equation}\label{eq:duality-condition}
+        N_{ij}^0 = \delta_{i, j^*}.
+    \end{equation}
+\end{enumerate}
+The involution gives duality: $X_i^* = X_{i^*}$. Associativity follows from the ring axioms:
+\begin{equation}\label{eq:fusion-associativity}
+    \sum_e N_{ij}^e N_{ek}^\ell = \sum_e N_{jk}^e N_{ie}^\ell \quad \text{for all } i, j, k, \ell \in I.
+\end{equation}
+\end{definition}
+
+\begin{remark}
+Fusion rings are generally \emph{not commutative}, i.e., $N_{ij}^k \neq N_{ji}^k$ in general.
+\end{remark}
+
+\begin{citationblock}
+Etingof--Nikshych--Ostrik, \emph{Ann.\ Math.}\ \textbf{162} (2005), 581--642, Def.~3.1 \cite{ENO2005} \unverified
+\end{citationblock}

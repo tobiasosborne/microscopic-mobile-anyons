@@ -1,0 +1,137 @@
+% lattice.tex
+% LaTeX counterpart of docs/lattice.md
+% Section §3.4
+
+\section{Lattice Geometry}\label{sec:lattice}
+
+\begin{assumption}\label{ass:lattice}
+\begin{enumerate}[label=(A3.4.\arabic*)]
+    \item Spatial dimension is 1.
+    \item Open boundary conditions (no PBCs).
+    \item Finite number of sites.
+\end{enumerate}
+\end{assumption}
+
+\subsection{One-Dimensional Chain}\label{subsec:1d-chain}
+
+\begin{definition}[Lattice]\label{def:lattice}
+A \emph{lattice} $\Lambda$ is a finite set of sites. In this work:
+\begin{equation}
+    \Lambda = \{0, 1, 2, \ldots, n-1\}
+\end{equation}
+where $n = |\Lambda|$ is the number of sites.
+\end{definition}
+
+\begin{remark}
+We use 0-based indexing for sites to align with physical position $x_j = \epsilon \cdot j$.
+\end{remark}
+
+\begin{definition}[Neighbour relation]\label{def:neighbour}
+Sites $i$ and $j$ are \emph{neighbours} if $|i - j| = 1$. We write $i \sim j$.
+\end{definition}
+
+\begin{definition}[Boundary sites]\label{def:boundary}
+The \emph{boundary} of $\Lambda$ consists of sites $0$ and $n-1$. The \emph{bulk} consists of sites $\{1, \ldots, n-2\}$.
+\end{definition}
+
+\subsection{Lattice Spacing and Physical Position}\label{subsec:spacing}
+
+\begin{definition}[Physical length]\label{def:physical-length}
+The \emph{physical length} of the system is $L > 0$.
+\end{definition}
+
+\begin{definition}[Lattice spacing]\label{def:lattice-spacing}
+The \emph{lattice spacing} is
+\begin{equation}
+    \epsilon = \frac{L}{n}
+\end{equation}
+\end{definition}
+
+\begin{definition}[Physical position]\label{def:physical-position}
+The \emph{physical position} of site $j$ is
+\begin{equation}
+    x_j = \epsilon \cdot j = \frac{L \cdot j}{n}
+\end{equation}
+so that $x_0 = 0$ and $x_{n-1} = L(1 - 1/n) < L$.
+\end{definition}
+
+\begin{convention}
+Where convenient, we set $\epsilon = 1$ (equivalently, $L = n$), so that site index equals physical position.
+\end{convention}
+
+\subsection{Open Boundary Conditions}\label{subsec:obc}
+
+\begin{definition}[Open boundary conditions]\label{def:obc}
+A system has \emph{open boundary conditions} (OBC) if:
+\begin{enumerate}
+    \item The lattice is a finite chain with distinct endpoints
+    \item Site 0 has only one neighbour (site 1)
+    \item Site $n-1$ has only one neighbour (site $n-2$)
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+This contrasts with \emph{periodic boundary conditions} (PBC) where site $n-1$ is also a neighbour of site 0. We exclude PBCs in this work (Assumption~A3.4.2).
+\end{remark}
+
+\begin{remark}
+OBC implies:
+\begin{itemize}
+    \item No topological ground state degeneracy from nontrivial cycles
+    \item Edge effects may be present
+    \item Total charge is well-defined without ambiguity from winding
+\end{itemize}
+\end{remark}
+
+\subsection{Local Hilbert Spaces}\label{subsec:local-hilbert}
+
+\begin{definition}[Local Hilbert space]\label{def:local-hilbert}
+Each site $j \in \Lambda$ carries a \emph{local Hilbert space} $\mathcal{H}_j$. For identical sites:
+\begin{equation}
+    \mathcal{H}_j \cong \mathcal{H}_{\mathrm{loc}} \quad \forall j
+\end{equation}
+\end{definition}
+
+\begin{definition}[Local dimension]\label{def:local-dim}
+The \emph{local dimension} is $d_{\mathrm{loc}} = \dim(\mathcal{H}_{\mathrm{loc}})$.
+\end{definition}
+
+\begin{definition}[Total Hilbert space]\label{def:total-hilbert-lattice}
+The \emph{total Hilbert space} for the lattice is
+\begin{equation}
+    \mathcal{H}_{\mathrm{total}} = \bigotimes_{j=0}^{n-1} \mathcal{H}_j \cong \mathbb{C}^{d^n}
+\end{equation}
+\end{definition}
+
+\begin{remark}
+For mobile anyons, the local Hilbert space structure is more subtle---see \S\ref{sec:hilbert-space}. The ``local dimension'' depends on the occupation at that site.
+\end{remark}
+
+\subsection{Summary}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Concept} & \textbf{Symbol} & \textbf{Value/Definition} \\
+\midrule
+Number of sites & $n$ & $|\Lambda|$ \\
+Site indices & $j$ & $0, 1, \ldots, n-1$ \\
+Physical length & $L$ & System size \\
+Lattice spacing & $\epsilon$ & $L/n$ \\
+Physical position & $x_j$ & $\epsilon \cdot j$ \\
+Local Hilbert space & $\mathcal{H}_j$ & Space at site $j$ \\
+Local dimension & $d_{\mathrm{loc}}$ & $\dim(\mathcal{H}_{\mathrm{loc}})$ \\
+Total dimension & --- & $d^n$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Notation Conventions}
+
+Throughout this project:
+\begin{itemize}
+    \item Sites are \textbf{0-indexed}: $j \in \{0, 1, \ldots, n-1\}$
+    \item Boundary conditions are \textbf{open} (OBC)
+    \item Default: $\epsilon = 1$ unless stated otherwise
+    \item Tensor products are ordered left-to-right: $\mathcal{H}_0 \otimes \mathcal{H}_1 \otimes \cdots \otimes \mathcal{H}_{n-1}$
+\end{itemize}

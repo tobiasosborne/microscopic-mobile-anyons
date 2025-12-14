@@ -1,0 +1,174 @@
+% paper.tex
+% Main LaTeX document for Mobile Anyons from Fusion Categories
+% This file includes all section files modularly
+
+\documentclass[11pt,a4paper]{article}
+
+% ============================================================
+% Packages
+% ============================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{physics}  % for bra-ket notation
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage[margin=1in]{geometry}
+
+% ============================================================
+% Theorem Environments
+% ============================================================
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}[definition]{Example}
+\newtheorem{convention}[definition]{Convention}
+\newtheorem{constraint}[definition]{Constraint}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{claim}[definition]{Claim}
+\newtheorem{conjecture}[definition]{Conjecture}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{consequence}[definition]{Consequence}
+
+% Custom environment for assumptions (with proper spacing for enumerated items)
+\newenvironment{assumption}{%
+  \par\medskip\noindent\textbf{Assumptions.}\par\nopagebreak\smallskip%
+}{\par\medskip}
+
+% ============================================================
+% Custom Commands
+% ============================================================
+% Morphism notation (using Mor instead of Hom)
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+% \Tr already defined by physics package
+\DeclareMathOperator{\Irr}{Irr}
+
+% Category symbols
+\newcommand{\catC}{\mathcal{C}}
+\newcommand{\catH}{\mathcal{H}}
+\newcommand{\catF}{\mathcal{F}}
+\newcommand{\catO}{\mathcal{O}}
+
+% Unit object
+\newcommand{\one}{\mathbf{1}}
+
+% Citation status markers
+\newcommand{\unverified}{\texttt{[unverified]}}
+\newcommand{\verified}{\texttt{[verified]}}
+\newcommand{\original}{\texttt{[original]}}
+
+% Citation block environment
+\newenvironment{citationblock}{\par\noindent\textit{Reference:} }{\par}
+
+% ============================================================
+% Document Info
+% ============================================================
+\title{Microscopic Models for Mobile Anyons from Fusion Categories}
+\author{Tobias Osborne}
+\date{\today}
+
+% ============================================================
+% Document
+% ============================================================
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We develop a systematic framework for constructing microscopic lattice models describing mobile (itinerant) anyons arising from an arbitrary fusion category. Unlike existing models such as the golden chain where anyons are fixed at predetermined positions, our framework allows both the positions and number of anyons to fluctuate dynamically. Working in a first-quantised formalism on a one-dimensional chain with open boundary conditions, we construct Hilbert spaces that accommodate variable anyon number and anyon mobility, and define microscopic Hamiltonians for physically motivated scenarios. The framework is validated by reduction to known limiting cases including standard bosonic/fermionic systems and tightly-packed fusion chains.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ============================================================
+% Part I: Preliminaries
+% ============================================================
+\part{Preliminaries}
+
+% Section 3.1.1: Fusion Ring
+\input{fusion_ring}
+
+% Section 3.1.2: Fusion Categories
+\input{fusion_category}
+
+% Section 3.1.3: Morphism Spaces
+\input{morphism_spaces}
+
+% Section 3.2: Fock Space
+\input{fock_space}
+
+% Section 3.3: QM for Lattice Models
+\input{qm_lattice}
+
+% Section 3.4: Lattice Geometry
+\input{lattice}
+
+% ============================================================
+% Part II: Hilbert Space for Mobile Anyons
+% ============================================================
+\part{Hilbert Space for Mobile Anyons}
+
+% Section 4.1: Configuration Space
+\input{config_space}
+
+% Section 4.2: Hilbert Space
+\input{hilbert_space}
+
+% Section 4.3: Operators
+\input{operators}
+
+% Section 4.4: Hard-Core vs Soft-Core
+\input{hardcore_softcore}
+
+% ============================================================
+% Part III: Dynamics (To be added)
+% ============================================================
+% \part{Dynamics for Mobile Anyons}
+% \input{hamiltonian_v0}
+% \input{hamiltonian_v1}
+% \input{hamiltonian_free}
+% \input{hamiltonian_creation}
+
+% ============================================================
+% Part IV: Properties (To be added)
+% ============================================================
+% \part{Basic Properties of the Models}
+% \input{limiting_cases}
+% \input{girardeau}
+% \input{partition_functions}
+% \input{numerics}
+
+% ============================================================
+% Bibliography
+% ============================================================
+\bibliographystyle{alpha}
+% \bibliography{../literature/references}
+
+% Placeholder bibliography entries
+\begin{thebibliography}{ENO05}
+
+\bibitem[ENO05]{ENO2005}
+P.~Etingof, D.~Nikshych, and V.~Ostrik.
+\newblock On fusion categories.
+\newblock {\em Annals of Mathematics}, 162(2):581--642, 2005.
+
+\bibitem[Kit06]{Kitaev2006}
+A.~Kitaev.
+\newblock Anyons in an exactly solved model and beyond.
+\newblock {\em Annals of Physics}, 321(1):2--111, 2006.
+
+\end{thebibliography}
+
+\end{document}
