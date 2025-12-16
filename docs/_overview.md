@@ -4,6 +4,7 @@ refs-out:
   - fusion_category.md
   - hilbert_space.md
   - hamiltonian.md
+  - svec_verification.md
 ---
 
 # docs Overview
