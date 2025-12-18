@@ -14,12 +14,16 @@ export AnyonBasisState, MobileAnyonHilbert, dim
 export enumerate_fusion_trees, build_sector_basis
 export MorphismTerm, LocalOperator, is_particle_conserving
 export hopping_right, hopping_left, interaction_term
+export NumberConservingTerm, LocalHamiltonian
+export is_number_conserving, is_hermitian, add_component!, make_hermitian!
+export uniform_nn_hamiltonian, hopping_term, identity_term, two_anyon_interaction, n_bonds
 export svec_category, jordan_wigner_sign
 export svec_hilbert_dimension, svec_total_dimension, valid_svec_charge
 
 include("config.jl")
 include("hilbert.jl")
 include("operators.jl")
+include("hamiltonian_v0.jl")
 
 # === Example fusion categories ===
 

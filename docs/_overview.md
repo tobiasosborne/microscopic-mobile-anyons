@@ -3,7 +3,7 @@ refs-in: []
 refs-out:
   - fusion_category.md
   - hilbert_space.md
-  - hamiltonian.md
+  - hamiltonian_v0.md
   - svec_verification.md
 ---
 
