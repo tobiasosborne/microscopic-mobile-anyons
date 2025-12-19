@@ -1,7 +1,7 @@
 # Global symbol table for mobile anyons project
 # Fields: sym (TeX), type (informal), desc, defined_in (markdown file path)
 symbols:
-  - sym: "R"
+  - sym: "\\mathcal{R}"
     type: FusionRing
     desc: Fusion ring (finitely generated free abelian group with ring structure)
     defined_in: docs/fusion_ring.md

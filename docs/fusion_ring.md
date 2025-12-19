@@ -14,7 +14,7 @@ refs-out:
 | A1 | Finite set of simple objects $\{X_i\}_{i=0}^{d_C-1}$ | Technical | assumed |
 | A2 | Structure constants $N_{ab}^c \in \mathbb{Z}_{\ge 0}$ are associative and unital with unit $\mathbf{1}$ | Technical | assumed |
 
-**Definition 3.1** (Fusion ring). A fusion ring is a finitely generated free abelian group $R = \bigoplus_{i \in I} \mathbb{Z} X_i$ with a ring structure satisfying:
+**Definition 3.1** (Fusion ring). A fusion ring is a finitely generated free abelian group $\mathcal{R} = \bigoplus_{i \in I} \mathbb{Z} X_i$ with a ring structure satisfying:
 
 1. $X_0 = \mathbf{1}$ is the unit element.
 2. The product of basis elements satisfies
