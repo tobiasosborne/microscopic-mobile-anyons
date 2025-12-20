@@ -23,7 +23,7 @@ refs-out:
 |----|------------|------|--------|
 | A4.5.1 | Fusion category $\mathcal{C}$ with unit $\mathbf{1}$ and simples $X_0=\mathbf{1}, X_1, \ldots, X_{d-1}$ | Input | assumed |
 | A4.5.2 | Hard-core constraint: at most one anyon per site | Physical | assumed |
-| A4.5.3 | Fusion tree basis fixed for $\mathcal{H}_N^{(c)}$ (Definition 4.2.5) | Technical | assumed |
+| A4.5.3 | Fusion tree basis fixed for $\mathcal{H}_N^{(c)}$ (per §4.2.5: Explicit Construction) | Technical | assumed |
 | A4.5.4 | Multiplicity-free fusion rules (i.e., $N_{ab}^c \in \{0, 1\}$) | Technical | assumed |
 
 ---

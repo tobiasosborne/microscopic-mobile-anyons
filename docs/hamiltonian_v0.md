@@ -61,12 +61,18 @@ where $\tilde{h}_j$ acts on the two-site space.
 For mobile anyons, local terms decompose into morphism spaces. A number-conserving, nearest-neighbour term $h_j$ has components:
 
 **Definition 5.1.5** (Morphism components of local term). A nearest-neighbour term $h_j$ acting on sites $j, j+1$ decomposes as:
-$$h_j \in \bigoplus_{A,B} \mathrm{Mor}(A, B)$$
-where $A, B$ are objects of the form $X_a \otimes X_b$ with $a, b \in \{0, 1, \ldots, d-1\}$, and the sum is over pairs $(A,B)$ with equal numbers of nontrivial (non-vacuum) factors.
+$$h_j \in \bigoplus_{\substack{a, b, c, d \in \{0,1,\ldots,d-1\} \\ n(a,b) = n(c,d)}} \mathrm{Mor}(X_a \otimes X_b, X_c \otimes X_d)$$
+where the direct sum is restricted to pairs $(a,b,c,d)$ satisfying **number conservation**: equal numbers of nontrivial (non-vacuum) factors.
 
-**Proposition 5.1.1** (Number conservation criterion). A local term $h_j$ is number-conserving if and only if for every nonzero component in $\mathrm{Mor}(X_a \otimes X_b, X_c \otimes X_d)$:
-$$|\{a,b\} \cap \{1,\ldots,d-1\}| = |\{c,d\} \cap \{1,\ldots,d-1\}|$$
-where $|S|$ denotes the count of indices in $S$ that are nonzero (nontrivial).
+**Definition 5.1.5a** (Nontrivial anyon type). An anyon type $X_i$ is **nontrivial** if $i \neq 0$ (i.e., $X_i \neq \mathbf{1}$). The tensor unit $X_0 = \mathbf{1}$ is the unique trivial/vacuum type.
+
+**Definition 5.1.5b** (Particle count for local configuration). For a two-site configuration with labels $(a, b) \in \{0, 1, \ldots, d-1\}^2$, define the **particle count** (number of nontrivial factors):
+$$n(a,b) := \mathbb{1}_{a \neq 0} + \mathbb{1}_{b \neq 0} \in \{0, 1, 2\}$$
+where $\mathbb{1}_{i \neq 0}$ is 1 if $i$ is nontrivial and 0 otherwise.
+
+**Proposition 5.1.1** (Number conservation criterion). A local term $h_j$ is number-conserving if and only if every nonzero component in $\mathrm{Mor}(X_a \otimes X_b, X_c \otimes X_d)$ satisfies:
+$$n(a,b) = n(c,d)$$
+i.e., the number of anyons before and after the local interaction is preserved.
 
 ---
 
