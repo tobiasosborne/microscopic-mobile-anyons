@@ -1,3 +1,10 @@
 [deps]
 Combinatorics = "861a8166-3701-5b0c-9a16-15d98fcdc6aa"
+Oscar = "f1435218-dba5-11e9-1e4d-f1a5fab5fc13"
+TensorCategories = "258c694e-7338-4d4d-b524-4851272a75cf"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[compat]
+Oscar = "1.6"
+TensorCategories = "0.5"
+julia = "1.10"
