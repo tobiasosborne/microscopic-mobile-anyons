@@ -19,7 +19,7 @@ refs-out:
 
 | ID | Assumption | Type | Status |
 |----|------------|------|--------|
-| A4.1.1 | Fusion category $\mathcal{C}$ with simples $\{X_0, X_1, \ldots, X_{d-1}\}$ where $X_0 = \mathbf{1}$ | Input | assumed |
+| A4.1.1 | Fusion category $\mathcal{C}$ with simples $\{X_0, X_1, \ldots, X_{d-1}\}$ where $X_0 = \mathbf{1}$ (see supported examples in §3.1.8) | Input | assumed |
 | A4.1.2 | Lattice $\Lambda = \{0, \ldots, n-1\}$ with OBC | From §3.4 | assumed |
 
 ---

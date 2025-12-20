@@ -8,6 +8,7 @@ refs-in:
   - tech_specs.md
 refs-out:
   - morphism_spaces.md
+  - fusion_category_examples.md
   - hilbert_space.md
   - diagrammatic_calculus.md
   - operators.md
