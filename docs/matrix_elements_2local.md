@@ -23,16 +23,18 @@ refs-out:
 |----|------------|------|--------|
 | A4.5.1 | Fusion category $\mathcal{C}$ with unit $\mathbf{1}$ and simples $X_0=\mathbf{1}, X_1, \ldots, X_{d-1}$ | Input | assumed |
 | A4.5.2 | Hard-core constraint: at most one anyon per site | Physical | assumed |
-| A4.5.3 | Fusion tree basis fixed for $\mathcal{H}_N^{(c)}$ (per §4.2.5: Explicit Construction) | Technical | assumed |
+| A4.5.3 | Fusion tree basis fixed for $\mathcal{H}_N^{(c)}$ (per Definition 4.2.5, §4.2.5) | Technical | assumed |
 | A4.5.4 | Multiplicity-free fusion rules (i.e., $N_{ab}^c \in \{0, 1\}$) | Technical | assumed |
 
 ---
 
 ## §4.5.1 Fusion Trees as Basis Data
 
-**Definition 4.5.1** (Fusion tree). A *fusion tree* for a configuration $(\mathbf{x}, \mathbf{k})$ with total charge $c$ is a sequence of intermediate fusion outcomes specifying how the anyons at positions $x_1, \ldots, x_N$ combine to produce the total charge. Formally, it is a labelling of all internal nodes in a binary tree with fusion results from $\mathcal{C}$.
+**Definition 4.5.1** (Fusion tree basis states). A fusion tree $\tau$ (defined formally in Definition 4.2.5, §4.2.5) specifies one of several basis choices for the morphism space $\mathrm{Mor}(X_c, \mathcal{O}(\mathbf{x}, \mathbf{k}))$. We denote basis states as:
 
-**Notation:** We write $\tau$ for a fusion tree and denote basis states as $|(\mathbf{x}, \mathbf{k}), \tau, c\rangle \in \mathcal{H}_N^{(c)}$, where:
+$$|(\mathbf{x}, \mathbf{k}), \tau, c\rangle \in \mathcal{H}_N^{(c)}$$
+
+where:
 - $(\mathbf{x}, \mathbf{k})$ is the configuration (positions and anyon types)
 - $\tau$ encodes the fusion tree structure
 - $c$ is the total charge (redundant if fusion tree is fully specified, but explicit for clarity)

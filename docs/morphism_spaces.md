@@ -20,9 +20,9 @@ refs-out:
 
 **Definition 3.3** (Morphism space). For any objects $A, B \in \mathcal{C}$,
 \[
-\mathrm{Mor}(A, B) := \mathrm{Hom}_{\mathcal{C}}(A, B)
+\mathrm{Mor}(A, B)
 \]
-is a finite-dimensional $k$-vector space. If $A, B$ are simple, Schur's lemma implies $\dim \mathrm{Mor}(A, B) = \delta_{A, B}$.
+is a finite-dimensional $k$-vector space of all morphisms from $A$ to $B$. If $A, B$ are simple, Schur's lemma implies $\dim \mathrm{Mor}(A, B) = \delta_{A, B}$.
 [Etingof–Nikshych–Ostrik, §2] `[unverified]`
 
 **Definition 3.4** (Fusion multiplicity space). For simple objects $X_a, X_b, X_c \in \mathrm{Irr}(\mathcal{C})$, the space

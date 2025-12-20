@@ -30,10 +30,10 @@ refs-out:
 ## §4.2.1 Morphism Spaces
 
 **Definition 4.2.1** (Morphism space). For objects $A, B \in \mathcal{C}$:
-$$\mathrm{Mor}(A, B) = \mathrm{Hom}_{\mathcal{C}}(A, B)$$
-This is a finite-dimensional complex vector space with $\dim \mathrm{Mor}(A,B) = \delta_{A,B}$ for simple $A, B$ (in the multiplicity-free case).
+$$\mathrm{Mor}(A, B)$$
+is the finite-dimensional complex vector space of all morphisms from $A$ to $B$. For simple $A, B$: $\dim \mathrm{Mor}(A,B) = \delta_{A,B}$ (multiplicity-free case).
 
-**Remark.** With multiplicity: $\dim \mathrm{Mor}(X_a \otimes X_b, X_c) = N_{ab}^c$.
+**Remark.** With multiplicity: $\dim \mathrm{Mor}(X_a \otimes X_b, X_c) = N_{ab}^c$. (See Definition 3.4 in §3.1.3 for formal definition of multiplicity spaces.)
 
 ---
 
@@ -72,14 +72,29 @@ where $\mathcal{H}_0 = \mathbb{C}$ (vacuum sector).
 
 ---
 
-## §4.2.5 Explicit Construction
+## §4.2.5 Fusion Trees
+
+**Definition 4.2.5** (Fusion tree). A *fusion tree* $\tau$ for a configuration $(\mathbf{x}, \mathbf{k})$ with $N$ anyons is a labeling of internal nodes in a **binary tree** that encodes how the anyons fuse step-by-step to produce a final total charge. Formally:
+
+1. **Leaves:** The $N$ anyons occupy the leaves, labeled with their types $X_{k_1}, \ldots, X_{k_N}$.
+2. **Internal nodes:** Each internal node is labeled with an intermediate fusion result $X_e$ (some simple object of $\mathcal{C}$).
+3. **Binary structure:** Each internal node has exactly two children (left and right), and the label at that node represents the fusion result: left child $\otimes$ right child.
+4. **Root:** The root node is labeled with the final total charge $X_c$.
+
+**Remark.** The fusion tree is not unique (not canonical) due to associativity of tensor products: different parenthesizations yield different tree structures, all yielding the same tensor product result. For multiplicity-free categories ($N_{ab}^c \in \{0,1\}$), all choices span the same morphism space $\mathrm{Mor}(X_c, \mathcal{O}(\mathbf{x},\mathbf{k}))$, but individual basis vectors depend on the choice.
+
+**Claim 4.2.1.** Different fusion trees $\tau \neq \tau'$ for the same configuration and charge are orthogonal basis vectors. The transition amplitudes between different tree bases are determined by the F-symbols of the category.
+
+---
+
+## §4.2.6 Explicit Construction
 
 For hard-core anyons, a basis of $\mathcal{H}_N^{(c)}$ is indexed by:
 1. Configuration $(\mathbf{x}, \mathbf{k}) \in \mathrm{Conf}_N^{\mathrm{HC}}$
 2. Fusion tree $\tau$ from $\mathcal{O}(\mathbf{x}, \mathbf{k})$ to $X_c$
 3. Multiplicity indices (if $N_{ab}^c > 1$)
 
-**Claim 4.2.1.** For multiplicity-free categories:
+**Claim 4.2.2.** For multiplicity-free categories:
 $$\dim \mathcal{H}_N^{(c)} = \sum_{(\mathbf{x},\mathbf{k})} \dim \mathrm{Mor}(X_c, \mathcal{O}(\mathbf{x},\mathbf{k}))$$
 
 ```julia
