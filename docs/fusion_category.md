@@ -13,6 +13,9 @@ refs-out:
   - operators.md
 ---
 
+<!-- Note: morphism_spaces.md Definition 3.3 is the canonical definition for morphism spaces.
+This document references it to avoid duplication. -->
+
 # Fusion Categories
 
 | ID | Assumption | Type | Status |
@@ -28,7 +31,7 @@ satisfying the following conditions:
 
 1. **Finiteness:** There are finitely many isomorphism classes of simple objects. Every object decomposes as a finite direct sum of simples.
 
-2. **Semisimplicity:** All morphism spaces $\mathrm{Mor}(X,Y)$ are finite-dimensional $k$-vector spaces, and the category is abelian and semisimple.
+2. **Semisimplicity:** All morphism spaces $\mathrm{Mor}(X,Y)$ are finite-dimensional $k$-vector spaces (see Definition 3.3 in `docs/morphism_spaces.md`), and the category is abelian and semisimple.
 
 3. **Rigidity:** Every object $X \in \mathcal{C}$ has a left and right dual $X^*$ with evaluation and coevaluation morphisms satisfying the rigidity axioms.
 

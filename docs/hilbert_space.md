@@ -43,11 +43,10 @@ All three use the same letter but are syntactically distinct. Avoid using plain 
 
 ## §4.2.1 Morphism Spaces
 
-**Definition 4.2.1** (Morphism space). For objects $A, B \in \mathcal{C}$:
-$$\mathrm{Mor}(A, B)$$
-is the finite-dimensional complex vector space of all morphisms from $A$ to $B$. For simple $A, B$: $\dim \mathrm{Mor}(A,B) = \delta_{A,B}$ (multiplicity-free case).
+**Definition 4.2.1** (Morphism space). See Definition 3.3 in `docs/morphism_spaces.md` for the canonical definition.
 
-**Remark.** With multiplicity: $\dim \mathrm{Mor}(X_a \otimes X_b, X_c) = N_{ab}^c$. (See Definition 3.4 in §3.1.3 for formal definition of multiplicity spaces.)
+For simple objects $A, B \in \mathcal{C}$: $\dim \mathrm{Mor}(A,B) = \delta_{A,B}$.  
+With multiplicity: $\dim \mathrm{Mor}(X_a \otimes X_b, X_c) = N_{ab}^c$ (Definition 3.4 in §3.1.3).
 
 ---
 
