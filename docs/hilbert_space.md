@@ -18,6 +18,20 @@ refs-out:
 
 ---
 
+## Notation: Disambiguation of Symbol N
+
+**Critical:** The symbol $N$ is overloaded in this section with three distinct meanings. Context distinguishes them:
+
+| Context | Meaning | Example |
+|---------|---------|---------|
+| Subscript: $\mathcal{H}_N$, $\mathcal{H}_N^{(c)}$ | **Particle number sector** — space of exactly $N$ anyons | $\mathcal{H}_3$ = sector with 3 anyons |
+| Superscript: $N_{ab}^c$ | **Fusion multiplicity** — dimension of morphism space $\mathrm{Mor}(X_a \otimes X_b, X_c)$ | $N_{12}^0 \in \{0,1\}$ in Fibonacci |
+| Variable: $N \in \{1, \ldots, n\}$ (in loops/summations) | **Particle number (variable)** — used when summing over sectors | $\bigoplus_{N=0}^{n}$ |
+
+All three use the same letter but are syntactically distinct. Avoid using plain $N$ alone; always include subscript/superscript or context.
+
+---
+
 ## Assumptions
 
 | ID | Assumption | Type | Status |
@@ -83,7 +97,7 @@ where $\mathcal{H}_0 = \mathbb{C}$ (vacuum sector).
 
 **Remark.** The fusion tree is not unique (not canonical) due to associativity of tensor products: different parenthesizations yield different tree structures, all yielding the same tensor product result. For multiplicity-free categories ($N_{ab}^c \in \{0,1\}$), all choices span the same morphism space $\mathrm{Mor}(X_c, \mathcal{O}(\mathbf{x},\mathbf{k}))$, but individual basis vectors depend on the choice.
 
-**Claim 4.2.1.** Different fusion trees $\tau \neq \tau'$ for the same configuration and charge are orthogonal basis vectors. The transition amplitudes between different tree bases are determined by the F-symbols of the category.
+**Claim 4.2.2.** Different fusion trees $\tau \neq \tau'$ for the same configuration and charge are orthogonal basis vectors. The transition amplitudes between different tree bases are determined by the F-symbols of the category.
 
 ---
 
@@ -94,7 +108,7 @@ For hard-core anyons, a basis of $\mathcal{H}_N^{(c)}$ is indexed by:
 2. Fusion tree $\tau$ from $\mathcal{O}(\mathbf{x}, \mathbf{k})$ to $X_c$
 3. Multiplicity indices (if $N_{ab}^c > 1$)
 
-**Claim 4.2.2.** For multiplicity-free categories:
+**Claim 4.2.3.** For multiplicity-free categories:
 $$\dim \mathcal{H}_N^{(c)} = \sum_{(\mathbf{x},\mathbf{k})} \dim \mathrm{Mor}(X_c, \mathcal{O}(\mathbf{x},\mathbf{k}))$$
 
 ```julia
