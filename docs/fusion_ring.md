@@ -18,7 +18,7 @@ refs-out:
 
 ## §3.1.0 Simple Objects
 
-**Definition 3.1.0** (Simple object). Let $\mathcal{C}$ be a fusion category over field $\mathbb{C}$. An object $X \in \mathcal{C}$ is **simple** if it satisfies all three conditions:
+**Definition 3.1.0** (Simple object [Preliminary]). Let $\mathcal{C}$ be a fusion category over field $\mathbb{C}$. An object $X \in \mathcal{C}$ is **simple** if it satisfies all three conditions:
 
 1. **Nonzero:** $X \neq 0$ (in the sense that $X$ is not the zero object).
 2. **Indecomposable:** If $X \cong Y \oplus Z$, then $Y = 0$ or $Z = 0$.
@@ -34,7 +34,7 @@ For our purposes, we work with fusion categories where the simple objects are **
 
 ---
 
-**Definition 3.1** (Fusion ring). A fusion ring is a finitely generated free abelian group $\mathcal{R} = \bigoplus_{i \in I} \mathbb{Z} X_i$ with a ring structure satisfying:
+**Definition 3.1.1** (Fusion ring). A fusion ring is a finitely generated free abelian group $\mathcal{R} = \bigoplus_{i \in I} \mathbb{Z} X_i$ with a ring structure satisfying:
 
 1. $X_0 = \mathbf{1}$ is the unit element.
 2. The product of basis elements satisfies

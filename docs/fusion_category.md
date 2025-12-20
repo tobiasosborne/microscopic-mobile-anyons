@@ -20,10 +20,10 @@ This document references it to avoid duplication. -->
 
 | ID | Assumption | Type | Status |
 |----|------------|------|--------|
-| A3.1.2.1 | Fusion ring $(R, \{X_i\}_{i\in I}, \mathbf{1})$ with $X_0 = \mathbf{1}$ and $N_{ij}^k \in \mathbb{Z}_{\ge 0}$ (Definition 3.1) | Input | assumed |
+| A3.1.2.1 | Fusion ring $(R, \{X_i\}_{i\in I}, \mathbf{1})$ with $X_0 = \mathbf{1}$ and $N_{ij}^k \in \mathbb{Z}_{\ge 0}$ (Definition 3.1.1) | Input | assumed |
 | A3.1.2.2 | Associator data $F$ (and, when present, braiding data $R$) satisfy the pentagon/hexagon equations with normalisation recorded in `docs/diagrammatic_calculus.md` | Technical | assumed |
 
-**Definition 3.2** (Fusion category). A **fusion category** over an algebraically closed field $k$ (usually $k = \mathbb{C}$) is a $k$-linear, semisimple, rigid monoidal category
+**Definition 3.1.2** (Fusion category). A **fusion category** over an algebraically closed field $k$ (usually $k = \mathbb{C}$) is a $k$-linear, semisimple, rigid monoidal category
 \[
 (\mathcal{C}, \otimes, \mathbf{1})
 \]
@@ -31,7 +31,7 @@ satisfying the following conditions:
 
 1. **Finiteness:** There are finitely many isomorphism classes of simple objects. Every object decomposes as a finite direct sum of simples.
 
-2. **Semisimplicity:** All morphism spaces $\mathrm{Mor}(X,Y)$ are finite-dimensional $k$-vector spaces (see Definition 3.3 in `docs/morphism_spaces.md`), and the category is abelian and semisimple.
+2. **Semisimplicity:** All morphism spaces $\mathrm{Mor}(X,Y)$ are finite-dimensional $k$-vector spaces (see Definition 3.1.3 in `docs/morphism_spaces.md`), and the category is abelian and semisimple.
 
 3. **Rigidity:** Every object $X \in \mathcal{C}$ has a left and right dual $X^*$ with evaluation and coevaluation morphisms satisfying the rigidity axioms.
 
@@ -47,13 +47,13 @@ with multiplication
 \[
 [X] \cdot [Y] = \sum_{Z} N_{XY}^{Z} [Z],
 \]
-where $N_{XY}^{Z} = \dim_k \mathrm{Mor}(X \otimes Y, Z)$ is the fusion multiplicity. The Grothendieck ring $K_0(\mathcal{C})$ is a fusion ring (Definition 3.1), establishing that **fusion categories categorify fusion rings**.
+where $N_{XY}^{Z} = \dim_k \mathrm{Mor}(X \otimes Y, Z)$ is the fusion multiplicity. The Grothendieck ring $K_0(\mathcal{C})$ is a fusion ring (Definition 3.1.1), establishing that **fusion categories categorify fusion rings**.
 
 **Braided fusion categories.** If additionally $\mathcal{C}$ is equipped with a braiding (natural isomorphisms $c_{X,Y}: X \otimes Y \to Y \otimes X$ satisfying hexagon identities), we call $\mathcal{C}$ a **braided fusion category**.
 
 [Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), 581–642, Def. 2.1] `[unverified]`
 
-**Definition 3.3** (F-symbols). The **associator** is a natural isomorphism
+**Definition 3.1.4** (F-symbols). The **associator** is a natural isomorphism
 \[
 \alpha_{a,b,c}: (a \otimes b) \otimes c \xrightarrow{\sim} a \otimes (b \otimes c)
 \]
@@ -69,7 +69,7 @@ Algebraically, the F-symbol $(F_{abc}^d)_{e, \alpha, \beta}^{f, \mu, \nu}$ is th
 \]
 where $\alpha, \beta, \mu, \nu$ are multiplicity indices (omitted in the diagram if $N_{xy}^z \le 1$).
 
-**Definition 3.4** (Pentagon Equation). The **pentagon equation** ensures that the two paths to re-associate $((a \otimes b) \otimes c) \otimes d$ to $a \otimes (b \otimes (c \otimes d))$ coincide:
+**Definition 3.1.5** (Pentagon Equation). The **pentagon equation** ensures that the two paths to re-associate $((a \otimes b) \otimes c) \otimes d$ to $a \otimes (b \otimes (c \otimes d))$ coincide:
 
 ![Pentagon equation diagram](figures/out/pentagon.svg)
 
@@ -80,7 +80,7 @@ In terms of F-symbols (suppressing multiplicity indices for brevity):
 This coherence condition is required for the fusion category to be well-defined.
 [Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), §2.1] `[unverified]`
 
-**Definition 3.5** (R-symbols). For a braided fusion category, the **braiding isomorphism** $c_{a,b}: a \otimes b \to b \otimes a$ provides a natural way to permute tensor factors. These isomorphisms satisfy the hexagon equations.
+**Definition 3.1.6** (R-symbols). For a braided fusion category, the **braiding isomorphism** $c_{a,b}: a \otimes b \to b \otimes a$ provides a natural way to permute tensor factors. These isomorphisms satisfy the hexagon equations.
 For simple objects $a,b,c$, the braiding isomorphism is represented by its matrix elements, the **R-symbols**.
 The change of basis due to braiding is given by the **R-move**:
 
@@ -88,7 +88,7 @@ The change of basis due to braiding is given by the **R-move**:
 
 Algebraically, the R-symbol $(R_{ab}^c)_{i}^{j}$ maps the basis vector corresponding to the fusion of $a \otimes b$ (with intermediate channel $i$) to the basis vector of $b \otimes a$ (with intermediate channel $j$), both fusing to $c$. Multiplicity indices are suppressed in the diagram if $N_{xy}^z \le 1$.
 
-**Definition 3.6** (Hexagon Equations). The **hexagon equations** are coherence conditions that relate the associator (F-symbols) and the braiding (R-symbols), ensuring consistency between re-associating and braiding operations. There are two hexagon equations.
+**Definition 3.1.7** (Hexagon Equations). The **hexagon equations** are coherence conditions that relate the associator (F-symbols) and the braiding (R-symbols), ensuring consistency between re-associating and braiding operations. There are two hexagon equations.
 
 The first hexagon equation:
 \[

@@ -15,17 +15,17 @@ refs-out:
 
 | ID | Assumption | Type | Status |
 |----|------------|------|--------|
-| A3.1.3.1 | Fusion category $(\mathcal{C}, \otimes, \mathbf{1})$ over an algebraically closed field $k$ (Definition 3.2) | Input | assumed |
+| A3.1.3.1 | Fusion category $(\mathcal{C}, \otimes, \mathbf{1})$ over an algebraically closed field $k$ (Definition 3.1.2) | Input | assumed |
 | A3.1.3.2 | $\mathcal{C}$ is semisimple and $k$-linear, so all morphism spaces are finite-dimensional $k$-vector spaces | Technical | assumed |
 
-**Definition 3.3** (Morphism space). For any objects $A, B \in \mathcal{C}$,
+**Definition 3.1.3** (Morphism space). For any objects $A, B \in \mathcal{C}$,
 \[
 \mathrm{Mor}(A, B)
 \]
 is a finite-dimensional $k$-vector space of all morphisms from $A$ to $B$. If $A, B$ are simple, Schur's lemma implies $\dim \mathrm{Mor}(A, B) = \delta_{A, B}$.
 [Etingof–Nikshych–Ostrik, §2] `[unverified]`
 
-**Definition 3.4** (Fusion multiplicity space). For simple objects $X_a, X_b, X_c \in \mathrm{Irr}(\mathcal{C})$, the space
+**Definition 3.1.3.2** (Fusion multiplicity space). For simple objects $X_a, X_b, X_c \in \mathrm{Irr}(\mathcal{C})$, the space
 \[
 \mathrm{Mor}(X_a \otimes X_b, X_c)
 \]
@@ -46,7 +46,7 @@ No canonical choice exists; computations must remain basis-independent. When a f
     morphism_dim(C::FusionCategory, a::Symbol, b::Symbol, c::Symbol) -> Int
 
 Return dim Mor(X_a \\otimes X_b, X_c) = N_{ab}^c.
-See: docs/morphism_spaces.md, Definition 3.4.
+See: docs/morphism_spaces.md, Definition 3.1.3.2.
 """
 morphism_dim(C::FusionCategory, a::Symbol, b::Symbol, c::Symbol) =
     fusion_multiplicity(C, a, b, c)
@@ -57,7 +57,7 @@ morphism_dim(C::FusionCategory, a::Symbol, b::Symbol, c::Symbol) =
 
 Return abstract labels for a multiplicity basis f_{ab->c}^{(mu)} with
 mu = 1,...,N_{ab}^c. This is basis-independent bookkeeping only.
-See: docs/morphism_spaces.md, Definition 3.4.
+See: docs/morphism_spaces.md, Definition 3.1.3.2.
 """
 function multiplicity_basis_labels(C::FusionCategory, a::Symbol, b::Symbol, c::Symbol)
     n = fusion_multiplicity(C, a, b, c)

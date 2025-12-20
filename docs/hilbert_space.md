@@ -43,10 +43,10 @@ All three use the same letter but are syntactically distinct. Avoid using plain 
 
 ## §4.2.1 Morphism Spaces
 
-**Definition 4.2.1** (Morphism space). See Definition 3.3 in `docs/morphism_spaces.md` for the canonical definition.
+**Definition 4.2.1** (Morphism space). See Definition 3.1.3 in `docs/morphism_spaces.md` for the canonical definition.
 
 For simple objects $A, B \in \mathcal{C}$: $\dim \mathrm{Mor}(A,B) = \delta_{A,B}$.  
-With multiplicity: $\dim \mathrm{Mor}(X_a \otimes X_b, X_c) = N_{ab}^c$ (Definition 3.4 in §3.1.3).
+With multiplicity: $\dim \mathrm{Mor}(X_a \otimes X_b, X_c) = N_{ab}^c$ (Definition 3.1.3.2 in §3.1.3).
 
 ---
 
