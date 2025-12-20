@@ -16,4 +16,4 @@ refs-out:
 
 This directory will contain modular documents (≤200 lines each) for preliminaries, Hilbert space, Hamiltonians, properties, and diagrammatic calculus. Use `_overview.md` files in subdirectories to aid navigation and keep concepts separated.
 
-**New in §11:** Matrix element computations for 2-local operators on hard-core sectors.
+**New in §4.5:** Matrix element computations for 2-local operators on hard-core sectors—three operator types (two-particle interaction, right hopping, left hopping).
