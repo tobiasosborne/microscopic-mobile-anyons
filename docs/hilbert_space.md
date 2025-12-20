@@ -6,8 +6,8 @@ refs-in:
   - fusion_category.md
   - morphism_spaces.md
   - fock_space.md
-refs-out:
   - operators.md
+refs-out:
   - hamiltonian_v0.md
 ---
 
