@@ -14,6 +14,11 @@ refs-out:
 **Planning ref:** §4.3  
 **Status:** Draft
 
+| ID | Assumption | Type | Status |
+|----|------------|------|--------|
+| A4.3.1 | We work with finite tensor products of simple objects | Technical | assumed |
+| A4.3.2 | The lattice has finitely many sites, so the Hilbert space is finite-dimensional | Technical | assumed |
+
 ---
 
 ## §4.3.1 Operator Space
@@ -21,8 +26,14 @@ refs-out:
 **Definition 4.3.1** (Operator). An operator on $\mathcal{H}$ is a linear map $\mathcal{H} \to \mathcal{H}$.
 
 **Definition 4.3.2** (Operator as morphism sum). Operators decompose as:
-$$\mathcal{A} \in \bigoplus_{A,B} \mathrm{Mor}(A, B)$$
-where $A, B$ range over tensor products of $\mathbf{1}, X_1, \ldots, X_{d-1}$.
+$$\mathcal{A} \in \bigoplus_{n_A, n_B \in \mathbb{Z}_{\ge 0}} \bigoplus_{(a_1, \ldots, a_{n_A}) \in \{1,\ldots,d-1\}^{n_A}} \bigoplus_{(b_1, \ldots, b_{n_B}) \in \{1,\ldots,d-1\}^{n_B}} \mathrm{Mor}(X_{a_1} \otimes \cdots \otimes X_{a_{n_A}}, X_{b_1} \otimes \cdots \otimes X_{b_{n_B}})$$
+
+where the nested direct sums run over:
+- $n_A, n_B \in \mathbb{Z}_{\ge 0}$ — number of non-vacuum factors (per assumption A4.3.1, this is finite)
+- Labels $a_i, b_j \in \{1, \ldots, d-1\}$ — indices of simple objects (excluding vacuum $X_0 = \mathbf{1}$)
+- By semisimplicity, $\mathrm{Mor}(A, B)$ is a finite-dimensional vector space for each choice of $A, B$
+
+**Remark:** Objects with $n_A = 0$ are identified with $\mathbf{1}$ (tensor unit), so $X_\emptyset = \mathbf{1}$.
 
 ---
 

@@ -14,6 +14,26 @@ refs-out:
 | A1 | Finite set of simple objects $\{X_i\}_{i=0}^{d_C-1}$ | Technical | assumed |
 | A2 | Structure constants $N_{ab}^c \in \mathbb{Z}_{\ge 0}$ are associative and unital with unit $\mathbf{1}$ | Technical | assumed |
 
+---
+
+## §3.1.0 Simple Objects
+
+**Definition 3.1.0** (Simple object). Let $\mathcal{C}$ be a fusion category over field $\mathbb{C}$. An object $X \in \mathcal{C}$ is **simple** if it satisfies all three conditions:
+
+1. **Nonzero:** $X \neq 0$ (in the sense that $X$ is not the zero object).
+2. **Indecomposable:** If $X \cong Y \oplus Z$, then $Y = 0$ or $Z = 0$.
+3. **Schur:** $\mathrm{End}(X) \cong \mathbb{C}$ (all endomorphisms are scalar multiples of the identity).
+
+**Consequence:** By semisimplicity of fusion categories (Deligne's theorem), every object $A \in \mathcal{C}$ decomposes as a finite direct sum of simple objects:
+$$A \cong \bigoplus_{i \in I} X_i^{\oplus m_i}$$
+where $X_i$ are simple and $m_i \in \mathbb{Z}_{\ge 0}$ are multiplicities.
+
+For our purposes, we work with fusion categories where the simple objects are **distinguishable** by their labels: $\{X_0, X_1, \ldots, X_{d_C-1}\}$ with $X_0 = \mathbf{1}$ (the tensor unit/vacuum).
+
+[Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), Theorem 2.7] `[unverified]`
+
+---
+
 **Definition 3.1** (Fusion ring). A fusion ring is a finitely generated free abelian group $\mathcal{R} = \bigoplus_{i \in I} \mathbb{Z} X_i$ with a ring structure satisfying:
 
 1. $X_0 = \mathbf{1}$ is the unit element.
