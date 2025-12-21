@@ -19,6 +19,7 @@ export enumerate_fusion_trees, build_sector_basis
 # Operator exports
 export MorphismTerm, LocalOperator, is_particle_conserving
 export hopping_right, hopping_left, interaction_term
+export n_particles_in, n_particles_out, operator_matrix, matrix_element
 
 # Hamiltonian exports
 export NumberConservingTerm, LocalHamiltonian
