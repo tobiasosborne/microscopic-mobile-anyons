@@ -11,6 +11,35 @@
 \end{enumerate}
 \end{assumption}
 
+\subsection{Simple Objects}\label{subsec:simple-objects}
+
+\begin{definition}[Simple object]\label{def:simple-object}
+Let $\mathcal{C}$ be a fusion category over field $\mathbb{C}$. An object $X \in \mathcal{C}$ is \emph{simple} if it satisfies all three conditions:
+\begin{enumerate}
+    \item \textbf{Nonzero:} $X \neq 0$ (in the sense that $X$ is not the zero object).
+    \item \textbf{Indecomposable:} If $X \cong Y \oplus Z$, then $Y = 0$ or $Z = 0$.
+    \item \textbf{Schur:} $\End(X) \cong \mathbb{C}$ (all endomorphisms are scalar multiples of the identity).
+\end{enumerate}
+\end{definition}
+
+\begin{consequence}\label{cons:semisimple-decomp}
+By semisimplicity of fusion categories (Deligne's theorem), every object $A \in \mathcal{C}$ decomposes as a finite direct sum of simple objects:
+\begin{equation}
+    A \cong \bigoplus_{i \in I} X_i^{\oplus m_i}
+\end{equation}
+where $X_i$ are simple and $m_i \in \mathbb{Z}_{\ge 0}$ are multiplicities.
+\end{consequence}
+
+\begin{remark}
+For our purposes, we work with fusion categories where the simple objects are \emph{distinguishable} by their labels: $\{X_0, X_1, \ldots, X_{d_{\mathcal{C}}-1}\}$ with $X_0 = \mathbf{1}$ (the tensor unit/vacuum).
+\end{remark}
+
+\begin{citationblock}
+Etingof--Nikshych--Ostrik, \emph{Ann.\ Math.}\ \textbf{162} (2005), Theorem~2.7 \cite{ENO2005} \unverified
+\end{citationblock}
+
+\subsection{Fusion Ring Definition}\label{subsec:fusion-ring-def}
+
 \begin{definition}[Fusion ring]\label{def:fusion-ring}
 A \emph{fusion ring} is a finitely generated free abelian group $R = \bigoplus_{i \in I} \mathbb{Z} X_i$ with a ring structure satisfying:
 \begin{enumerate}

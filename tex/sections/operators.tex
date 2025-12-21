@@ -4,47 +4,128 @@
 
 \section{Operators as Morphisms}\label{sec:operators}
 
-\subsection{Operator Space}\label{subsec:operator-space}
+\textbf{Planning ref:} \S4.3\\
+\textbf{Dependency note:} This section is logically prior to \S\ref{sec:hilbert-space}. We define operators as abstract categorical morphisms first, then show in \S\ref{sec:hilbert-space} how they act on the concrete Hilbert space.
 
-\begin{definition}[Operator]\label{def:operator}
-An operator on $\mathcal{H}$ is a linear map $\mathcal{H} \to \mathcal{H}$.
-\end{definition}
+\begin{assumption}\label{ass:operators}
+\begin{enumerate}[label=(A4.3.\arabic*)]
+    \item We work with finite tensor products of simple objects.
+    \item The fusion category $\catC$ has finitely many simple objects.
+\end{enumerate}
+\end{assumption}
 
-\begin{definition}[Operator as morphism sum]\label{def:operator-morphism}
-Operators decompose as:
+%=============================================================
+\subsection{Abstract Operator Definition (Category-Level)}\label{subsec:abstract-operators}
+%=============================================================
+
+\begin{definition}[Morphism space operator]\label{def:morphism-operator}
+An \emph{operator} is an element of a morphism space:
 \begin{equation}
-    \mathcal{A} \in \bigoplus_{A,B} \Mor(A, B)
+    \catO \in \Mor(A, B)
 \end{equation}
-where $A, B$ range over tensor products of $\mathbf{1}, X_1, \ldots, X_{d-1}$.
+where $A, B$ are tensor products of simple objects from $\catC$.
 \end{definition}
 
-\subsection{Particle-Number Conservation}\label{subsec:particle-conservation}
+\begin{remark}
+This is a purely categorical definition, independent of any representation or Hilbert space. Morphisms are abstract; they follow categorical axioms (composition, associativity, identities).
+\end{remark}
 
-\begin{definition}[Particle-conserving operator]\label{def:particle-conserving}
-An operator $\mathcal{A}$ is \emph{particle-conserving} if it maps $\mathcal{H}_N \to \mathcal{H}_N$ for all $N$.
+\begin{definition}[Operator as morphism sum]\label{def:operator-morphism-sum}
+The space of all operators in this categorical sense is:
+\begin{equation}
+    \mathfrak{Op}_{\mathrm{cat}} = \bigoplus_{n_A, n_B \in \mathbb{Z}_{\ge 0}} \bigoplus_{\substack{(a_1, \ldots, a_{n_A}) \\ a_i \in \{1,\ldots,d-1\}}} \bigoplus_{\substack{(b_1, \ldots, b_{n_B}) \\ b_j \in \{1,\ldots,d-1\}}} \Mor(X_{a_1} \otimes \cdots \otimes X_{a_{n_A}}, X_{b_1} \otimes \cdots \otimes X_{b_{n_B}})
+\end{equation}
+where the nested direct sums run over:
+\begin{itemize}
+    \item $n_A, n_B \in \mathbb{Z}_{\ge 0}$ --- number of non-vacuum factors
+    \item Labels $a_i, b_j \in \{1, \ldots, d-1\}$ --- indices of simple objects (excluding vacuum $X_0 = \one$)
+\end{itemize}
+By semisimplicity, $\Mor(A, B)$ is a finite-dimensional vector space for each choice of $A, B$.
 \end{definition}
 
-\begin{definition}[Particle-changing operator]\label{def:particle-changing}
-An operator with components in $\Mor(A, B)$ where $A$ and $B$ have different numbers of nontrivial factors changes particle number.
+\begin{remark}
+Objects with $n_A = 0$ are identified with $\one$ (tensor unit), so $X_\emptyset = \one$. This definition is independent of the Hilbert space $\catH$ and does not require it to be defined yet.
+\end{remark}
+
+%=============================================================
+\subsection{Action on Hilbert Space (Concrete Representation)}\label{subsec:hilbert-action}
+%=============================================================
+
+Once the Hilbert space $\catH$ is defined (Definition~\ref{def:total-hilbert}), morphism operators are promoted to linear maps via a representation:
+
+\begin{definition}[Representation of operators on $\catH$]\label{def:operator-representation}
+A \emph{representation} of the morphism space $\Mor(A, B)$ on the Hilbert space $\catH$ is a linear embedding:
+\begin{equation}
+    \rho: \Mor(A, B) \to \mathrm{Lin}(\catH_A \to \catH_B)
+\end{equation}
+where $\catH_A$ denotes the sector of $\catH$ corresponding to object $A$, and $\mathrm{Lin}$ denotes linear maps.
+
+The full operator algebra on $\catH$ is:
+\begin{equation}
+    \End(\catH) = \bigoplus_{A,B} \mathrm{Lin}(\catH_A \to \catH_B)
+\end{equation}
+\end{definition}
+
+%=============================================================
+\subsection{Particle-Number Conservation (at Category Level)}\label{subsec:particle-conservation}
+%=============================================================
+
+\begin{definition}[Particle-number of object]\label{def:particle-number-object}
+For an object $A = X_{a_1} \otimes \cdots \otimes X_{a_n}$, define:
+\begin{equation}
+    \mathrm{N}(A) = n
+\end{equation}
+(the number of nontrivial factors, excluding vacuum $\one$).
+\end{definition}
+
+\begin{definition}[Particle-conserving morphism]\label{def:particle-conserving}
+A morphism $\phi \in \Mor(A, B)$ is \emph{particle-conserving} if:
+\begin{equation}
+    \mathrm{N}(A) = \mathrm{N}(B)
+\end{equation}
+\end{definition}
+
+\begin{definition}[Particle-changing morphism]\label{def:particle-changing}
+A morphism $\phi \in \Mor(A, B)$ is \emph{particle-changing} if:
+\begin{equation}
+    \mathrm{N}(A) \neq \mathrm{N}(B)
+\end{equation}
 \end{definition}
 
 \begin{example}
-$\Mor(X_a \otimes X_b, X_c \otimes \mathbf{1})$ annihilates a particle (if $X_c$ is nontrivial) or two particles (if $X_c = \mathbf{1}$).
+\begin{itemize}
+    \item $\Mor(X_a \otimes X_b, X_c)$ is particle-annihilating: $\mathrm{N}(A) = 2$, $\mathrm{N}(B) = 1$.
+    \item $\Mor(X_a, X_b \otimes X_c)$ is particle-creating: $\mathrm{N}(A) = 1$, $\mathrm{N}(B) = 2$.
+\end{itemize}
 \end{example}
 
+%=============================================================
 \subsection{Locality}\label{subsec:locality}
+%=============================================================
 
-\begin{definition}[Local operator]\label{def:local-operator}
-An operator is \emph{local} if it acts nontrivially only on a bounded number of adjacent sites.
+\begin{definition}[Support of object]\label{def:support-object}
+For an object $A = X_{a_1} \otimes \cdots \otimes X_{a_n}$, define:
+\begin{equation}
+    \mathrm{supp}(A) = \{j : a_j \neq 0\}
+\end{equation}
+(the set of factor positions that are nontrivial).
 \end{definition}
 
-\begin{definition}[$k$-local operator]\label{def:k-local}
-A \emph{$k$-local} operator acts on at most $k$ consecutive sites.
+\begin{definition}[$k$-local morphism]\label{def:k-local}
+A morphism $\phi \in \Mor(A, B)$ is \emph{$k$-local} if:
+\begin{equation}
+    |\mathrm{supp}(A) \cup \mathrm{supp}(B)| \leq k
+\end{equation}
 \end{definition}
 
-For mobile anyons, a 2-local operator has components:
+\begin{example}
 \begin{itemize}
-    \item $\Mor(X_a \otimes X_b, X_c \otimes X_d)$ --- acts on two neighbouring anyons
-    \item $\Mor(X_a \otimes \mathbf{1}, \mathbf{1} \otimes X_a)$ --- hops anyon right
-    \item $\Mor(\mathbf{1} \otimes X_a, X_a \otimes \mathbf{1})$ --- hops anyon left
+    \item $\Mor(X_a \otimes X_b, X_c \otimes X_d)$ is 2-local: only factors 0 and 1 are involved.
+    \item $\Mor(X_a, X_a)$ is 1-local: only factor 0 is involved.
+    \item $\Mor(X_a \otimes \one, \one \otimes X_a)$ is 2-local: acts on positions 0 and 1.
 \end{itemize}
+\end{example}
+
+\begin{remark}
+In the context of lattice systems, locality also specifies which lattice sites the morphism acts on. This is covered when embedding into the lattice in \S\ref{sec:hamiltonian-v0}.
+\end{remark}

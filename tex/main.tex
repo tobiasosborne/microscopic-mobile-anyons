@@ -14,9 +14,23 @@
 \usepackage{physics}  % for bra-ket notation
 \usepackage{enumitem}
 \usepackage{booktabs}
+\usepackage[dvipsnames]{xcolor}  % for colors (load before hyperref)
 \usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage[margin=1in]{geometry}
+\usepackage{listings}  % for code listings
+
+% Configure listings for Julia
+\lstset{
+    language=Python,  % Julia syntax is close enough to Python
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    breaklines=true,
+    frame=single,
+    columns=fullflexible
+}
 
 % ============================================================
 % Theorem Environments
@@ -106,6 +120,9 @@ We develop a systematic framework for constructing microscopic lattice models de
 % Section 3.1.3: Morphism Spaces
 \input{sections/morphism_spaces}
 
+% Section 3.1.8: Examples of Fusion Categories
+\input{sections/fusion_category_examples}
+
 % Section 3.2: Fock Space
 \input{sections/fock_space}
 
@@ -133,10 +150,17 @@ We develop a systematic framework for constructing microscopic lattice models de
 \input{sections/hardcore_softcore}
 
 % ============================================================
-% Part III: Dynamics (To be added)
+% Part III: Dynamics
 % ============================================================
-% \part{Dynamics for Mobile Anyons}
-% \input{sections/hamiltonian_v0}
+\part{Dynamics for Mobile Anyons}
+
+% Section 4.5: Matrix Elements of 2-Local Operators
+\input{sections/matrix_elements_2local}
+
+% Section 5.1.1: Particle-Conserving Local Hamiltonians
+\input{sections/hamiltonian_v0}
+
+% Future sections (to be added)
 % \input{sections/hamiltonian_v1}
 % \input{sections/hamiltonian_free}
 % \input{sections/hamiltonian_creation}

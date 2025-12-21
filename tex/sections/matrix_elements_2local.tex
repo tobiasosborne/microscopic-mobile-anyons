@@ -1,0 +1,213 @@
+% matrix_elements_2local.tex
+% LaTeX counterpart of docs/matrix_elements_2local.md
+% Section §4.5
+
+\section{Matrix Elements of 2-Local Operators}\label{sec:matrix-elements}
+
+\textbf{Planning ref:} \S4.5\\
+\textbf{Status:} Draft
+
+\begin{assumption}\label{ass:matrix-elements}
+\begin{enumerate}[label=(A4.5.\arabic*)]
+    \item Fusion category $\catC$ with unit $\one$ and simples $X_0=\one, X_1, \ldots, X_{d-1}$.
+    \item Hard-core constraint: at most one anyon per site.
+    \item Fusion tree basis fixed for $\catH_N^{(c)}$ (per Definition~\ref{def:fusion-tree}).
+    \item Multiplicity-free fusion rules (i.e., $N_{ab}^c \in \{0, 1\}$).
+\end{enumerate}
+\end{assumption}
+
+%=============================================================
+\subsection{Fusion Trees as Basis Data}\label{subsec:fusion-tree-basis}
+%=============================================================
+
+\begin{definition}[Fusion tree basis states]\label{def:fusion-tree-basis-state}
+A fusion tree $\tau$ (defined in Definition~\ref{def:fusion-tree}) specifies one of several basis choices for the morphism space $\Mor(X_c, \catO(\mathbf{x}, \mathbf{k}))$. We denote basis states as:
+\begin{equation}
+    |(\mathbf{x}, \mathbf{k}), \tau, c\rangle \in \catH_N^{(c)}
+\end{equation}
+where:
+\begin{itemize}
+    \item $(\mathbf{x}, \mathbf{k})$ is the configuration (positions and anyon types)
+    \item $\tau$ encodes the fusion tree structure
+    \item $c$ is the total charge
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+The fusion tree is not canonical; different choices of parenthesisation yield different bases. For multiplicity-free categories, all choices span the same space, but individual basis vectors depend on the choice.
+\end{remark}
+
+\begin{remark}
+When two basis states have different fusion trees $\tau \neq \tau'$ (even for the same configuration and charge), they are orthogonal basis vectors. The Gram matrix between them is determined by the F-symbols of the category.
+\end{remark}
+
+%=============================================================
+\subsection{Matrix Element Definitions}\label{subsec:matrix-element-def}
+%=============================================================
+
+\begin{definition}[Matrix element for 2-local morphism]\label{def:matrix-element-2local}
+Given:
+\begin{itemize}
+    \item Basis states $|\psi\rangle = |(\mathbf{x}, \mathbf{k}), \tau, c\rangle$ and $|\phi\rangle = |(\mathbf{x}', \mathbf{k}'), \tau', c\rangle$ in $\catH_N^{(c)}$
+    \item A morphism $f \in \Mor(X_a \otimes X_b, X_c \otimes X_d)$ acting on sites $j, j+1$
+\end{itemize}
+The matrix element is the complex number:
+\begin{equation}
+    \langle \phi | f_{j,j+1} | \psi \rangle \in \mathbb{C}
+\end{equation}
+Interpretation: $f_{j,j+1}$ acts as a morphism between the anyon types at sites $j, j+1$ in the source and target configurations.
+\end{definition}
+
+%=============================================================
+\subsection{Type 1: Two-Particle Interaction}\label{subsec:two-particle}
+%=============================================================
+
+\begin{definition}[Two-particle interaction morphism]\label{def:two-particle-morph}
+A morphism $f_{ab \to cd} \in \Mor(X_a \otimes X_b, X_c \otimes X_d)$ acts on two neighbouring sites with anyons of type $X_a, X_b$ and outputs $X_c, X_d$.
+\end{definition}
+
+\textbf{Configuration support:} Non-zero matrix elements occur only when:
+\begin{itemize}
+    \item Source configuration: $s_j = a, s_{j+1} = b$
+    \item Target configuration: $s'_j = c, s'_{j+1} = d$
+    \item All other sites identical: $s_i = s'_i$ for $i \notin \{j, j+1\}$
+    \item Total charge preserved
+\end{itemize}
+
+In this case, the matrix element is:
+\begin{equation}
+    \langle (\mathbf{x}', \mathbf{k}'), \tau' | f_{ab \to cd} | (\mathbf{x}, \mathbf{k}), \tau \rangle = \alpha_{ab \to cd}(\tau, \tau')
+\end{equation}
+where $\alpha_{ab \to cd}(\tau, \tau')$ is determined by the morphism and the fusion tree compatibility.
+
+\begin{remark}[Multiplicity-free case]
+$N_{ab}^c \in \{0,1\}$ for all triples, so the morphism space $\Mor(X_a \otimes X_b, X_c \otimes X_d)$ is either $\{0\}$ or one-dimensional. If non-zero, the coefficient $\alpha_{ab \to cd}$ is a phase/scalar set by normalisation.
+\end{remark}
+
+\begin{remark}[Forbidden fusion]
+If $N_{ab}^c = 0$ (fusion forbidden), then $\Mor(X_a \otimes X_b, X_c) = \{0\}$, and the operator component is identically zero.
+\end{remark}
+
+\begin{claim}[Hermiticity]\label{claim:two-particle-hermitian}
+If $f_{ab \to cd}$ is a unitary morphism (or paired with its adjoint), the physical operator $\catO = f_{j,j+1} + f_{j,j+1}^\dagger$ is Hermitian and preserves the sector $\catH_N^{(c)}$.
+\end{claim}
+
+%=============================================================
+\subsection{Type 2: Right Hopping}\label{subsec:hop-right}
+%=============================================================
+
+\begin{definition}[Right-hopping morphism]\label{def:hop-right}
+A morphism $h_R \in \Mor(X_a \otimes \one, \one \otimes X_a)$ describes translating an anyon of type $X_a$ from site $j$ to site $j+1$.
+\end{definition}
+
+\textbf{Hard-core configuration support:}
+\begin{itemize}
+    \item Source: anyon $X_a$ at site $j$, vacuum ($\one$) at site $j+1$
+    \item Target: vacuum at site $j$, anyon $X_a$ at site $j+1$
+\end{itemize}
+
+Matrix element:
+\begin{equation}
+    \langle (\mathbf{x}', \mathbf{k}'), \tau' | h_{R,j,j+1} | (\mathbf{x}, \mathbf{k}), \tau \rangle = \begin{cases}
+    \beta_a(\tau, \tau') & \text{if } s_j = a, s_{j+1} = 0 \text{ and } s'_j = 0, s'_{j+1} = a \\
+    0 & \text{otherwise}
+    \end{cases}
+\end{equation}
+where $\beta_a(\tau, \tau')$ is determined by the fusion tree evolution and normalisation convention.
+
+\begin{claim}[Locality of hopping]\label{claim:hop-locality}
+Right hopping is a 2-local operator: it couples only configurations differing by a single anyon displacement at neighbouring sites.
+\end{claim}
+
+%=============================================================
+\subsection{Type 3: Left Hopping}\label{subsec:hop-left}
+%=============================================================
+
+\begin{definition}[Left-hopping morphism]\label{def:hop-left}
+A morphism $h_L \in \Mor(\one \otimes X_a, X_a \otimes \one)$ describes translating an anyon of type $X_a$ from site $j+1$ to site $j$.
+\end{definition}
+
+\textbf{Hard-core configuration support:}
+\begin{itemize}
+    \item Source: vacuum at site $j$, anyon $X_a$ at site $j+1$
+    \item Target: anyon $X_a$ at site $j$, vacuum at site $j+1$
+\end{itemize}
+
+\begin{remark}[Relation to right hopping]
+By rigidity of the fusion category, $h_L$ and $h_R$ are related via duality. In particular, if both use consistent normalisation for $X_a \otimes \one \leftrightarrow \one \otimes X_a$, then $h_L = h_R^\dagger$ (up to phase).
+\end{remark}
+
+%=============================================================
+\subsection{Operator Matrix Representation}\label{subsec:operator-matrix}
+%=============================================================
+
+\begin{definition}[Full operator matrix in $\catH_N^{(c)}$]\label{def:operator-matrix}
+Let $\{|\psi_i\rangle = |(\mathbf{x}_i, \mathbf{k}_i), \tau_i, c\rangle\}_{i=1}^{d_N^{(c)}}$ be an orthonormal basis of $\catH_N^{(c)}$ (in a chosen fusion tree basis). The matrix representation of a 2-local operator $\catO$ is:
+\begin{equation}
+    [\catO]_{ij} := \langle \psi_i | \catO | \psi_j \rangle \in \mathbb{C}
+\end{equation}
+\end{definition}
+
+\begin{remark}
+This is basis-dependent; different fusion tree bases yield different matrix coordinates. However, the eigenvalues and trace (and all basis-independent properties) are invariant.
+\end{remark}
+
+\begin{claim}[Sparsity of 2-local operators]\label{claim:sparsity}
+For 2-local operators in the hard-core sector:
+\begin{itemize}
+    \item Type 1 (two-particle interaction) couples configurations with anyons at the same pair of sites $(j, j+1)$; expect $O(n)$ nonzero entries per row.
+    \item Type 2, 3 (hopping) couple configurations differing by a single displacement; expect $O(1)$ nonzero entries per row.
+\end{itemize}
+Total matrix sparsity: $O(n \cdot d_N^{(c)})$ nonzero entries.
+\end{claim}
+
+%=============================================================
+\subsection{Example: Two Fibonacci Anyons}\label{subsec:fibonacci-example}
+%=============================================================
+
+\begin{example}[Fibonacci $\tau$ anyons, $N=2$ on 3 sites]\label{ex:fibonacci-2-anyons}
+Fusion category: Fibonacci, $d=2$ (objects $\one, \tau$), $\tau \otimes \tau = \one \oplus \tau$ (multiplicity 1 each).
+
+Hard-core configurations with 2 anyons on 3 sites: $\mathrm{Conf}_2^{\mathrm{HC}}(3) = \{(1,2), (1,3), (2,3)\}$ (pairs of occupied sites).
+
+Basis states in $\catH_2^{(\one)}$ (two $\tau$ anyons fusing to $\one$):
+\begin{itemize}
+    \item $|\psi_1\rangle = |(1,2), \tau, \one\rangle$ = anyons at sites 1, 2 fusing to $\one$
+    \item $|\psi_2\rangle = |(1,3), \tau, \one\rangle$ = anyons at sites 1, 3 fusing to $\one$
+    \item $|\psi_3\rangle = |(2,3), \tau, \one\rangle$ = anyons at sites 2, 3 fusing to $\one$
+\end{itemize}
+
+Right-hopping operator $h_{R,1,2}$ on sites 1, 2 (moves anyon from site 1 to site 2):
+\begin{itemize}
+    \item Source: anyon at site 1, vacuum at site 2 $\to$ only $|\psi_2\rangle = |(1,3)\rangle$ qualifies
+    \item Target: vacuum at site 1, anyon at site 2 $\to$ only $|\psi_3\rangle = |(2,3)\rangle$ qualifies
+    \item Non-zero element: $\langle \psi_3 | h_{R,1,2} | \psi_2 \rangle$
+\end{itemize}
+
+Matrix of $h_{R,1,2}$ in basis $\{\psi_1, \psi_2, \psi_3\}$:
+\begin{equation}
+    h_{R,1,2} = \begin{pmatrix} 0 & \beta & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}
+\end{equation}
+where $\beta$ is the amplitude (normalisation-dependent).
+\end{example}
+
+%=============================================================
+\subsection{Critical Observations and Open Questions}\label{subsec:observations}
+%=============================================================
+
+\textbf{Observation 1} (Fusion tree dependence). The matrix elements explicitly depend on the choice of fusion tree basis via $\tau, \tau'$. This choice is not canonical for multiplicity $N_{ab}^c > 1$. All published definitions must remain basis-independent; fusion trees are a computational tool only.
+
+\textbf{Observation 2} (Missing fusion tree reduction). Computing actual matrix elements requires:
+\begin{enumerate}
+    \item Extracting the local fusion tree structure at sites $j, j+1$ from $\tau$
+    \item Composing with the morphism $f$ or $h$
+    \item Tracking how $\tau$ evolves to $\tau'$
+    \item Applying R-matrices if the operator causes anyon braiding
+\end{enumerate}
+This requires implementation of fusion tree reduction coefficients and F-symbols.
+
+\textbf{Question 4.5.1} (Hard-core + arbitrary charge). For $N$ anyons with definite charge $c$ in hard-core sector, is the dimension of $\catH_N^{(c)}$ always $O\left(\binom{n}{N}\right)$? What are the constraints on $c$?
+
+\textbf{Question 4.5.2} (Multiplicity handling). How do matrix elements change if $N_{ab}^c > 1$? Each morphism space becomes multi-dimensional, introducing index-dependent amplitudes $\alpha^{(\mu)}_{ab \to cd}$.
+
+\textbf{Question 4.5.3} (Normalisation convention). What is the standard normalisation for $h_R$ and $h_L$? Should they be unitary? Hermitian? How does this interact with R-matrices and the fusion category structure?

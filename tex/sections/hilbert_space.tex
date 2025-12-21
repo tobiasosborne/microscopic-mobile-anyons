@@ -4,9 +4,33 @@
 
 \section{Hilbert Space for Mobile Anyons}\label{sec:hilbert-space}
 
+%=============================================================
+\subsection{Notation: Disambiguation of Symbol $N$}\label{subsec:notation-N}
+%=============================================================
+
+\begin{convention}[Disambiguation of $N$]\label{conv:N-disambiguation}
+The symbol $N$ is overloaded in this section with three distinct meanings. Context distinguishes them:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Context} & \textbf{Meaning} & \textbf{Example} \\
+\midrule
+Subscript: $\catH_N$, $\catH_N^{(c)}$ & Particle number sector & $\catH_3$ = sector with 3 anyons \\
+Superscript: $N_{ab}^c$ & Fusion multiplicity & $N_{12}^0 \in \{0,1\}$ in Fibonacci \\
+Variable: $N \in \{1, \ldots, n\}$ & Particle number (variable) & $\bigoplus_{N=0}^{n}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+All three use the same letter but are syntactically distinct. Avoid using plain $N$ alone; always include subscript/superscript or context.
+\end{convention}
+
+%=============================================================
+
 \begin{assumption}\label{ass:hilbert-space}
 \begin{enumerate}[label=(A4.2.\arabic*)]
-    \item Fusion category $\mathcal{C}$ with unit $\mathbf{1}$ and simples $X_0=\mathbf{1}, X_1, \ldots, X_{d-1}$.
+    \item Fusion category $\mathcal{C}$ with unit $\one$ and simples $X_0=\one, X_1, \ldots, X_{d-1}$.
     \item $n$ lattice sites, OBC.
 \end{enumerate}
 \end{assumption}
@@ -77,6 +101,26 @@ where $\mathcal{H}_0 = \mathbb{C}$ (vacuum sector).
 \begin{remark}
 Direct sum over $N$ = ``OR quantifier'' for particle number. This is the first-quantised Fock space structure (cf.\ \S\ref{sec:fock-space}).
 \end{remark}
+
+\subsection{Fusion Trees}\label{subsec:fusion-trees}
+
+\begin{definition}[Fusion tree]\label{def:fusion-tree}
+A \emph{fusion tree} $\tau$ for a configuration $(\mathbf{x}, \mathbf{k})$ with $N$ anyons is a labelling of internal nodes in a \textbf{binary tree} that encodes how the anyons fuse step-by-step to produce a final total charge. Formally:
+\begin{enumerate}
+    \item \textbf{Leaves:} The $N$ anyons occupy the leaves, labelled with their types $X_{k_1}, \ldots, X_{k_N}$.
+    \item \textbf{Internal nodes:} Each internal node is labelled with an intermediate fusion result $X_e$ (some simple object of $\catC$).
+    \item \textbf{Binary structure:} Each internal node has exactly two children (left and right), and the label at that node represents the fusion result: left child $\otimes$ right child.
+    \item \textbf{Root:} The root node is labelled with the final total charge $X_c$.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+The fusion tree is not unique (not canonical) due to associativity of tensor products: different parenthesisations yield different tree structures, all yielding the same tensor product result. For multiplicity-free categories ($N_{ab}^c \in \{0,1\}$), all choices span the same morphism space $\Mor(X_c, \catO(\mathbf{x},\mathbf{k}))$, but individual basis vectors depend on the choice.
+\end{remark}
+
+\begin{claim}\label{claim:fusion-tree-orthogonal}
+Different fusion trees $\tau \neq \tau'$ for the same configuration and charge are orthogonal basis vectors. The transition amplitudes between different tree bases are determined by the F-symbols of the category.
+\end{claim}
 
 \subsection{Explicit Construction}\label{subsec:explicit-construction}
 

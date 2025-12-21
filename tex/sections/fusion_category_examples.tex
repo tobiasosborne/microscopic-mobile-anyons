@@ -1,0 +1,215 @@
+% fusion_category_examples.tex
+% LaTeX counterpart of docs/fusion_category_examples.md
+% Section §3.1.8
+
+\section{Examples of Fusion Categories}\label{sec:fusion-examples}
+
+This section enumerates concrete fusion categories used in mobile anyon models. Each example specifies fusion rules, F-symbols, R-symbols (if braided), and the simple object count (rank).
+
+\begin{assumption}\label{ass:fusion-examples}
+\begin{enumerate}[label=(A3.1.8.\arabic*)]
+    \item Fusion categories listed here are semisimple and rigid.
+    \item Numerical F/R-symbols are computed via standard references (Kitaev, Rowell).
+\end{enumerate}
+\end{assumption}
+
+%=============================================================
+\subsection{Fibonacci Category (Multiplicity-Free)}\label{subsec:fibonacci}
+%=============================================================
+
+\textbf{Category:} $\mathcal{C}_{\mathrm{Fib}}$ \\
+\textbf{Rank:} $d = 2$ \\
+\textbf{Simple objects:} $\one = X_0$, $\tau = X_1$
+
+\subsubsection{Fusion Rules}
+
+\begin{center}
+\begin{tabular}{c|cc}
+$\otimes$ & $\one$ & $\tau$ \\
+\hline
+$\one$ & $\one$ & $\tau$ \\
+$\tau$ & $\tau$ & $\one \oplus \tau$
+\end{tabular}
+\end{center}
+
+\textbf{Multiplicities:} $N_{\tau\tau}^{\one} = N_{\tau\tau}^{\tau} = 1$ (multiplicity-free).
+
+\subsubsection{Quantum Dimensions}
+
+\begin{itemize}
+    \item $d_{\one} = 1$
+    \item $d_\tau = \phi = \frac{1+\sqrt{5}}{2}$ (golden ratio)
+\end{itemize}
+
+\subsubsection{F-Symbols (Associator)}
+
+For the only nontrivial fusion channel $\tau \otimes \tau \to \one \oplus \tau$:
+\begin{equation}
+    F_{\tau,\tau,\tau}^e = \begin{pmatrix} \phi^{-1/2} & \phi^{-1/2} \\ \phi^{-1/2} & -\phi^{1/2} \end{pmatrix}_{e'}^{e}
+\end{equation}
+where the matrix connects the two fusion orders: $(\tau \otimes \tau) \otimes \tau$ vs.\ $\tau \otimes (\tau \otimes \tau)$.
+
+\textbf{Numerical:} $\phi^{-1/2} \approx 0.7861$ \cite{Kitaev2006} \unverified
+
+\subsubsection{R-Symbols (Braiding)}
+
+Fibonacci category is non-braided (bosonic). If braiding is added:
+\begin{equation}
+    R_{\tau,\tau}^e = e^{2\pi i \theta_e}
+\end{equation}
+where $\theta_{\one} = 0$ and $\theta_\tau = 4\pi/5$ (standard normalisation).
+
+%=============================================================
+\subsection{Ising Category (Multiplicity-Free)}\label{subsec:ising}
+%=============================================================
+
+\textbf{Category:} $\mathcal{C}_{\mathrm{Ising}}$ \\
+\textbf{Rank:} $d = 3$ \\
+\textbf{Simple objects:} $\one = X_0$, $\sigma = X_1$, $\psi = X_2$
+
+\subsubsection{Fusion Rules}
+
+\begin{center}
+\begin{tabular}{c|ccc}
+$\otimes$ & $\one$ & $\sigma$ & $\psi$ \\
+\hline
+$\one$ & $\one$ & $\sigma$ & $\psi$ \\
+$\sigma$ & $\sigma$ & $\one \oplus \psi$ & $\sigma$ \\
+$\psi$ & $\psi$ & $\sigma$ & $\one$
+\end{tabular}
+\end{center}
+
+\textbf{Multiplicities:} All fusion coefficients are $0$ or $1$ (multiplicity-free).
+
+\subsubsection{Quantum Dimensions}
+
+\begin{itemize}
+    \item $d_{\one} = 1$
+    \item $d_\sigma = \sqrt{2}$
+    \item $d_\psi = 1$
+\end{itemize}
+
+\subsubsection{F-Symbols}
+
+Non-trivial associators exist for $\sigma \otimes \sigma \to \one \oplus \psi$:
+\begin{equation}
+    F_{\sigma,\sigma,\sigma} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}
+\end{equation}
+
+\subsubsection{R-Symbols}
+
+For braided (modular) Ising category:
+\begin{equation}
+    R_{\sigma,\sigma}^{\one} = e^{i\pi/8}, \quad R_{\sigma,\sigma}^{\psi} = e^{-3i\pi/8}
+\end{equation}
+
+%=============================================================
+\subsection{$\mathbb{Z}_N$ Category (with Multiplicity)}\label{subsec:zn}
+%=============================================================
+
+\textbf{Category:} $\mathcal{C}_{\mathbb{Z}_N}$ \\
+\textbf{Rank:} $d = N$ \\
+\textbf{Simple objects:} $X_0, X_1, \ldots, X_{N-1}$ (cyclic group)
+
+\subsubsection{Fusion Rules}
+
+\begin{equation}
+    X_a \otimes X_b = X_{(a+b) \bmod N}
+\end{equation}
+
+\textbf{Multiplicities:} All $N_{ab}^c = 0$ or $1$ (multiplicity-free for standard abelian fusion).
+
+\subsubsection{Quantum Dimensions}
+
+$d_{X_a} = 1$ for all $a$ (abelian anyons have dimension 1).
+
+\subsubsection{F-Symbols}
+
+For abelian (group-like) fusion, all nontrivial associators are trivial:
+\begin{equation}
+    F_{a,b,c}^e = 1
+\end{equation}
+
+\subsubsection{R-Symbols}
+
+Braiding given by a 2-cocycle $\sigma(a, b) \in U(1)$:
+\begin{equation}
+    R_{a,b}^{a+b} = \sigma(a, b)
+\end{equation}
+
+\begin{example}[$\mathbb{Z}_2$ with fermionic statistics]
+\begin{equation}
+    R_{\mathrm{f}, \mathrm{f}}^{\one} = -1
+\end{equation}
+\end{example}
+
+%=============================================================
+\subsection{sVec Category (Fermionic)}\label{subsec:svec}
+%=============================================================
+
+\textbf{Category:} $\mathcal{C}_{\mathrm{sVec}}$ \\
+\textbf{Rank:} $d = 2$ \\
+\textbf{Simple objects:} $\one = X_0$ (boson), $\psi = X_1$ (fermion)
+
+\subsubsection{Fusion Rules}
+
+\begin{center}
+\begin{tabular}{c|cc}
+$\otimes$ & $\one$ & $\psi$ \\
+\hline
+$\one$ & $\one$ & $\psi$ \\
+$\psi$ & $\psi$ & $\one$
+\end{tabular}
+\end{center}
+
+\textbf{Multiplicities:} Multiplicity-free ($N_{\psi\psi}^{\one} = 1$).
+
+\subsubsection{Quantum Dimensions}
+
+\begin{itemize}
+    \item $d_{\one} = 1$
+    \item $d_\psi = 1$ (fermionic dimension)
+\end{itemize}
+
+\subsubsection{F-Symbols}
+
+For fermionic fusion (super-case), the associator has an extra sign:
+\begin{equation}
+    F_{\psi,\psi,\psi}^{\one} = 1 \quad \text{(standard)}
+\end{equation}
+But crossing rules differ due to Fermi statistics.
+
+\subsubsection{R-Symbols}
+
+\begin{equation}
+    R_{\psi,\psi}^{\one} = e^{i\pi} = -1
+\end{equation}
+(fermionic exchange is anticommuting; eigenvalue is $-1$).
+
+%=============================================================
+\subsection{Summary Table}\label{subsec:examples-summary}
+%=============================================================
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccccl}
+\toprule
+\textbf{Category} & \textbf{Rank} & \textbf{Mult-Free?} & \textbf{Braided?} & \textbf{Modular?} & \textbf{Status} \\
+\midrule
+Fibonacci & 2 & $\checkmark$ & $\times$ & --- & Implemented \\
+Ising & 3 & $\checkmark$ & $\checkmark$ & $\checkmark$ & Implemented \\
+$\mathbb{Z}_N$ & $N$ & $\checkmark$ & $\checkmark$ & $\times$ & Template \\
+sVec & 2 & $\checkmark$ & $\checkmark$ & --- & Fermionic \\
+\bottomrule
+\end{tabular}
+\caption{Summary of fusion category examples.}
+\label{tab:examples-summary}
+\end{table}
+
+\begin{remark}
+\textbf{Unverified:} All F/R-symbol values marked \unverified\ pending HITL review against literature.
+\end{remark}
+
+\begin{remark}
+\textbf{Not exhaustive:} Other categories (Potts, Virasoro, etc.) can be added as needed.
+\end{remark}
