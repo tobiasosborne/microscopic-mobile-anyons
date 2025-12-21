@@ -110,6 +110,70 @@ The R-symbol $(R_{ab}^c)$ (with multiplicity indices) relates the two orderings.
 
 **Hexagon identities** (graphically): Interleaving F-moves and R-moves for three objects forms two commuting hexagons.
 
+## §3.5.4a Index Structure for F-Symbols and R-Symbols
+
+This section formalises the index notation for F-symbols and R-symbols, resolving ambiguities in Definition 3.1.4–3.1.7 of `fusion_category.md`.
+
+**Convention 3.5.0** (Index types). We distinguish three types of indices:
+
+| Index Type | Notation | Range | Meaning |
+|------------|----------|-------|---------|
+| **Simple object** | $a, b, c, d, \ldots$ | $\{X_0, X_1, \ldots, X_{d-1}\}$ or equivalently $\{0, 1, \ldots, d-1\}$ | Labels for simple objects in $\mathrm{Irr}(\mathcal{C})$ |
+| **Intermediate channel** | $e, f, g, h, k, \ldots$ | Same as simple objects | Intermediate fusion outcomes (also simple objects) |
+| **Multiplicity index** | $\alpha, \beta, \mu, \nu, \ldots$ | $\{1, \ldots, N_{xy}^z\}$ (context-dependent) | Basis choice within fusion space $\mathrm{Mor}(x \otimes y, z)$ |
+
+**Definition 3.5.4a** (F-symbol index structure). The F-symbol $(F_{abc}^d)_{(e,\alpha,\beta)}^{(f,\mu,\nu)}$ has the following index structure:
+
+- **External objects** $a, b, c, d \in \mathrm{Irr}(\mathcal{C})$: The four simple objects being re-associated
+- **Left intermediate channel** $e \in \mathrm{Irr}(\mathcal{C})$: The fusion outcome of $a \otimes b$ in the left-associated tree
+- **Right intermediate channel** $f \in \mathrm{Irr}(\mathcal{C})$: The fusion outcome of $b \otimes c$ in the right-associated tree
+- **Multiplicity indices**:
+  - $\alpha \in \{1, \ldots, N_{ab}^e\}$: basis index for $a \otimes b \to e$
+  - $\beta \in \{1, \ldots, N_{ec}^d\}$: basis index for $e \otimes c \to d$
+  - $\mu \in \{1, \ldots, N_{bc}^f\}$: basis index for $b \otimes c \to f$
+  - $\nu \in \{1, \ldots, N_{af}^d\}$: basis index for $a \otimes f \to d$
+
+**Compact notation.** When all fusion multiplicities satisfy $N_{xy}^z \leq 1$ (multiplicity-free case), we suppress multiplicity indices and write $(F_{abc}^d)_e^f$.
+
+**Definition 3.5.4b** (R-symbol index structure). The R-symbol $(R_{ab}^c)_{\alpha}^{\beta}$ has the following index structure:
+
+- **External objects** $a, b \in \mathrm{Irr}(\mathcal{C})$: The two objects being braided
+- **Fusion outcome** $c \in \mathrm{Irr}(\mathcal{C})$: The total charge, with $c \in a \otimes b$ (equivalently $N_{ab}^c \geq 1$)
+- **Multiplicity indices**:
+  - $\alpha \in \{1, \ldots, N_{ab}^c\}$: basis index for $a \otimes b \to c$
+  - $\beta \in \{1, \ldots, N_{ba}^c\}$: basis index for $b \otimes a \to c$
+
+**Remark.** Since $N_{ab}^c = N_{ba}^c$ (by commutativity of the Grothendieck ring), both indices range over the same set. The R-symbol is thus a square matrix of size $N_{ab}^c \times N_{ab}^c$ for each fixed $a, b, c$.
+
+**Definition 3.5.4c** (Pentagon equation with explicit indices). For simple objects $a, b, c, d$ and total charge $p$, summing over intermediate channels and multiplicities:
+$$
+\sum_{g, \gamma_1, \gamma_2, \gamma_3}
+(F_{abc}^g)_{(e,\alpha,\beta)}^{(f,\gamma_1,\gamma_2)}
+(F_{afg}^p)_{(h,\gamma_2,\delta)}^{(k,\mu,\nu)}
+(F_{bcd}^k)_{(f,\gamma_1,\epsilon)}^{(m,\sigma,\tau)}
+$$
+$$
+= \sum_{\lambda} (F_{ecd}^p)_{(h,\beta,\delta)}^{(n,\lambda,\rho)} (F_{abn}^p)_{(e,\alpha,\lambda)}^{(k,\mu,\nu')}
+$$
+where the indices satisfy the appropriate range constraints based on fusion multiplicities.
+
+**Simplified form** (multiplicity-free). When $N_{xy}^z \in \{0,1\}$:
+$$
+\sum_{g} (F_{abc}^g)_e^f (F_{afg}^p)_h^k (F_{bcd}^k)_f^m = (F_{ecd}^p)_h^n (F_{abn}^p)_e^k
+$$
+
+**Definition 3.5.4d** (Hexagon equations with explicit indices). For the first hexagon (multiplicity-free):
+$$
+(R_{ac}^e) (F_{acb}^d)_e^f (R_{bc}^f) = \sum_g (F_{cab}^d)_e^g (R_{ab}^g) (F_{abc}^d)_g^f
+$$
+
+For the second hexagon:
+$$
+(R_{ca}^e)^{-1} (F_{acb}^d)_e^f (R_{cb}^f)^{-1} = \sum_g (F_{cab}^d)_e^g (R_{ba}^g)^{-1} (F_{abc}^d)_g^f
+$$
+
+With multiplicity indices, additional sums and indices appear on each R-symbol and F-symbol as per Definitions 3.5.4a–3.5.4b.
+
 ## §3.5.5 Normalisation Choices for This Project
 
 **Convention 3.5.1** (Fusion tree normalisation). We adopt the following normalisations:

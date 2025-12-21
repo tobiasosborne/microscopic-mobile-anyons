@@ -64,20 +64,36 @@ The change of basis is given by the **F-move**:
 
 ![F-move diagram](figures/out/f_move.svg)
 
-Algebraically, the F-symbol $(F_{abc}^d)_{e, \alpha, \beta}^{f, \mu, \nu}$ is the coefficient mapping the basis vector corresponding to the left tree (with intermediate $e$) to the basis vector of the right tree (with intermediate $f$):
+Algebraically, the F-symbol $(F_{abc}^d)_{(e,\alpha,\beta)}^{(f,\mu,\nu)}$ is the coefficient mapping the basis vector corresponding to the left tree (with intermediate $e$) to the basis vector of the right tree (with intermediate $f$):
 \[
-\left| (a \otimes b) \otimes c \to d ; e, \alpha, \beta \right\rangle = \sum_{f, \mu, \nu} (F_{abc}^d)_{e, \alpha, \beta}^{f, \mu, \nu} \left| a \otimes (b \otimes c) \to d ; f, \mu, \nu \right\rangle
+\left| (a \otimes b) \otimes c \to d ; e, \alpha, \beta \right\rangle = \sum_{f, \mu, \nu} (F_{abc}^d)_{(e,\alpha,\beta)}^{(f,\mu,\nu)} \left| a \otimes (b \otimes c) \to d ; f, \mu, \nu \right\rangle
 \]
-where $\alpha, \beta, \mu, \nu$ are multiplicity indices (omitted in the diagram if $N_{xy}^z \le 1$).
+
+**Index structure** (see Definition 3.5.4a in `diagrammatic_calculus.md` for full details):
+- $a, b, c, d \in \mathrm{Irr}(\mathcal{C})$: simple objects (external labels)
+- $e, f \in \mathrm{Irr}(\mathcal{C})$: intermediate fusion channels (also simple objects)
+- $\alpha \in \{1, \ldots, N_{ab}^e\}$: multiplicity index for $a \otimes b \to e$
+- $\beta \in \{1, \ldots, N_{ec}^d\}$: multiplicity index for $e \otimes c \to d$
+- $\mu \in \{1, \ldots, N_{bc}^f\}$: multiplicity index for $b \otimes c \to f$
+- $\nu \in \{1, \ldots, N_{af}^d\}$: multiplicity index for $a \otimes f \to d$
+
+**Compact notation.** In the multiplicity-free case ($N_{xy}^z \in \{0,1\}$), we write $(F_{abc}^d)_e^f$.
 
 **Definition 3.1.5** (Pentagon Equation). The **pentagon equation** ensures that the two paths to re-associate $((a \otimes b) \otimes c) \otimes d$ to $a \otimes (b \otimes (c \otimes d))$ coincide:
 
 ![Pentagon equation diagram](figures/out/pentagon.svg)
 
-In terms of F-symbols (suppressing multiplicity indices for brevity):
+In terms of F-symbols (multiplicity-free case, where all indices are intermediate fusion channels):
 \[
-\sum_{k} (F_{a,b,c}^k)_e^l (F_{a,k,d}^p)_l^m (F_{b,c,d}^p)_k^n = (F_{a,b,n}^p)_e^m (F_{e,c,d}^m)_l^n
+\sum_{g} (F_{abc}^g)_e^f \, (F_{afd}^p)_g^h \, (F_{bcd}^h)_f^k = (F_{ecd}^p)_g^k \, (F_{abk}^p)_e^h
 \]
+where:
+- $a, b, c, d$: the four simple objects being re-associated
+- $p$: the total fusion outcome (simple object)
+- $e, f, g, h, k$: intermediate fusion channels (all simple objects)
+
+For the full equation with multiplicity indices, see Definition 3.5.4c in `diagrammatic_calculus.md`.
+
 This coherence condition is required for the fusion category to be well-defined.
 [Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), §2.1] `[unverified]`
 
@@ -87,18 +103,41 @@ The change of basis due to braiding is given by the **R-move**:
 
 ![R-move diagram](figures/out/r_move.svg)
 
-Algebraically, the R-symbol $(R_{ab}^c)_{i}^{j}$ maps the basis vector corresponding to the fusion of $a \otimes b$ (with intermediate channel $i$) to the basis vector of $b \otimes a$ (with intermediate channel $j$), both fusing to $c$. Multiplicity indices are suppressed in the diagram if $N_{xy}^z \le 1$.
+Algebraically, the R-symbol $(R_{ab}^c)_{\alpha}^{\beta}$ relates the fusion bases before and after braiding:
+\[
+c_{a,b} \left| a \otimes b \to c; \alpha \right\rangle = \sum_{\beta} (R_{ab}^c)_{\alpha}^{\beta} \left| b \otimes a \to c; \beta \right\rangle
+\]
+
+**Index structure** (see Definition 3.5.4b in `diagrammatic_calculus.md` for full details):
+- $a, b \in \mathrm{Irr}(\mathcal{C})$: simple objects being braided
+- $c \in \mathrm{Irr}(\mathcal{C})$: total fusion outcome (with $N_{ab}^c \geq 1$)
+- $\alpha \in \{1, \ldots, N_{ab}^c\}$: multiplicity index for $a \otimes b \to c$
+- $\beta \in \{1, \ldots, N_{ba}^c\}$: multiplicity index for $b \otimes a \to c$
+
+**Compact notation.** In the multiplicity-free case, we write $R_{ab}^c$ (a scalar for each $a, b, c$).
 
 **Definition 3.1.7** (Hexagon Equations). The **hexagon equations** are coherence conditions that relate the associator (F-symbols) and the braiding (R-symbols), ensuring consistency between re-associating and braiding operations. There are two hexagon equations.
 
-The first hexagon equation:
-\[
-c_{a, b \otimes c} \circ (1_a \otimes c_{b,c}) = ((c_{a,b} \otimes 1_c) \circ F_{b,a,c} \circ (1_b \otimes c_{a,c})) \circ F_{a,c,b}^{-1}
-\]
-Diagrammatically, this can be represented as:
+Diagrammatically:
 
 ![Hexagon equation diagram](figures/out/hexagon.svg)
 
-This equation (and its dual) ensures that braiding past a composite object can be decomposed consistently.
+In terms of F-symbols and R-symbols (multiplicity-free case):
+
+**First hexagon:**
+\[
+R_{ac}^e \, (F_{acb}^d)_e^f \, R_{bc}^f = \sum_g (F_{cab}^d)_e^g \, R_{ab}^g \, (F_{abc}^d)_g^f
+\]
+
+**Second hexagon:**
+\[
+(R_{ca}^e)^{-1} \, (F_{acb}^d)_e^f \, (R_{cb}^f)^{-1} = \sum_g (F_{cab}^d)_e^g \, (R_{ba}^g)^{-1} \, (F_{abc}^d)_g^f
+\]
+
+where $a, b, c, d$ are simple objects and $e, f, g$ are intermediate fusion channels.
+
+For the full equations with multiplicity indices, see Definition 3.5.4d in `diagrammatic_calculus.md`.
+
+These equations ensure that braiding past a composite object can be decomposed consistently.
 [Etingof–Nikshych–Ostrik, *Ann. Math.* **162** (2005), §2.1] `[unverified]`
 
