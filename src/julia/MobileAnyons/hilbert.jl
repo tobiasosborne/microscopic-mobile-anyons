@@ -1,20 +1,18 @@
 # src/julia/MobileAnyons/hilbert.jl
 # Planning ref: §4.2
 # See: docs/hilbert_space.md
+# Refactored to use TensorCategories.jl via FusionCategories wrapper
 
-include("config.jl")
+# Note: config.jl is included by MobileAnyons.jl before this file
+# Do not include it here to avoid duplicate struct definitions
 
-"""
-    FusionCategory
+# Include the FusionCategories wrapper module (TensorCategories backend)
+include("../FusionCategories/fusion_ring.jl")
+using .FusionCategories: n_simples, fusion_multiplicity, fusion_coefficients, simples, one
 
-Minimal fusion category data for Hilbert space construction.
-"""
-struct FusionCategory
-    d::Int                                      # number of simple objects
-    N::Dict{Tuple{Int,Int,Int}, Int}           # fusion multiplicities N[a,b,c]
-end
-
-fusion_mult(cat::FusionCategory, a, b, c) = get(cat.N, (a,b,c), 0)
+# Type alias for any TensorCategories-compatible category
+# Uses duck-typing: any type that supports n_simples(), fusion_multiplicity(), etc.
+const AbstractFusionCategory = Any
 
 """
     AnyonBasisState
@@ -28,31 +26,41 @@ struct AnyonBasisState
 end
 
 """
-    MobileAnyonHilbert
+    MobileAnyonHilbert{C}
 
 Hilbert space for mobile anyons on a 1D lattice.
+
+The category type C can be any TensorCategories-compatible type
+(e.g., SixJCategory from TensorCategories.jl).
 """
-struct MobileAnyonHilbert
+struct MobileAnyonHilbert{C}
     n_sites::Int
-    cat::FusionCategory
+    cat::C
     hardcore::Bool
     basis::Vector{AnyonBasisState}
     sector_ranges::Dict{Tuple{Int,Int}, UnitRange{Int}}  # (N,c) -> indices
 end
 
 """
+    enumerate_fusion_trees(cat, labels, c) -> Vector{Vector{Int}}
+
 Enumerate fusion trees for labels → charge c.
 Returns list of intermediate charge sequences.
+
+Uses TensorCategories.jl's fusion_multiplicity via FusionCategories wrapper.
+Labels are 1-based indices into simples(cat).
 """
-function enumerate_fusion_trees(cat::FusionCategory, labels::Vector{Int}, c::Int)
+function enumerate_fusion_trees(cat::AbstractFusionCategory, labels::Vector{Int}, c::Int)
+    d = n_simples(cat)
+
     isempty(labels) && return c == 1 ? [Int[]] : Vector{Int}[]
     length(labels) == 1 && return labels[1] == c ? [Int[]] : Vector{Int}[]
-    
+
     trees = Vector{Int}[]
     # Recursive: fuse first two, then continue
     a, b = labels[1], labels[2]
-    for ab in 1:cat.d
-        fusion_mult(cat, a, b, ab) == 0 && continue
+    for ab in 1:d
+        fusion_multiplicity(cat, a, b, ab) == 0 && continue
         rest = vcat([ab], labels[3:end])
         for subtree in enumerate_fusion_trees(cat, rest, c)
             push!(trees, vcat([ab], subtree))
@@ -62,13 +70,18 @@ function enumerate_fusion_trees(cat::FusionCategory, labels::Vector{Int}, c::Int
 end
 
 """
+    build_sector_basis(n_sites, cat, N, c; hardcore=true) -> Vector{AnyonBasisState}
+
 Build full basis for (N, c) sector.
+
+Uses TensorCategories.jl via FusionCategories wrapper for fusion rules.
 """
-function build_sector_basis(n_sites::Int, cat::FusionCategory, N::Int, c::Int; hardcore=true)
+function build_sector_basis(n_sites::Int, cat::AbstractFusionCategory, N::Int, c::Int; hardcore=true)
+    d = n_simples(cat)
     basis = AnyonBasisState[]
-    configs = hardcore ? enumerate_configs_hc(n_sites, N, cat.d) : 
+    configs = hardcore ? enumerate_configs_hc(n_sites, N, d) :
                          error("Soft-core not implemented")
-    
+
     for config in configs
         for tree in enumerate_fusion_trees(cat, config.labels, c)
             push!(basis, AnyonBasisState(config, tree, c))
@@ -78,16 +91,27 @@ function build_sector_basis(n_sites::Int, cat::FusionCategory, N::Int, c::Int; h
 end
 
 """
-Construct full Hilbert space.
+    MobileAnyonHilbert(n_sites, cat; hardcore=true)
+
+Construct full Hilbert space for mobile anyons.
+
+# Arguments
+- `n_sites::Int`: Number of lattice sites
+- `cat`: A TensorCategories-compatible fusion category (e.g., from fibonacci_category())
+- `hardcore::Bool`: If true, at most one anyon per site
+
+# Returns
+- `MobileAnyonHilbert{C}`: The constructed Hilbert space
 """
-function MobileAnyonHilbert(n_sites::Int, cat::FusionCategory; hardcore=true)
+function MobileAnyonHilbert(n_sites::Int, cat::C; hardcore=true) where C
+    d = n_simples(cat)
     basis = AnyonBasisState[]
     sector_ranges = Dict{Tuple{Int,Int}, UnitRange{Int}}()
-    
+
     max_N = hardcore ? n_sites : error("Need cutoff for soft-core")
-    
+
     for N in 0:max_N
-        for c in 1:cat.d
+        for c in 1:d
             start_idx = length(basis) + 1
             sector_basis = build_sector_basis(n_sites, cat, N, c; hardcore)
             append!(basis, sector_basis)
@@ -96,8 +120,8 @@ function MobileAnyonHilbert(n_sites::Int, cat::FusionCategory; hardcore=true)
             end
         end
     end
-    
-    return MobileAnyonHilbert(n_sites, cat, hardcore, basis, sector_ranges)
+
+    return MobileAnyonHilbert{C}(n_sites, cat, hardcore, basis, sector_ranges)
 end
 
 dim(hilb::MobileAnyonHilbert) = length(hilb.basis)

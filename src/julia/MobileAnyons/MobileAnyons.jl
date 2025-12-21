@@ -1,85 +1,46 @@
 # src/julia/MobileAnyons/MobileAnyons.jl
 # Module for mobile anyons from fusion categories
 # Planning ref: §4
+# Refactored to use TensorCategories.jl via FusionCategories wrapper
 
 module MobileAnyons
 
 using LinearAlgebra
 using Combinatorics
 
+# Configuration space exports
 export LabelledConfig, n_anyons, is_valid, is_hardcore
 export enumerate_configs_hc, n_configs_hc, occupation_vector
-export FusionCategory, fusion_mult
+
+# Hilbert space exports (using TensorCategories backend)
 export AnyonBasisState, MobileAnyonHilbert, dim
 export enumerate_fusion_trees, build_sector_basis
+
+# Operator exports
 export MorphismTerm, LocalOperator, is_particle_conserving
 export hopping_right, hopping_left, interaction_term
+
+# Hamiltonian exports
 export NumberConservingTerm, LocalHamiltonian
 export is_number_conserving, is_hermitian, add_component!, make_hermitian!
 export uniform_nn_hamiltonian, hopping_term, identity_term, two_anyon_interaction, n_bonds
-export svec_category, jordan_wigner_sign
+
+# sVec helper functions
+export jordan_wigner_sign
 export svec_hilbert_dimension, svec_total_dimension, valid_svec_charge
+
+# Re-export TensorCategories wrappers for convenience
+export fibonacci_category, ising_category, svec_category
+export n_simples, fusion_multiplicity, fusion_coefficients
 
 include("config.jl")
 include("hilbert.jl")
 include("operators.jl")
 include("hamiltonian_v0.jl")
 
-# === Example fusion categories ===
-
-"""
-Fibonacci category: simples {1, τ}, fusion τ⊗τ = 1 + τ
-"""
-function fibonacci_category()
-    N = Dict{Tuple{Int,Int,Int}, Int}()
-    # 1 = vacuum, 2 = τ
-    N[(1,1,1)] = 1
-    N[(1,2,2)] = 1
-    N[(2,1,2)] = 1
-    N[(2,2,1)] = 1
-    N[(2,2,2)] = 1
-    return FusionCategory(2, N)
-end
-
-"""
-Ising category: simples {1, σ, ψ}, fusion σ⊗σ = 1 + ψ
-"""
-function ising_category()
-    N = Dict{Tuple{Int,Int,Int}, Int}()
-    # 1 = vacuum, 2 = σ, 3 = ψ
-    N[(1,1,1)] = 1
-    N[(1,2,2)] = 1; N[(2,1,2)] = 1
-    N[(1,3,3)] = 1; N[(3,1,3)] = 1
-    N[(2,2,1)] = 1; N[(2,2,3)] = 1
-    N[(2,3,2)] = 1; N[(3,2,2)] = 1
-    N[(3,3,1)] = 1
-    return FusionCategory(3, N)
-end
-
-"""
-    svec_category()
-
-sVec: Category of super-vector spaces. Simples {1, f} with f⊗f = 1.
-This must reduce to standard fermionic Fock space (PRD SC4).
-
-# Properties
-- 1 = vacuum (even parity)
-- f = fermion (odd parity)
-- Fusion: Z₂ parity conservation
-- F-symbols: All trivial (F = 1)
-- R-symbols: R^{ff}_1 = -1 (fermionic exchange)
-
-See: docs/svec_verification.md
-"""
-function svec_category()
-    N = Dict{Tuple{Int,Int,Int}, Int}()
-    # 1 = vacuum (even), 2 = fermion (odd)
-    N[(1,1,1)] = 1  # 1 ⊗ 1 = 1
-    N[(1,2,2)] = 1  # 1 ⊗ f = f
-    N[(2,1,2)] = 1  # f ⊗ 1 = f
-    N[(2,2,1)] = 1  # f ⊗ f = 1
-    return FusionCategory(2, N)
-end
+# Re-export category constructors from FusionCategories module
+using .FusionCategories: fibonacci_category, ising_category, svec_category
+using .FusionCategories: n_simples, fusion_multiplicity, fusion_coefficients
 
 """
     jordan_wigner_sign(config::LabelledConfig, i::Int, j::Int)
