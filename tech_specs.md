@@ -83,20 +83,28 @@ Type annotations follow: `Constraint`, `Technical`, `Physical`, `Conjecture`.
 
 Every definition must be accompanied by a compilable code snippet in Julia.
 
+**Required library:** All fusion category code MUST use [TensorCategories.jl](https://github.com/FabianMaeurer/TensorCategories.jl). See `.agents/skills/tensor-categories.md` for comprehensive API documentation.
+
 **Example format:**
 
 > **Definition 3.1** (Fusion multiplicity). For simple objects $a, b, c \in \mathcal{C}$, the fusion multiplicity $N_{ab}^c$ is the dimension of $\mathrm{Hom}(a \otimes b, c)$.
 
 ```julia
-# file: src/fusion/multiplicity.jl
+# file: src/julia/FusionCategories/fusion_ring.jl
 # refs: fusion_category.md, Def 3.1
 
-struct FusionCategory
-    simples::Vector{Symbol}
-    N::Dict{Tuple{Symbol,Symbol,Symbol}, Int}  # N[a,b,c] = N_{ab}^c
-end
+using TensorCategories, Oscar
 
-fusion_multiplicity(C::FusionCategory, a, b, c) = get(C.N, (a, b, c), 0)
+"""
+    fusion_multiplicity(C, a::Int, b::Int, c::Int) -> Int
+
+Compute fusion multiplicity N_{ab}^c = dim Hom(X_a ⊗ X_b, X_c).
+Uses TensorCategories.jl Hom space dimensions.
+"""
+function fusion_multiplicity(C, a::Int, b::Int, c::Int)
+    S = simples(C)
+    Int(dim(Hom(S[a] ⊗ S[b], S[c])))
+end
 ```
 
 Code snippets longer than ~20 lines go in separate files under `src/`, with a reference comment linking back to the definition.

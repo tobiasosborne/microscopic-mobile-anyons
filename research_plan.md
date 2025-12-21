@@ -14,6 +14,16 @@ This document outlines the research plan structured around the target publicatio
 
 This plan uses **planning IDs** (e.g., `§3.1.1`, `§P1.2`) for logical organization. When issues are registered with the `bd` tool, they receive sequential IDs (e.g., `ma-1`, `ma-2`). The planning reference should be included in each issue's description for traceability. See `tech_specs.md` §10 for details.
 
+### Note on Code Libraries
+
+**All fusion category Julia code MUST use [TensorCategories.jl](https://github.com/FabianMaeurer/TensorCategories.jl).** This package provides:
+- Built-in Fibonacci, Ising, and other standard categories
+- Proper categorical operations (tensor products, Hom spaces, duals)
+- F-symbol and R-symbol computation with pentagon/hexagon verification
+- Integration with Oscar.jl for algebraic computations
+
+See `.agents/skills/tensor-categories.md` for comprehensive API documentation.
+
 ---
 
 ## Pre-Flight: Project Setup
@@ -121,7 +131,7 @@ Define fusion rings and fusion categories with full mathematical rigour. **Criti
 | 3.1.5 | R-symbols and hexagon equations (braiding, with multiplicity) | ibid. | BEAD-0015 | completed |
 | 3.1.6 | Fusion tree basis: when and how to fix a basis | ibid. | BEAD-0016 | pending |
 | 3.1.7 | Examples: Fibonacci (mult-free), Ising (mult-free), $\mathbb{Z}_N$, others with multiplicity | ibid. | BEAD-0017 | pending |
-| 3.1.8 | Julia implementation of fusion category data structure | — | BEAD-0018 | pending |
+| 3.1.8 | Julia implementation using TensorCategories.jl (see `.agents/skills/tensor-categories.md`) | — | BEAD-0018 | **completed** |
 
 Output: `docs/fusion_ring.md`, `docs/fusion_category.md`, `docs/morphism_spaces.md`, `src/julia/FusionCategories/`, `symbols.yaml`, `symbols.md`
 

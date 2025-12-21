@@ -365,18 +365,49 @@ history/
 - Place in `src/julia/` with clear module structure
 - Include docstrings with references back to definitions
 
+#### TensorCategories.jl (REQUIRED)
+
+**All fusion category code MUST use [TensorCategories.jl](https://github.com/FabianMaeurer/TensorCategories.jl).** Do not write custom fusion category implementations.
+
+For detailed API reference, see:
+- **Skill file:** `.agents/skills/tensor-categories.md` (comprehensive API guide)
+- **API documentation:** `literature/julia/api.md`
+- **Tests:** `tests/test_tc_fibonacci.jl`, `tests/test_fusioncategories.jl`
+
+**Key patterns:**
+
 ```julia
-"""
-    fusion_multiplicity(C::FusionCategory, a, b, c) -> Int
+using TensorCategories, Oscar
 
-Compute the fusion multiplicity N_{ab}^c for the fusion category C.
+# Use built-in categories
+Fib = fibonacci_category()
+Ising = ising_category()
 
-See: docs/fusion_category.md, Definition 3.1
-"""
-function fusion_multiplicity(C::FusionCategory, a, b, c)
-    get(C.N, (a, b, c), 0)
-end
+# Get simple objects and work with them
+S = simples(Fib)
+τ = S[2]
+
+# Tensor products and decomposition
+product = τ ⊗ τ
+dec = decompose(product)  # Returns [(simple, multiplicity), ...]
+
+# Hom spaces and fusion multiplicities
+H = Hom(τ ⊗ τ, τ)
+dim(H)  # = N_{ττ}^τ = 1
+
+# Associators (F-symbols)
+α = associator(τ, τ, τ)
+
+# For custom categories, use SixJCategory
+C = six_j_category(F, fusion_rules_array, ["𝟙", "τ"])
+set_one!(C, 1)
+set_spherical!(C, [...])
 ```
+
+**Do NOT:**
+- Write custom `FusionRing` or `FusionCategory` structs
+- Implement fusion rules manually when TensorCategories provides them
+- Compute F-symbols or R-symbols from scratch
 
 ### Clojure
 
