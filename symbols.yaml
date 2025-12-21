@@ -145,3 +145,19 @@ symbols:
     type: Operation
     desc: Tensor product (logical AND / composition of parts)
     defined_in: docs/fock_space.md
+  - sym: "d_i"
+    type: Number
+    desc: Quantum dimension of simple object X_i (trace of identity)
+    defined_in: docs/diagrammatic_calculus.md
+  - sym: "D"
+    type: Number
+    desc: Total dimension of fusion category, D = sqrt(sum_i d_i^2)
+    defined_in: docs/diagrammatic_calculus.md
+  - sym: "\\mathrm{coev}_i"
+    type: Morphism
+    desc: Coevaluation map (cup), 1 -> X_i ⊗ X_i*
+    defined_in: docs/diagrammatic_calculus.md
+  - sym: "\\mathrm{ev}_i"
+    type: Morphism
+    desc: Evaluation map (cap), X_i* ⊗ X_i -> 1
+    defined_in: docs/diagrammatic_calculus.md
