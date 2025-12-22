@@ -1,26 +1,40 @@
-# Figures Workflow
+# Figures for Documentation
 
-This directory contains the source code and build artifacts for diagrams used in the documentation.
+Figure sources have been consolidated in `tex/figures/` (the canonical location for LaTeX project figures).
 
-## Directory Structure
+## Location
 
-- `src/`: LaTeX/TikZ source files (`.tex`).
-- `out/`: Generated SVG files (`.svg`).
-- `build.sh`: Script to compile sources to SVGs.
+- **Sources**: `tex/figures/src/*.tex` - TikZ/LaTeX figure sources
+- **Outputs**: `tex/figures/out/` - Compiled PDF and SVG files
+- **Build script**: `tex/figures/build.sh`
 
-## How to Add/Update Figures
+## Usage
 
-1.  Add or edit a `.tex` file in `src/`. Use the `standalone` class.
-2.  Run the build script from the project root:
-    ```bash
-    ./docs/figures/build.sh
-    ```
-3.  Embed the resulting SVG in markdown:
-    ```markdown
-    ![Description](figures/out/filename.svg)
-    ```
+### In Markdown documentation
 
-## Requirements
+```markdown
+![F-move diagram](../tex/figures/out/f_move.svg)
+```
 
-- `pdflatex` (TeX Live)
-- `pdftocairo` (poppler-utils)
+### In LaTeX
+
+```latex
+\includegraphics{figures/out/f_move}
+```
+
+## Building figures
+
+```bash
+./tex/figures/build.sh
+```
+
+This generates both PDF (for LaTeX) and SVG (for markdown) outputs.
+
+## Available figures
+
+| Figure | Description |
+|--------|-------------|
+| `f_move` | F-move (associator) diagram |
+| `r_move` | R-move (braiding) diagram |
+| `pentagon` | Pentagon equation |
+| `hexagon` | Hexagon equation |
