@@ -360,17 +360,25 @@ Conjecture: Hard-core anyons in continuum limit are described by Girardeau-type 
 
 Output: `docs/girardeau.md`
 
-### 6.3. Partition Functions
+### 6.3. Partition Functions and Spacetime Diagrams
 
 **BEAD-0320** `[open]` `[refine]`
+
+The partition function $Z = \mathrm{Tr}(e^{-\beta H})$ admits a worldline representation as a sum over spacetime diagrams. For particle-non-conserving Hamiltonians, this generates fusion/splitting vertices weighted by categorical data. See `notes/spacetime.PNG` for the dilute vs dense regimes.
 
 | Substep | Description | Ref | BEAD | Status |
 |---------|-------------|-----|------|--------|
 | 6.3.1 | Hard-core partition function: connection to loop models? | — | BEAD-0321 | pending |
 | 6.3.2 | Free anyons: Leinaas–Myrheim / Wilczek susceptibility? | Leinaas–Myrheim, Wilczek `[add to library]` | BEAD-0322 | pending |
 | 6.3.3 | With creation/annihilation: spacetime diagrams → Levin–Wen configurations? | [Levin–Wen](https://arxiv.org/abs/cond-mat/0404617) `[add to library]` | BEAD-0323 | pending |
+| 6.3.4 | Diagram weights from categorical data: F-symbols at vertices, R at crossings, $d_a$ for loops | — | BEAD-0324 | pending |
+| 6.3.5 | Dilute vs dense phases: string tension and loop proliferation | — | BEAD-0325 | pending |
+| 6.3.6 | Criticality detection I: SLE for domain walls / interfaces | [Schramm 2000](https://arxiv.org/abs/math/0005295), [Cardy 2005](https://arxiv.org/abs/cond-mat/0503313) `[add to library]` | BEAD-0326 | pending |
+| 6.3.7 | Criticality detection II: conformal invariance, scaling as isometries | — | BEAD-0327 | pending |
+| 6.3.8 | Connection to CFT: central charge from loop fugacity, Virasoro structure | [Di Francesco et al.](https://doi.org/10.1007/978-1-4612-2256-9) `[add to library]` | BEAD-0328 | pending |
+| 6.3.9 | Fractal dimensions of worldlines at criticality | — | BEAD-0329 | pending |
 
-Output: `docs/partition_functions.md`
+Output: `docs/partition_functions.md`, `docs/criticality.md`
 
 ### 6.4. Quantum Dynamics via Numerics
 
@@ -641,6 +649,9 @@ LaTeX     Compile   Code       Figures    Assemble   Review     Integrate
 | Etingof–Nikshych–Ostrik 2011 (Morita equivalence) | BEAD-0708 | pending |
 | Kong–Wen 2014 (gapped domain walls / boundaries) | BEAD-0709 | pending |
 | Aasen–Fendley–Mong 2020 (topological defects on the lattice) | BEAD-0710 | pending |
+| Schramm 2000 (SLE original paper) | BEAD-0711 | pending |
+| Cardy 2005 (SLE and conformal invariance) | BEAD-0712 | pending |
+| Di Francesco et al. (CFT textbook) | BEAD-0713 | pending |
 
 ---
 
@@ -648,7 +659,7 @@ LaTeX     Compile   Code       Figures    Assemble   Review     Integrate
 
 These are **planning IDs** for logical organization. When registered with `bd`, they become sequential `ma-N` IDs. Include the planning reference (e.g., `§3.1.1`) in each issue description.
 
-Total planning items: ~135
+Total planning items: ~145
 
 | Phase | Section | Planning Refs | Count |
 |-------|---------|---------------|-------|
@@ -661,11 +672,11 @@ Total planning items: ~135
 | | 3. Preliminaries | §3.1.1–§3.5.6 | ~25 |
 | | 4. Hilbert Space | §4.1.1–§4.4.4 | ~20 |
 | | 5. Dynamics | §5.1.1.1–§5.1.4.4 | ~20 |
-| | 6. Properties | §6.1.1–§6.5.9 | ~24 |
+| | 6. Properties | §6.1.1–§6.5.9 | ~30 |
 | | 7. Discussion | §7.1.1–§7.1.6 | ~7 |
 | | 8. Conclusions | §8 | 1 |
 | | 9. Bibliography | §9.1–§9.4 | 4 |
-| | Papers | §Lit.1–§Lit.10 | 10 |
+| | Papers | §Lit.1–§Lit.13 | 13 |
 | **Post-Flight** | F1. LaTeX Conversion | §F1.1–§F1.8 | 9 |
 | | F2. Compilation | §F2.1–§F2.3 | 4 |
 | | F3. Code Appendices | §F3.1–§F3.4 | 5 |
