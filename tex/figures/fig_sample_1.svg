@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="350" viewBox="0 0 280 350">
+  <style>
+    .worldline { stroke: #2563eb; stroke-width: 2; fill: none; }
+    .site-dot { fill: #94a3b8; }
+    .worldline-dot { fill: #2563eb; }
+    .vertex-cup { fill: none; stroke: #16a34a; stroke-width: 2; }
+    .vertex-cap { fill: none; stroke: #dc2626; stroke-width: 2; }
+    .axis { stroke: #334155; stroke-width: 1; }
+    .label { font-family: monospace; font-size: 12px; fill: #334155; }
+  </style>
+  <rect width="100%" height="100%" fill="white"/>
+
+  <circle cx="40.0" cy="310.0" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="310.0" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="310.0" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="310.0" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="310.0" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="295.7894736842105" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="295.7894736842105" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="295.7894736842105" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="295.7894736842105" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="295.7894736842105" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="281.57894736842104" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="281.57894736842104" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="281.57894736842104" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="281.57894736842104" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="281.57894736842104" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="267.36842105263156" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="267.36842105263156" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="267.36842105263156" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="267.36842105263156" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="267.36842105263156" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="253.1578947368421" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="253.1578947368421" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="253.1578947368421" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="253.1578947368421" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="253.1578947368421" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="238.94736842105263" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="238.94736842105263" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="238.94736842105263" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="238.94736842105263" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="238.94736842105263" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="224.73684210526315" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="224.73684210526315" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="224.73684210526315" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="224.73684210526315" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="224.73684210526315" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="210.5263157894737" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="210.5263157894737" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="210.5263157894737" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="210.5263157894737" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="210.5263157894737" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="196.31578947368422" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="196.31578947368422" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="196.31578947368422" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="196.31578947368422" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="196.31578947368422" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="182.10526315789474" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="182.10526315789474" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="182.10526315789474" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="182.10526315789474" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="182.10526315789474" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="167.89473684210526" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="167.89473684210526" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="167.89473684210526" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="167.89473684210526" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="167.89473684210526" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="153.68421052631578" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="153.68421052631578" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="153.68421052631578" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="153.68421052631578" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="153.68421052631578" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="139.4736842105263" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="139.4736842105263" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="139.4736842105263" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="139.4736842105263" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="139.4736842105263" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="125.26315789473682" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="125.26315789473682" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="125.26315789473682" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="125.26315789473682" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="125.26315789473682" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="111.05263157894737" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="111.05263157894737" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="111.05263157894737" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="111.05263157894737" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="111.05263157894737" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="96.84210526315789" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="96.84210526315789" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="96.84210526315789" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="96.84210526315789" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="96.84210526315789" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="82.63157894736841" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="82.63157894736841" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="82.63157894736841" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="82.63157894736841" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="82.63157894736841" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="68.42105263157893" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="68.42105263157893" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="68.42105263157893" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="68.42105263157893" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="68.42105263157893" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="54.21052631578945" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="54.21052631578945" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="54.21052631578945" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="54.21052631578945" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="54.21052631578945" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="40.0" r="2" class="site-dot"/>
+  <circle cx="90.0" cy="40.0" r="2" class="site-dot"/>
+  <circle cx="140.0" cy="40.0" r="2" class="site-dot"/>
+  <circle cx="190.0" cy="40.0" r="2" class="site-dot"/>
+  <circle cx="240.0" cy="40.0" r="2" class="site-dot"/>
+  <line x1="30" y1="310" x2="250" y2="310" class="axis"/>
+  <line x1="30" y1="310" x2="30" y2="30" class="axis"/>
+  <text x="140.0" y="340" class="label" text-anchor="middle">site</text>
+  <text x="15" y="175.0" class="label" transform="rotate(-90, 15, 175.0)">τ (imaginary time)</text>
+  <text x="40.0" y="330" class="label" text-anchor="middle">1</text>
+  <text x="90.0" y="330" class="label" text-anchor="middle">2</text>
+  <text x="140.0" y="330" class="label" text-anchor="middle">3</text>
+  <text x="190.0" y="330" class="label" text-anchor="middle">4</text>
+  <text x="240.0" y="330" class="label" text-anchor="middle">5</text>
+  <text x="20" y="314.0" class="label" text-anchor="end">1</text>
+  <text x="20" y="257.1578947368421" class="label" text-anchor="end">5</text>
+  <text x="20" y="200.31578947368422" class="label" text-anchor="end">9</text>
+  <text x="20" y="143.4736842105263" class="label" text-anchor="end">13</text>
+  <text x="20" y="86.63157894736841" class="label" text-anchor="end">17</text>
+  <text x="140.0" y="25" class="label" text-anchor="middle" font-weight="bold">TL Spacetime (n=5, n_τ=20, δ=1.62)</text>
+</svg>
