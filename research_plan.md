@@ -384,6 +384,26 @@ Output: `docs/partition_functions.md`
 
 Output: `docs/numerics.md`, `src/julia/Numerics/`
 
+### 6.5. Boundary Conditions via Module Categories
+
+**BEAD-0340** `[open]` `[refine]`
+
+Boundary conditions for anyonic chains are classified by module categories over the bulk fusion category $\mathcal{C}$. This follows Kitaev–Kong and subsequent works on topological boundaries and domain walls.
+
+| Substep | Description | Ref | BEAD | Status |
+|---------|-------------|-----|------|--------|
+| 6.5.1 | Review: module categories as boundary conditions | [Kitaev–Kong, *Commun. Math. Phys.* **313** (2012)](https://doi.org/10.1007/s00220-012-1500-5) | BEAD-0341 | pending |
+| 6.5.2 | Left and right $\mathcal{C}$-module categories; bimodule categories | ibid., [Kong 2014](https://arxiv.org/abs/1211.4644) | BEAD-0342 | pending |
+| 6.5.3 | Simple module objects as boundary excitations / edge modes | ibid. | BEAD-0343 | pending |
+| 6.5.4 | Morita equivalence of fusion categories; boundary-bulk correspondence | [Etingof–Nikshych–Ostrik, *Adv. Math.* **226** (2011)](https://doi.org/10.1016/j.aim.2010.08.007) | BEAD-0344 | pending |
+| 6.5.5 | Application to our model: boundary Hilbert space from module category | — | BEAD-0345 | pending |
+| 6.5.6 | Boundary-changing operators as bimodule functors | — | BEAD-0346 | pending |
+| 6.5.7 | Open chain with two boundaries: $\mathcal{M} \boxtimes_\mathcal{C} \mathcal{N}$ structure | — | BEAD-0347 | pending |
+| 6.5.8 | Examples: trivial boundaries, Lagrangian algebras, gapped boundaries | [Kong–Wen, *JHEP* (2014)](https://arxiv.org/abs/1405.5858) | BEAD-0348 | pending |
+| 6.5.9 | Connection to golden chain boundary conditions (Fibonacci case) | [Aasen–Fendley–Mong (2020)](https://arxiv.org/abs/2008.08598) | BEAD-0349 | pending |
+
+Output: `docs/boundary_conditions.md`, `docs/module_categories.md`
+
 ---
 
 ## 7. Discussion
@@ -572,12 +592,12 @@ v0        v1        Free       Create
 └────┬────┴─────────┴──────────┘
      ▼
 Properties (6)
-┌────┴────┬─────────┬──────────┐
-▼         ▼         ▼          ▼
-6.1       6.2       6.3        6.4
-Limits    Girard.   Part.Fn    Numerics
-│         │         │          │
-└────┬────┴─────────┴──────────┘
+┌────┴────┬─────────┬──────────┬──────────┐
+▼         ▼         ▼          ▼          ▼
+6.1       6.2       6.3        6.4        6.5
+Limits    Girard.   Part.Fn    Numerics   Bound.
+│         │         │          │          │
+└────┬────┴─────────┴──────────┴──────────┘
      ▼
 Discussion (7)
      │
@@ -616,6 +636,11 @@ LaTeX     Compile   Code       Figures    Assemble   Review     Integrate
 | Leinaas–Myrheim (original anyons paper) | BEAD-0703 | completed |
 | Wilczek (anyons / fractional statistics) | BEAD-0704 | pending |
 | Levin–Wen (string-net) | BEAD-0705 | pending |
+| Kitaev–Kong 2012 (models for gapped boundaries) | BEAD-0706 | pending |
+| Kong 2014 (anyon condensation and tensor categories) | BEAD-0707 | pending |
+| Etingof–Nikshych–Ostrik 2011 (Morita equivalence) | BEAD-0708 | pending |
+| Kong–Wen 2014 (gapped domain walls / boundaries) | BEAD-0709 | pending |
+| Aasen–Fendley–Mong 2020 (topological defects on the lattice) | BEAD-0710 | pending |
 
 ---
 
@@ -623,7 +648,7 @@ LaTeX     Compile   Code       Figures    Assemble   Review     Integrate
 
 These are **planning IDs** for logical organization. When registered with `bd`, they become sequential `ma-N` IDs. Include the planning reference (e.g., `§3.1.1`) in each issue description.
 
-Total planning items: ~120
+Total planning items: ~135
 
 | Phase | Section | Planning Refs | Count |
 |-------|---------|---------------|-------|
@@ -636,11 +661,11 @@ Total planning items: ~120
 | | 3. Preliminaries | §3.1.1–§3.5.6 | ~25 |
 | | 4. Hilbert Space | §4.1.1–§4.4.4 | ~20 |
 | | 5. Dynamics | §5.1.1.1–§5.1.4.4 | ~20 |
-| | 6. Properties | §6.1.1–§6.4.3 | ~15 |
+| | 6. Properties | §6.1.1–§6.5.9 | ~24 |
 | | 7. Discussion | §7.1.1–§7.1.6 | ~7 |
 | | 8. Conclusions | §8 | 1 |
 | | 9. Bibliography | §9.1–§9.4 | 4 |
-| | Papers | §Lit.1–§Lit.5 | 5 |
+| | Papers | §Lit.1–§Lit.10 | 10 |
 | **Post-Flight** | F1. LaTeX Conversion | §F1.1–§F1.8 | 9 |
 | | F2. Compilation | §F2.1–§F2.3 | 4 |
 | | F3. Code Appendices | §F3.1–§F3.4 | 5 |
