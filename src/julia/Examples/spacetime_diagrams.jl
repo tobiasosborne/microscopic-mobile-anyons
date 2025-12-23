@@ -31,6 +31,7 @@ Fields:
 - n_τ: number of imaginary time slices
 - δ: loop weight (TL parameter)
 - worldlines: Vector of worldlines, each is Vector{Int} of positions at each τ
+- pairings: Dict mapping worldline index to its partner index
 - vertices: list of (τ, type, data) for non-trivial vertices
 """
 mutable struct SpacetimeConfig
@@ -40,6 +41,9 @@ mutable struct SpacetimeConfig
     # Worldline representation: worldlines[w][τ] = position of worldline w at time τ
     # -1 means worldline doesn't exist at that time
     worldlines::Vector{Vector{Int}}
+    # Pairings: which worldline is paired to which (for valid annihilation)
+    # pairings[w] = partner of worldline w
+    pairings::Dict{Int, Int}
     # Vertices: (τ, type, data)
     # Types: :cup (creation), :cap (annihilation), :crossing, :reconnect
     vertices::Vector{Tuple{Int, Symbol, Any}}
@@ -53,7 +57,7 @@ end
 Create empty spacetime with no worldlines.
 """
 function empty_spacetime(n::Int, n_τ::Int, δ::Float64)
-    SpacetimeConfig(n, n_τ, δ, Vector{Int}[], Tuple{Int, Symbol, Any}[], 1.0)
+    SpacetimeConfig(n, n_τ, δ, Vector{Int}[], Dict{Int,Int}(), Tuple{Int, Symbol, Any}[], 1.0)
 end
 
 """
@@ -80,6 +84,36 @@ function num_worldlines_at_time(config::SpacetimeConfig, τ::Int)
     count(wl -> 1 <= τ <= length(wl) && wl[τ] > 0, config.worldlines)
 end
 
+"""
+    worldline_at_position(config, τ, pos)
+
+Find the worldline index at position pos at time τ. Returns nothing if none.
+"""
+function worldline_at_position(config::SpacetimeConfig, τ::Int, pos::Int)
+    for (w, wl) in enumerate(config.worldlines)
+        if 1 <= τ <= length(wl) && wl[τ] == pos
+            return w
+        end
+    end
+    nothing
+end
+
+"""
+    active_worldlines_at_time(config, τ)
+
+Get list of (worldline_index, position) for active worldlines at time τ.
+"""
+function active_worldlines_at_time(config::SpacetimeConfig, τ::Int)
+    result = Tuple{Int, Int}[]
+    for (w, wl) in enumerate(config.worldlines)
+        if 1 <= τ <= length(wl) && wl[τ] > 0
+            push!(result, (w, wl[τ]))
+        end
+    end
+    sort!(result, by = x -> x[2])  # Sort by position
+    result
+end
+
 #==============================================================================#
 #                         Monte Carlo Evolution                                 #
 #==============================================================================#
@@ -103,18 +137,18 @@ MCParams(; Δβ=0.5, t=1.0, J=0.5, μ=0.5) = MCParams(Δβ, t, J, μ)
 
 Evolve configuration by one imaginary time step using local Monte Carlo updates.
 
-For small Δβ, probability of applying operator O is ≈ Δβ × coupling.
+Uses rejection sampling to ensure only compatible Hamiltonian terms are applied:
+- Pair creation: creates two worldlines that are paired to each other
+- Pair annihilation: only allowed for worldlines that are paired to each other
+- Hopping: worldlines move but maintain their pairing
+
 Returns the updated configuration.
 """
 function evolve_one_step!(config::SpacetimeConfig, params::MCParams, rng::AbstractRNG)
     n = config.n
     τ = config.n_τ + 1  # Next time slice
 
-    # Get current positions
-    curr_pos = positions_at_time(config, config.n_τ)
-    N_curr = length(curr_pos)
-
-    # Extend all existing worldlines by one step (initially continuing straight)
+    # Extend all existing active worldlines by one step (continuing straight)
     for wl in config.worldlines
         if length(wl) == config.n_τ && wl[end] > 0
             push!(wl, wl[end])  # Continue at same position
@@ -125,7 +159,7 @@ function evolve_one_step!(config::SpacetimeConfig, params::MCParams, rng::Abstra
 
     # === Apply local updates with appropriate probabilities ===
 
-    # 1. Hopping: each worldline can hop left/right
+    # 1. Hopping: each worldline can hop left/right (preserves pairings)
     if params.t > 0
         for (w, wl) in enumerate(config.worldlines)
             if length(wl) == τ && wl[τ] > 0
@@ -135,9 +169,10 @@ function evolve_one_step!(config::SpacetimeConfig, params::MCParams, rng::Abstra
                 p_hop = min(1.0, params.Δβ * params.t)
 
                 if rand(rng) < p_hop
-                    # Choose direction
-                    can_left = pos > 1 && !(pos - 1 in positions_at_time(config, τ))
-                    can_right = pos < n && !(pos + 1 in positions_at_time(config, τ))
+                    # Choose direction - check occupancy
+                    curr_occupied = positions_at_time(config, τ)
+                    can_left = pos > 1 && !(pos - 1 in curr_occupied)
+                    can_right = pos < n && !(pos + 1 in curr_occupied)
 
                     if can_left && can_right
                         wl[τ] = rand(rng, Bool) ? pos - 1 : pos + 1
@@ -153,9 +188,10 @@ function evolve_one_step!(config::SpacetimeConfig, params::MCParams, rng::Abstra
 
     # 2. Pair creation: create two new worldlines at adjacent empty sites
     if params.μ > 0
-        p_create = min(0.9, params.Δβ * params.μ)  # Higher cap for more activity
+        p_create = min(0.9, params.Δβ * params.μ)
 
-        for site in 1:(n-1)
+        # Try each possible creation site
+        for site in shuffle(rng, 1:(n-1))
             curr_occupied = positions_at_time(config, τ)
             if !(site in curr_occupied) && !(site + 1 in curr_occupied)
                 if rand(rng) < p_create
@@ -166,6 +202,13 @@ function evolve_one_step!(config::SpacetimeConfig, params::MCParams, rng::Abstra
                     push!(wl2, site + 1)
                     push!(config.worldlines, wl1)
                     push!(config.worldlines, wl2)
+
+                    # Record pairing: these two worldlines are partners
+                    w1 = length(config.worldlines) - 1
+                    w2 = length(config.worldlines)
+                    config.pairings[w1] = w2
+                    config.pairings[w2] = w1
+
                     push!(config.vertices, (τ, :cup, (site, site + 1)))
                     break  # Only one creation per step
                 end
@@ -173,37 +216,79 @@ function evolve_one_step!(config::SpacetimeConfig, params::MCParams, rng::Abstra
         end
     end
 
-    # 3. Pair annihilation: adjacent worldlines can annihilate
+    # 3. Pair annihilation: ONLY for worldlines that are paired to each other
     if params.μ > 0
         p_annihilate = min(0.9, params.Δβ * params.μ)
 
-        # Find adjacent pairs
-        curr_occupied = positions_at_time(config, τ)
-        for i in 1:(length(curr_occupied) - 1)
-            if curr_occupied[i + 1] == curr_occupied[i] + 1
-                if rand(rng) < p_annihilate
-                    # Annihilate this pair
-                    site1, site2 = curr_occupied[i], curr_occupied[i + 1]
+        # Get active worldlines with their positions
+        active = active_worldlines_at_time(config, τ)
 
-                    # Find and terminate the worldlines
-                    for (w, wl) in enumerate(config.worldlines)
-                        if length(wl) == τ && wl[τ] == site1
-                            wl[τ] = -1  # Terminate
-                        elseif length(wl) == τ && wl[τ] == site2
-                            wl[τ] = -1  # Terminate
-                        end
-                    end
+        # Find adjacent pairs that are actually paired (partners)
+        annihilatable = Tuple{Int, Int, Int, Int}[]  # (w1, pos1, w2, pos2)
+        for i in 1:(length(active) - 1)
+            w1, pos1 = active[i]
+            w2, pos2 = active[i + 1]
 
-                    push!(config.vertices, (τ, :cap, (site1, site2)))
-                    config.weight *= config.δ  # Loop weight
-                    break  # Only one annihilation per step
-                end
+            # Check if adjacent AND paired to each other
+            if pos2 == pos1 + 1 && haskey(config.pairings, w1) && config.pairings[w1] == w2
+                push!(annihilatable, (w1, pos1, w2, pos2))
             end
+        end
+
+        # Try to annihilate one valid pair
+        if !isempty(annihilatable) && rand(rng) < p_annihilate
+            # Pick a random valid pair
+            w1, pos1, w2, pos2 = rand(rng, annihilatable)
+
+            # Terminate both worldlines
+            config.worldlines[w1][τ] = -1
+            config.worldlines[w2][τ] = -1
+
+            # Remove pairing
+            delete!(config.pairings, w1)
+            delete!(config.pairings, w2)
+
+            push!(config.vertices, (τ, :cap, (pos1, pos2)))
+            config.weight *= config.δ  # Loop weight for closed loop
         end
     end
 
-    # 4. TL reconnection (crossing/reconnecting adjacent worldlines)
-    # This is more subtle - for now, skip as it requires tracking pairings
+    # 4. TL reconnection: swap partners between adjacent worldlines
+    # When two worldlines from different pairs are adjacent, they can
+    # "reconnect" - swap their partners
+    if params.J > 0
+        p_reconnect = min(0.9, params.Δβ * params.J)
+
+        active = active_worldlines_at_time(config, τ)
+
+        # Find adjacent pairs from DIFFERENT pairings
+        reconnectable = Tuple{Int, Int, Int, Int}[]  # (w1, w2) where w1, w2 are adjacent but not partners
+        for i in 1:(length(active) - 1)
+            w1, pos1 = active[i]
+            w2, pos2 = active[i + 1]
+
+            # Check if adjacent but NOT paired to each other
+            if pos2 == pos1 + 1 && haskey(config.pairings, w1) && config.pairings[w1] != w2
+                push!(reconnectable, (w1, pos1, w2, pos2))
+            end
+        end
+
+        if !isempty(reconnectable) && rand(rng) < p_reconnect
+            w1, pos1, w2, pos2 = rand(rng, reconnectable)
+
+            # Get current partners
+            p1 = config.pairings[w1]  # w1's current partner
+            p2 = config.pairings[w2]  # w2's current partner
+
+            # Swap: w1 pairs with w2, p1 pairs with p2
+            config.pairings[w1] = w2
+            config.pairings[w2] = w1
+            config.pairings[p1] = p2
+            config.pairings[p2] = p1
+
+            push!(config.vertices, (τ, :reconnect, (pos1, pos2)))
+        end
+    end
 
     config
 end
@@ -219,7 +304,7 @@ Arguments:
 - δ: loop weight
 - params: MCParams with coupling strengths
 - seed: random seed (optional)
-- N_init: initial number of worldlines (0 = start from vacuum)
+- N_init: initial number of PAIRS (creates 2*N_init worldlines, 0 = start from vacuum)
 """
 function generate_spacetime(n::Int, n_τ::Int, δ::Float64, params::MCParams;
                            seed::Union{Int,Nothing}=nothing, N_init::Int=0)
@@ -227,11 +312,26 @@ function generate_spacetime(n::Int, n_τ::Int, δ::Float64, params::MCParams;
 
     config = empty_spacetime(n, 1, δ)
 
-    # Initialize with N_init worldlines at random positions
-    if N_init > 0 && N_init <= n
-        init_pos = sort(shuffle(rng, 1:n)[1:N_init])
-        for pos in init_pos
-            push!(config.worldlines, [pos])
+    # Initialize with N_init PAIRS of worldlines at adjacent positions
+    # Each pair is properly registered in pairings
+    if N_init > 0
+        # Find N_init non-overlapping adjacent pairs
+        available_pairs = [(i, i+1) for i in 1:2:(n-1)]  # (1,2), (3,4), (5,6), ...
+        shuffle!(rng, available_pairs)
+        n_pairs_to_create = min(N_init, length(available_pairs))
+
+        for i in 1:n_pairs_to_create
+            pos1, pos2 = available_pairs[i]
+            push!(config.worldlines, [pos1])
+            push!(config.worldlines, [pos2])
+
+            # Register pairing
+            w1 = length(config.worldlines) - 1
+            w2 = length(config.worldlines)
+            config.pairings[w1] = w2
+            config.pairings[w2] = w1
+
+            push!(config.vertices, (1, :cup, (pos1, pos2)))
         end
     end
 
@@ -522,21 +622,21 @@ function example_spacetime_diagrams()
 
     # Example 1: Moderate activity with large Δβ
     println("\n--- Example 1: n=5, large Δβ=0.8 ---")
-    params1 = MCParams(Δβ=0.8, t=1.0, J=0.0, μ=0.6)
+    params1 = MCParams(Δβ=0.8, t=1.0, J=0.3, μ=0.6)
     config1 = generate_spacetime(5, 30, δ, params1; seed=42, N_init=0)
     println(render_ascii(config1))
     render_svg(config1; filename="spacetime_n5_active.svg")
 
     # Example 2: n=6 with high activity
     println("\n--- Example 2: n=6, high activity (Δβ=1.0, μ=0.7) ---")
-    params2 = MCParams(Δβ=1.0, t=0.8, J=0.0, μ=0.7)
+    params2 = MCParams(Δβ=1.0, t=0.8, J=0.3, μ=0.7)
     config2 = generate_spacetime(6, 40, δ, params2; seed=123, N_init=0)
     println(render_ascii(config2))
     render_svg(config2; filename="spacetime_n6_busy.svg")
 
     # Example 3: n=7, long time extent
     println("\n--- Example 3: n=7, β=50 (Δβ=1.0) ---")
-    params3 = MCParams(Δβ=1.0, t=1.0, J=0.0, μ=0.5)
+    params3 = MCParams(Δβ=1.0, t=1.0, J=0.3, μ=0.5)
     config3 = generate_spacetime(7, 50, δ, params3; seed=456, N_init=0)
     println(render_ascii(config3))
     render_svg(config3; width=450, height=700, filename="spacetime_n7_long.svg")
@@ -544,15 +644,15 @@ function example_spacetime_diagrams()
     # Example 4: Ising loop weight, high activity
     println("\n--- Example 4: Ising (δ=√2), high activity ---")
     δ_ising = sqrt(2)
-    params4 = MCParams(Δβ=0.8, t=1.0, J=0.0, μ=0.65)
+    params4 = MCParams(Δβ=0.8, t=1.0, J=0.3, μ=0.65)
     config4 = generate_spacetime(6, 35, δ_ising, params4; seed=789)
     println(render_ascii(config4))
     render_svg(config4; filename="spacetime_ising_active.svg")
 
-    # Example 5: Very dense regime
+    # Example 5: Very dense regime (N_init=1 means 1 pair = 2 worldlines)
     println("\n--- Example 5: Very dense (n=5, μ=0.9) ---")
-    params5 = MCParams(Δβ=1.2, t=0.5, J=0.0, μ=0.9)
-    config5 = generate_spacetime(5, 35, δ, params5; seed=999, N_init=2)
+    params5 = MCParams(Δβ=1.2, t=0.5, J=0.4, μ=0.9)
+    config5 = generate_spacetime(5, 35, δ, params5; seed=999, N_init=1)
     println(render_ascii(config5))
     render_svg(config5; filename="spacetime_very_dense.svg")
 
