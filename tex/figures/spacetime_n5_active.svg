@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+  <style>
+    .worldline { stroke: #2563eb; stroke-width: 2; fill: none; }
+    .site-dot { fill: #94a3b8; }
+    .worldline-dot { fill: #2563eb; }
+    .vertex-cup { fill: none; stroke: #16a34a; stroke-width: 2; }
+    .vertex-cap { fill: none; stroke: #dc2626; stroke-width: 2; }
+    .axis { stroke: #334155; stroke-width: 1; }
+    .label { font-family: monospace; font-size: 12px; fill: #334155; }
+  </style>
+  <rect width="100%" height="100%" fill="white"/>
+
+  <circle cx="40.0" cy="460.0" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="460.0" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="460.0" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="460.0" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="460.0" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="445.51724137931035" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="445.51724137931035" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="445.51724137931035" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="445.51724137931035" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="445.51724137931035" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="431.0344827586207" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="431.0344827586207" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="431.0344827586207" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="431.0344827586207" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="431.0344827586207" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="416.55172413793105" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="416.55172413793105" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="416.55172413793105" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="416.55172413793105" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="416.55172413793105" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="402.0689655172414" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="402.0689655172414" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="402.0689655172414" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="402.0689655172414" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="402.0689655172414" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="387.58620689655174" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="387.58620689655174" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="387.58620689655174" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="387.58620689655174" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="387.58620689655174" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="373.1034482758621" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="373.1034482758621" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="373.1034482758621" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="373.1034482758621" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="373.1034482758621" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="358.62068965517244" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="358.62068965517244" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="358.62068965517244" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="358.62068965517244" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="358.62068965517244" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="344.1379310344828" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="344.1379310344828" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="344.1379310344828" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="344.1379310344828" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="344.1379310344828" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="329.65517241379314" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="329.65517241379314" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="329.65517241379314" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="329.65517241379314" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="329.65517241379314" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="315.1724137931035" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="315.1724137931035" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="315.1724137931035" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="315.1724137931035" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="315.1724137931035" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="300.68965517241384" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="300.68965517241384" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="300.68965517241384" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="300.68965517241384" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="300.68965517241384" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="286.2068965517241" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="286.2068965517241" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="286.2068965517241" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="286.2068965517241" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="286.2068965517241" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="271.7241379310345" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="271.7241379310345" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="271.7241379310345" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="271.7241379310345" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="271.7241379310345" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="257.2413793103448" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="257.2413793103448" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="257.2413793103448" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="257.2413793103448" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="257.2413793103448" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="242.75862068965517" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="242.75862068965517" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="242.75862068965517" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="242.75862068965517" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="242.75862068965517" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="228.27586206896552" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="228.27586206896552" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="228.27586206896552" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="228.27586206896552" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="228.27586206896552" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="213.79310344827587" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="213.79310344827587" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="213.79310344827587" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="213.79310344827587" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="213.79310344827587" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="199.31034482758622" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="199.31034482758622" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="199.31034482758622" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="199.31034482758622" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="199.31034482758622" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="184.82758620689657" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="184.82758620689657" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="184.82758620689657" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="184.82758620689657" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="184.82758620689657" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="170.34482758620692" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="170.34482758620692" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="170.34482758620692" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="170.34482758620692" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="170.34482758620692" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="155.86206896551727" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="155.86206896551727" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="155.86206896551727" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="155.86206896551727" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="155.86206896551727" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="141.37931034482762" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="141.37931034482762" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="141.37931034482762" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="141.37931034482762" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="141.37931034482762" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="126.89655172413796" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="126.89655172413796" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="126.89655172413796" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="126.89655172413796" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="126.89655172413796" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="112.41379310344826" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="112.41379310344826" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="112.41379310344826" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="112.41379310344826" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="112.41379310344826" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="97.9310344827586" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="97.9310344827586" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="97.9310344827586" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="97.9310344827586" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="97.9310344827586" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="83.44827586206895" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="83.44827586206895" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="83.44827586206895" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="83.44827586206895" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="83.44827586206895" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="68.9655172413793" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="68.9655172413793" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="68.9655172413793" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="68.9655172413793" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="68.9655172413793" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="54.48275862068965" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="54.48275862068965" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="54.48275862068965" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="54.48275862068965" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="54.48275862068965" r="2" class="site-dot"/>
+  <circle cx="40.0" cy="40.0" r="2" class="site-dot"/>
+  <circle cx="120.0" cy="40.0" r="2" class="site-dot"/>
+  <circle cx="200.0" cy="40.0" r="2" class="site-dot"/>
+  <circle cx="280.0" cy="40.0" r="2" class="site-dot"/>
+  <circle cx="360.0" cy="40.0" r="2" class="site-dot"/>
+  <path d="M 120.0 373.1034482758621 L 40.0 358.62068965517244 L 40.0 344.1379310344828 L 120.0 329.65517241379314" class="worldline"/>
+  <circle cx="120.0" cy="373.1034482758621" r="4" class="worldline-dot"/>
+  <circle cx="40.0" cy="358.62068965517244" r="4" class="worldline-dot"/>
+  <circle cx="40.0" cy="344.1379310344828" r="4" class="worldline-dot"/>
+  <circle cx="120.0" cy="329.65517241379314" r="4" class="worldline-dot"/>
+  <path d="M 200.0 373.1034482758621 L 120.0 358.62068965517244 L 200.0 344.1379310344828 L 280.0 329.65517241379314 L 360.0 315.1724137931035 L 280.0 300.68965517241384" class="worldline"/>
+  <circle cx="200.0" cy="373.1034482758621" r="4" class="worldline-dot"/>
+  <circle cx="120.0" cy="358.62068965517244" r="4" class="worldline-dot"/>
+  <circle cx="200.0" cy="344.1379310344828" r="4" class="worldline-dot"/>
+  <circle cx="280.0" cy="329.65517241379314" r="4" class="worldline-dot"/>
+  <circle cx="360.0" cy="315.1724137931035" r="4" class="worldline-dot"/>
+  <circle cx="280.0" cy="300.68965517241384" r="4" class="worldline-dot"/>
+  <path d="M 200.0 315.1724137931035 L 120.0 300.68965517241384" class="worldline"/>
+  <circle cx="200.0" cy="315.1724137931035" r="4" class="worldline-dot"/>
+  <circle cx="120.0" cy="300.68965517241384" r="4" class="worldline-dot"/>
+  <path d="M 40.0 286.2068965517241 L 40.0 271.7241379310345 L 120.0 257.2413793103448 L 120.0 242.75862068965517 L 200.0 228.27586206896552 L 120.0 213.79310344827587 L 200.0 199.31034482758622 L 280.0 184.82758620689657 L 280.0 170.34482758620692" class="worldline"/>
+  <circle cx="40.0" cy="286.2068965517241" r="4" class="worldline-dot"/>
+  <circle cx="40.0" cy="271.7241379310345" r="4" class="worldline-dot"/>
+  <circle cx="120.0" cy="257.2413793103448" r="4" class="worldline-dot"/>
+  <circle cx="120.0" cy="242.75862068965517" r="4" class="worldline-dot"/>
+  <circle cx="200.0" cy="228.27586206896552" r="4" class="worldline-dot"/>
+  <circle cx="120.0" cy="213.79310344827587" r="4" class="worldline-dot"/>
+  <circle cx="200.0" cy="199.31034482758622" r="4" class="worldline-dot"/>
+  <circle cx="280.0" cy="184.82758620689657" r="4" class="worldline-dot"/>
+  <circle cx="280.0" cy="170.34482758620692" r="4" class="worldline-dot"/>
+  <path d="M 120.0 286.2068965517241 L 200.0 271.7241379310345 L 280.0 257.2413793103448 L 280.0 242.75862068965517 L 360.0 228.27586206896552 L 280.0 213.79310344827587 L 360.0 199.31034482758622 L 360.0 184.82758620689657 L 360.0 170.34482758620692 L 360.0 155.86206896551727 L 280.0 141.37931034482762 L 200.0 126.89655172413796 L 280.0 112.41379310344826 L 360.0 97.9310344827586 L 280.0 83.44827586206895 L 200.0 68.9655172413793 L 280.0 54.48275862068965 L 360.0 40.0" class="worldline"/>
+  <circle cx="120.0" cy="286.2068965517241" r="4" class="worldline-dot"/>
+  <circle cx="200.0" cy="271.7241379310345" r="4" class="worldline-dot"/>
+  <circle cx="280.0" cy="257.2413793103448" r="4" class="worldline-dot"/>
+  <circle cx="280.0" cy="242.75862068965517" r="4" class="worldline-dot"/>
+  <circle cx="360.0" cy="228.27586206896552" r="4" class="worldline-dot"/>
+  <circle cx="280.0" cy="213.79310344827587" r="4" class="worldline-dot"/>
+  <circle cx="360.0" cy="199.31034482758622" r="4" class="worldline-dot"/>
+  <circle cx="360.0" cy="184.82758620689657" r="4" class="worldline-dot"/>
+  <circle cx="360.0" cy="170.34482758620692" r="4" class="worldline-dot"/>
+  <circle cx="360.0" cy="155.86206896551727" r="4" class="worldline-dot"/>
+  <circle cx="280.0" cy="141.37931034482762" r="4" class="worldline-dot"/>
+  <circle cx="200.0" cy="126.89655172413796" r="4" class="worldline-dot"/>
+  <circle cx="280.0" cy="112.41379310344826" r="4" class="worldline-dot"/>
+  <circle cx="360.0" cy="97.9310344827586" r="4" class="worldline-dot"/>
+  <circle cx="280.0" cy="83.44827586206895" r="4" class="worldline-dot"/>
+  <circle cx="200.0" cy="68.9655172413793" r="4" class="worldline-dot"/>
+  <circle cx="280.0" cy="54.48275862068965" r="4" class="worldline-dot"/>
+  <circle cx="360.0" cy="40.0" r="4" class="worldline-dot"/>
+  <path d="M 40.0 199.31034482758622 L 40.0 184.82758620689657 L 120.0 170.34482758620692 L 40.0 155.86206896551727 L 120.0 141.37931034482762 L 40.0 126.89655172413796 L 120.0 112.41379310344826 L 120.0 97.9310344827586 L 120.0 83.44827586206895 L 40.0 68.9655172413793 L 120.0 54.48275862068965 L 200.0 40.0" class="worldline"/>
+  <circle cx="40.0" cy="199.31034482758622" r="4" class="worldline-dot"/>
+  <circle cx="40.0" cy="184.82758620689657" r="4" class="worldline-dot"/>
+  <circle cx="120.0" cy="170.34482758620692" r="4" class="worldline-dot"/>
+  <circle cx="40.0" cy="155.86206896551727" r="4" class="worldline-dot"/>
+  <circle cx="120.0" cy="141.37931034482762" r="4" class="worldline-dot"/>
+  <circle cx="40.0" cy="126.89655172413796" r="4" class="worldline-dot"/>
+  <circle cx="120.0" cy="112.41379310344826" r="4" class="worldline-dot"/>
+  <circle cx="120.0" cy="97.9310344827586" r="4" class="worldline-dot"/>
+  <circle cx="120.0" cy="83.44827586206895" r="4" class="worldline-dot"/>
+  <circle cx="40.0" cy="68.9655172413793" r="4" class="worldline-dot"/>
+  <circle cx="120.0" cy="54.48275862068965" r="4" class="worldline-dot"/>
+  <circle cx="200.0" cy="40.0" r="4" class="worldline-dot"/>
+  <path d="M 120.0 199.31034482758622 L 200.0 184.82758620689657 L 200.0 170.34482758620692" class="worldline"/>
+  <circle cx="120.0" cy="199.31034482758622" r="4" class="worldline-dot"/>
+  <circle cx="200.0" cy="184.82758620689657" r="4" class="worldline-dot"/>
+  <circle cx="200.0" cy="170.34482758620692" r="4" class="worldline-dot"/>
+  <path d="M 120.0 445.51724137931035 Q 160.0 438.27586206896547 200.0 445.51724137931035" class="vertex-cup"/>
+  <path d="M 120.0 441.8965517241379 Q 160.0 449.13793103448273 200.0 441.8965517241379" class="vertex-cap"/>
+  <path d="M 40.0 431.0344827586207 Q 80.0 423.7931034482758 120.0 431.0344827586207" class="vertex-cup"/>
+  <path d="M 40.0 427.41379310344826 Q 80.0 434.6551724137931 120.0 427.41379310344826" class="vertex-cap"/>
+  <path d="M 40.0 416.55172413793105 Q 80.0 409.31034482758616 120.0 416.55172413793105" class="vertex-cup"/>
+  <path d="M 40.0 412.9310344827586 Q 80.0 420.17241379310343 120.0 412.9310344827586" class="vertex-cap"/>
+  <path d="M 40.0 402.0689655172414 Q 80.0 394.8275862068965 120.0 402.0689655172414" class="vertex-cup"/>
+  <path d="M 40.0 398.44827586206895 Q 80.0 405.6896551724138 120.0 398.44827586206895" class="vertex-cap"/>
+  <path d="M 40.0 387.58620689655174 Q 80.0 380.34482758620686 120.0 387.58620689655174" class="vertex-cup"/>
+  <path d="M 40.0 383.9655172413793 Q 80.0 391.2068965517241 120.0 383.9655172413793" class="vertex-cap"/>
+  <path d="M 120.0 373.1034482758621 Q 160.0 365.8620689655172 200.0 373.1034482758621" class="vertex-cup"/>
+  <path d="M 120.0 315.1724137931035 Q 160.0 307.9310344827586 200.0 315.1724137931035" class="vertex-cup"/>
+  <path d="M 40.0 311.55172413793105 Q 80.0 318.7931034482759 120.0 311.55172413793105" class="vertex-cap"/>
+  <path d="M 40.0 286.2068965517241 Q 80.0 278.96551724137925 120.0 286.2068965517241" class="vertex-cup"/>
+  <path d="M 200.0 282.5862068965517 Q 240.0 289.8275862068965 280.0 282.5862068965517" class="vertex-cap"/>
+  <path d="M 40.0 199.31034482758622 Q 80.0 192.0689655172414 120.0 199.31034482758622" class="vertex-cup"/>
+  <path d="M 200.0 152.24137931034485 Q 240.0 159.48275862068968 280.0 152.24137931034485" class="vertex-cap"/>
+  <line x1="30" y1="460" x2="370" y2="460" class="axis"/>
+  <line x1="30" y1="460" x2="30" y2="30" class="axis"/>
+  <text x="200.0" y="490" class="label" text-anchor="middle">site</text>
+  <text x="15" y="250.0" class="label" transform="rotate(-90, 15, 250.0)">τ (imaginary time)</text>
+  <text x="40.0" y="480" class="label" text-anchor="middle">1</text>
+  <text x="120.0" y="480" class="label" text-anchor="middle">2</text>
+  <text x="200.0" y="480" class="label" text-anchor="middle">3</text>
+  <text x="280.0" y="480" class="label" text-anchor="middle">4</text>
+  <text x="360.0" y="480" class="label" text-anchor="middle">5</text>
+  <text x="20" y="464.0" class="label" text-anchor="end">1</text>
+  <text x="20" y="377.1034482758621" class="label" text-anchor="end">7</text>
+  <text x="20" y="290.2068965517241" class="label" text-anchor="end">13</text>
+  <text x="20" y="203.31034482758622" class="label" text-anchor="end">19</text>
+  <text x="20" y="116.41379310344826" class="label" text-anchor="end">25</text>
+  <text x="200.0" y="25" class="label" text-anchor="middle" font-weight="bold">TL Spacetime (n=5, n_τ=30, δ=1.62)</text>
+</svg>

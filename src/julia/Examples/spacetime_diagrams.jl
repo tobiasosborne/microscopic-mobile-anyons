@@ -96,7 +96,7 @@ struct MCParams
     μ::Float64      # pair creation/annihilation strength
 end
 
-MCParams(; Δβ=0.1, t=1.0, J=0.5, μ=0.3) = MCParams(Δβ, t, J, μ)
+MCParams(; Δβ=0.5, t=1.0, J=0.5, μ=0.5) = MCParams(Δβ, t, J, μ)
 
 """
     evolve_one_step!(config, params, rng)
@@ -153,7 +153,7 @@ function evolve_one_step!(config::SpacetimeConfig, params::MCParams, rng::Abstra
 
     # 2. Pair creation: create two new worldlines at adjacent empty sites
     if params.μ > 0
-        p_create = min(0.5, params.Δβ * params.μ)  # Cap probability
+        p_create = min(0.9, params.Δβ * params.μ)  # Higher cap for more activity
 
         for site in 1:(n-1)
             curr_occupied = positions_at_time(config, τ)
@@ -175,7 +175,7 @@ function evolve_one_step!(config::SpacetimeConfig, params::MCParams, rng::Abstra
 
     # 3. Pair annihilation: adjacent worldlines can annihilate
     if params.μ > 0
-        p_annihilate = min(0.5, params.Δβ * params.μ)
+        p_annihilate = min(0.9, params.Δβ * params.μ)
 
         # Find adjacent pairs
         curr_occupied = positions_at_time(config, τ)
@@ -514,50 +514,58 @@ end
 
 function example_spacetime_diagrams()
     println("="^70)
-    println("SPACETIME DIAGRAM GENERATION")
+    println("SPACETIME DIAGRAM GENERATION (Large Δβ for visual interest)")
     println("="^70)
 
     # Parameters
     δ = (1 + sqrt(5)) / 2  # Golden ratio (Fibonacci)
 
-    # Example 1: Small system, dilute
-    println("\n--- Example 1: Dilute regime (n=5, small μ) ---")
-    params_dilute = MCParams(Δβ=0.15, t=1.0, J=0.0, μ=0.1)
-    config1 = generate_spacetime(5, 15, δ, params_dilute; seed=42, N_init=0)
+    # Example 1: Moderate activity with large Δβ
+    println("\n--- Example 1: n=5, large Δβ=0.8 ---")
+    params1 = MCParams(Δβ=0.8, t=1.0, J=0.0, μ=0.6)
+    config1 = generate_spacetime(5, 30, δ, params1; seed=42, N_init=0)
     println(render_ascii(config1))
-    render_svg(config1; filename="spacetime_n5_dilute.svg")
+    render_svg(config1; filename="spacetime_n5_active.svg")
 
-    # Example 2: Small system, denser
-    println("\n--- Example 2: Denser regime (n=6, larger μ) ---")
-    params_dense = MCParams(Δβ=0.15, t=0.8, J=0.0, μ=0.4)
-    config2 = generate_spacetime(6, 20, δ, params_dense; seed=123, N_init=2)
+    # Example 2: n=6 with high activity
+    println("\n--- Example 2: n=6, high activity (Δβ=1.0, μ=0.7) ---")
+    params2 = MCParams(Δβ=1.0, t=0.8, J=0.0, μ=0.7)
+    config2 = generate_spacetime(6, 40, δ, params2; seed=123, N_init=0)
     println(render_ascii(config2))
-    render_svg(config2; filename="spacetime_n6_dense.svg")
+    render_svg(config2; filename="spacetime_n6_busy.svg")
 
-    # Example 3: n=7
-    println("\n--- Example 3: n=7 system ---")
-    params3 = MCParams(Δβ=0.12, t=1.0, J=0.0, μ=0.3)
-    config3 = generate_spacetime(7, 25, δ, params3; seed=456, N_init=0)
+    # Example 3: n=7, long time extent
+    println("\n--- Example 3: n=7, β=50 (Δβ=1.0) ---")
+    params3 = MCParams(Δβ=1.0, t=1.0, J=0.0, μ=0.5)
+    config3 = generate_spacetime(7, 50, δ, params3; seed=456, N_init=0)
     println(render_ascii(config3))
-    render_svg(config3; filename="spacetime_n7.svg")
+    render_svg(config3; width=450, height=700, filename="spacetime_n7_long.svg")
 
-    # Example 4: Ising loop weight
-    println("\n--- Example 4: Ising point (δ=√2, n=6) ---")
+    # Example 4: Ising loop weight, high activity
+    println("\n--- Example 4: Ising (δ=√2), high activity ---")
     δ_ising = sqrt(2)
-    params4 = MCParams(Δβ=0.1, t=1.0, J=0.0, μ=0.25)
-    config4 = generate_spacetime(6, 18, δ_ising, params4; seed=789)
+    params4 = MCParams(Δβ=0.8, t=1.0, J=0.0, μ=0.65)
+    config4 = generate_spacetime(6, 35, δ_ising, params4; seed=789)
     println(render_ascii(config4))
-    render_svg(config4; filename="spacetime_ising.svg")
+    render_svg(config4; filename="spacetime_ising_active.svg")
+
+    # Example 5: Very dense regime
+    println("\n--- Example 5: Very dense (n=5, μ=0.9) ---")
+    params5 = MCParams(Δβ=1.2, t=0.5, J=0.0, μ=0.9)
+    config5 = generate_spacetime(5, 35, δ, params5; seed=999, N_init=2)
+    println(render_ascii(config5))
+    render_svg(config5; filename="spacetime_very_dense.svg")
 
     println("\n" * "="^70)
     println("Generated SVG files:")
-    println("  - spacetime_n5_dilute.svg")
-    println("  - spacetime_n6_dense.svg")
-    println("  - spacetime_n7.svg")
-    println("  - spacetime_ising.svg")
+    println("  - spacetime_n5_active.svg")
+    println("  - spacetime_n6_busy.svg")
+    println("  - spacetime_n7_long.svg")
+    println("  - spacetime_ising_active.svg")
+    println("  - spacetime_very_dense.svg")
     println("="^70)
 
-    return config1, config2, config3, config4
+    return config1, config2, config3, config4, config5
 end
 
 function generate_ensemble(n::Int, n_τ::Int, δ::Float64, params::MCParams,
