@@ -241,6 +241,15 @@ end
 Construct Hilbert space basis for N anyons on n sites.
 """
 function build_hilbert_space(tl::TLCategory, n::Int, N::Int; total_charge=nothing)
+    # Special case: N=0 (vacuum)
+    if N == 0
+        vacuum_config = Configuration(n, Int[])
+        vacuum_tree = FusionTree(0, Rational{Int}[])
+        basis = [BasisState(vacuum_config, vacuum_tree)]
+        config_to_indices = Dict{Vector{Int}, Vector{Int}}(Int[] => [1])
+        return HilbertSpace(tl, n, N, basis, config_to_indices)
+    end
+
     configs = all_configurations(n, N)
     trees = all_fusion_trees(tl, N; total_charge)
 
