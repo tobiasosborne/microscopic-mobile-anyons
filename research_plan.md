@@ -135,6 +135,25 @@ Define fusion rings and fusion categories with full mathematical rigour. **Criti
 
 Output: `docs/fusion_ring.md`, `docs/fusion_category.md`, `docs/morphism_spaces.md`, `src/julia/FusionCategories/`, `symbols.yaml`, `symbols.md`
 
+### 3.1a. Temperley–Lieb Categories (Key Test Case)
+
+**BEAD-0019** `[open]`
+
+The Temperley–Lieb (TL) category is a crucial test case connecting fusion categories to loop models, statistical mechanics, and CFT. TL is parametrised by loop fugacity $n = q + q^{-1} = 2\cos(\pi/p)$, interpolating between trivial ($n=2$), Ising ($n=\sqrt{2}$), and Fibonacci ($n=\phi$) limits.
+
+| Substep | Description | Ref | BEAD | Status |
+|---------|-------------|-----|------|--------|
+| 3.1a.1 | Definition of TL category: generators, relations, loop parameter $\delta = -[2]_q$ | [Kauffman–Lins](https://doi.org/10.1142/2055), [Jones 1983](https://doi.org/10.1007/BF01389127) | BEAD-0019a | pending |
+| 3.1a.2 | TL as quotient of Brauer category; relation to $\mathrm{Rep}(U_q(\mathfrak{sl}_2))$ at roots of unity | [Westbury](https://arxiv.org/abs/0806.4non), [Andersen–Stroppel–Tubbenhauer](https://arxiv.org/abs/1702.06128) | BEAD-0019b | pending |
+| 3.1a.3 | Simple objects and fusion rules: Jones–Wenzl projectors | [Wenzl 1987](https://doi.org/10.1007/BF01218063) | BEAD-0019c | pending |
+| 3.1a.4 | F-symbols for TL; explicit formulas in terms of $q$-numbers | — | BEAD-0019d | pending |
+| 3.1a.5 | TL at roots of unity: truncation, modular categories, link to minimal models | [BHMV](https://arxiv.org/abs/hep-th/9409089) | BEAD-0019e | pending |
+| 3.1a.6 | Connection to dense loop model: partition function as TL trace | [Jacobsen](https://arxiv.org/abs/0712.4168) | BEAD-0019f | pending |
+| 3.1a.7 | Critical behaviour: central charge $c = 1 - 6(p-1)^2/p$ for $q = e^{i\pi/p}$ | [BPZ](https://doi.org/10.1016/0550-3213(84)90052-X) | BEAD-0019g | pending |
+| 3.1a.8 | Julia implementation: TL category in TensorCategories.jl or custom | — | BEAD-0019h | pending |
+
+Output: `docs/temperley_lieb.md`, `src/julia/FusionCategories/temperley_lieb.jl`, `tests/test_tl.jl`
+
 ### 3.2. Fock Space Perspective (First Quantisation)
 
 **BEAD-0020** `[closed]`
@@ -652,6 +671,11 @@ LaTeX     Compile   Code       Figures    Assemble   Review     Integrate
 | Schramm 2000 (SLE original paper) | BEAD-0711 | pending |
 | Cardy 2005 (SLE and conformal invariance) | BEAD-0712 | pending |
 | Di Francesco et al. (CFT textbook) | BEAD-0713 | pending |
+| Kauffman–Lins (TL recoupling theory) | BEAD-0714 | pending |
+| Jones 1983 (index for subfactors, TL origin) | BEAD-0715 | pending |
+| Wenzl 1987 (Jones–Wenzl projectors) | BEAD-0716 | pending |
+| Jacobsen (loop models review) | BEAD-0717 | pending |
+| BHMV (TFT and Temperley–Lieb) | BEAD-0718 | pending |
 
 ---
 
@@ -659,7 +683,7 @@ LaTeX     Compile   Code       Figures    Assemble   Review     Integrate
 
 These are **planning IDs** for logical organization. When registered with `bd`, they become sequential `ma-N` IDs. Include the planning reference (e.g., `§3.1.1`) in each issue description.
 
-Total planning items: ~145
+Total planning items: ~160
 
 | Phase | Section | Planning Refs | Count |
 |-------|---------|---------------|-------|
@@ -669,14 +693,14 @@ Total planning items: ~145
 | **Research** | 0. Literature | §0 | 1 |
 | | 1. Abstract | §1 | 1 |
 | | 2. Introduction | §2.1–§2.4 | 4 |
-| | 3. Preliminaries | §3.1.1–§3.5.6 | ~25 |
+| | 3. Preliminaries | §3.1.1–§3.5.6, §3.1a | ~33 |
 | | 4. Hilbert Space | §4.1.1–§4.4.4 | ~20 |
 | | 5. Dynamics | §5.1.1.1–§5.1.4.4 | ~20 |
 | | 6. Properties | §6.1.1–§6.5.9 | ~30 |
 | | 7. Discussion | §7.1.1–§7.1.6 | ~7 |
 | | 8. Conclusions | §8 | 1 |
 | | 9. Bibliography | §9.1–§9.4 | 4 |
-| | Papers | §Lit.1–§Lit.13 | 13 |
+| | Papers | §Lit.1–§Lit.18 | 18 |
 | **Post-Flight** | F1. LaTeX Conversion | §F1.1–§F1.8 | 9 |
 | | F2. Compilation | §F2.1–§F2.3 | 4 |
 | | F3. Code Appendices | §F3.1–§F3.4 | 5 |
