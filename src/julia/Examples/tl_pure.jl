@@ -355,6 +355,292 @@ function tl_generator_hamiltonian(H::TLHilbertSpace; J=1.0)
 end
 
 #==============================================================================#
+#                         Variable Particle Number                              #
+#==============================================================================#
+
+"""
+    TLVariableHilbertSpace
+
+Hilbert space with variable strand number: ⊕_{N even} H_N
+Allows pair creation and annihilation.
+"""
+struct TLVariableHilbertSpace
+    params::TLParams
+    N_max::Int                          # maximum number of strands
+    sectors::Vector{TLHilbertSpace}     # H_0, H_2, H_4, ...
+    offsets::Vector{Int}                # starting index for each sector
+    N_values::Vector{Int}               # [0, 2, 4, ...]
+end
+
+"""
+    build_variable_hilbert_space(params::TLParams, N_max::Int)
+
+Build Hilbert space with 0, 2, 4, ..., N_max strands.
+N_max must be even.
+"""
+function build_variable_hilbert_space(params::TLParams, N_max::Int)
+    @assert iseven(N_max) "N_max must be even"
+
+    sectors = TLHilbertSpace[]
+    offsets = Int[1]
+    N_values = Int[]
+
+    for N in 0:2:N_max
+        H_N = build_tl_hilbert_space(params, N)
+        push!(sectors, H_N)
+        push!(offsets, offsets[end] + length(H_N))
+        push!(N_values, N)
+    end
+
+    TLVariableHilbertSpace(params, N_max, sectors, offsets, N_values)
+end
+
+Base.length(H::TLVariableHilbertSpace) = H.offsets[end] - 1
+
+"""
+    sector_index(H::TLVariableHilbertSpace, N::Int)
+
+Get the sector index for N strands.
+"""
+function sector_index(H::TLVariableHilbertSpace, N::Int)
+    findfirst(==(N), H.N_values)
+end
+
+"""
+    global_index(H::TLVariableHilbertSpace, N::Int, local_idx::Int)
+
+Convert (sector N, local index) to global index.
+"""
+function global_index(H::TLVariableHilbertSpace, N::Int, local_idx::Int)
+    sec = sector_index(H, N)
+    H.offsets[sec] + local_idx - 1
+end
+
+#==============================================================================#
+#                         Pair Creation / Annihilation                          #
+#==============================================================================#
+
+"""
+    pair_creation_op(H::TLVariableHilbertSpace; μ=1.0)
+
+Pair creation operator: creates two strands at adjacent empty sites.
+The new strands are paired to each other (form a "cup").
+
+    |...⋅⋅...⟩ → |...••...⟩  (with new strands paired)
+
+Couples N-sector to (N+2)-sector.
+"""
+function pair_creation_op(H::TLVariableHilbertSpace; μ=1.0)
+    dim = length(H)
+    Hmat = spzeros(ComplexF64, dim, dim)
+    n = H.params.n
+
+    # Iterate over sectors (source: N strands)
+    for (sec_idx, N) in enumerate(H.N_values)
+        N + 2 > H.N_max && continue  # Can't create if at max
+
+        H_N = H.sectors[sec_idx]
+        sec_idx_new = sector_index(H, N + 2)
+        H_N2 = H.sectors[sec_idx_new]
+
+        # For each state in N-sector
+        for (local_i, state) in enumerate(H_N.basis)
+            config = state.config
+            pairing = state.pairing
+            positions = config.positions
+
+            # Try creating pair at each adjacent empty pair (j, j+1)
+            for j in 1:(n-1)
+                # Check both sites are empty
+                if !(j in positions) && !(j + 1 in positions)
+                    # Create new configuration with two new strands
+                    new_positions = sort([positions..., j, j + 1])
+
+                    # The new strands get indices based on their position in sorted order
+                    # Find where j and j+1 appear in new_positions
+                    idx_j = findfirst(==(j), new_positions)
+                    idx_j1 = findfirst(==(j + 1), new_positions)
+
+                    # Build new pairing:
+                    # - Old pairs need indices shifted (strands after insertion point shift up)
+                    # - New pair: (idx_j, idx_j1)
+                    new_pairs = Tuple{Int,Int}[]
+
+                    # Shift old pairs
+                    for (a, b) in pairing.pairs
+                        # Count how many new strands are before a and b
+                        shift_a = (idx_j <= a ? 1 : 0) + (idx_j1 <= a ? 1 : 0)
+                        shift_b = (idx_j <= b ? 1 : 0) + (idx_j1 <= b ? 1 : 0)
+                        # Wait, this logic is wrong. Let me think again.
+
+                        # Actually: old strand indices refer to positions in OLD config
+                        # New strand indices refer to positions in NEW config
+                        # We need to map old indices to new indices
+
+                        # Old index a → position positions[a]
+                        # In new config, that position has index findfirst(==(positions[a]), new_positions)
+                        new_a = findfirst(==(positions[a]), new_positions)
+                        new_b = findfirst(==(positions[b]), new_positions)
+                        push!(new_pairs, (min(new_a, new_b), max(new_a, new_b)))
+                    end
+
+                    # Add new pair
+                    push!(new_pairs, (min(idx_j, idx_j1), max(idx_j, idx_j1)))
+                    sort!(new_pairs, by = first)
+
+                    # Find this state in N+2 sector
+                    if haskey(H_N2.config_to_indices, new_positions)
+                        for local_j in H_N2.config_to_indices[new_positions]
+                            if H_N2.basis[local_j].pairing.pairs == new_pairs
+                                gi = global_index(H, N, local_i)
+                                gj = global_index(H, N + 2, local_j)
+                                Hmat[gj, gi] += μ
+                                break
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    Hmat
+end
+
+"""
+    pair_annihilation_op(H::TLVariableHilbertSpace; μ=1.0)
+
+Pair annihilation operator: removes two adjacent strands that are paired to each other.
+Gives factor δ (loop weight) when the pair closes.
+
+    |...••...⟩ → δ |...⋅⋅...⟩  (if • are paired to each other)
+
+Couples N-sector to (N-2)-sector.
+"""
+function pair_annihilation_op(H::TLVariableHilbertSpace; μ=1.0)
+    dim = length(H)
+    Hmat = spzeros(ComplexF64, dim, dim)
+    δ = H.params.δ
+    n = H.params.n
+
+    # Iterate over sectors (source: N strands)
+    for (sec_idx, N) in enumerate(H.N_values)
+        N < 2 && continue  # Can't annihilate if N < 2
+
+        H_N = H.sectors[sec_idx]
+        sec_idx_new = sector_index(H, N - 2)
+        H_N2 = H.sectors[sec_idx_new]
+
+        # For each state in N-sector
+        for (local_i, state) in enumerate(H_N.basis)
+            config = state.config
+            pairing = state.pairing
+            positions = config.positions
+
+            # Find adjacent strand pairs that are paired to each other
+            for a in 1:(N-1)
+                pos_a = positions[a]
+                pos_b = positions[a + 1]
+
+                # Check if adjacent in space AND paired to each other
+                if pos_b == pos_a + 1 && partner(pairing, a) == a + 1
+                    # Annihilate this pair!
+                    # New configuration: remove positions[a] and positions[a+1]
+                    new_positions = [positions[k] for k in 1:N if k != a && k != a + 1]
+
+                    # New pairing: remove pair (a, a+1), shift remaining indices
+                    new_pairs = Tuple{Int,Int}[]
+                    for (p, q) in pairing.pairs
+                        p == a && continue  # This is the pair being removed
+
+                        # Shift indices down: anything > a+1 shifts by 2, anything > a shifts by 1
+                        new_p = p - (p > a ? 1 : 0) - (p > a + 1 ? 1 : 0)
+                        new_q = q - (q > a ? 1 : 0) - (q > a + 1 ? 1 : 0)
+                        push!(new_pairs, (min(new_p, new_q), max(new_p, new_q)))
+                    end
+                    sort!(new_pairs, by = first)
+
+                    # Find this state in N-2 sector
+                    if N == 2
+                        # Going to vacuum
+                        gi = global_index(H, N, local_i)
+                        gj = global_index(H, 0, 1)  # Vacuum is state 1 in sector 0
+                        Hmat[gj, gi] += μ * δ
+                    elseif haskey(H_N2.config_to_indices, new_positions)
+                        for local_j in H_N2.config_to_indices[new_positions]
+                            if H_N2.basis[local_j].pairing.pairs == new_pairs
+                                gi = global_index(H, N, local_i)
+                                gj = global_index(H, N - 2, local_j)
+                                Hmat[gj, gi] += μ * δ
+                                break
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    Hmat
+end
+
+"""
+    pair_hamiltonian(H::TLVariableHilbertSpace; μ=1.0)
+
+Full pair creation + annihilation Hamiltonian (Hermitian).
+H_pair = μ (creation + annihilation†)
+"""
+function pair_hamiltonian(H::TLVariableHilbertSpace; μ=1.0)
+    H_create = pair_creation_op(H; μ=μ)
+    H_annihilate = pair_annihilation_op(H; μ=μ)
+    Hermitian(H_create + H_annihilate')
+end
+
+"""
+    number_operator(H::TLVariableHilbertSpace)
+
+Strand number operator. Diagonal, returns N for each state in N-sector.
+"""
+function number_operator(H::TLVariableHilbertSpace)
+    dim = length(H)
+    Nop = spzeros(ComplexF64, dim, dim)
+
+    for (sec_idx, N) in enumerate(H.N_values)
+        for local_i in 1:length(H.sectors[sec_idx])
+            gi = global_index(H, N, local_i)
+            Nop[gi, gi] = N
+        end
+    end
+
+    Hermitian(Nop)
+end
+
+"""
+    hopping_hamiltonian(H::TLVariableHilbertSpace; t=1.0)
+
+Hopping Hamiltonian for variable particle number space.
+Block diagonal in N-sectors.
+"""
+function hopping_hamiltonian(H::TLVariableHilbertSpace; t=1.0)
+    dim = length(H)
+    Hmat = spzeros(ComplexF64, dim, dim)
+
+    for (sec_idx, N) in enumerate(H.N_values)
+        N == 0 && continue
+        H_N = H.sectors[sec_idx]
+        H_hop_N = hopping_hamiltonian(H_N; t=t)
+
+        # Copy into full matrix
+        offset = H.offsets[sec_idx] - 1
+        for (i, j, v) in zip(findnz(sparse(H_hop_N))...)
+            Hmat[offset + i, offset + j] = v
+        end
+    end
+
+    Hermitian(Hmat)
+end
+
+#==============================================================================#
 #                         Exact Diagonalization                                 #
 #==============================================================================#
 
@@ -467,9 +753,86 @@ function example_basis_explicit()
     end
 end
 
+function example_pair_creation()
+    println("\n" * "="^70)
+    println("PAIR CREATION / ANNIHILATION")
+    println("="^70)
+
+    n = 6
+    N_max = 6
+    params = TLParams(δ = sqrt(2), n = n)
+
+    println("\nBuilding variable Hilbert space: n=$n, N_max=$N_max")
+    H = build_variable_hilbert_space(params, N_max)
+
+    println("\nSector dimensions:")
+    for (sec_idx, N) in enumerate(H.N_values)
+        dim_N = length(H.sectors[sec_idx])
+        println("  N=$N: dim=$(dim_N)")
+    end
+    println("Total dim: $(length(H))")
+
+    println("\nBuilding Hamiltonians...")
+    H_hop = hopping_hamiltonian(H; t=1.0)
+    H_pair = pair_hamiltonian(H; μ=0.5)
+    N_op = number_operator(H)
+
+    H_total = H_hop + H_pair
+
+    println("\nDiagonalizing H = H_hop + 0.5 H_pair...")
+    evals, evecs = diagonalize(H_total; nev=12)
+
+    println("\nLowest eigenvalues and ⟨N⟩:")
+    for (i, E) in enumerate(evals)
+        # Compute expectation of N
+        v = evecs[:, i]
+        exp_N = real(v' * N_op * v)
+        println("  E_$i = $(round(real(E), digits=4)),  ⟨N⟩ = $(round(exp_N, digits=2))")
+    end
+
+    return H, H_total, evals, evecs
+end
+
+function example_pair_explicit()
+    println("\n" * "="^70)
+    println("EXPLICIT PAIR CREATION: n=4, N_max=4")
+    println("="^70)
+
+    params = TLParams(δ = sqrt(2), n = 4)
+    H = build_variable_hilbert_space(params, 4)
+
+    println("\nHilbert space structure:")
+    for (sec_idx, N) in enumerate(H.N_values)
+        println("\nN=$N sector (indices $(H.offsets[sec_idx]) to $(H.offsets[sec_idx+1]-1)):")
+        H_N = H.sectors[sec_idx]
+        for (i, state) in enumerate(H_N.basis)
+            gi = global_index(H, N, i)
+            println("  $gi: pos=$(state.config.positions), pair=$(state.pairing.pairs)")
+        end
+    end
+
+    println("\nPair creation matrix (non-zero elements):")
+    H_create = pair_creation_op(H; μ=1.0)
+    for (i, j, v) in zip(findnz(H_create)...)
+        if abs(v) > 1e-10
+            println("  ($i,$j) = $v")
+        end
+    end
+
+    println("\nPair annihilation matrix (non-zero elements):")
+    H_annihilate = pair_annihilation_op(H; μ=1.0)
+    for (i, j, v) in zip(findnz(H_annihilate)...)
+        if abs(v) > 1e-10
+            println("  ($i,$j) = $v  [includes δ=$(params.δ)]")
+        end
+    end
+end
+
 # Run examples
 if abspath(PROGRAM_FILE) == @__FILE__
     example_pure_tl()
     example_comparison()
     example_basis_explicit()
+    example_pair_explicit()
+    example_pair_creation()
 end
