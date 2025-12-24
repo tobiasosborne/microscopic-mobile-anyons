@@ -1,0 +1,110 @@
+% module_categories.tex
+% LaTeX counterpart of docs/module_categories.md
+% Section §6.5
+
+\section{Module Categories}\label{sec:module-categories}
+
+\begin{assumption}\label{ass:module-categories}
+\begin{enumerate}[label=(A\arabic*)]
+    \item Fusion category $\catC$ over $\mathbb{C}$ (from \S\ref{sec:fusion-categories}).
+    \item $\catC$ is rigid (has duals).
+    \item Module categories are semisimple and finite.
+\end{enumerate}
+\end{assumption}
+
+\subsection{Overview}
+
+\emph{Module categories} provide the mathematical framework for classifying boundary conditions in topological phases. A (left) $\catC$-module category is a category $\mathcal{M}$ equipped with an action of the fusion category $\catC$, analogous to how a module is a set with an action of a ring.
+
+In the context of anyonic chains, module categories classify:
+\begin{itemize}
+    \item Boundary conditions for open chains
+    \item Edge modes and boundary excitations
+    \item Domain walls between different phases
+\end{itemize}
+
+\subsection{Definition of Module Categories}
+
+\begin{definition}[Left module category]\label{def:left-module-category}
+A \emph{left $\catC$-module category} is a category $\mathcal{M}$ equipped with:
+\begin{enumerate}
+    \item \textbf{Action functor:} $\triangleright: \catC \times \mathcal{M} \to \mathcal{M}$, written $(X, M) \mapsto X \triangleright M$.
+    \item \textbf{Module associator:} Natural isomorphism
+    \begin{equation}
+        m_{X,Y,M}: (X \otimes Y) \triangleright M \xrightarrow{\sim} X \triangleright (Y \triangleright M).
+    \end{equation}
+    \item \textbf{Unit constraint:} Natural isomorphism $\ell_M: \one \triangleright M \xrightarrow{\sim} M$.
+\end{enumerate}
+These satisfy coherence conditions (pentagon and triangle diagrams for modules).
+\end{definition}
+
+\begin{definition}[Right module category]\label{def:right-module-category}
+A \emph{right $\catC$-module category} is defined analogously with action $\triangleleft: \mathcal{M} \times \catC \to \mathcal{M}$.
+\end{definition}
+
+\begin{definition}[Bimodule category]\label{def:bimodule-category}
+A \emph{$(\catC, \mathcal{D})$-bimodule category} is a category $\mathcal{M}$ that is simultaneously a left $\catC$-module and right $\mathcal{D}$-module, with compatible associators.
+\end{definition}
+
+\begin{citationblock}
+Etingof--Nikshych--Ostrik, \emph{Adv.\ Math.}\ \textbf{226} (2011) \unverified
+\end{citationblock}
+
+\subsection{Simple Module Objects}
+
+\begin{definition}[Simple module object]\label{def:simple-module-object}
+An object $M \in \mathcal{M}$ is \emph{simple} if it has no proper subobjects. The simple objects of $\mathcal{M}$ form a finite set $\Irr(\mathcal{M})$.
+\end{definition}
+
+\begin{remark}
+Simple module objects correspond to \emph{boundary excitations} or \emph{edge modes}---the elementary degrees of freedom localised at the boundary.
+\end{remark}
+
+\subsection{Internal Hom}
+
+\begin{definition}[Internal Hom]\label{def:internal-hom}
+For $M, N \in \mathcal{M}$, the \emph{internal Hom} $\underline{\Hom}(M, N) \in \catC$ is defined by:
+\begin{equation}
+    \Hom_\mathcal{M}(X \triangleright M, N) \cong \Hom_\catC(X, \underline{\Hom}(M, N)).
+\end{equation}
+\end{definition}
+
+This captures how bulk anyons ($X \in \catC$) can transform one boundary excitation into another.
+
+\subsection{The Regular Module}
+
+\begin{example}[Regular module]\label{ex:regular-module}
+Every fusion category $\catC$ is a module over itself via the tensor product:
+\begin{equation}
+    X \triangleright Y := X \otimes Y.
+\end{equation}
+This is called the \emph{regular module} $\catC_\catC$.
+\end{example}
+
+The regular module corresponds to the ``trivial'' or ``smooth'' boundary condition.
+
+\subsection{Module Functors}
+
+\begin{definition}[Module functor]\label{def:module-functor}
+A \emph{$\catC$-module functor} between $\catC$-module categories $\mathcal{M}$ and $\mathcal{N}$ is a functor $F: \mathcal{M} \to \mathcal{N}$ with natural isomorphisms:
+\begin{equation}
+    s_{X,M}: F(X \triangleright M) \xrightarrow{\sim} X \triangleright F(M)
+\end{equation}
+satisfying coherence conditions.
+\end{definition}
+
+Module functors describe \emph{boundary-changing operators} or \emph{defects} between different boundary conditions.
+
+\subsection{Morita Equivalence}
+
+\begin{definition}[Morita equivalence]\label{def:morita-equivalence}
+Two fusion categories $\catC$ and $\mathcal{D}$ are \emph{Morita equivalent} if there exists an invertible $(\catC, \mathcal{D})$-bimodule category.
+\end{definition}
+
+\begin{theorem}[Boundary-bulk correspondence]\label{thm:boundary-bulk}
+The bulk topological order determines, and is determined by, the set of all possible boundary conditions (module categories) up to Morita equivalence.
+\end{theorem}
+
+\begin{citationblock}
+Kitaev--Kong, \emph{Commun.\ Math.\ Phys.}\ \textbf{313} (2012), 351--373 \unverified
+\end{citationblock}

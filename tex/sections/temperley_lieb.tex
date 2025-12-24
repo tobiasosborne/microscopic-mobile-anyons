@@ -1,0 +1,113 @@
+% temperley_lieb.tex
+% LaTeX counterpart of docs/temperley_lieb.md
+% Section §3.1a
+
+\section{Temperley--Lieb Categories}\label{sec:temperley-lieb}
+
+\begin{assumption}\label{ass:temperley-lieb}
+\begin{enumerate}[label=(A\arabic*)]
+    \item Loop fugacity $n = q + q^{-1}$ for quantum parameter $q$.
+    \item At roots of unity $q = e^{i\pi/p}$, the category truncates to finitely many simples.
+    \item Standard normalisation: loop evaluates to $\delta = -[2]_q$.
+\end{enumerate}
+\end{assumption}
+
+\subsection{Overview}
+
+The \emph{Temperley--Lieb (TL) category} is a fundamental example connecting fusion categories to statistical mechanics, loop models, and conformal field theory. TL categories provide:
+\begin{enumerate}
+    \item A continuous interpolation between solvable models via the loop fugacity parameter.
+    \item Concrete realisations of Fibonacci ($q = e^{i\pi/5}$) and Ising ($q = e^{i\pi/4}$) anyons.
+    \item Direct connection to critical phenomena and CFT via the central charge formula.
+\end{enumerate}
+
+\subsection{Loop Fugacity Parametrisation}
+
+The TL category is parametrised by the \emph{loop fugacity} $n$, related to the quantum parameter $q$ by:
+\begin{equation}\label{eq:loop-fugacity}
+    n = q + q^{-1} = 2\cos\theta, \qquad q = e^{i\theta}.
+\end{equation}
+
+\begin{example}[Key values of loop fugacity]
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+$p$ (for $q = e^{i\pi/p}$) & $n = 2\cos(\pi/p)$ & Physical model \\
+\midrule
+$p = 3$ & $n = 1$ & Percolation \\
+$p = 4$ & $n = \sqrt{2}$ & Ising ($\sigma$-anyon) \\
+$p = 5$ & $n = \phi = \frac{1+\sqrt{5}}{2}$ & Fibonacci ($\tau$-anyon) \\
+$p = 6$ & $n = \sqrt{3}$ & 3-state Potts \\
+$p \to \infty$ & $n \to 2$ & Free fermion \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{example}
+
+At roots of unity, the representation theory truncates, yielding \emph{modular tensor categories} with finitely many simple objects.
+
+\subsection{Quantum Numbers}
+
+\begin{definition}[Quantum integer]\label{def:quantum-integer}
+For $q = e^{i\pi/p}$, the \emph{quantum integer} is:
+\begin{equation}\label{eq:quantum-integer}
+    [n]_q = \frac{q^n - q^{-n}}{q - q^{-1}} = \frac{\sin(n\pi/p)}{\sin(\pi/p)}.
+\end{equation}
+\end{definition}
+
+\begin{definition}[Quantum factorial and binomial]\label{def:quantum-factorial}
+The \emph{quantum factorial} and \emph{quantum binomial} are:
+\begin{equation}
+    [n]!_q = [1]_q [2]_q \cdots [n]_q, \qquad \binom{n}{k}_q = \frac{[n]!_q}{[k]!_q [n-k]!_q}.
+\end{equation}
+\end{definition}
+
+\begin{remark}
+At roots of unity, $[p-1]_q = 0$, causing the truncation of the representation theory.
+\end{remark}
+
+\subsection{Simple Objects and Fusion Rules}
+
+At generic $q$, the TL category has infinitely many simple objects labelled by half-integers $j \in \{0, \frac{1}{2}, 1, \frac{3}{2}, \ldots\}$, corresponding to spins in the representation theory of $U_q(\mathfrak{sl}_2)$.
+
+At roots of unity $q = e^{i\pi/p}$, the category \emph{truncates} to:
+\begin{equation}\label{eq:tl-simples}
+    j \in \left\{0, \frac{1}{2}, 1, \ldots, \frac{p-2}{2}\right\}.
+\end{equation}
+
+\begin{definition}[TL fusion rules]\label{def:tl-fusion}
+The fusion rules are the $SU(2)_q$ rules with truncation:
+\begin{equation}\label{eq:tl-fusion-rule}
+    j_1 \otimes j_2 = \bigoplus_{j = |j_1 - j_2|}^{\min(j_1 + j_2, p-2-j_1-j_2)} j.
+\end{equation}
+\end{definition}
+
+\subsection{Connection to Key Examples}
+
+\begin{example}[Fibonacci anyons, $p = 5$]
+Two simple objects $\{\one, \tau\}$ with $\tau \otimes \tau = \one \oplus \tau$.
+\end{example}
+
+\begin{example}[Ising anyons, $p = 4$]
+Three simple objects $\{\one, \sigma, \psi\}$ with:
+\begin{align}
+    \sigma \otimes \sigma &= \one \oplus \psi, \\
+    \psi \otimes \psi &= \one, \\
+    \sigma \otimes \psi &= \sigma.
+\end{align}
+\end{example}
+
+\subsection{Critical Behaviour}
+
+\begin{theorem}[Central charge]\label{thm:tl-central-charge}
+At $q = e^{i\pi/p}$, the TL algebra describes critical points with central charge:
+\begin{equation}\label{eq:central-charge}
+    c = 1 - \frac{6(p-1)^2}{p}.
+\end{equation}
+This connects TL categories to minimal model CFTs $\mathcal{M}(p, p-1)$.
+\end{theorem}
+
+\begin{citationblock}
+Kauffman--Lins, \emph{Temperley--Lieb Recoupling Theory} (1994) \unverified;
+Jones, \emph{Inventiones Math.}\ \textbf{72} (1983), 1--25 \unverified
+\end{citationblock}

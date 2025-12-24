@@ -1,0 +1,124 @@
+% boundary_conditions.tex
+% LaTeX counterpart of docs/boundary_conditions.md
+% Section §6.5
+
+\section{Boundary Conditions for Anyonic Chains}\label{sec:boundary-conditions}
+
+\begin{assumption}\label{ass:boundary-conditions}
+\begin{enumerate}[label=(A\arabic*)]
+    \item Bulk fusion category $\catC$ (from \S\ref{sec:fusion-categories}).
+    \item 1D chain with open boundary conditions (from \S\ref{sec:lattice}).
+    \item Boundary conditions classified by $\catC$-module categories.
+\end{enumerate}
+\end{assumption}
+
+\subsection{Overview}
+
+For anyonic chains with open boundary conditions, the choice of \emph{boundary conditions} at each end significantly affects the Hilbert space structure and dynamics. Following the Kitaev--Kong framework, boundary conditions are classified by \emph{module categories} over the bulk fusion category $\catC$.
+
+Different boundary conditions lead to different edge mode structures, affecting ground state degeneracy, edge excitations, and partition functions.
+
+\subsection{Boundary Hilbert Space}
+
+\begin{definition}[Boundary Hilbert space]\label{def:boundary-hilbert}
+For a chain with:
+\begin{itemize}
+    \item Bulk category $\catC$
+    \item Left boundary condition $\mathcal{M}_L$ (left $\catC$-module category)
+    \item Right boundary condition $\mathcal{M}_R$ (right $\catC$-module category)
+\end{itemize}
+The boundary-modified Hilbert space involves the \emph{relative tensor product} $\mathcal{M}_L \boxtimes_\catC \mathcal{M}_R$.
+\end{definition}
+
+\subsection{Trivial Boundary Conditions}
+
+\begin{definition}[Trivial/smooth boundary]\label{def:trivial-boundary}
+The \emph{trivial boundary condition} corresponds to the regular module $\catC_\catC$, where $\catC$ acts on itself by tensor product.
+\end{definition}
+
+Anyons can freely approach the boundary without restriction. No edge modes beyond the bulk structure.
+
+\subsection{Gapped Boundaries via Lagrangian Algebras}
+
+\begin{definition}[Lagrangian algebra]\label{def:lagrangian-algebra}
+A \emph{Lagrangian algebra} $A \in \catC$ is a commutative algebra object satisfying:
+\begin{equation}
+    \dim(A)^2 = \dim(\catC),
+\end{equation}
+where $\dim(\catC) = \sum_i d_i^2$ is the total quantum dimension.
+\end{definition}
+
+\begin{theorem}[Classification of gapped boundaries]\label{thm:gapped-boundaries}
+Gapped boundary conditions for a topological phase with bulk $\catC$ are in bijection with Lagrangian algebras in $\catC$ (for modular $\catC$).
+\end{theorem}
+
+\begin{citationblock}
+Kong--Wen, \emph{JHEP} (2014) \unverified
+\end{citationblock}
+
+A Lagrangian algebra specifies which bulk anyons can ``condense'' at the boundary.
+
+\subsection{Examples}
+
+\begin{example}[Fibonacci anyons]\label{ex:fib-boundary}
+For the Fibonacci category $\catC = \mathrm{Fib}$ with simples $\{\one, \tau\}$:
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Module category & Simple objects & Physical meaning \\
+\midrule
+$\mathrm{Fib}_\mathrm{Fib}$ (regular) & $\{\one, \tau\}$ & Smooth boundary \\
+$\mathrm{Vec}$ (condensed) & $\{\one\}$ & $\tau$ condensed at boundary \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{example}
+
+\begin{example}[Ising anyons]\label{ex:ising-boundary}
+For the Ising category $\catC = \mathrm{Ising}$ with simples $\{\one, \sigma, \psi\}$:
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Module category & Simple objects & Physical meaning \\
+\midrule
+$\mathrm{Ising}_\mathrm{Ising}$ & $\{\one, \sigma, \psi\}$ & Smooth boundary \\
+$\mathrm{Vec}(\mathbb{Z}_2)$ & $\{\one, \psi\}$ & $\sigma$ condensed \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{example}
+
+\subsection{Application to Mobile Anyons}
+
+For mobile anyons on an open chain (our setting from \S\ref{sec:hilbert-space}):
+
+\begin{enumerate}
+    \item \textbf{Standard construction} (\S\ref{sec:hilbert-space}): Uses trivial boundary conditions implicitly.
+
+    \item \textbf{With general boundaries:} The Hilbert space becomes:
+    \begin{equation}
+        \catH = \bigoplus_{M_L \in \mathcal{M}_L} \bigoplus_{M_R \in \mathcal{M}_R} \catH(M_L, M_R),
+    \end{equation}
+    where $\catH(M_L, M_R)$ is the space of bulk configurations interpolating between boundary states.
+
+    \item \textbf{Boundary Hamiltonians:} Additional terms can describe:
+    \begin{itemize}
+        \item Boundary potentials (energy cost for edge modes)
+        \item Boundary-bulk coupling (anyons interacting with edge)
+        \item Boundary-changing operators (transitions between boundary conditions)
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Connection to Golden Chain}
+
+\begin{example}[Golden chain boundaries]\label{ex:golden-chain-bc}
+The golden chain (Fibonacci anyons at unit filling) has been studied with various boundary conditions:
+\begin{itemize}
+    \item \textbf{Free boundaries:} Regular module, leading to CFT edge modes.
+    \item \textbf{Fixed boundaries:} Specific module object pinned at edge, breaking some symmetry.
+\end{itemize}
+\end{example}
+
+\begin{citationblock}
+Aasen--Fendley--Mong, \emph{J.\ Phys.\ A} (2020) \unverified
+\end{citationblock}
