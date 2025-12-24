@@ -19,4 +19,6 @@ This directory will contain modular documents (≤200 lines each) for preliminar
 
 **New in §4.5:** Matrix element computations for 2-local operators on hard-core sectors—three operator types (two-particle interaction, right hopping, left hopping).
 
+**§3.1a Temperley-Lieb:** `temperley_lieb.md` covers TL categories as key test cases connecting fusion categories to loop models, CFT, and statistical mechanics. Parametrised by loop fugacity, with Fibonacci and Ising as special cases.
+
 **§3.5 Diagrammatic Calculus:** `diagrammatic_calculus.md` covers string diagrams, isotopy/pivotal structure, evaluation/coevaluation maps, quantum dimensions, F-moves/R-moves, and project normalisation conventions.
