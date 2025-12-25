@@ -309,7 +309,9 @@ $\chainlocal{H}$
 \section{Anyon Chain}
 % ============================================================
 
-A simple anyon chain template:
+Anyons live in \textbf{intervals} (between lattice vertices), not at vertices:
+
+\subsection{Standard Chain (with interval brackets)}
 
 \begin{center}
 $\anyonchain{a}$
@@ -317,6 +319,16 @@ $\anyonchain{a}$
 
 \begin{center}
 \verb|\anyonchain{a}|
+\end{center}
+
+\subsection{Shaded Chain (intervals highlighted)}
+
+\begin{center}
+$\anyonchainshaded{\tau}$
+\end{center}
+
+\begin{center}
+\verb|\anyonchainshaded{\tau}|
 \end{center}
 
 % ============================================================
@@ -341,19 +353,42 @@ For labeling F-symbol indices: $\Fdiamond{\alpha}$, $\Fdiamond{\beta}$
 \end{center}
 
 % ============================================================
+\section{Compact Braiding for Hamiltonians}
+% ============================================================
+
+Compact (squatter) braids for use inside brackets:
+
+\begin{center}
+\begin{tabular}{cccc}
+\textbf{Compact} & \textbf{Compact Inv} & \textbf{Labeled} & \textbf{Labeled Inv} \\[0.3cm]
+$\braidcompact$ & $\braidcompactinv$ & $\braidlabeled{a}{b}$ & $\braidlabeledinv{a}{b}$ \\[0.5cm]
+\verb|\braidcompact| & \verb|\braidcompactinv| & \verb|\braidlabeled{a}{b}| & \verb|\braidlabeledinv{a}{b}|
+\end{tabular}
+\end{center}
+
+Example in a Hamiltonian expression:
+\[
+H = -\sum_i \left( \braidcompact + \phi^{-1}\, \braidcompactinv \right)_i
+\]
+
+% ============================================================
 \section{Color Definitions}
 % ============================================================
 
-The following colors are defined for use in diagrams:
+Professional complementary color scheme (blue-orange with accents):
 
 \begin{center}
-\begin{tabular}{ll}
-\textcolor{AnyonRed}{AnyonRed} & Primary anyon color \\
-\textcolor{AnyonBlue}{AnyonBlue} & Secondary anyon color \\
-\textcolor{AnyonGreen}{AnyonGreen} & Tertiary anyon color \\
-\textcolor{AnyonOrange}{AnyonOrange} & Quaternary anyon color \\
-\textcolor{LightGray}{LightGray} & Background for boxes \\
-\textcolor{MediumGray}{MediumGray} & Borders and accents \\
+\begin{tabular}{lll}
+\textbf{Name} & \textbf{Sample} & \textbf{Usage} \\[0.2cm]
+\hline\\[-0.2cm]
+AnyonBlue & \textcolor{AnyonBlue}{\rule{1cm}{0.4cm}} & Primary color \\
+AnyonOrange & \textcolor{AnyonOrange}{\rule{1cm}{0.4cm}} & Complementary color \\
+AnyonTeal & \textcolor{AnyonTeal}{\rule{1cm}{0.4cm}} & Accent color \\
+AnyonCoral & \textcolor{AnyonCoral}{\rule{1cm}{0.4cm}} & Accent color \\
+AnyonSlate & \textcolor{AnyonSlate}{\rule{1cm}{0.4cm}} & Dark emphasis \\
+AnyonSilver & \textcolor{AnyonSilver}{\rule{1cm}{0.4cm}} & Subtle elements \\
+LightGray & \textcolor{LightGray}{\rule{1cm}{0.4cm}} & Backgrounds \\
+MediumGray & \textcolor{MediumGray}{\rule{1cm}{0.4cm}} & Borders \\
 \end{tabular}
 \end{center}
 
@@ -397,7 +432,7 @@ The following colors are defined for use in diagrams:
 \section{Example: Golden Chain Hamiltonian}
 % ============================================================
 
-As an example, here is how to write a 2-local Hamiltonian term for the golden chain using these macros:
+As an example, here is how to write a 2-local Hamiltonian term for the golden chain using these macros (note proper vertical centering in brackets):
 
 \[
 H = -\sum_i \left( \Htwofusion{\mathbf{1}} + \phi^{-1} \Htwofusion{\tau} \right)_i
@@ -409,6 +444,15 @@ The projector onto the trivial fusion channel at sites $i, i+1$ is:
 
 \[
 P^{(\mathbf{1})}_{i,i+1} = \frac{1}{d} \Htwocupcap
+\]
+
+All 2-local operators side by side for comparison:
+\[
+\left( \Htwoidentity \right) \qquad
+\left( \Htwoswap \right) \qquad
+\left( \Htwocupcap \right) \qquad
+\left( \HtwoH \right) \qquad
+\left( \Htwofusion{c} \right)
 \]
 
 % ============================================================

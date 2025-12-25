@@ -31,15 +31,28 @@
 % ============================================================
 % Color Definitions
 % ============================================================
-% Primary colors for objects/anyons
-\definecolor{AnyonRed}{RGB}{221, 6, 0}
-\definecolor{AnyonBlue}{RGB}{15, 105, 197}
-\definecolor{AnyonGreen}{RGB}{11, 170, 21}
-\definecolor{AnyonOrange}{RGB}{238, 143, 0}
+% Professional color scheme: Complementary blue-orange with accents
+% Based on color theory for scientific diagrams
 
-% Gray for boxes and backgrounds
-\definecolor{LightGray}{RGB}{220,220,220}
-\definecolor{MediumGray}{RGB}{180,180,180}
+% Primary pair (complementary)
+\definecolor{AnyonBlue}{RGB}{41, 98, 155}       % Deep blue - primary
+\definecolor{AnyonOrange}{RGB}{230, 126, 34}    % Warm orange - complement
+
+% Secondary pair (split-complementary accents)
+\definecolor{AnyonTeal}{RGB}{22, 160, 133}      % Teal - accent
+\definecolor{AnyonCoral}{RGB}{192, 57, 43}      % Coral red - accent
+
+% Neutral tones
+\definecolor{AnyonSlate}{RGB}{52, 73, 94}       % Dark slate - for emphasis
+\definecolor{AnyonSilver}{RGB}{149, 165, 166}   % Silver - subtle elements
+
+% Background and UI colors
+\definecolor{LightGray}{RGB}{236, 240, 241}     % Light background
+\definecolor{MediumGray}{RGB}{189, 195, 199}    % Borders and lines
+
+% Legacy aliases for backward compatibility
+\definecolor{AnyonRed}{RGB}{192, 57, 43}        % Maps to AnyonCoral
+\definecolor{AnyonGreen}{RGB}{22, 160, 133}     % Maps to AnyonTeal
 
 % ============================================================
 % Basic Arrow Styles for String Diagrams
@@ -239,10 +252,10 @@
         \node at (1,2.25) {\small $#3$};
         \node at (-0.5,1.1) {\small $#5$};
     \end{scope}
-    % Equals sign
-    \node at (1.8,1.25) {$=\displaystyle\sum_{#6} \left(F_{#4}^{#1#2#3}\right)_{#6#5}$};
-    % Right tree: (a (b c)_f)_d
-    \begin{scope}[xshift=5.5cm]
+    % Equals sign with proper spacing (anchor west for left-alignment)
+    \node[anchor=west] at (1.4,1.25) {$=\displaystyle\sum_{#6} \left(F_{#4}^{#1#2#3}\right)_{#6#5}$};
+    % Right tree: (a (b c)_f)_d - shifted further right
+    \begin{scope}[xshift=6.2cm]
         \draw (0,0.5) -- (0,1);
         \draw (0,1) -- (-0.5,1.5);
         \draw (-0.5,1.5) -- (-1,2);
@@ -357,6 +370,55 @@
 }
 
 % ------------------------------------------------------------
+% Compact Braiding for Hamiltonian terms (no labels, squatter)
+% Usage: \braidcompact (over), \braidcompactinv (under)
+% These fit nicely inside \left( \right) brackets
+% ------------------------------------------------------------
+\newcommand{\braidcompact}{%
+\begin{tikzpicture}[scale=0.5,baseline={([yshift=-2pt]current bounding box.center)}]
+    \begin{knot}[flip crossing/.list={1},consider self intersections=true,ignore endpoint intersections=false,clip width=3]
+        \strand (0,0) to[out=90,in=270] (0.8,1.2);
+        \strand (0.8,0) to[out=90,in=270] (0,1.2);
+    \end{knot}
+\end{tikzpicture}%
+}
+
+\newcommand{\braidcompactinv}{%
+\begin{tikzpicture}[scale=0.5,baseline={([yshift=-2pt]current bounding box.center)}]
+    \begin{knot}[consider self intersections=true,ignore endpoint intersections=false,clip width=3]
+        \strand (0,0) to[out=90,in=270] (0.8,1.2);
+        \strand (0.8,0) to[out=90,in=270] (0,1.2);
+    \end{knot}
+\end{tikzpicture}%
+}
+
+% ------------------------------------------------------------
+% Labeled Compact Braiding (squatter, for Hamiltonian terms)
+% Usage: \braidlabeled{X}{Y} (over), \braidlabeledinv{X}{Y} (under)
+% ------------------------------------------------------------
+\newcommand{\braidlabeled}[2]{%
+\begin{tikzpicture}[scale=0.55,baseline={([yshift=-2pt]current bounding box.center)}]
+    \node at (-0.3,-0.15) {\tiny $#1$};
+    \node at (1.1,-0.15) {\tiny $#2$};
+    \begin{knot}[flip crossing/.list={1},consider self intersections=true,ignore endpoint intersections=false,clip width=3]
+        \strand (0,0) to[out=90,in=270] (0.8,1.2);
+        \strand (0.8,0) to[out=90,in=270] (0,1.2);
+    \end{knot}
+\end{tikzpicture}%
+}
+
+\newcommand{\braidlabeledinv}[2]{%
+\begin{tikzpicture}[scale=0.55,baseline={([yshift=-2pt]current bounding box.center)}]
+    \node at (-0.3,-0.15) {\tiny $#2$};
+    \node at (1.1,-0.15) {\tiny $#1$};
+    \begin{knot}[consider self intersections=true,ignore endpoint intersections=false,clip width=3]
+        \strand (0,0) to[out=90,in=270] (0.8,1.2);
+        \strand (0.8,0) to[out=90,in=270] (0,1.2);
+    \end{knot}
+\end{tikzpicture}%
+}
+
+% ------------------------------------------------------------
 % Twist (Ribbon element): curl on a single strand
 % Usage: \twist{X}
 % ------------------------------------------------------------
@@ -414,19 +476,45 @@
 % Usage: Place manually or use as template
 % ------------------------------------------------------------
 \newcommand{\anyonchain}[1]{%
-% Draws a simple anyon chain with sites labeled #1
-% Customize as needed for specific applications
-\begin{tikzpicture}[scale=1.5,baseline=(current bounding box.center)]
-    \node at (0,0) {\textbullet};
-    \node at (1,0) {\textbullet};
-    \node at (2,0) {\textbullet};
-    \node at (3,0) {$\cdots$};
-    \draw (0.15,0) -- (0.85,0);
-    \draw (1.15,0) -- (1.85,0);
-    \draw (2.15,0) -- (2.85,0);
-    \node at (0,+0.35) {\small $#1_1$};
-    \node at (1,+0.35) {\small $#1_2$};
-    \node at (2,+0.35) {\small $#1_3$};
+% Draws anyon chain with anyons living in INTERVALS (not at vertices)
+% Vertices are lattice sites, anyons occupy the cells between them
+\begin{tikzpicture}[scale=1.2,baseline=(current bounding box.center)]
+    % Lattice vertices (small dots)
+    \foreach \x in {0,1,2,3} {
+        \fill (\x,0) circle (2pt);
+    }
+    % Edges connecting vertices
+    \draw (0,0) -- (3,0);
+    \node at (3.4,0) {$\cdots$};
+    % Anyon labels in intervals (between vertices)
+    % Positioned at midpoints with small brackets to indicate the cell
+    \draw[thick,AnyonBlue] (0.1,-0.15) -- (0.1,-0.05) -- (0.9,-0.05) -- (0.9,-0.15);
+    \draw[thick,AnyonBlue] (1.1,-0.15) -- (1.1,-0.05) -- (1.9,-0.05) -- (1.9,-0.15);
+    \draw[thick,AnyonBlue] (2.1,-0.15) -- (2.1,-0.05) -- (2.9,-0.05) -- (2.9,-0.15);
+    \node at (0.5,+0.3) {\small $#1_1$};
+    \node at (1.5,+0.3) {\small $#1_2$};
+    \node at (2.5,+0.3) {\small $#1_3$};
+\end{tikzpicture}%
+}
+
+% Alternative: anyon chain with shaded intervals
+\newcommand{\anyonchainshaded}[1]{%
+\begin{tikzpicture}[scale=1.2,baseline=(current bounding box.center)]
+    % Shaded intervals to show anyon locations
+    \fill[AnyonBlue,opacity=0.15] (0,-0.12) rectangle (1,0.12);
+    \fill[AnyonOrange,opacity=0.15] (1,-0.12) rectangle (2,0.12);
+    \fill[AnyonBlue,opacity=0.15] (2,-0.12) rectangle (3,0.12);
+    % Lattice vertices (small dots)
+    \foreach \x in {0,1,2,3} {
+        \fill (\x,0) circle (2pt);
+    }
+    % Edge line
+    \draw (0,0) -- (3,0);
+    \node at (3.4,0) {$\cdots$};
+    % Anyon labels in intervals
+    \node at (0.5,+0.3) {\small $#1_1$};
+    \node at (1.5,+0.3) {\small $#1_2$};
+    \node at (2.5,+0.3) {\small $#1_3$};
 \end{tikzpicture}%
 }
 
@@ -790,8 +878,9 @@
 % ============================================================
 
 % Two-site identity (parallel strands)
+% Baseline set for proper vertical centering in \left( \right) brackets
 \newcommand{\Htwoidentity}{%
-\begin{tikzpicture}[scale=0.6,baseline=(current bounding box.center)]
+\begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
     \draw (0,0) -- (0,1.5);
     \draw (1,0) -- (1,1.5);
 \end{tikzpicture}%
@@ -799,7 +888,7 @@
 
 % Two-site swap (crossing strands)
 \newcommand{\Htwoswap}{%
-\begin{tikzpicture}[scale=0.6,baseline=(current bounding box.center)]
+\begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
     \draw (0,0) -- (1,1.5);
     \draw (1,0) -- (0,1.5);
 \end{tikzpicture}%
@@ -807,7 +896,7 @@
 
 % Two-site cup-cap (TL generator)
 \newcommand{\Htwocupcap}{%
-\begin{tikzpicture}[scale=0.6,baseline=(current bounding box.center)]
+\begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
     \draw (0,0) to [bend left=60] (1,0);
     \draw (0,1.5) to [bend right=60] (1,1.5);
 \end{tikzpicture}%
@@ -815,7 +904,7 @@
 
 % Two-site H-pattern (fusion-splitting)
 \newcommand{\HtwoH}{%
-\begin{tikzpicture}[scale=0.6,baseline=(current bounding box.center)]
+\begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
     \draw (0,0) -- (0.5,0.4);
     \draw (1,0) -- (0.5,0.4);
     \draw (0.5,0.4) -- (0.5,1.1);
@@ -825,8 +914,9 @@
 }
 
 % Two-site with intermediate label
+% Properly centered in brackets for Hamiltonian expressions
 \newcommand{\Htwofusion}[1]{%
-\begin{tikzpicture}[scale=0.6,baseline=(current bounding box.center)]
+\begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
     \draw (0,0) -- (0.5,0.4);
     \draw (1,0) -- (0.5,0.4);
     \draw (0.5,0.4) -- (0.5,1.1) node[midway,right] {\tiny $#1$};
@@ -841,15 +931,18 @@
 % ============================================================
 
 % Local operator in chain context (dots ... O ... dots)
+% Lines connect exactly to box edges, not through them
 \newcommand{\chainlocal}[1]{%
 \begin{tikzpicture}[scale=0.6,baseline=(current bounding box.center)]
     \node at (-0.5,0.75) {$\cdots$};
     \draw (0,0) -- (0,1.5);
-    \node [rectangle,draw,fill=LightGray,minimum size=0.4cm] at (0.75,0.75) {\tiny $#1$};
-    \draw (0.5,0) -- (0.5,0.5);
-    \draw (0.5,1) -- (0.5,1.5);
-    \draw (1,0) -- (1,0.5);
-    \draw (1,1) -- (1,1.5);
+    % Box spans x=[0.5,1.0], y=[0.45,1.05]
+    \node [rectangle,draw,fill=LightGray,minimum width=0.6cm,minimum height=0.5cm,inner sep=2pt] at (0.75,0.75) {\tiny $#1$};
+    % Strands touch box edges exactly
+    \draw (0.5,0) -- (0.5,0.45);
+    \draw (0.5,1.05) -- (0.5,1.5);
+    \draw (1,0) -- (1,0.45);
+    \draw (1,1.05) -- (1,1.5);
     \draw (1.5,0) -- (1.5,1.5);
     \node at (2,0.75) {$\cdots$};
 \end{tikzpicture}%
