@@ -307,3 +307,6 @@ credentials/
 
 # Untrack PDFs in literature/
 literature/pdfs/
+
+# Literature TeX source files (reference material, not project code)
+literature/tex/
