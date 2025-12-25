@@ -272,6 +272,96 @@
 }
 
 % ------------------------------------------------------------
+% F-move with Multiplicity Indices
+% For categories with N^c_{ab} > 1, vertices carry multiplicity labels
+% Usage: \Fmovemult{a}{b}{c}{d}{e}{f}{mu}{nu}
+% mu labels the (a,b)->e vertex, nu labels the (e,c)->d vertex on left
+% On right: mu' labels (b,c)->f, nu' labels (a,f)->d
+% ------------------------------------------------------------
+\newcommand{\Fmovemult}[8]{%
+\begin{tikzpicture}[baseline=(current bounding box.center),scale=0.9]
+    % Left tree: ((a b)_e c)_d with multiplicities mu, nu
+    \begin{scope}
+        \draw (0,0.5) -- (0,1);
+        \draw (0,1) -- (-0.5,1.5);
+        \draw (-0.5,1.5) -- (-1,2);
+        \draw (-0.5,1.5) -- (0,2);
+        \draw (0,1) -- (0.5,1.5);
+        \draw (0.5,1.5) -- (1,2);
+        % Object labels
+        \node at (0,0.25) {\small $#4$};
+        \node at (-1,2.25) {\small $#1$};
+        \node at (0,2.25) {\small $#2$};
+        \node at (1,2.25) {\small $#3$};
+        \node at (-0.75,1.1) {\small $#5$};
+        % Multiplicity labels at vertices
+        \node[fill=white,inner sep=1pt] at (-0.5,1.5) {\tiny $#7$};
+        \node[fill=white,inner sep=1pt] at (0,1) {\tiny $#8$};
+    \end{scope}
+    % Equals sign with F-symbol including multiplicities
+    \node[anchor=west] at (1.4,1.25) {$=\displaystyle\sum_{#6,#7',#8'} \left(F_{#4}^{#1#2#3}\right)_{#5#6}^{#7#8,#7'#8'}$};
+    % Right tree: (a (b c)_f)_d with multiplicities mu', nu'
+    \begin{scope}[xshift=7.5cm]
+        \draw (0,0.5) -- (0,1);
+        \draw (0,1) -- (-0.5,1.5);
+        \draw (-0.5,1.5) -- (-1,2);
+        \draw (0.5,1.5) -- (0,2);
+        \draw (0,1) -- (0.5,1.5);
+        \draw (0.5,1.5) -- (1,2);
+        % Object labels
+        \node at (0,0.25) {\small $#4$};
+        \node at (-1,2.25) {\small $#1$};
+        \node at (0,2.25) {\small $#2$};
+        \node at (1,2.25) {\small $#3$};
+        \node at (0.75,1.1) {\small $#6$};
+        % Multiplicity labels at vertices (primed)
+        \node[fill=white,inner sep=1pt] at (0.5,1.5) {\tiny $#7'$};
+        \node[fill=white,inner sep=1pt] at (0,1) {\tiny $#8'$};
+    \end{scope}
+\end{tikzpicture}%
+}
+
+% ------------------------------------------------------------
+% Simple F-move trees (without equation, for inline use)
+% Usage: \Ftreeleft{a}{b}{c}{d}{e}{mu}{nu} and \Ftreeright{a}{b}{c}{d}{f}{mu}{nu}
+% ------------------------------------------------------------
+\newcommand{\Ftreeleft}[7]{%
+\begin{tikzpicture}[baseline=(current bounding box.center),scale=0.7]
+    \draw (0,0) -- (0,0.5);
+    \draw (0,0.5) -- (-0.5,1);
+    \draw (-0.5,1) -- (-1,1.5);
+    \draw (-0.5,1) -- (0,1.5);
+    \draw (0,0.5) -- (0.5,1);
+    \draw (0.5,1) -- (1,1.5);
+    \node at (0,-0.25) {\small $#4$};
+    \node at (-1,1.75) {\small $#1$};
+    \node at (0,1.75) {\small $#2$};
+    \node at (1,1.75) {\small $#3$};
+    \node at (-0.7,0.6) {\small $#5$};
+    \node[fill=white,inner sep=1pt] at (-0.5,1) {\tiny $#6$};
+    \node[fill=white,inner sep=1pt] at (0,0.5) {\tiny $#7$};
+\end{tikzpicture}%
+}
+
+\newcommand{\Ftreeright}[7]{%
+\begin{tikzpicture}[baseline=(current bounding box.center),scale=0.7]
+    \draw (0,0) -- (0,0.5);
+    \draw (0,0.5) -- (-0.5,1);
+    \draw (-0.5,1) -- (-1,1.5);
+    \draw (0.5,1) -- (0,1.5);
+    \draw (0,0.5) -- (0.5,1);
+    \draw (0.5,1) -- (1,1.5);
+    \node at (0,-0.25) {\small $#4$};
+    \node at (-1,1.75) {\small $#1$};
+    \node at (0,1.75) {\small $#2$};
+    \node at (1,1.75) {\small $#3$};
+    \node at (0.7,0.6) {\small $#5$};
+    \node[fill=white,inner sep=1pt] at (0.5,1) {\tiny $#6$};
+    \node[fill=white,inner sep=1pt] at (0,0.5) {\tiny $#7$};
+\end{tikzpicture}%
+}
+
+% ------------------------------------------------------------
 % Evaluation (Cup): X* tensor X -> 1
 % Usage: \evalcup{X}
 % ------------------------------------------------------------
@@ -477,20 +567,17 @@
 % ------------------------------------------------------------
 \newcommand{\anyonchain}[1]{%
 % Draws anyon chain with anyons living in INTERVALS (not at vertices)
-% Vertices are lattice sites, anyons occupy the cells between them
+% Vertical tick marks pass through the horizontal line to indicate lattice sites
+% Anyons occupy the cells between ticks
 \begin{tikzpicture}[scale=1.2,baseline=(current bounding box.center)]
-    % Lattice vertices (small dots)
+    % Horizontal line (the chain)
+    \draw (0,0) -- (3.2,0);
+    \node at (3.5,0) {$\cdots$};
+    % Vertical tick marks at lattice sites (pass through the line)
     \foreach \x in {0,1,2,3} {
-        \fill (\x,0) circle (2pt);
+        \draw (\x,-0.12) -- (\x,0.12);
     }
-    % Edges connecting vertices
-    \draw (0,0) -- (3,0);
-    \node at (3.4,0) {$\cdots$};
-    % Anyon labels in intervals (between vertices)
-    % Positioned at midpoints with small brackets to indicate the cell
-    \draw[thick,AnyonBlue] (0.1,-0.15) -- (0.1,-0.05) -- (0.9,-0.05) -- (0.9,-0.15);
-    \draw[thick,AnyonBlue] (1.1,-0.15) -- (1.1,-0.05) -- (1.9,-0.05) -- (1.9,-0.15);
-    \draw[thick,AnyonBlue] (2.1,-0.15) -- (2.1,-0.05) -- (2.9,-0.05) -- (2.9,-0.15);
+    % Anyon labels in intervals (centered between ticks)
     \node at (0.5,+0.3) {\small $#1_1$};
     \node at (1.5,+0.3) {\small $#1_2$};
     \node at (2.5,+0.3) {\small $#1_3$};
@@ -501,20 +588,20 @@
 \newcommand{\anyonchainshaded}[1]{%
 \begin{tikzpicture}[scale=1.2,baseline=(current bounding box.center)]
     % Shaded intervals to show anyon locations
-    \fill[AnyonBlue,opacity=0.15] (0,-0.12) rectangle (1,0.12);
-    \fill[AnyonOrange,opacity=0.15] (1,-0.12) rectangle (2,0.12);
-    \fill[AnyonBlue,opacity=0.15] (2,-0.12) rectangle (3,0.12);
-    % Lattice vertices (small dots)
+    \fill[AnyonBlue,opacity=0.15] (0,-0.15) rectangle (1,0.15);
+    \fill[AnyonOrange,opacity=0.15] (1,-0.15) rectangle (2,0.15);
+    \fill[AnyonBlue,opacity=0.15] (2,-0.15) rectangle (3,0.15);
+    % Horizontal line
+    \draw (0,0) -- (3.2,0);
+    \node at (3.5,0) {$\cdots$};
+    % Vertical tick marks at lattice sites
     \foreach \x in {0,1,2,3} {
-        \fill (\x,0) circle (2pt);
+        \draw (\x,-0.15) -- (\x,0.15);
     }
-    % Edge line
-    \draw (0,0) -- (3,0);
-    \node at (3.4,0) {$\cdots$};
     % Anyon labels in intervals
-    \node at (0.5,+0.3) {\small $#1_1$};
-    \node at (1.5,+0.3) {\small $#1_2$};
-    \node at (2.5,+0.3) {\small $#1_3$};
+    \node at (0.5,+0.35) {\small $#1_1$};
+    \node at (1.5,+0.35) {\small $#1_2$};
+    \node at (2.5,+0.35) {\small $#1_3$};
 \end{tikzpicture}%
 }
 
@@ -941,6 +1028,48 @@
     \begin{knot}[consider self intersections=true,ignore endpoint intersections=false,clip width=4]
         \strand (0,0) to[out=90,in=270] (1,1.5);
         \strand (1,0) to[out=90,in=270] (0,1.5);
+    \end{knot}
+\end{tikzpicture}%
+}
+
+% Two-site hop RIGHT: anyon hops right (vacuum on left shown in gray)
+% Left strand is vacuum (gray), right strand is anyon (black)
+\newcommand{\Htwohopright}{%
+\begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
+    \begin{knot}[flip crossing/.list={1},consider self intersections=true,ignore endpoint intersections=false,clip width=4]
+        \strand[AnyonSilver,thick] (0,0) to[out=90,in=270] (1,1.5);
+        \strand (1,0) to[out=90,in=270] (0,1.5);
+    \end{knot}
+\end{tikzpicture}%
+}
+
+% Two-site hop LEFT: anyon hops left (vacuum on right shown in gray)
+% Left strand is anyon (black), right strand is vacuum (gray)
+\newcommand{\Htwohopleft}{%
+\begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
+    \begin{knot}[flip crossing/.list={1},consider self intersections=true,ignore endpoint intersections=false,clip width=4]
+        \strand (0,0) to[out=90,in=270] (1,1.5);
+        \strand[AnyonSilver,thick] (1,0) to[out=90,in=270] (0,1.5);
+    \end{knot}
+\end{tikzpicture}%
+}
+
+% Inverse hop RIGHT (under-crossing version)
+\newcommand{\Htwohoprghtinv}{%
+\begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
+    \begin{knot}[consider self intersections=true,ignore endpoint intersections=false,clip width=4]
+        \strand[AnyonSilver,thick] (0,0) to[out=90,in=270] (1,1.5);
+        \strand (1,0) to[out=90,in=270] (0,1.5);
+    \end{knot}
+\end{tikzpicture}%
+}
+
+% Inverse hop LEFT (under-crossing version)
+\newcommand{\Htwohopleftinv}{%
+\begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
+    \begin{knot}[consider self intersections=true,ignore endpoint intersections=false,clip width=4]
+        \strand (0,0) to[out=90,in=270] (1,1.5);
+        \strand[AnyonSilver,thick] (1,0) to[out=90,in=270] (0,1.5);
     \end{knot}
 \end{tikzpicture}%
 }

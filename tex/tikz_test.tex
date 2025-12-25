@@ -71,6 +71,27 @@ The F-move relates different fusion orders:
 \verb|\Fmoveequation{a}{b}{c}{d}{e}{f}|
 \end{center}
 
+\subsection{F-Move with Multiplicity Indices}
+
+For categories with $N^c_{ab} > 1$, vertices carry multiplicity labels $\mu, \nu$:
+
+\[
+\Fmovemult{a}{b}{c}{d}{e}{f}{\mu}{\nu}
+\]
+
+\begin{center}
+\verb|\Fmovemult{a}{b}{c}{d}{e}{f}{\mu}{\nu}|
+\end{center}
+
+Individual trees with multiplicities for inline use:
+
+\begin{center}
+\begin{tabular}{cc}
+$\Ftreeleft{a}{b}{c}{d}{e}{\mu}{\nu}$ & $\Ftreeright{a}{b}{c}{d}{f}{\mu'}{\nu'}$ \\[0.5cm]
+\verb|\Ftreeleft{a}{b}{c}{d}{e}{\mu}{\nu}| & \verb|\Ftreeright{a}{b}{c}{d}{f}{\mu'}{\nu'}|
+\end{tabular}
+\end{center}
+
 % ============================================================
 \section{Duality: Cups and Caps}
 % ============================================================
@@ -288,6 +309,23 @@ $\Htwoidentity$ & $\Htwoswap$ & $\Htwocupcap$ & $\HtwoH$ & $\Htwobraid$ & $\Htwo
 \end{tabular}
 \end{center}
 
+\subsection{Hopping Operators (Braid with Vacuum)}
+
+Hop operators have one strand as vacuum (gray) representing anyon hopping:
+
+\begin{center}
+\begin{tabular}{cccc}
+\textbf{Hop Right} & \textbf{Hop Left} & \textbf{Hop Right$^{-1}$} & \textbf{Hop Left$^{-1}$} \\[0.3cm]
+$\Htwohopright$ & $\Htwohopleft$ & $\Htwohoprghtinv$ & $\Htwohopleftinv$ \\[0.5cm]
+\verb|\Htwohopright| & \verb|\Htwohopleft| & \verb|\Htwohoprghtinv| & \verb|\Htwohopleftinv|
+\end{tabular}
+\end{center}
+
+Example hopping Hamiltonian:
+\[
+H_{\text{hop}} = -t \sum_i \left( \Htwohopright + \Htwohopleft \right)_i
+\]
+
 \subsection{Fusion with Intermediate Channel}
 
 \begin{center}
@@ -309,9 +347,9 @@ $\chainlocal{H}$
 \section{Anyon Chain}
 % ============================================================
 
-Anyons live in \textbf{intervals} (between lattice vertices), not at vertices:
+Anyons live in \textbf{intervals} (between lattice sites), not at vertices. Vertical tick marks indicate lattice sites:
 
-\subsection{Standard Chain (with interval brackets)}
+\subsection{Standard Chain (with tick marks)}
 
 \begin{center}
 $\anyonchain{a}$
