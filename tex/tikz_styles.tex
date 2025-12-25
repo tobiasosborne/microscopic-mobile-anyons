@@ -925,24 +925,48 @@
 \end{tikzpicture}%
 }
 
+% Two-site braiding (over-crossing) - compact for Hamiltonians
+\newcommand{\Htwobraid}{%
+\begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
+    \begin{knot}[flip crossing/.list={1},consider self intersections=true,ignore endpoint intersections=false,clip width=4]
+        \strand (0,0) to[out=90,in=270] (1,1.5);
+        \strand (1,0) to[out=90,in=270] (0,1.5);
+    \end{knot}
+\end{tikzpicture}%
+}
+
+% Two-site inverse braiding (under-crossing) - compact for Hamiltonians
+\newcommand{\Htwobraidinv}{%
+\begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
+    \begin{knot}[consider self intersections=true,ignore endpoint intersections=false,clip width=4]
+        \strand (0,0) to[out=90,in=270] (1,1.5);
+        \strand (1,0) to[out=90,in=270] (0,1.5);
+    \end{knot}
+\end{tikzpicture}%
+}
+
 % ============================================================
 % Chain Diagrams with Context
 % Show local operators in the context of a chain
 % ============================================================
 
 % Local operator in chain context (dots ... O ... dots)
-% Lines connect exactly to box edges, not through them
+% Box drawn explicitly so strands connect exactly to edges
 \newcommand{\chainlocal}[1]{%
 \begin{tikzpicture}[scale=0.6,baseline=(current bounding box.center)]
     \node at (-0.5,0.75) {$\cdots$};
+    % Left neighbor strand (passes through)
     \draw (0,0) -- (0,1.5);
-    % Box spans x=[0.5,1.0], y=[0.45,1.05]
-    \node [rectangle,draw,fill=LightGray,minimum width=0.6cm,minimum height=0.5cm,inner sep=2pt] at (0.75,0.75) {\tiny $#1$};
-    % Strands touch box edges exactly
-    \draw (0.5,0) -- (0.5,0.45);
-    \draw (0.5,1.05) -- (0.5,1.5);
-    \draw (1,0) -- (1,0.45);
-    \draw (1,1.05) -- (1,1.5);
+    % Draw box explicitly with known coordinates
+    \fill[LightGray] (0.35,0.4) rectangle (1.15,1.1);
+    \draw (0.35,0.4) rectangle (1.15,1.1);
+    \node at (0.75,0.75) {\tiny $#1$};
+    % Two strands that connect TO the box (not through it)
+    \draw (0.5,0) -- (0.5,0.4);      % bottom to box bottom
+    \draw (0.5,1.1) -- (0.5,1.5);    % box top to top
+    \draw (1.0,0) -- (1.0,0.4);      % bottom to box bottom
+    \draw (1.0,1.1) -- (1.0,1.5);    % box top to top
+    % Right neighbor strand (passes through)
     \draw (1.5,0) -- (1.5,1.5);
     \node at (2,0.75) {$\cdots$};
 \end{tikzpicture}%
