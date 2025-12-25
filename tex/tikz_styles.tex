@@ -1032,24 +1032,24 @@
 \end{tikzpicture}%
 }
 
-% Two-site hop RIGHT: anyon hops right (vacuum on left shown in gray)
-% Left strand is vacuum (gray), right strand is anyon (black)
+% Two-site hop RIGHT: anyon hops right (vacuum on left shown dashed)
+% Left strand is vacuum (dashed), right strand is anyon (solid)
 \newcommand{\Htwohopright}{%
 \begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
     \begin{knot}[flip crossing/.list={1},consider self intersections=true,ignore endpoint intersections=false,clip width=4]
-        \strand[AnyonSilver,thick] (0,0) to[out=90,in=270] (1,1.5);
+        \strand[dashed] (0,0) to[out=90,in=270] (1,1.5);
         \strand (1,0) to[out=90,in=270] (0,1.5);
     \end{knot}
 \end{tikzpicture}%
 }
 
-% Two-site hop LEFT: anyon hops left (vacuum on right shown in gray)
-% Left strand is anyon (black), right strand is vacuum (gray)
+% Two-site hop LEFT: anyon hops left (vacuum on right shown dashed)
+% Left strand is anyon (solid), right strand is vacuum (dashed)
 \newcommand{\Htwohopleft}{%
 \begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
     \begin{knot}[flip crossing/.list={1},consider self intersections=true,ignore endpoint intersections=false,clip width=4]
         \strand (0,0) to[out=90,in=270] (1,1.5);
-        \strand[AnyonSilver,thick] (1,0) to[out=90,in=270] (0,1.5);
+        \strand[dashed] (1,0) to[out=90,in=270] (0,1.5);
     \end{knot}
 \end{tikzpicture}%
 }
@@ -1058,7 +1058,7 @@
 \newcommand{\Htwohoprghtinv}{%
 \begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
     \begin{knot}[consider self intersections=true,ignore endpoint intersections=false,clip width=4]
-        \strand[AnyonSilver,thick] (0,0) to[out=90,in=270] (1,1.5);
+        \strand[dashed] (0,0) to[out=90,in=270] (1,1.5);
         \strand (1,0) to[out=90,in=270] (0,1.5);
     \end{knot}
 \end{tikzpicture}%
@@ -1069,7 +1069,7 @@
 \begin{tikzpicture}[scale=0.6,baseline={([yshift=-0.5ex]current bounding box.center)}]
     \begin{knot}[consider self intersections=true,ignore endpoint intersections=false,clip width=4]
         \strand (0,0) to[out=90,in=270] (1,1.5);
-        \strand[AnyonSilver,thick] (1,0) to[out=90,in=270] (0,1.5);
+        \strand[dashed] (1,0) to[out=90,in=270] (0,1.5);
     \end{knot}
 \end{tikzpicture}%
 }
