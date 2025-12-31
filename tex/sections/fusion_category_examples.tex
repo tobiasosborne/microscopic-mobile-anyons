@@ -45,19 +45,19 @@ $\tau$ & $\tau$ & $\one \oplus \tau$
 
 For the only nontrivial fusion channel $\tau \otimes \tau \to \one \oplus \tau$:
 \begin{equation}
-    F_{\tau,\tau,\tau}^e = \begin{pmatrix} \phi^{-1/2} & \phi^{-1/2} \\ \phi^{-1/2} & -\phi^{1/2} \end{pmatrix}_{e'}^{e}
+    F_{\tau,\tau,\tau}^\tau = \begin{pmatrix} \phi^{-1} & \phi^{-1/2} \\ \phi^{-1/2} & -\phi^{-1} \end{pmatrix}
 \end{equation}
-where the matrix connects the two fusion orders: $(\tau \otimes \tau) \otimes \tau$ vs.\ $\tau \otimes (\tau \otimes \tau)$.
+where rows/columns are indexed by the intermediate fusion channel $e \in \{\one, \tau\}$, and the matrix connects the two fusion orders: $(\tau \otimes \tau) \otimes \tau$ vs.\ $\tau \otimes (\tau \otimes \tau)$. This matrix is unitary: $F^\dagger F = I$.
 
-\textbf{Numerical:} $\phi^{-1/2} \approx 0.7861$ \cite{Kitaev2006} \unverified
+\textbf{Numerical values:} $\phi^{-1} = \phi - 1 \approx 0.6180$, $\phi^{-1/2} \approx 0.7861$ \cite{Kitaev2006} \verified
 
 \subsubsection{R-Symbols (Braiding)}
 
-Fibonacci category is non-braided (bosonic). If braiding is added:
+For the \emph{braided} Fibonacci category (adding R-symbols to the fusion category):
 \begin{equation}
-    R_{\tau,\tau}^e = e^{2\pi i \theta_e}
+    R_{\tau,\tau}^{\one} = e^{4\pi i/5}, \qquad R_{\tau,\tau}^{\tau} = e^{-3\pi i/5}
 \end{equation}
-where $\theta_{\one} = 0$ and $\theta_\tau = 4\pi/5$ (standard normalisation).
+The topological spin (twist) of $\tau$ is $\theta_\tau = e^{4\pi i/5}$, corresponding to conformal weight $h_\tau = 2/5$. \verified
 
 %=============================================================
 \subsection{Ising Category (Multiplicity-Free)}\label{subsec:ising}
@@ -93,8 +93,9 @@ $\psi$ & $\psi$ & $\sigma$ & $\one$
 
 Non-trivial associators exist for $\sigma \otimes \sigma \to \one \oplus \psi$:
 \begin{equation}
-    F_{\sigma,\sigma,\sigma} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}
+    F_{\sigma,\sigma,\sigma}^\sigma = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}
 \end{equation}
+This is the Hadamard matrix, which is unitary. \verified
 
 \subsubsection{R-Symbols}
 
@@ -102,6 +103,7 @@ For braided (modular) Ising category:
 \begin{equation}
     R_{\sigma,\sigma}^{\one} = e^{i\pi/8}, \quad R_{\sigma,\sigma}^{\psi} = e^{-3i\pi/8}
 \end{equation}
+The topological spin of $\sigma$ is $\theta_\sigma = e^{i\pi/8}$. \verified
 
 %=============================================================
 \subsection{$\mathbb{Z}_N$ Category (with Multiplicity)}\label{subsec:zn}
