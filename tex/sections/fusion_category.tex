@@ -20,10 +20,41 @@ satisfying the following conditions:
 \begin{enumerate}
     \item \textbf{Finiteness:} There are finitely many isomorphism classes of simple objects. Every object decomposes as a finite direct sum of simples.
     \item \textbf{Semisimplicity:} All morphism spaces $\Mor(X,Y)$ are finite-dimensional $k$-vector spaces, and the category is abelian and semisimple.
-    \item \textbf{Rigidity:} Every object $X \in \mathcal{C}$ has a left and right dual $X^*$ with evaluation and coevaluation morphisms satisfying the rigidity axioms.
+    \item \textbf{Rigidity:} Every object $X \in \mathcal{C}$ has a left and right dual $X^*$ with evaluation and coevaluation morphisms satisfying the rigidity axioms (Definition~\ref{def:rigidity-axioms}).
     \item \textbf{Simple unit:} The tensor unit $\mathbf{1}$ is simple: $\End(\mathbf{1}) \cong k$.
     \item \textbf{Finite $k$-linearity:} The monoidal structure is bilinear over $k$, and composition and tensor product of morphisms are $k$-linear.
 \end{enumerate}
+\end{definition}
+
+\begin{definition}[Rigidity axioms]\label{def:rigidity-axioms}
+For an object $X$ with dual $X^*$, the \emph{evaluation} $\mathrm{ev}_X: X^* \otimes X \to \mathbf{1}$ and \emph{coevaluation} $\mathrm{coev}_X: \mathbf{1} \to X \otimes X^*$ morphisms must satisfy the \emph{rigidity axioms} (zigzag identities):
+\begin{equation}\label{eq:rigidity-left}
+    (\mathrm{ev}_X \otimes \mathrm{id}_X) \circ (\mathrm{id}_{X^*} \otimes \mathrm{coev}_X) = \mathrm{id}_X
+\end{equation}
+\begin{equation}\label{eq:rigidity-right}
+    (\mathrm{id}_{X^*} \otimes \mathrm{ev}_X) \circ (\mathrm{coev}_X \otimes \mathrm{id}_{X^*}) = \mathrm{id}_{X^*}
+\end{equation}
+Diagrammatically, these are the ``straightening'' of a bent string (cup followed by cap yields identity).
+\end{definition}
+
+\begin{definition}[Simple objects of a category]\label{def:irr}
+For a fusion category $\mathcal{C}$, we denote by $\mathrm{Irr}(\mathcal{C})$ the set of isomorphism classes of simple objects. We write $[X] \in \mathrm{Irr}(\mathcal{C})$ for the isomorphism class containing simple object $X$.
+\end{definition}
+
+\begin{definition}[Quantum dimension]\label{def:quantum-dimension}
+For a simple object $X$ in a fusion category $\mathcal{C}$, the \emph{quantum dimension} $d_X$ is defined via the categorical trace:
+\begin{equation}
+    d_X = \mathrm{tr}(\mathrm{id}_X) = \mathrm{ev}_X \circ (\mathrm{id}_{X^*} \otimes \mathrm{coev}_{X^*}) \circ \mathrm{coev}_X
+\end{equation}
+Diagrammatically, $d_X$ is the value of a closed loop labelled by $X$. For the tensor unit, $d_{\mathbf{1}} = 1$. The \emph{total dimension} of the category is $\mathrm{dim}(\mathcal{C}) = \sum_{X \in \mathrm{Irr}(\mathcal{C})} d_X^2$.
+\end{definition}
+
+\begin{remark}
+Quantum dimensions satisfy $d_X d_Y = \sum_Z N_{XY}^Z d_Z$ (compatible with fusion rules) and $d_X = d_{X^*}$. For unitary categories, $d_X \geq 1$ with equality iff $X$ is invertible.
+\end{remark}
+
+\begin{definition}[Skeletal category]\label{def:skeletal}
+A category is \emph{skeletal} if isomorphic objects are equal: $X \cong Y$ implies $X = Y$. Every category is equivalent to a skeletal one, and for fusion categories we often work with a skeletal representative where the simple objects are $\{X_0, X_1, \ldots, X_{d-1}\}$ with $X_0 = \mathbf{1}$.
 \end{definition}
 
 \begin{definition}[Grothendieck ring]\label{def:grothendieck-ring}
@@ -43,7 +74,7 @@ If additionally $\mathcal{C}$ is equipped with a braiding (natural isomorphisms 
 \end{definition}
 
 \begin{citationblock}
-Etingof--Nikshych--Ostrik, \emph{Ann.\ Math.}\ \textbf{162} (2005), 581--642, Def.~2.1 \cite{ENO2005} \unverified
+Etingof--Gelaki--Nikshych--Ostrik, \emph{Tensor Categories}, AMS (2015), Ch.~4 and Ch.~8 \cite{EGNO2015} \unverified
 \end{citationblock}
 
 \subsection{F-Symbols and Pentagon Equation}
@@ -53,14 +84,25 @@ The \emph{associator} is a natural isomorphism
 \begin{equation}
     \alpha_{a,b,c}: (a \otimes b) \otimes c \xrightarrow{\sim} a \otimes (b \otimes c)
 \end{equation}
-that satisfies the pentagon equation. In a skeletal category (where objects are direct sums of simple objects $X_i$), the associator is determined by its matrix elements, the \emph{F-symbols}.
+that satisfies the pentagon equation (Definition~\ref{def:pentagon}). In a skeletal category (Definition~\ref{def:skeletal}), the associator is determined by its matrix elements, the \emph{F-symbols}.
 
 For simple objects $a,b,c,d$, the isomorphism decomposes into blocks indexed by intermediate fusion channels $e$ (for $(a \otimes b) \to e \to d$) and $f$ (for $(b \otimes c) \to f \to d$). The change of basis is given by the \emph{F-move}:
 \begin{equation}\label{eq:f-move}
     \left| (a \otimes b) \otimes c \to d ; e, \alpha, \beta \right\rangle = \sum_{f, \mu, \nu} (F_{abc}^d)_{e, \alpha, \beta}^{f, \mu, \nu} \left| a \otimes (b \otimes c) \to d ; f, \mu, \nu \right\rangle
 \end{equation}
-where $\alpha, \beta, \mu, \nu$ are multiplicity indices.
+where $\alpha, \beta, \mu, \nu$ are \emph{multiplicity indices}.
 \end{definition}
+
+\begin{remark}[Multiplicity indices]\label{rem:multiplicity-indices}
+The indices $\alpha, \beta, \mu, \nu$ label basis vectors within fusion spaces when fusion multiplicities $N_{ab}^c > 1$. Specifically:
+\begin{itemize}
+    \item $\alpha \in \{1, \ldots, N_{ab}^e\}$ labels basis morphisms in $\Mor(a \otimes b, e)$
+    \item $\beta \in \{1, \ldots, N_{ec}^d\}$ labels basis morphisms in $\Mor(e \otimes c, d)$
+    \item $\mu \in \{1, \ldots, N_{bc}^f\}$ labels basis morphisms in $\Mor(b \otimes c, f)$
+    \item $\nu \in \{1, \ldots, N_{af}^d\}$ labels basis morphisms in $\Mor(a \otimes f, d)$
+\end{itemize}
+For \emph{multiplicity-free} categories (where all $N_{ab}^c \in \{0,1\}$), these indices are trivial and can be suppressed.
+\end{remark}
 
 \begin{definition}[Pentagon equation]\label{def:pentagon}
 The \emph{pentagon equation} ensures that the two paths to re-associate $((a \otimes b) \otimes c) \otimes d$ to $a \otimes (b \otimes (c \otimes d))$ coincide. In terms of F-symbols (suppressing multiplicity indices):
@@ -85,5 +127,5 @@ This equation (and its dual) ensures that braiding past a composite object can b
 \end{definition}
 
 \begin{citationblock}
-Etingof--Nikshych--Ostrik, \emph{Ann.\ Math.}\ \textbf{162} (2005), \S2.1 \cite{ENO2005} \unverified
+Etingof--Gelaki--Nikshych--Ostrik, \emph{Tensor Categories}, AMS (2015), \S8.1--8.2 \cite{EGNO2015} \unverified
 \end{citationblock}

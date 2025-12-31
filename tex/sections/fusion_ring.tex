@@ -14,13 +14,16 @@
 \subsection{Simple Objects}\label{subsec:simple-objects}
 
 \begin{definition}[Simple object]\label{def:simple-object}
-Let $\mathcal{C}$ be a fusion category over field $\mathbb{C}$. An object $X \in \mathcal{C}$ is \emph{simple} if it satisfies all three conditions:
-\begin{enumerate}
-    \item \textbf{Nonzero:} $X \neq 0$ (in the sense that $X$ is not the zero object).
-    \item \textbf{Indecomposable:} If $X \cong Y \oplus Z$, then $Y = 0$ or $Z = 0$.
-    \item \textbf{Schur:} $\End(X) \cong \mathbb{C}$ (all endomorphisms are scalar multiples of the identity).
-\end{enumerate}
+Let $\mathcal{C}$ be an abelian category. An object $X \in \mathcal{C}$ is \emph{simple} if it has exactly two subobjects: $0$ and $X$ itself. Equivalently, $X \neq 0$ and every monomorphism $Y \hookrightarrow X$ is either zero or an isomorphism.
 \end{definition}
+
+\begin{remark}\label{rem:simple-semisimple}
+In a semisimple category, an object is simple if and only if it is nonzero and indecomposable (cannot be written as $X \cong Y \oplus Z$ with $Y, Z \neq 0$).
+\end{remark}
+
+\begin{lemma}[Schur's lemma]\label{lem:schur}
+In a $k$-linear abelian category with $k$ algebraically closed, if $X$ is simple then $\End(X) \cong k$. That is, every endomorphism of a simple object is a scalar multiple of the identity.
+\end{lemma}
 
 \begin{consequence}\label{cons:semisimple-decomp}
 By semisimplicity of fusion categories (Deligne's theorem), every object $A \in \mathcal{C}$ decomposes as a finite direct sum of simple objects:
@@ -35,7 +38,7 @@ For our purposes, we work with fusion categories where the simple objects are \e
 \end{remark}
 
 \begin{citationblock}
-Etingof--Nikshych--Ostrik, \emph{Ann.\ Math.}\ \textbf{162} (2005), Theorem~2.7 \cite{ENO2005} \unverified
+Etingof--Gelaki--Nikshych--Ostrik, \emph{Tensor Categories}, AMS (2015), Def.~1.5.1 \cite{EGNO2015} \unverified
 \end{citationblock}
 
 \subsection{Fusion Ring Definition}\label{subsec:fusion-ring-def}
@@ -65,5 +68,5 @@ Fusion rings are generally \emph{not commutative}, i.e., $N_{ij}^k \neq N_{ji}^k
 \end{remark}
 
 \begin{citationblock}
-Etingof--Nikshych--Ostrik, \emph{Ann.\ Math.}\ \textbf{162} (2005), 581--642, Def.~3.1 \cite{ENO2005} \unverified
+Etingof--Gelaki--Nikshych--Ostrik, \emph{Tensor Categories}, AMS (2015), \S3.1 \cite{EGNO2015} \unverified
 \end{citationblock}
