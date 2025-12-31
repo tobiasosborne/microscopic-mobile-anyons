@@ -66,6 +66,10 @@ The \emph{tensor product object} for a labelled configuration $(\mathbf{x}, \mat
 This is a tensor product over all $n$ sites, with $X_0 = \mathbf{1}$ (vacuum) at unoccupied sites.
 \end{definition}
 
+\begin{remark}[Tensor product ordering convention]\label{rem:tensor-ordering}
+The tensor product is ordered by \emph{site index} $j = 0, 1, \ldots, n-1$ (left-to-right on the lattice). This ordering is a convention: any fixed ordering is equivalent up to associators. The fusion tree formalism (\S\ref{subsec:fusion-trees}) provides an explicit way to handle the associativity ambiguity by specifying a parenthesisation. Different parenthesisations (different fusion trees) give orthogonal basis vectors related by F-moves.
+\end{remark}
+
 \begin{definition}[$N$-anyon space, definite charge]\label{def:n-anyon-definite}
 The space of $N$ anyons with total charge $c$:
 \begin{equation}
@@ -103,6 +107,8 @@ Direct sum over $N$ = ``OR quantifier'' for particle number. This is the first-q
 \end{remark}
 
 \subsection{Fusion Trees}\label{subsec:fusion-trees}
+
+Fusion trees provide an equivalent and explicit way to handle the tensor product ordering ambiguity. Rather than treating $X_{s_0} \otimes X_{s_1} \otimes \cdots \otimes X_{s_{n-1}}$ as an abstract $n$-fold tensor product, a fusion tree specifies a concrete parenthesisation (binary bracketing) that determines which pairs fuse first.
 
 \begin{definition}[Fusion tree]\label{def:fusion-tree}
 A \emph{fusion tree} $\tau$ for a configuration $(\mathbf{x}, \mathbf{k})$ with $N$ anyons is a labelling of internal nodes in a \textbf{binary tree} that encodes how the anyons fuse step-by-step to produce a final total charge. Formally:
