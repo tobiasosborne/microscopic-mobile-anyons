@@ -81,7 +81,7 @@ $$\mathcal{H}_N = \bigoplus_{c=0}^{d-1} \mathcal{H}_N^{(c)}$$
 $$\mathcal{H} = \bigoplus_{N=0}^{n} \mathcal{H}_N$$
 where $\mathcal{H}_0 = \mathbb{C}$ (vacuum sector).
 
-**Remark.** Direct sum over $N$ = "OR quantifier" for particle number. This is the first-quantised Fock space structure (cf. §3.2).
+**Remark.** Direct sum over $N$ = "OR quantifier" for particle number. This construction corresponds to a finite-dimensional truncation of the general Fock space $\mathcal{F} = \bigoplus_{N=0}^\infty \mathcal{H}_N$ defined in `docs/fock_space.md`. The upper bound $N \le n$ arises from the hard-core constraint or finite lattice size. In the thermodynamic limit ($n \to \infty$), we recover the full structure of $\mathcal{F}$.
 
 ---
 

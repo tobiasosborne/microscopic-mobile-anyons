@@ -30,6 +30,10 @@ refs-out:
 $$ \mathcal{F} = \bigoplus_{N=0}^{\infty} \mathcal{H}_N = \mathcal{H}_0 \oplus \mathcal{H}_1 \oplus \mathcal{H}_2 \oplus \cdots $$
 where $\mathcal{H}_0 \cong \mathbb{C}$ is the vacuum sector spanned by the vacuum state $|\Omega\rangle$.
 
+**Lattice Truncation.** In our specific lattice models with $n$ sites (see `docs/hilbert_space.md`), the particle number is naturally bounded. For hard-core anyons, $N \le n$. The relevant physical Hilbert space is thus a truncated subspace of $\mathcal{F}$:
+$$ \mathcal{H}_{\text{lattice}} = \bigoplus_{N=0}^{N_{\max}} \mathcal{H}_N \subset \mathcal{F} $$
+where $N_{\max} = n$ (hard-core) or potentially larger/unbounded for soft-core models (though usually finite in numerical simulations).
+
 **Remark.** In this first-quantised approach, a state $|\Psi\rangle \in \mathcal{F}$ is a sequence of wavefunctions (or categorical states) $|\Psi\rangle = (\psi_0, \psi_1, \psi_2, \ldots)$, where $\psi_N \in \mathcal{H}_N$ is the projection of the state onto the $N$-particle sector.
 
 **Constraint.** We strictly avoid the use of second-quantised creation/annihilation operators ($a_i^\dagger, a_i$) as fundamental building blocks. While convenient for bosons/fermions, they obscure the categorical data (braiding, fusion) essential for anyons.
