@@ -16,22 +16,22 @@
 \begin{definition}[Configuration]\label{def:configuration}
 A \emph{configuration} of $N$ anyons is a tuple
 \begin{equation}
-    \mathbf{x} = (x_1, x_2, \ldots, x_N) \in \Lambda^N
+    \mathbf{j} = (j_1, j_2, \ldots, j_N) \in \Lambda^N
 \end{equation}
-satisfying $0 \leq x_1 \leq x_2 \leq \cdots \leq x_N \leq n-1$.
+satisfying $0 \leq j_1 \leq j_2 \leq \cdots \leq j_N \leq n-1$.
 \end{definition}
 
 \begin{remark}
-The ordering $x_1 \leq \cdots \leq x_N$ reflects indistinguishability up to exchange. Distinct orderings related by permutation represent the same physical configuration.
+The ordering $j_1 \leq \cdots \leq j_N$ reflects indistinguishability up to exchange. Distinct orderings related by permutation represent the same physical configuration.
 \end{remark}
 
 \subsection{Anyon Labels}\label{subsec:anyon-labels}
 
 \begin{definition}[Labelled configuration]\label{def:labelled-config}
-A \emph{labelled configuration} is a pair $(\mathbf{x}, \mathbf{k})$ where:
+A \emph{labelled configuration} is a pair $(\mathbf{j}, \mathbf{k})$ where:
 \begin{itemize}
-    \item $\mathbf{x} = (x_1, \ldots, x_N)$ is a configuration
-    \item $\mathbf{k} = (k_1, \ldots, k_N)$ with $k_j \in \{1, \ldots, d-1\}$ labels the anyon type at position $x_j$
+    \item $\mathbf{j} = (j_1, \ldots, j_N)$ is a configuration
+    \item $\mathbf{k} = (k_1, \ldots, k_N)$ with $k_m \in \{1, \ldots, d-1\}$ labels the anyon type at site $j_m$
 \end{itemize}
 \end{definition}
 
@@ -43,14 +43,14 @@ Label $0$ denotes vacuum (no anyon). Labels $1, \ldots, d-1$ denote the nontrivi
 
 \begin{definition}[$N$-anyon configuration space]\label{def:n-config-space}
 \begin{equation}
-    \mathrm{Conf}_N = \{(\mathbf{x}, \mathbf{k}) : \mathbf{x} \in \Lambda^N \text{ ordered}, \, k_j \in \{1,\ldots,d-1\}\}
+    \mathrm{Conf}_N = \{(\mathbf{j}, \mathbf{k}) : \mathbf{j} \in \Lambda^N \text{ ordered}, \, k_m \in \{1,\ldots,d-1\}\}
 \end{equation}
 \end{definition}
 
 \begin{definition}[Hard-core configuration space]\label{def:hc-config-space}
 With hard-core constraint:
 \begin{equation}
-    \mathrm{Conf}_N^{\mathrm{HC}} = \{(\mathbf{x}, \mathbf{k}) \in \mathrm{Conf}_N : x_1 < x_2 < \cdots < x_N\}
+    \mathrm{Conf}_N^{\mathrm{HC}} = \{(\mathbf{j}, \mathbf{k}) \in \mathrm{Conf}_N : j_1 < j_2 < \cdots < j_N\}
 \end{equation}
 \end{definition}
 

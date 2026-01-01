@@ -85,9 +85,9 @@ symbols:
     type: Set
     desc: Hard-core configuration space (distinct positions)
     defined_in: docs/config_space.md
-  - sym: "\\mathcal{O}(\\mathbf{x}, \\mathbf{k})"
+  - sym: "\\mathcal{O}(\\mathbf{j}, \\mathbf{k})"
     type: Object
-    desc: Tensor product object over all n sites for configuration (x,k), with X_0=1 at unoccupied sites
+    desc: Tensor product object over all n sites for configuration (j,k), with X_0=1 at unoccupied sites
     defined_in: docs/hilbert_space.md
   - sym: "s_j"
     type: Index
