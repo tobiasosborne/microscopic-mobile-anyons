@@ -112,11 +112,16 @@ For an object $A = X_{a_1} \otimes \cdots \otimes X_{a_n}$, define:
 \end{definition}
 
 \begin{definition}[$k$-local morphism]\label{def:k-local}
-A morphism $\phi \in \Mor(A, B)$ is \emph{$k$-local} if:
+A morphism $\phi \in \Mor(A, B)$ is \emph{$k$-local} if the number of sites (factor positions) involved in the transition is at most $k$. Formally, this is satisfied if:
 \begin{equation}
     |\mathrm{supp}(A) \cup \mathrm{supp}(B)| \leq k
 \end{equation}
+where $A$ and $B$ are viewed as objects on a local subset of sites.
 \end{definition}
+
+\begin{remark}[Well-definedness and embedding]
+This definition is well-defined for \emph{primitive} morphisms acting on a small number of anyons. When such a morphism is embedded into a larger lattice $\Lambda$ with existing anyons at sites $j \notin \mathrm{supp}(A) \cup \mathrm{supp}(B)$, it is understood to act as the identity on those ``spectator'' anyons. Thus, a 2-local hopping morphism remains 2-local even when acting on a many-particle state, as its non-trivial action is restricted to $k=2$ sites.
+\end{remark}
 
 \begin{example}
 \begin{itemize}
