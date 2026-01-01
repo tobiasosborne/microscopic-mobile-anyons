@@ -13,17 +13,7 @@
 
 \subsection{Hilbert Spaces, States, Observables}\label{subsec:hilbert-basics}
 
-\begin{definition}[Hilbert space]\label{def:hilbert-space}
-A \emph{Hilbert space} $\mathcal{H}$ is a complex vector space equipped with an inner product $\langle \cdot | \cdot \rangle : \mathcal{H} \times \mathcal{H} \to \mathbb{C}$ that is complete with respect to the induced norm. In this work, all Hilbert spaces are finite-dimensional.
-\end{definition}
-
-\begin{definition}[State]\label{def:state}
-A \emph{state} is a nonzero vector $|\psi\rangle \in \mathcal{H}$. Two states are physically equivalent if they differ by a nonzero scalar. Normalised states satisfy $\langle\psi|\psi\rangle = 1$.
-\end{definition}
-
-\begin{definition}[Observable]\label{def:observable}
-An \emph{observable} is a Hermitian operator $A : \mathcal{H} \to \mathcal{H}$, i.e., $A = A^\dagger$ where $\langle \phi | A \psi \rangle = \langle A\phi | \psi \rangle$ for all $|\phi\rangle, |\psi\rangle$.
-\end{definition}
+We consider a finite-dimensional \emph{Hilbert space} $\mathcal{H} \cong \mathbb{C}^d$ with inner product $\langle \cdot | \cdot \rangle$. A \emph{state} is a unit vector $|\psi\rangle \in \mathcal{H}$ (defined up to phase), and an \emph{observable} is a Hermitian operator $A \in \End(\mathcal{H})$ such that $A = A^\dagger$. Measurements yield eigenvalues of $A$ with probabilities given by the Born rule.
 
 \subsection{Hamiltonians for Lattice Systems}\label{subsec:hamiltonians}
 
