@@ -28,15 +28,11 @@ An \emph{observable} is a Hermitian operator $A : \mathcal{H} \to \mathcal{H}$, 
 \subsection{Hamiltonians for Lattice Systems}\label{subsec:hamiltonians}
 
 \begin{definition}[Hamiltonian]\label{def:hamiltonian}
-A \emph{Hamiltonian} is a Hermitian operator $H : \mathcal{H} \to \mathcal{H}$ representing the total energy of the system.
+A \emph{Hamiltonian} is a Hermitian operator $H : \mathcal{H} \to \mathcal{H}$ representing the total energy of the system (generator of time evolution).
 \end{definition}
 
 \begin{definition}[Local Hamiltonian]\label{def:local-hamiltonian}
-A Hamiltonian $H$ is \emph{local} if it decomposes as a sum of terms, each acting nontrivially on a bounded number of sites:
-\begin{equation}
-    H = \sum_j h_j
-\end{equation}
-where each $h_j$ acts on sites in a neighbourhood of $j$.
+A Hamiltonian $H$ is \emph{local} if it decomposes as a sum of terms $H = \sum_j h_j$, where each term $h_j$ has finite \emph{support} localised near site $j$. The \emph{support} of an operator $A$ on a tensor product space $\mathcal{H} = \bigotimes_{i} \mathcal{H}_i$ is the minimal set of sites $S$ such that $A$ acts as the identity on all sites $k \notin S$ (i.e., $A$ acts trivially outside $S$, $A = A_S \otimes \mathbb{I}_{S^c}$).
 \end{definition}
 
 \begin{definition}[Nearest-neighbour Hamiltonian]\label{def:nn-hamiltonian}
