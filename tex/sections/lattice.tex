@@ -86,25 +86,15 @@ OBC implies:
 \subsection{Local Hilbert Spaces}\label{subsec:local-hilbert}
 
 \begin{definition}[Local Hilbert space]\label{def:local-hilbert}
-Each site $j \in \Lambda$ carries a \emph{local Hilbert space} $\mathcal{H}_j$. For identical sites:
+For an anyonic system described by a fusion category $\mathcal{C}$, the \emph{local Hilbert space} $\mathcal{H}_j$ at site $j$ is identified with the vector space spanned by the simple objects of $\mathcal{C}$ (viewed as possible particle types at that site):
 \begin{equation}
-    \mathcal{H}_j \cong \mathcal{H}_{\mathrm{loc}} \quad \forall j
+    \mathcal{H}_j \cong \bigoplus_{a \in \Irr(\mathcal{C})} \mathbb{C} |a\rangle_j
 \end{equation}
-\end{definition}
-
-\begin{definition}[Local dimension]\label{def:local-dim}
-The \emph{local dimension} is $d_{\mathrm{loc}} = \dim(\mathcal{H}_{\mathrm{loc}})$.
-\end{definition}
-
-\begin{definition}[Total Hilbert space]\label{def:total-hilbert-lattice}
-The \emph{total Hilbert space} for the lattice is
-\begin{equation}
-    \mathcal{H}_{\mathrm{total}} = \bigotimes_{j=0}^{n-1} \mathcal{H}_j \cong \mathbb{C}^{d^n}
-\end{equation}
+where $\Irr(\mathcal{C}) = \{\one=X_0, X_1, \ldots, X_{d-1}\}$ is the set of isomorphism classes of simple objects. The dimension is $d_{\mathrm{loc}} = |\Irr(\mathcal{C})|$, the rank of the category.
 \end{definition}
 
 \begin{remark}
-For mobile anyons, the local Hilbert space structure is more subtle---see \S\ref{sec:hilbert-space}. The ``local dimension'' depends on the occupation at that site.
+This definition naturally accommodates the hard-core constraint where at most one anyon occupies a site. In this context, the ``vacuum'' state corresponds to the unit object $|X_0\rangle_j = |\one\rangle_j$ (no topological charge). For soft-core models allowing multiple anyons per site, the local space would be larger, involving fusion spaces of multiple anyons (see \S\ref{sec:hardcore-softcore}).
 \end{remark}
 
 \subsection{Summary}
