@@ -57,11 +57,11 @@ satisfying coherence conditions (pentagon and triangle diagrams for modules).
 ## Internal Hom
 
 **Definition 6.5.5** (Internal Hom). For $M, N \in \mathcal{M}$, the **internal Hom** $\underline{\mathrm{Hom}}(M, N) \in \mathcal{C}$ is defined by:
-\[
-\mathrm{Hom}_\mathcal{M}(X \triangleright M, N) \cong \mathrm{Hom}_\mathcal{C}(X, \underline{\mathrm{Hom}}(M, N))
-\]
-
-This captures how bulk anyons ($X \in \mathcal{C}$) can transform one boundary excitation into another.
+$
+\mathrm{Mor}_\mathcal{M}(X \triangleright M, N) \cong \mathrm{Mor}_\mathcal{C}(X, \underline{\mathrm{Hom}}(M, N))
+$
+This is the right adjoint to the action functor.
+[Etingof–Nikshych–Ostrik 2010]
 
 ## The Regular Module
 
