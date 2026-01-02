@@ -106,7 +106,7 @@ For braided (modular) Ising category:
 The topological spin of $\sigma$ is $\theta_\sigma = e^{i\pi/8}$. \verified
 
 %=============================================================
-\subsection{$\mathbb{Z}_N$ Category (with Multiplicity)}\label{subsec:zn}
+\subsection{$\mathbb{Z}_N$ Categories (Pointed)}\label{subsec:zn}
 %=============================================================
 
 \textbf{Category:} $\mathcal{C}_{\mathbb{Z}_N}$ \\
@@ -189,6 +189,40 @@ But crossing rules differ due to Fermi statistics.
 (fermionic exchange is anticommuting; eigenvalue is $-1$).
 
 %=============================================================
+\subsection{Categories with Multiplicities}\label{subsec:multiplicity-examples}
+%=============================================================
+
+Most physically relevant fusion categories are multiplicity-free ($N_{ab}^c \in \{0,1\}$), but multiplicities arise in important examples.
+
+\subsubsection{$SU(2)_k$ for $k \geq 3$}
+
+\textbf{Category:} $\mathcal{C}_{SU(2)_k}$ (level-$k$ truncation of $SU(2)$ representations) \\
+\textbf{Rank:} $d = k+1$ \\
+\textbf{Simple objects:} $V_0, V_1, \ldots, V_k$ (spin-$j/2$ representations with $j = 0, 1, \ldots, k$)
+
+\textbf{Fusion rules:} Truncated Clebsch--Gordan:
+\begin{equation}
+    V_a \otimes V_b = \bigoplus_{c = |a-b|}^{\min(a+b, 2k-a-b)} V_c
+\end{equation}
+where the sum runs in steps of $2$.
+
+\textbf{Multiplicities:} For $k \geq 3$, we have $N_{ab}^c > 1$ in some cases. For instance, in $SU(2)_4$:
+\begin{equation}
+    V_2 \otimes V_2 = V_0 \oplus V_2 \oplus V_4
+\end{equation}
+is multiplicity-free, but higher levels exhibit multiplicities.
+
+\begin{remark}[Other multiplicity examples]
+Categories with multiplicities include:
+\begin{itemize}
+    \item Haagerup categories $\mathcal{H}_1, \mathcal{H}_2, \mathcal{H}_3$ (exotic fusion categories)
+    \item Tambara--Yamagami categories for non-abelian groups
+    \item Representation categories of quantum groups at roots of unity
+\end{itemize}
+The general framework developed in this paper handles multiplicities via multiplicity indices (Remark~\ref{rem:multiplicity-indices}).
+\end{remark}
+
+%=============================================================
 \subsection{Summary Table}\label{subsec:examples-summary}
 %=============================================================
 
@@ -198,10 +232,11 @@ But crossing rules differ due to Fermi statistics.
 \toprule
 \textbf{Category} & \textbf{Rank} & \textbf{Mult-Free?} & \textbf{Braided?} & \textbf{Modular?} & \textbf{Status} \\
 \midrule
-Fibonacci & 2 & $\checkmark$ & $\times$ & --- & Implemented \\
+Fibonacci & 2 & $\checkmark$ & $\checkmark$ & $\checkmark$ & Implemented \\
 Ising & 3 & $\checkmark$ & $\checkmark$ & $\checkmark$ & Implemented \\
 $\mathbb{Z}_N$ & $N$ & $\checkmark$ & $\checkmark$ & $\times$ & Template \\
-sVec & 2 & $\checkmark$ & $\checkmark$ & --- & Fermionic \\
+sVec & 2 & $\checkmark$ & $\checkmark$ & $\times$ & Fermionic \\
+$SU(2)_k$ & $k+1$ & $\times$ (for $k \geq 3$) & $\checkmark$ & $\checkmark$ & Reference \\
 \bottomrule
 \end{tabular}
 \caption{Summary of fusion category examples.}
