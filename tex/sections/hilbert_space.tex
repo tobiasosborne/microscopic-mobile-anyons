@@ -52,33 +52,33 @@ With multiplicity: $\dim \Mor(X_a \otimes X_b, X_c) = N_{ab}^c$.
 \subsection{$N$-Anyon Sector with Definite Charge}\label{subsec:definite-charge}
 
 \begin{definition}[Site occupation]\label{def:site-occupation}
-For a labelled configuration $(\mathbf{x}, \mathbf{k})$ on $n$ sites, define the \emph{site label} $s_j \in \{0, 1, \ldots, d-1\}$ for each site $j \in \{0, \ldots, n-1\}$:
+For a labelled configuration $(\mathbf{j}, \mathbf{k})$ on $n$ sites, define the \emph{site label} $s_m \in \{0, 1, \ldots, d-1\}$ for each site $m \in \{0, \ldots, n-1\}$:
 \begin{equation}
-    s_j = \begin{cases} k_i & \text{if } x_i = j \text{ for some } i \in \{1, \ldots, N\} \\ 0 & \text{otherwise (site unoccupied, i.e., vacuum } \mathbf{1}) \end{cases}
+    s_m = \begin{cases} k_i & \text{if } j_i = m \text{ for some } i \in \{1, \ldots, N\} \\ 0 & \text{otherwise (site unoccupied, i.e., vacuum } \mathbf{1}) \end{cases}
 \end{equation}
 \end{definition}
 
 \begin{definition}[Object for configuration]\label{def:object-config}
-The \emph{tensor product object} for a labelled configuration $(\mathbf{x}, \mathbf{k})$ is:
+The \emph{tensor product object} for a labelled configuration $(\mathbf{j}, \mathbf{k})$ is:
 \begin{equation}
-    \mathcal{O}(\mathbf{x}, \mathbf{k}) = X_{s_0} \otimes X_{s_1} \otimes \cdots \otimes X_{s_{n-1}}
+    \mathcal{O}(\mathbf{j}, \mathbf{k}) = X_{s_0} \otimes X_{s_1} \otimes \cdots \otimes X_{s_{n-1}}
 \end{equation}
 This is a tensor product over all $n$ sites, with $X_0 = \mathbf{1}$ (vacuum) at unoccupied sites.
 \end{definition}
 
 \begin{remark}[Tensor product ordering convention]\label{rem:tensor-ordering}
-The tensor product is ordered by \emph{site index} $j = 0, 1, \ldots, n-1$ (left-to-right on the lattice). This ordering is a convention: any fixed ordering is equivalent up to associators. The fusion tree formalism (\S\ref{subsec:fusion-trees}) provides an explicit way to handle the associativity ambiguity by specifying a parenthesisation. Different parenthesisations (different fusion trees) give orthogonal basis vectors related by F-moves.
+The tensor product is ordered by \emph{site index} $m = 0, 1, \ldots, n-1$ (left-to-right on the lattice). This ordering is a convention: any fixed ordering is equivalent up to associators. The fusion tree formalism (\S\ref{subsec:fusion-trees}) provides an explicit way to handle the associativity ambiguity by specifying a parenthesisation. Different parenthesisations (different fusion trees) give orthogonal basis vectors related by F-moves.
 \end{remark}
 
 \begin{definition}[$N$-anyon space, definite charge]\label{def:n-anyon-definite}
 The space of $N$ anyons with total charge $c$:
 \begin{equation}
-    \mathcal{H}_N^{(c)} = \bigoplus_{(\mathbf{x},\mathbf{k}) \in \mathrm{Conf}_N} \Mor(X_c, \mathcal{O}(\mathbf{x},\mathbf{k}))
+    \mathcal{H}_N^{(c)} = \bigoplus_{(\mathbf{j},\mathbf{k}) \in \mathrm{Conf}_N} \Mor(X_c, \mathcal{O}(\mathbf{j},\mathbf{k}))
 \end{equation}
 \end{definition}
 
 \begin{remark}
-A state $|\psi\rangle \in \mathcal{H}_N^{(c)}$ is a superposition over configurations, with amplitudes in the appropriate morphism spaces. The morphism $\Mor(X_c, \mathcal{O}(\mathbf{x},\mathbf{k}))$ describes how anyons at the specified positions fuse to total charge $X_c$.
+A state $|\psi\rangle \in \mathcal{H}_N^{(c)}$ is a superposition over configurations, with amplitudes in the appropriate morphism spaces. The morphism $\Mor(X_c, \mathcal{O}(\mathbf{j},\mathbf{k}))$ describes how anyons at the specified positions fuse to total charge $X_c$.
 \end{remark}
 
 \subsection{$N$-Anyon Sector with Indefinite Charge}\label{subsec:indefinite-charge}
@@ -111,7 +111,7 @@ Direct sum over $N$ = ``OR quantifier'' for particle number. This is the first-q
 Fusion trees provide an equivalent and explicit way to handle the tensor product ordering ambiguity. Rather than treating $X_{s_0} \otimes X_{s_1} \otimes \cdots \otimes X_{s_{n-1}}$ as an abstract $n$-fold tensor product, a fusion tree specifies a concrete parenthesisation (binary bracketing) that determines which pairs fuse first.
 
 \begin{definition}[Fusion tree]\label{def:fusion-tree}
-A \emph{fusion tree} $\tau$ for a configuration $(\mathbf{x}, \mathbf{k})$ with $N$ anyons is a labelling of internal nodes in a \textbf{binary tree} that encodes how the anyons fuse step-by-step to produce a final total charge. Formally:
+A \emph{fusion tree} $\tau$ for a configuration $(\mathbf{j}, \mathbf{k})$ with $N$ anyons is a labelling of internal nodes in a \textbf{binary tree} that encodes how the anyons fuse step-by-step to produce a final total charge. Formally:
 \begin{enumerate}
     \item \textbf{Leaves:} The $N$ anyons occupy the leaves, labelled with their types $X_{k_1}, \ldots, X_{k_N}$.
     \item \textbf{Internal nodes:} Each internal node is labelled with an intermediate fusion result $X_e$ (some simple object of $\catC$).
@@ -121,7 +121,7 @@ A \emph{fusion tree} $\tau$ for a configuration $(\mathbf{x}, \mathbf{k})$ with 
 \end{definition}
 
 \begin{remark}
-The fusion tree is not unique (not canonical) due to associativity of tensor products: different parenthesisations yield different tree structures, all yielding the same tensor product result. For multiplicity-free categories ($N_{ab}^c \in \{0,1\}$), all choices span the same morphism space $\Mor(X_c, \catO(\mathbf{x},\mathbf{k}))$, but individual basis vectors depend on the choice.
+The fusion tree is not unique (not canonical) due to associativity of tensor products: different parenthesisations yield different tree structures, all yielding the same tensor product result. For multiplicity-free categories ($N_{ab}^c \in \{0,1\}$), all choices span the same morphism space $\Mor(X_c, \catO(\mathbf{j},\mathbf{k}))$, but individual basis vectors depend on the choice.
 \end{remark}
 
 \begin{claim}\label{claim:fusion-tree-orthogonal}
@@ -132,14 +132,14 @@ Different fusion trees $\tau \neq \tau'$ for the same configuration and charge a
 
 For hard-core anyons, a basis of $\mathcal{H}_N^{(c)}$ is indexed by:
 \begin{enumerate}
-    \item Configuration $(\mathbf{x}, \mathbf{k}) \in \mathrm{Conf}_N^{\mathrm{HC}}$
-    \item Fusion tree $\tau$ from $\mathcal{O}(\mathbf{x}, \mathbf{k})$ to $X_c$
+    \item Configuration $(\mathbf{j}, \mathbf{k}) \in \mathrm{Conf}_N^{\mathrm{HC}}$
+    \item Fusion tree $\tau$ from $\mathcal{O}(\mathbf{j}, \mathbf{k})$ to $X_c$
     \item Multiplicity indices (if $N_{ab}^c > 1$)
 \end{enumerate}
 
 \begin{claim}\label{claim:hilbert-dim}
 For multiplicity-free categories:
 \begin{equation}
-    \dim \mathcal{H}_N^{(c)} = \sum_{(\mathbf{x},\mathbf{k})} \dim \Mor(X_c, \mathcal{O}(\mathbf{x},\mathbf{k}))
+    \dim \mathcal{H}_N^{(c)} = \sum_{(\mathbf{j},\mathbf{k})} \dim \Mor(X_c, \mathcal{O}(\mathbf{j},\mathbf{k}))
 \end{equation}
 \end{claim}
