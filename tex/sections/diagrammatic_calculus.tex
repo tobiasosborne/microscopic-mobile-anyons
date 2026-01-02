@@ -206,36 +206,40 @@ These satisfy the \emph{zigzag identities} (rigidity axioms):
 \centering
 \begin{tikzpicture}[scale=0.9]
     % Zigzag identity: (id_X ⊗ ev) ∘ (coev ⊗ id_X) = id_X
-    % Shape matches nLab reference: S-curve with entry/exit on LEFT
+    % Three strands: output X (left), X* (middle), input X (right)
+    % Cup on LEFT connects output to X*, Cap on RIGHT connects X* to input
     \begin{scope}[xshift=0cm]
-        % Bottom segment: X input going up (left side)
-        \draw[thick] (0,0) -- (0,1);
-        % CUP: curves DOWN and to the right (bottom of S)
-        \draw[thick] (0,1) arc (180:360:0.5);
-        % Middle segment: goes up on the right side
-        \draw[thick] (1,1) -- (1,2);
-        % CAP: curves UP and to the left (top of S)
-        \draw[thick] (1,2) arc (0:180:0.5);
-        % Top segment: X output going up (left side)
-        \draw[thick] (0,2) -- (0,3);
-        % Arrow on bottom segment (X going up)
-        \draw[thick,->,>=stealth] (0,0.3) -- (0,0.6);
-        % Label
-        \node[left] at (-0.1,0.5) {$X$};
+        % Output X: exits top-left
+        \draw[thick] (0,0.5) -- (0,2.5);
+        % Cup at bottom-left: connects output X to X*
+        \draw[thick] (0,0.5) arc (180:360:0.4);
+        % X* strand: goes up in middle
+        \draw[thick] (0.8,0.5) -- (0.8,1.8);
+        % Cap at top-right: connects X* to input X
+        \draw[thick] (0.8,1.8) arc (180:0:0.4);
+        % Input X: enters bottom-right
+        \draw[thick] (1.6,0) -- (1.6,1.8);
+        % Arrow on input (X going up)
+        \draw[thick,->,>=stealth] (1.6,0.2) -- (1.6,0.5);
+        % Arrow on output (X going up)
+        \draw[thick,->,>=stealth] (0,2.0) -- (0,2.3);
+        % Labels
+        \node[right] at (1.7,0.3) {$X$};
+        \node[left] at (-0.1,2.15) {$X$};
     \end{scope}
 
     % Equals sign
-    \node at (2.3,1.5) {$=$};
+    \node at (2.8,1.25) {$=$};
 
     % Straight line (identity)
-    \begin{scope}[xshift=3.5cm]
-        \draw[thick] (0,0) -- (0,3);
-        \draw[thick,->,>=stealth] (0,0.3) -- (0,0.6);
-        \node[left] at (-0.1,0.5) {$X$};
+    \begin{scope}[xshift=4cm]
+        \draw[thick] (0,0) -- (0,2.5);
+        \draw[thick,->,>=stealth] (0,0.2) -- (0,0.5);
+        \node[left] at (-0.1,0.35) {$X$};
     \end{scope}
 
     % Label
-    \node[right] at (4.3,1.5) {(Zigzag identity)};
+    \node[right] at (4.8,1.25) {(Zigzag identity)};
 \end{tikzpicture}
 \caption{The zigzag identity: a bent string straightens to the identity.}
 \label{fig:zigzag}
