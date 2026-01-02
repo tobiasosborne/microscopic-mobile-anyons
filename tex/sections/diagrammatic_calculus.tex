@@ -114,24 +114,27 @@ In a pivotal fusion category, upward and downward strands are related by duality
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}[scale=0.8]
-    % Upward strand = X
+    % Upward strand = X (arrow pointing up)
     \begin{scope}[xshift=0cm]
-        \draw[thick,->-] (0,0) -- (0,2);
-        \node[right] at (0,1) {$X$};
+        \draw[thick] (0,0) -- (0,2);
+        \draw[thick,->,>=stealth] (0,0.8) -- (0,1.2);
+        \node[right] at (0.1,1) {$X$};
         \node at (0,-0.5) {Object $X$};
     \end{scope}
 
-    % Downward strand = X^*
+    % Downward strand = X^* (arrow pointing down)
     \begin{scope}[xshift=4cm]
-        \draw[thick,-<-] (0,0) -- (0,2);
-        \node[right] at (0,1) {$X$};
+        \draw[thick] (0,0) -- (0,2);
+        \draw[thick,->,>=stealth] (0,1.2) -- (0,0.8);
+        \node[right] at (0.1,1) {$X$};
         \node at (0,-0.5) {Dual $X^*$};
     \end{scope}
 
-    % Equivalently, X* going up
+    % Equivalently, X* labelled going up
     \begin{scope}[xshift=8cm]
-        \draw[thick,->-] (0,0) -- (0,2);
-        \node[right] at (0,1) {$X^*$};
+        \draw[thick] (0,0) -- (0,2);
+        \draw[thick,->,>=stealth] (0,0.8) -- (0,1.2);
+        \node[right] at (0.1,1) {$X^*$};
         \node at (0,-0.5) {Dual $X^*$};
     \end{scope}
 \end{tikzpicture}
@@ -164,25 +167,35 @@ These satisfy the \emph{zigzag identities} (rigidity axioms):
 
 \begin{figure}[ht]
 \centering
-\begin{tikzpicture}[scale=0.8]
-    % Cup (coevaluation)
+\begin{tikzpicture}[scale=1.0]
+    % Cup (coevaluation): vacuum at bottom, pair created going up
+    % U-shape opening downward, strands exit upward
     \begin{scope}[xshift=0cm]
-        \draw[thick] (-0.5,1.5) arc (180:0:0.5);
-        \draw[thick,->-] (-0.5,1.5) -- (-0.5,2.5);
-        \draw[thick,-<-] (0.5,1.5) -- (0.5,2.5);
-        \node[left] at (-0.5,2) {$X$};
-        \node[right] at (0.5,2) {$X$};
-        \node at (0,0.8) {$\mathrm{coev}: \one \to X \otimes X^*$};
+        % The cup: arc at bottom connecting two upward strands
+        \draw[thick] (-0.6,0.6) -- (-0.6,1.8);  % left strand going up
+        \draw[thick] (0.6,0.6) -- (0.6,1.8);    % right strand going up
+        \draw[thick] (-0.6,0.6) arc (180:360:0.6);  % U-shape at bottom
+        % Arrows: left strand X (up), right strand X* (down orientation = up arrow reversed)
+        \draw[thick,->,>=stealth] (-0.6,1.0) -- (-0.6,1.4);  % X: arrow up
+        \draw[thick,->,>=stealth] (0.6,1.4) -- (0.6,1.0);    % X*: arrow down
+        \node[left] at (-0.7,1.2) {$X$};
+        \node[right] at (0.7,1.2) {$X^*$};
+        \node at (0,-0.6) {$\mathrm{coev}: \one \to X \otimes X^*$};
     \end{scope}
 
-    % Cap (evaluation)
-    \begin{scope}[xshift=6cm]
-        \draw[thick,-<-] (-0.5,0) -- (-0.5,1);
-        \draw[thick,->-] (0.5,0) -- (0.5,1);
-        \draw[thick] (-0.5,1) arc (180:360:0.5);
-        \node[left] at (-0.5,0.5) {$X$};
-        \node[right] at (0.5,0.5) {$X$};
-        \node at (0,2.2) {$\mathrm{ev}: X^* \otimes X \to \one$};
+    % Cap (evaluation): pair comes in from below, annihilates to vacuum at top
+    % Inverted U-shape (cap) at top
+    \begin{scope}[xshift=5cm]
+        % Two strands coming from below, meeting in a cap at top
+        \draw[thick] (-0.6,0) -- (-0.6,1.2);    % left strand
+        \draw[thick] (0.6,0) -- (0.6,1.2);      % right strand
+        \draw[thick] (-0.6,1.2) arc (180:0:0.6);  % cap at top
+        % Arrows: left is X* (down arrow), right is X (up arrow)
+        \draw[thick,->,>=stealth] (-0.6,0.8) -- (-0.6,0.4);  % X*: arrow down
+        \draw[thick,->,>=stealth] (0.6,0.4) -- (0.6,0.8);    % X: arrow up
+        \node[left] at (-0.7,0.6) {$X^*$};
+        \node[right] at (0.7,0.6) {$X$};
+        \node at (0,2.4) {$\mathrm{ev}: X^* \otimes X \to \one$};
     \end{scope}
 \end{tikzpicture}
 \caption{Coevaluation (cup) and evaluation (cap) morphisms.}
@@ -191,28 +204,40 @@ These satisfy the \emph{zigzag identities} (rigidity axioms):
 
 \begin{figure}[ht]
 \centering
-\begin{tikzpicture}[scale=0.7]
-    % Left zigzag: bend on left side
+\begin{tikzpicture}[scale=0.9]
+    % Zigzag: strand goes up, bends right (cup), goes down, bends left (cap), goes up
+    % This is: id_X composed with (coev tensor id) composed with (id tensor ev)
     \begin{scope}[xshift=0cm]
-        \draw[thick,->-] (0,0) -- (0,1);
-        \draw[thick] (0,1) arc (180:0:0.5);
-        \draw[thick,-<-] (1,1) -- (1,2);
-        \draw[thick] (1,2) arc (0:-180:0.5);
-        \draw[thick,->-] (0,2) -- (0,3);
-        \node[left] at (0,1.5) {$X$};
+        % Bottom segment going up
+        \draw[thick] (0,0) -- (0,0.8);
+        % Cup bending to the right
+        \draw[thick] (0,0.8) arc (180:0:0.5);
+        % Middle segment going down then up
+        \draw[thick] (1,0.8) -- (1,1.6);
+        % Cap bending back left
+        \draw[thick] (1,1.6) arc (0:180:0.5);
+        % Top segment going up
+        \draw[thick] (0,1.6) -- (0,2.4);
+        % Arrow on bottom segment
+        \draw[thick,->,>=stealth] (0,0.2) -- (0,0.5);
+        % Arrow on top segment
+        \draw[thick,->,>=stealth] (0,1.9) -- (0,2.2);
+        % Label
+        \node[left] at (-0.1,1.2) {$X$};
     \end{scope}
 
-    % Equals
-    \node at (2.5,1.5) {$=$};
+    % Equals sign
+    \node at (2.2,1.2) {$=$};
 
-    % Straight line
-    \begin{scope}[xshift=4cm]
-        \draw[thick,->-] (0,0) -- (0,3);
-        \node[left] at (0,1.5) {$X$};
+    % Straight line (identity)
+    \begin{scope}[xshift=3.2cm]
+        \draw[thick] (0,0) -- (0,2.4);
+        \draw[thick,->,>=stealth] (0,1.0) -- (0,1.4);
+        \node[left] at (-0.1,1.2) {$X$};
     \end{scope}
 
-    % Text
-    \node at (6,1.5) {(Zigzag identity)};
+    % Label
+    \node[right] at (4.0,1.2) {(Zigzag identity)};
 \end{tikzpicture}
 \caption{The zigzag identity: a bent string straightens to the identity.}
 \label{fig:zigzag}
