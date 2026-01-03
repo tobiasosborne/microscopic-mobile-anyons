@@ -29,16 +29,44 @@ Work basis-independent where possible.
 
 ---
 
-## TikZ Diagrams
+## TikZ Diagrams (MANDATORY)
 
-**Use project macros from `tex/tikz_styles.tex`** for all diagrams. Do not write inline TikZ from scratch.
+**ALWAYS use project macros from `tex/tikz_styles.tex`** for all diagrams. Writing inline TikZ from scratch is **FORBIDDEN**.
 
-Key macros available:
-- `\Fmove`, `\Ftreeleft`, `\Ftreeright` — F-move diagrams
-- `\braidcompact`, `\braidlabeled` — Braiding diagrams
-- `\Htwoidentity`, `\Htwoswap`, `\Htwobraid`, etc. — 2-local Hamiltonian terms
-- `\trivvertex`, `\fusionvertex` — Fusion vertices
-- See `tex/tikz_test.tex` for complete reference
+### Why This Matters
+- Ensures visual consistency across the paper
+- Prevents duplicated effort
+- Makes diagrams maintainable
+- Follows project conventions
+
+### Available Macros
+
+**Fusion trees:**
+- `\fuselefttree{a}{b}{e}{c}{d}` — Left-associated tree $((a \otimes b)_e \otimes c) \to d$
+- `\fuserighttree{a}{b}{e}{c}{d}` — Right-associated tree
+- `\trivalentvertex{a}{b}{c}` — Single trivalent vertex
+
+**F-moves:**
+- `\Fmoveequation{a}{b}{c}{d}{e}{f}` — Full F-move equation
+- `\Ftreeleft{a}{b}{c}{d}{e}{mu}{nu}` — Left tree with multiplicities
+- `\Ftreeright{a}{b}{c}{d}{f}{mu}{nu}` — Right tree with multiplicities
+
+**Braiding:**
+- `\braidingover{X}{Y}`, `\braidingunder{X}{Y}` — Labeled crossings
+- `\braidcompact`, `\braidcompactinv` — Compact for Hamiltonians
+- `\Htwobraid`, `\Htwobraidinv` — 2-local braid terms
+
+**2-local Hamiltonians:**
+- `\Htwoidentity`, `\Htwoswap`, `\Htwocupcap`, `\HtwoH`
+- `\Htwofusion{e}` — Fusion-splitting with channel label
+- `\Htwohopright`, `\Htwohopleft` — Hopping terms
+
+**Trivalent categories:**
+- `\trivloop`, `\trivbigon`, `\trivtriangle`, `\trivsquare`
+- `\Cfourone` through `\Cfourfour` — C_4 basis diagrams
+
+### Reference
+See `tex/tikz_test.tex` for complete examples of all macros.
 
 ---
 

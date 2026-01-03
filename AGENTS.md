@@ -417,6 +417,46 @@ set_spherical!(C, [...])
 
 ---
 
+## TikZ Diagrams (MANDATORY)
+
+**All fusion category diagrams MUST use macros from `tex/tikz_styles.tex`.** Writing inline TikZ from scratch is **FORBIDDEN**.
+
+### Why This Matters
+
+- Ensures visual consistency across the entire paper
+- Macros encode correct conventions (strand orientations, colors, vertex styles)
+- Makes diagrams maintainable—change a macro, update all diagrams
+- Prevents duplicated effort and copy-paste errors
+
+### Quick Reference
+
+| Diagram Type | Macro | Example |
+|--------------|-------|---------|
+| Left fusion tree | `\fuselefttree{a}{b}{e}{c}{d}` | $((a \otimes b)_e \otimes c) \to d$ |
+| Right fusion tree | `\fuserighttree{a}{b}{e}{c}{d}` | $(a \otimes (b \otimes c)_e) \to d$ |
+| F-move equation | `\Fmoveequation{a}{b}{c}{d}{e}{f}` | Full associator diagram |
+| Over-crossing | `\braidingover{X}{Y}` | $c_{X,Y}$ |
+| Under-crossing | `\braidingunder{X}{Y}` | $c_{X,Y}^{-1}$ |
+| 2-local fusion | `\Htwofusion{e}` | Fusion-splitting for Hamiltonians |
+| 2-local braid | `\Htwobraid` | Compact crossing for Hamiltonians |
+
+### Workflow
+
+1. **Check `tex/tikz_test.tex`** for all available macros with examples
+2. **Use existing macros** where possible
+3. **If no macro exists**, add one to `tex/tikz_styles.tex` (do not inline TikZ)
+4. **Test compilation** after adding diagrams
+
+### Anti-Patterns
+
+| ❌ Don't | ✅ Do |
+|----------|-------|
+| `\begin{tikzpicture}...\end{tikzpicture}` inline | Use `\fuselefttree{a}{b}{e}{c}{d}` |
+| Copy-paste TikZ from other sections | Use the appropriate macro |
+| Invent new diagram styles | Extend `tikz_styles.tex` |
+
+---
+
 ## Notation Conventions
 
 Use $\mathrm{Mor}(A, B)$ for morphisms from object $A$ to object $B$ (not $\mathrm{Hom}$).
