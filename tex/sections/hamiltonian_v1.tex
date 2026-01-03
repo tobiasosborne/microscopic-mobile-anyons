@@ -1,0 +1,304 @@
+\section{Interactions Without Braiding}
+\label{sec:hamiltonian-v1}
+
+\textbf{Planning ref:} \S5.1.2\\
+\textbf{Status:} Draft
+
+Building on the particle-conserving framework of \S\ref{sec:hamiltonian-v0}, we now introduce \emph{interaction terms} that act nontrivially when two anyons occupy adjacent sites. These interactions preserve particle number and do not involve braiding---the anyons remain in place but their internal fusion channel may change.
+
+\begin{assumption}
+We inherit all assumptions from \S\ref{sec:hamiltonian-v0}: fusion category $\mathcal{C}$ with simples $X_0=\mathbf{1}, X_1, \ldots, X_{d-1}$, $n$ lattice sites with OBC, and hard-core regime.
+\end{assumption}
+
+\subsection{Interactions in $\Mor(X_a \otimes X_b, X_c \otimes X_d)$ (\S5.1.2.1)}
+
+When two anyons occupy adjacent sites $j$ and $j+1$, the local configuration is described by $X_a \otimes X_b$ for some non-vacuum simple objects $X_a, X_b \in \{X_1, \ldots, X_{d-1}\}$.
+
+\begin{definition}[Two-anyon interaction space]
+The \emph{two-anyon interaction space} at bond $(j, j+1)$ with anyon types $(a, b)$ and $(c, d)$ is:
+\begin{equation}
+\mathcal{I}_{ab}^{cd} := \Mor(X_a \otimes X_b, X_c \otimes X_d)
+\end{equation}
+where $a, b, c, d \in \{1, \ldots, d-1\}$ are non-vacuum indices.
+\end{definition}
+
+\begin{proposition}[Dimension of interaction space]\label{prop:interaction-dim}
+The dimension of the interaction space is:
+\begin{equation}
+\dim \mathcal{I}_{ab}^{cd} = \sum_{e} N_{ab}^e N_{cd}^e
+\end{equation}
+where $N_{ab}^e$ are the fusion coefficients and the sum is over all simple objects $X_e$.
+\end{proposition}
+
+\begin{proof}
+By the definition of morphism spaces in a fusion category:
+\begin{equation}
+\Mor(X_a \otimes X_b, X_c \otimes X_d) \cong \bigoplus_e \Mor(X_a \otimes X_b, X_e) \otimes \Mor(X_e, X_c \otimes X_d)
+\end{equation}
+Since $\dim \Mor(X_a \otimes X_b, X_e) = N_{ab}^e$ and $\dim \Mor(X_e, X_c \otimes X_d) = N_{cd}^e$, the result follows.
+\end{proof}
+
+\begin{remark}
+For the diagonal case $a=c$ and $b=d$, the interaction space $\mathcal{I}_{ab}^{ab}$ always contains the identity morphism. Additional morphisms exist when $\sum_e (N_{ab}^e)^2 > 1$.
+\end{remark}
+
+\subsubsection{Fusion Channel Basis}
+
+The interaction space has a natural basis indexed by intermediate fusion channels.
+
+\begin{definition}[Fusion channel projector]\label{def:fusion-projector}
+For simple objects $X_a, X_b$ with $N_{ab}^e \geq 1$, the \emph{fusion channel projector} onto channel $X_e$ is:
+\begin{equation}
+P_{ab}^e : X_a \otimes X_b \to X_a \otimes X_b
+\end{equation}
+defined diagrammatically as:
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    \draw[thick, AnyonBlue] (0, 0) -- (0, 0.8);
+    \draw[thick, AnyonOrange] (1, 0) -- (1, 0.8);
+    \draw[thick, AnyonBlue] (0, 0.8) -- (0.5, 1.3);
+    \draw[thick, AnyonOrange] (1, 0.8) -- (0.5, 1.3);
+    \draw[thick, AnyonTeal] (0.5, 1.3) -- (0.5, 1.8);
+    \draw[thick, AnyonTeal] (0.5, 1.8) -- (0, 2.3);
+    \draw[thick, AnyonTeal] (0.5, 1.8) -- (1, 2.3);
+    \draw[thick, AnyonBlue] (0, 2.3) -- (0, 3.1);
+    \draw[thick, AnyonOrange] (1, 2.3) -- (1, 3.1);
+    \node at (-0.3, 0) {$a$};
+    \node at (1.3, 0) {$b$};
+    \node at (0.8, 1.55) {$e$};
+    \node at (-0.3, 3.1) {$a$};
+    \node at (1.3, 3.1) {$b$};
+\end{tikzpicture}
+\end{center}
+This is the composition of the splitting morphism $X_a \otimes X_b \to X_e$ with the fusion morphism $X_e \to X_a \otimes X_b$.
+\end{definition}
+
+\begin{proposition}[Projector properties]\label{prop:projector-props}
+The fusion channel projectors satisfy:
+\begin{enumerate}
+    \item Idempotent: $(P_{ab}^e)^2 = d_e^{-1} P_{ab}^e$ (with quantum dimension normalisation)
+    \item Orthogonal: $P_{ab}^e \circ P_{ab}^{e'} = 0$ for $e \neq e'$
+    \item Complete: $\sum_e d_e P_{ab}^e = \id_{X_a \otimes X_b}$
+\end{enumerate}
+\end{proposition}
+
+\subsection{Particle Number Conservation (\S5.1.2.2)}
+
+\begin{definition}[Number-conserving interaction]
+An interaction term $h_j^{\mathrm{int}}$ at bond $(j, j+1)$ is \emph{number-conserving} if it has components only in spaces $\mathcal{I}_{ab}^{cd}$ where both $(a, b)$ and $(c, d)$ consist of non-vacuum labels.
+\end{definition}
+
+\begin{proposition}[Number conservation for interactions]
+A two-anyon interaction preserves particle number automatically: both the source $X_a \otimes X_b$ and target $X_c \otimes X_d$ have exactly two particles (since $a, b, c, d \neq 0$).
+\end{proposition}
+
+\begin{remark}
+Unlike hopping terms (which connect one-particle to one-particle configurations via vacuum), interaction terms cannot change the particle number by construction. The constraint is that we only consider $\Mor(X_a \otimes X_b, X_c \otimes X_d)$ with all non-vacuum indices.
+\end{remark}
+
+\subsection{Exclusion of Braiding (\S5.1.2.3)}
+
+In this section, we consider only \emph{local} interactions that do not involve the braiding structure of the category.
+
+\begin{definition}[Non-braiding interaction]
+An interaction morphism $f \in \Mor(X_a \otimes X_b, X_c \otimes X_d)$ is \emph{non-braiding} if it can be expressed purely in terms of:
+\begin{itemize}
+    \item Fusion morphisms: $\iota_{ab}^e : X_a \otimes X_b \to X_e$
+    \item Splitting morphisms: $\pi_{cd}^e : X_e \to X_c \otimes X_d$
+    \item The associator $\alpha$
+    \item Unit constraints $\lambda, \rho$
+\end{itemize}
+without using the braiding isomorphism $\sigma_{X,Y} : X \otimes Y \to Y \otimes X$.
+\end{definition}
+
+\begin{proposition}[Non-braiding interaction basis]
+The non-braiding interactions in $\Mor(X_a \otimes X_b, X_c \otimes X_d)$ are spanned by morphisms of the form:
+\begin{equation}
+\pi_{cd}^e \circ \iota_{ab}^e : X_a \otimes X_b \xrightarrow{\iota} X_e \xrightarrow{\pi} X_c \otimes X_d
+\end{equation}
+for fusion channels $X_e$ with $N_{ab}^e \geq 1$ and $N_{cd}^e \geq 1$.
+\end{proposition}
+
+\begin{remark}
+The exclusion of braiding means that we cannot permute the spatial order of anyons. The anyon on the left stays on the left, and the anyon on the right stays on the right. Only their internal labels (types) may change through the fusion--splitting process.
+\end{remark}
+
+\subsubsection{Diagrammatic Interpretation}
+
+A non-braiding interaction has the following diagrammatic form:
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % Input strands
+    \draw[thick, AnyonBlue] (0, 0) -- (0, 0.7);
+    \draw[thick, AnyonOrange] (1.5, 0) -- (1.5, 0.7);
+    \node at (0, -0.3) {$X_a$};
+    \node at (1.5, -0.3) {$X_b$};
+
+    % Fusion vertex
+    \draw[thick, AnyonBlue] (0, 0.7) -- (0.75, 1.2);
+    \draw[thick, AnyonOrange] (1.5, 0.7) -- (0.75, 1.2);
+    \fill (0.75, 1.2) circle (2pt);
+
+    % Intermediate channel
+    \draw[thick, AnyonTeal] (0.75, 1.2) -- (0.75, 2.0);
+    \node at (1.1, 1.6) {$X_e$};
+
+    % Splitting vertex
+    \fill (0.75, 2.0) circle (2pt);
+    \draw[thick, AnyonCoral] (0.75, 2.0) -- (0, 2.5);
+    \draw[thick, AnyonSlate] (0.75, 2.0) -- (1.5, 2.5);
+
+    % Output strands
+    \draw[thick, AnyonCoral] (0, 2.5) -- (0, 3.2);
+    \draw[thick, AnyonSlate] (1.5, 2.5) -- (1.5, 3.2);
+    \node at (0, 3.5) {$X_c$};
+    \node at (1.5, 3.5) {$X_d$};
+\end{tikzpicture}
+\end{center}
+
+The two incoming strands fuse into an intermediate channel $X_e$, which then splits into two outgoing strands. Note that no crossing of strands occurs.
+
+\subsection{Examples and Physical Interpretation (\S5.1.2.4)}
+
+\subsubsection{Fibonacci Anyons}
+
+For Fibonacci anyons, the category has two simple objects: $\mathbf{1}$ (vacuum) and $\tau$ (Fibonacci anyon), with fusion rule $\tau \otimes \tau = \mathbf{1} \oplus \tau$.
+
+\begin{example}[Fibonacci interaction]
+The interaction space $\Mor(\tau \otimes \tau, \tau \otimes \tau)$ has dimension:
+\begin{equation}
+\dim \Mor(\tau \otimes \tau, \tau \otimes \tau) = N_{\tau\tau}^{\mathbf{1}} N_{\tau\tau}^{\mathbf{1}} + N_{\tau\tau}^{\tau} N_{\tau\tau}^{\tau} = 1 \cdot 1 + 1 \cdot 1 = 2
+\end{equation}
+The two basis elements are:
+\begin{enumerate}
+    \item $P^{\mathbf{1}}$: Projection onto the vacuum fusion channel
+    \item $P^{\tau}$: Projection onto the $\tau$ fusion channel
+\end{enumerate}
+A general Hermitian interaction takes the form:
+\begin{equation}
+h^{\mathrm{int}}_j = J_{\mathbf{1}} P^{\mathbf{1}}_j + J_{\tau} P^{\tau}_j
+\end{equation}
+where $J_{\mathbf{1}}, J_{\tau} \in \mathbb{R}$ are coupling constants.
+\end{example}
+
+\begin{remark}
+This is precisely the interaction structure of the golden chain model~\cite{Feiguin2007}. The ground state properties depend on the ratio $J_{\tau}/J_{\mathbf{1}}$.
+\end{remark}
+
+\subsubsection{Ising Anyons}
+
+The Ising category has three simple objects: $\mathbf{1}$, $\sigma$, $\psi$ with fusion rules:
+\begin{equation}
+\sigma \otimes \sigma = \mathbf{1} \oplus \psi, \quad \sigma \otimes \psi = \sigma, \quad \psi \otimes \psi = \mathbf{1}
+\end{equation}
+
+\begin{example}[Ising $\sigma$-$\sigma$ interaction]
+For two $\sigma$ anyons:
+\begin{equation}
+\dim \Mor(\sigma \otimes \sigma, \sigma \otimes \sigma) = 1 + 1 = 2
+\end{equation}
+with projectors $P^{\mathbf{1}}$ and $P^{\psi}$ onto the vacuum and fermion channels.
+\end{example}
+
+\begin{example}[Ising $\sigma$-$\psi$ interaction]
+For a $\sigma$ and $\psi$ anyon:
+\begin{equation}
+\dim \Mor(\sigma \otimes \psi, \sigma \otimes \psi) = 1
+\end{equation}
+The only interaction is the identity---no nontrivial interaction is possible because the fusion $\sigma \otimes \psi = \sigma$ has a unique channel.
+\end{example}
+
+\subsubsection{Type Conversion}
+
+\begin{definition}[Type-converting interaction]
+A \emph{type-converting interaction} is a morphism in $\Mor(X_a \otimes X_b, X_c \otimes X_d)$ with $(a, b) \neq (c, d)$.
+\end{definition}
+
+\begin{example}[Ising type conversion]
+In the Ising category, $\Mor(\sigma \otimes \sigma, \psi \otimes \psi)$ has a non-zero component if there exists $X_e$ with $N_{\sigma\sigma}^e \geq 1$ and $N_{\psi\psi}^e \geq 1$. Since:
+\begin{equation}
+\sigma \otimes \sigma = \mathbf{1} \oplus \psi, \quad \psi \otimes \psi = \mathbf{1}
+\end{equation}
+we have $N_{\sigma\sigma}^{\mathbf{1}} = N_{\psi\psi}^{\mathbf{1}} = 1$, so:
+\begin{equation}
+\dim \Mor(\sigma \otimes \sigma, \psi \otimes \psi) = 1
+\end{equation}
+This morphism converts a pair of $\sigma$ anyons into a pair of $\psi$ anyons via the vacuum channel.
+\end{example}
+
+\subsection{General Interaction Hamiltonian}
+
+\begin{definition}[Two-body interaction Hamiltonian]\label{def:two-body-int}
+A \emph{two-body interaction Hamiltonian} without braiding takes the form:
+\begin{equation}
+H_{\mathrm{int}} = \sum_{j=0}^{n-2} h_j^{\mathrm{int}}
+\end{equation}
+where each local term is:
+\begin{equation}
+h_j^{\mathrm{int}} = \sum_{a,b,c,d=1}^{d-1} \sum_{e : N_{ab}^e, N_{cd}^e \geq 1} J_{abcd}^{e} \, (\pi_{cd}^e \circ \iota_{ab}^e)_j
+\end{equation}
+with coupling constants $J_{abcd}^e \in \mathbb{C}$.
+\end{definition}
+
+\begin{proposition}[Hermiticity condition]
+$H_{\mathrm{int}}$ is Hermitian if and only if:
+\begin{equation}
+J_{abcd}^e = \overline{J_{cdab}^e}
+\end{equation}
+for all valid indices.
+\end{proposition}
+
+\subsection{Combined Hamiltonian}
+
+\begin{definition}[Hopping-plus-interaction Hamiltonian]
+The \emph{v1 Hamiltonian} combines hopping (from \S\ref{sec:hamiltonian-v0}) with interactions:
+\begin{equation}
+H_{v1} = H_{\mathrm{TB}} + H_{\mathrm{int}} = \sum_{j=0}^{n-2} \left( h_j^{\mathrm{hop}} + h_j^{\mathrm{int}} \right)
+\end{equation}
+This is the most general particle-conserving, nearest-neighbour Hamiltonian that does not involve braiding.
+\end{definition}
+
+\begin{remark}
+The v1 Hamiltonian describes mobile anyons that can hop between adjacent sites and interact when two anyons meet. The hopping is unrestricted (any anyon can hop to an empty neighbour), while interactions occur only between pairs of anyons at adjacent sites.
+\end{remark}
+
+\subsection{Matrix Elements}
+
+For explicit computations, we express the interaction terms using F-symbols.
+
+\begin{proposition}[F-symbol matrix elements]\label{prop:int-matrix-elements}
+In the fusion tree basis (see \S\ref{sec:fusion-tree-basis}), the matrix element of the fusion channel projector $P_{ab}^e$ is:
+\begin{equation}
+\bra{f_1, \ldots, f_{n-1}} P_{ab}^e \ket{f_1, \ldots, f_{n-1}'} = \delta_{f_j, e} \delta_{f_j', e} \cdot (\text{F-symbol factors})
+\end{equation}
+where $f_j$ is the fusion channel at bond $(j, j+1)$.
+\end{proposition}
+
+\begin{remark}
+The detailed F-symbol expressions depend on the normalisation conventions chosen for the fusion/splitting morphisms. See \S\ref{sec:matrix-elements-2local} for the general framework.
+\end{remark}
+
+\subsection{Summary}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Concept} & \textbf{Symbol} & \textbf{Description} \\
+\hline
+Interaction space & $\mathcal{I}_{ab}^{cd}$ & $\Mor(X_a \otimes X_b, X_c \otimes X_d)$ \\
+Fusion projector & $P_{ab}^e$ & Projects onto channel $e$ \\
+Non-braiding & --- & No use of $\sigma_{X,Y}$ \\
+Type-converting & --- & $(a,b) \neq (c,d)$ \\
+v1 Hamiltonian & $H_{v1}$ & Hopping + interaction \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Next Steps}
+
+\begin{itemize}
+\item \S5.1.3: Free anyons with braiding---permuting anyon positions
+\item \S5.2: Creation and annihilation operators---changing particle number
+\end{itemize}
