@@ -116,49 +116,15 @@ The exchange term has a simple diagrammatic form: a crossing of two strands.
 \subsubsection{Over-Crossing and Under-Crossing}
 
 \begin{center}
-\begin{tikzpicture}[scale=0.9]
-    % Over-crossing (c_{a,b})
-    \begin{scope}[xshift=0cm]
-        \node at (0.5, 2.7) {$c_{X_a, X_b}$};
-        \draw[thick, AnyonBlue] (0, 0) -- (0, 0.6);
-        \draw[thick, AnyonOrange] (1, 0) -- (1, 0.6);
-        % Crossing - blue over orange
-        \draw[thick, AnyonOrange] (1, 0.6) -- (0.5, 1.1);
-        \draw[thick, AnyonBlue, line width=3pt, white] (0, 0.6) -- (0.5, 1.1);
-        \draw[thick, AnyonBlue] (0, 0.6) -- (1, 1.6);
-        \draw[thick, AnyonOrange] (0.5, 1.1) -- (0, 1.6);
-        \draw[thick, AnyonBlue] (1, 1.6) -- (1, 2.2);
-        \draw[thick, AnyonOrange] (0, 1.6) -- (0, 2.2);
-        \node at (0, -0.3) {$X_a$};
-        \node at (1, -0.3) {$X_b$};
-        \node at (0, 2.5) {$X_b$};
-        \node at (1, 2.5) {$X_a$};
-    \end{scope}
-
-    % Under-crossing (c_{a,b}^{-1})
-    \begin{scope}[xshift=4cm]
-        \node at (0.5, 2.7) {$c_{X_a, X_b}^{-1}$};
-        \draw[thick, AnyonBlue] (0, 0) -- (0, 0.6);
-        \draw[thick, AnyonOrange] (1, 0) -- (1, 0.6);
-        % Crossing - orange over blue
-        \draw[thick, AnyonBlue] (0, 0.6) -- (0.5, 1.1);
-        \draw[thick, AnyonOrange, line width=3pt, white] (1, 0.6) -- (0.5, 1.1);
-        \draw[thick, AnyonOrange] (1, 0.6) -- (0, 1.6);
-        \draw[thick, AnyonBlue] (0.5, 1.1) -- (1, 1.6);
-        \draw[thick, AnyonBlue] (1, 1.6) -- (1, 2.2);
-        \draw[thick, AnyonOrange] (0, 1.6) -- (0, 2.2);
-        \node at (0, -0.3) {$X_a$};
-        \node at (1, -0.3) {$X_b$};
-        \node at (0, 2.5) {$X_b$};
-        \node at (1, 2.5) {$X_a$};
-    \end{scope}
-
-    % Explanation
-    \begin{scope}[xshift=8.5cm]
-        \node[align=left] at (0, 1.1) {Over-crossing: $a$ passes\\over $b$ (counterclockwise)\\\\Under-crossing: $a$ passes\\under $b$ (clockwise)};
-    \end{scope}
-\end{tikzpicture}
+\begin{tabular}{ccc}
+$c_{X_a, X_b}$: \braidingover{X_a}{X_b} &
+\qquad\qquad &
+$c_{X_a, X_b}^{-1}$: \braidingunder{X_a}{X_b}
+\end{tabular}
 \end{center}
+
+\noindent
+Over-crossing: $a$ passes over $b$ (counterclockwise). Under-crossing: $a$ passes under $b$ (clockwise).
 
 \begin{convention}[Crossing convention]
 We use the convention that an \emph{over-crossing} (left strand passes over right) represents $c_{X_a, X_b}$, and an \emph{under-crossing} represents $c_{X_a, X_b}^{-1}$.
@@ -167,50 +133,11 @@ We use the convention that an \emph{over-crossing} (left strand passes over righ
 \subsubsection{Exchange in the Fusion Tree Basis}
 
 When the anyons are part of a longer chain with definite fusion channels, the exchange involves R-symbols:
-
-\begin{center}
-\begin{tikzpicture}[scale=0.8]
-    % Before exchange
-    \begin{scope}[xshift=0cm]
-        \node at (1.5, -0.8) {Before};
-        \draw[thick, AnyonBlue] (0, 0) -- (0, 1);
-        \draw[thick, AnyonOrange] (1, 0) -- (1, 1);
-        \draw[thick, AnyonTeal] (2, 0) -- (2, 1);
-        \draw[thick, AnyonBlue] (0, 1) -- (0.5, 1.5);
-        \draw[thick, AnyonOrange] (1, 1) -- (0.5, 1.5);
-        \draw[thick, AnyonSlate] (0.5, 1.5) -- (0.5, 2);
-        \draw[thick, AnyonSlate] (0.5, 2) -- (1.25, 2.5);
-        \draw[thick, AnyonTeal] (2, 1) -- (1.25, 2.5);
-        \draw[thick] (1.25, 2.5) -- (1.25, 3);
-        \node at (0, -0.3) {$a$};
-        \node at (1, -0.3) {$b$};
-        \node at (2, -0.3) {$c$};
-        \node at (0.8, 1.75) {$e$};
-    \end{scope}
-
-    % Arrow
-    \node at (4.5, 1.5) {$\xrightarrow{R_{ab}^e}$};
-
-    % After exchange
-    \begin{scope}[xshift=7cm]
-        \node at (1.5, -0.8) {After};
-        \draw[thick, AnyonOrange] (0, 0) -- (0, 1);
-        \draw[thick, AnyonBlue] (1, 0) -- (1, 1);
-        \draw[thick, AnyonTeal] (2, 0) -- (2, 1);
-        \draw[thick, AnyonOrange] (0, 1) -- (0.5, 1.5);
-        \draw[thick, AnyonBlue] (1, 1) -- (0.5, 1.5);
-        \draw[thick, AnyonSlate] (0.5, 1.5) -- (0.5, 2);
-        \draw[thick, AnyonSlate] (0.5, 2) -- (1.25, 2.5);
-        \draw[thick, AnyonTeal] (2, 1) -- (1.25, 2.5);
-        \draw[thick] (1.25, 2.5) -- (1.25, 3);
-        \node at (0, -0.3) {$b$};
-        \node at (1, -0.3) {$a$};
-        \node at (2, -0.3) {$c$};
-        \node at (0.8, 1.75) {$e$};
-    \end{scope}
-\end{tikzpicture}
-\end{center}
-
+\begin{equation*}
+\underbrace{\fuselefttree{a}{b}{e}{c}{d}}_{\text{Before}}
+\quad\xrightarrow{R_{ab}^e}\quad
+\underbrace{\fuselefttree{b}{a}{e}{c}{d}}_{\text{After}}
+\end{equation*}
 The fusion channel $e$ is preserved, but the amplitude acquires a factor of $R_{ab}^e$.
 
 \subsection{Boson and Fermion Limits (\S5.1.3.4)}

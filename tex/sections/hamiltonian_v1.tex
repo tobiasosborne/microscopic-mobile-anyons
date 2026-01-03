@@ -51,25 +51,7 @@ For simple objects $X_a, X_b$ with $N_{ab}^e \geq 1$, the \emph{fusion channel p
 \begin{equation}
 P_{ab}^e : X_a \otimes X_b \to X_a \otimes X_b
 \end{equation}
-defined diagrammatically as:
-\begin{center}
-\begin{tikzpicture}[scale=0.7]
-    \draw[thick, AnyonBlue] (0, 0) -- (0, 0.8);
-    \draw[thick, AnyonOrange] (1, 0) -- (1, 0.8);
-    \draw[thick, AnyonBlue] (0, 0.8) -- (0.5, 1.3);
-    \draw[thick, AnyonOrange] (1, 0.8) -- (0.5, 1.3);
-    \draw[thick, AnyonTeal] (0.5, 1.3) -- (0.5, 1.8);
-    \draw[thick, AnyonTeal] (0.5, 1.8) -- (0, 2.3);
-    \draw[thick, AnyonTeal] (0.5, 1.8) -- (1, 2.3);
-    \draw[thick, AnyonBlue] (0, 2.3) -- (0, 3.1);
-    \draw[thick, AnyonOrange] (1, 2.3) -- (1, 3.1);
-    \node at (-0.3, 0) {$a$};
-    \node at (1.3, 0) {$b$};
-    \node at (0.8, 1.55) {$e$};
-    \node at (-0.3, 3.1) {$a$};
-    \node at (1.3, 3.1) {$b$};
-\end{tikzpicture}
-\end{center}
+defined diagrammatically as $\Htwofusion{e}$ where the input strands carry labels $a, b$ (left to right) and the output strands carry the same labels $a, b$.
 This is the composition of the splitting morphism $X_a \otimes X_b \to X_e$ with the fusion morphism $X_e \to X_a \otimes X_b$.
 \end{definition}
 
@@ -125,39 +107,7 @@ The exclusion of braiding means that we cannot permute the spatial order of anyo
 
 \subsubsection{Diagrammatic Interpretation}
 
-A non-braiding interaction has the following diagrammatic form:
-
-\begin{center}
-\begin{tikzpicture}[scale=0.8]
-    % Input strands
-    \draw[thick, AnyonBlue] (0, 0) -- (0, 0.7);
-    \draw[thick, AnyonOrange] (1.5, 0) -- (1.5, 0.7);
-    \node at (0, -0.3) {$X_a$};
-    \node at (1.5, -0.3) {$X_b$};
-
-    % Fusion vertex
-    \draw[thick, AnyonBlue] (0, 0.7) -- (0.75, 1.2);
-    \draw[thick, AnyonOrange] (1.5, 0.7) -- (0.75, 1.2);
-    \fill (0.75, 1.2) circle (2pt);
-
-    % Intermediate channel
-    \draw[thick, AnyonTeal] (0.75, 1.2) -- (0.75, 2.0);
-    \node at (1.1, 1.6) {$X_e$};
-
-    % Splitting vertex
-    \fill (0.75, 2.0) circle (2pt);
-    \draw[thick, AnyonCoral] (0.75, 2.0) -- (0, 2.5);
-    \draw[thick, AnyonSlate] (0.75, 2.0) -- (1.5, 2.5);
-
-    % Output strands
-    \draw[thick, AnyonCoral] (0, 2.5) -- (0, 3.2);
-    \draw[thick, AnyonSlate] (1.5, 2.5) -- (1.5, 3.2);
-    \node at (0, 3.5) {$X_c$};
-    \node at (1.5, 3.5) {$X_d$};
-\end{tikzpicture}
-\end{center}
-
-The two incoming strands fuse into an intermediate channel $X_e$, which then splits into two outgoing strands. Note that no crossing of strands occurs.
+A non-braiding interaction has the diagrammatic form $\Htwofusion{e}$ where the input strands carry types $X_a, X_b$ and the output strands carry types $X_c, X_d$. The two incoming strands fuse into an intermediate channel $X_e$, which then splits into two outgoing strands. Note that no crossing of strands occurs.
 
 \subsection{Examples and Physical Interpretation (\S5.1.2.4)}
 
