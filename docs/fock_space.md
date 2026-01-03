@@ -57,7 +57,7 @@ This perspective is emphasized in [arXiv:1910.10619, §2] `[unverified]`, highli
 
 - Within a fixed $N$-particle sector $\mathcal{H}_N$, the structure involves tensor products of single-particle spaces (or local site spaces):
   $$ \mathcal{H}_N \sim \mathcal{H}_{\text{loc}} \otimes \cdots \otimes \mathcal{H}_{\text{loc}} \quad \text{(schematically)} $$
-- A state $|ucketsymbol{\phi}\rangle \otimes |ucketsymbol{\phi}\rangle$ describes a system where part A is in state $\phi$ **AND** part B is in state $\chi$.
+- A state $|\phi\rangle \otimes |\chi\rangle$ describes a system where part A is in state $\phi$ **AND** part B is in state $\chi$.
 
 **Anyonic Nuance.** For anyons, $\mathcal{H}_N$ is not a simple tensor product of single-particle spaces due to fusion constraints (fusion spaces are not product spaces). However, the *ambient* space in which $\mathcal{H}_N$ is embedded (before fusion constraints) often has a tensor product structure (e.g., sites on a lattice).
 
@@ -72,7 +72,7 @@ $$ \hat{H} = \bigoplus_{N=0}^{\infty} \hat{H}_N $$
 where $\hat{H}_N : \mathcal{H}_N \to \mathcal{H}_N$.
 
 **Example.** The Hamiltonian for mobile anyons is typically number-conserving (unless studying source terms), so we construct it by defining a sequence of Hamiltonians $H_N$ for each $N$-anyon configuration space.
-```
+
 ```julia
 # file: src/julia/MobileAnyons/hilbert.jl (snippet)
 
@@ -106,5 +106,3 @@ end
 | Tensor Product | $\otimes$ | Composition of parts | **AND** (Particle 1 at x AND Particle 2 at y) |
 | Fock Space | $\mathcal{F}$ | $\bigoplus_N \mathcal{H}_N$ | Total space of variable particle number |
 | Operator | $\hat{O}$ | $\bigoplus_N \hat{O}_N$ (if conserved) | Collection of N-particle operators |
-
-```
