@@ -1,0 +1,325 @@
+\section{Free Anyons with Braiding}
+\label{sec:hamiltonian-free}
+
+\textbf{Planning ref:} \S5.1.3\\
+\textbf{Status:} Draft
+
+This section introduces dynamics where anyons can \emph{pass through each other} via the braiding structure of the category. Unlike the hard-core models of \S\ref{sec:hamiltonian-v0}--\ref{sec:hamiltonian-v1}, where anyons at adjacent sites either hop to empty sites or interact without exchanging positions, here we allow genuine exchange processes mediated by R-moves.
+
+\begin{assumption}
+We inherit assumptions from \S\ref{sec:hamiltonian-v0} with one crucial addition:
+
+A5.1.3.1. The fusion category $\mathcal{C}$ is \textbf{braided}, with braiding isomorphisms $c_{X,Y}: X \otimes Y \xrightarrow{\sim} Y \otimes X$ satisfying the hexagon equations.
+\end{assumption}
+
+\subsection{Anyons Passing via Braiding (\S5.1.3.1)}
+
+In a braided fusion category, two anyons can exchange positions through the braiding morphism. This is fundamentally different from hopping (movement to an empty site) or fusion-splitting (interaction without position change).
+
+\begin{definition}[Exchange morphism]
+For simple objects $X_a, X_b$, the \emph{exchange morphism} is the braiding:
+\begin{equation}
+c_{X_a, X_b} : X_a \otimes X_b \xrightarrow{\sim} X_b \otimes X_a
+\end{equation}
+This is an isomorphism (invertible morphism) with inverse $c_{X_a, X_b}^{-1} = c_{X_b, X_a}^{-1}$.
+\end{definition}
+
+\begin{remark}
+The braiding $c_{X_a, X_b}$ is \textbf{not} the same as $c_{X_b, X_a}^{-1}$ in general. For a symmetric category (bosons), $c_{X_a,X_b} = c_{X_b,X_a}^{-1}$. For non-symmetric braided categories (true anyons), these differ---this is the origin of anyonic statistics.
+\end{remark}
+
+\subsubsection{Physical Interpretation}
+
+When anyon $X_a$ at site $j$ exchanges with anyon $X_b$ at site $j+1$:
+\begin{itemize}
+    \item \textbf{Before:} Configuration is $\ldots \otimes X_a \otimes X_b \otimes \ldots$ (anyon $a$ left of anyon $b$)
+    \item \textbf{After:} Configuration is $\ldots \otimes X_b \otimes X_a \otimes \ldots$ (anyon $b$ left of anyon $a$)
+    \item \textbf{Amplitude:} The transition amplitude is given by the R-symbols
+\end{itemize}
+
+\begin{definition}[R-symbol]\label{def:R-symbol}
+The \emph{R-symbol} $R_{ab}^c$ is the matrix element of the braiding in the fusion tree basis:
+\begin{equation}
+c_{X_a, X_b} \ket{a, b; c; \mu} = \sum_{\nu} (R_{ab}^c)_{\mu\nu} \ket{b, a; c; \nu}
+\end{equation}
+where $\ket{a, b; c; \mu}$ denotes a state with anyons $X_a, X_b$ fusing to channel $X_c$ with multiplicity index $\mu$.
+\end{definition}
+
+\begin{proposition}[R-symbol properties]
+The R-symbols satisfy:
+\begin{enumerate}
+    \item \textbf{Unitarity:} $(R_{ab}^c)^\dagger R_{ab}^c = \mathbb{1}$
+    \item \textbf{Hexagon equations:} Consistency with F-moves (see \S\ref{sec:fusion-category})
+    \item \textbf{For multiplicity-free fusion:} $R_{ab}^c$ is a phase $e^{i\theta_{ab}^c}$
+\end{enumerate}
+\end{proposition}
+
+\subsection{Hamiltonian with R-Moves (\S5.1.3.2)}
+
+We now construct Hamiltonians that include exchange terms using the braiding.
+
+\begin{definition}[Exchange term]\label{def:exchange-term}
+The \emph{exchange term} at bond $(j, j+1)$ is:
+\begin{equation}
+h_j^{\mathrm{ex}} = \sum_{a,b=1}^{d-1} \tau_{ab} \left( c_{X_a, X_b} \right)_j + \mathrm{h.c.}
+\end{equation}
+where $\tau_{ab} \in \mathbb{C}$ are exchange amplitudes and $(c_{X_a, X_b})_j$ acts on sites $j, j+1$.
+\end{definition}
+
+\begin{remark}
+The exchange term is automatically number-conserving: it permutes two anyons without creating or destroying particles.
+\end{remark}
+
+\begin{definition}[Free anyon Hamiltonian]\label{def:free-anyon-ham}
+The \emph{free anyon Hamiltonian} combines hopping, interactions, and exchange:
+\begin{equation}
+H_{\mathrm{free}} = H_{\mathrm{TB}} + H_{\mathrm{int}} + H_{\mathrm{ex}}
+\end{equation}
+where:
+\begin{itemize}
+    \item $H_{\mathrm{TB}}$ is the tight-binding (hopping) Hamiltonian from \S\ref{sec:hamiltonian-v0}
+    \item $H_{\mathrm{int}}$ is the interaction Hamiltonian from \S\ref{sec:hamiltonian-v1}
+    \item $H_{\mathrm{ex}} = \sum_j h_j^{\mathrm{ex}}$ is the exchange Hamiltonian
+\end{itemize}
+\end{definition}
+
+\subsubsection{Soft-Core Regime}
+
+With braiding, we can also consider \emph{soft-core} anyons where multiple particles can occupy the same site.
+
+\begin{definition}[Soft-core exchange]
+In the soft-core regime, the local Hilbert space at each site includes superpositions of anyon types. The exchange term acts as:
+\begin{equation}
+h_j^{\mathrm{ex}} : \mathcal{H}_j \otimes \mathcal{H}_{j+1} \to \mathcal{H}_{j+1} \otimes \mathcal{H}_j
+\end{equation}
+implementing a ``SWAP'' operation twisted by the R-symbols.
+\end{definition}
+
+\subsubsection{Matrix Elements}
+
+\begin{proposition}[Exchange matrix elements]\label{prop:exchange-matrix}
+In the fusion tree basis, the exchange term has matrix elements:
+\begin{equation}
+\bra{f_1, \ldots, f_{n-1}} h_j^{\mathrm{ex}} \ket{f_1', \ldots, f_{n-1}'} = \tau_{a_j, a_{j+1}} \cdot R_{a_j, a_{j+1}}^{f_j} \cdot \delta_{f_k, f_k'}^{k \neq j}
+\end{equation}
+where $a_j, a_{j+1}$ are the anyon types at sites $j, j+1$ and $f_j$ is the fusion channel at bond $j$.
+\end{proposition}
+
+\begin{proof}
+The braiding acts locally at bond $(j, j+1)$, changing the order of anyons $X_{a_j} \otimes X_{a_{j+1}} \mapsto X_{a_{j+1}} \otimes X_{a_j}$. In the fusion tree basis, this transformation is diagonal in the fusion channel $f_j$ (since $X_{a_j} \otimes X_{a_{j+1}}$ and $X_{a_{j+1}} \otimes X_{a_j}$ fuse to the same channels), with the R-symbol as coefficient.
+\end{proof}
+
+\subsection{Diagrammatic Representation (\S5.1.3.3)}
+
+The exchange term has a simple diagrammatic form: a crossing of two strands.
+
+\subsubsection{Over-Crossing and Under-Crossing}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+    % Over-crossing (c_{a,b})
+    \begin{scope}[xshift=0cm]
+        \node at (0.5, 2.7) {$c_{X_a, X_b}$};
+        \draw[thick, AnyonBlue] (0, 0) -- (0, 0.6);
+        \draw[thick, AnyonOrange] (1, 0) -- (1, 0.6);
+        % Crossing - blue over orange
+        \draw[thick, AnyonOrange] (1, 0.6) -- (0.5, 1.1);
+        \draw[thick, AnyonBlue, line width=3pt, white] (0, 0.6) -- (0.5, 1.1);
+        \draw[thick, AnyonBlue] (0, 0.6) -- (1, 1.6);
+        \draw[thick, AnyonOrange] (0.5, 1.1) -- (0, 1.6);
+        \draw[thick, AnyonBlue] (1, 1.6) -- (1, 2.2);
+        \draw[thick, AnyonOrange] (0, 1.6) -- (0, 2.2);
+        \node at (0, -0.3) {$X_a$};
+        \node at (1, -0.3) {$X_b$};
+        \node at (0, 2.5) {$X_b$};
+        \node at (1, 2.5) {$X_a$};
+    \end{scope}
+
+    % Under-crossing (c_{a,b}^{-1})
+    \begin{scope}[xshift=4cm]
+        \node at (0.5, 2.7) {$c_{X_a, X_b}^{-1}$};
+        \draw[thick, AnyonBlue] (0, 0) -- (0, 0.6);
+        \draw[thick, AnyonOrange] (1, 0) -- (1, 0.6);
+        % Crossing - orange over blue
+        \draw[thick, AnyonBlue] (0, 0.6) -- (0.5, 1.1);
+        \draw[thick, AnyonOrange, line width=3pt, white] (1, 0.6) -- (0.5, 1.1);
+        \draw[thick, AnyonOrange] (1, 0.6) -- (0, 1.6);
+        \draw[thick, AnyonBlue] (0.5, 1.1) -- (1, 1.6);
+        \draw[thick, AnyonBlue] (1, 1.6) -- (1, 2.2);
+        \draw[thick, AnyonOrange] (0, 1.6) -- (0, 2.2);
+        \node at (0, -0.3) {$X_a$};
+        \node at (1, -0.3) {$X_b$};
+        \node at (0, 2.5) {$X_b$};
+        \node at (1, 2.5) {$X_a$};
+    \end{scope}
+
+    % Explanation
+    \begin{scope}[xshift=8.5cm]
+        \node[align=left] at (0, 1.1) {Over-crossing: $a$ passes\\over $b$ (counterclockwise)\\\\Under-crossing: $a$ passes\\under $b$ (clockwise)};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\begin{convention}[Crossing convention]
+We use the convention that an \emph{over-crossing} (left strand passes over right) represents $c_{X_a, X_b}$, and an \emph{under-crossing} represents $c_{X_a, X_b}^{-1}$.
+\end{convention}
+
+\subsubsection{Exchange in the Fusion Tree Basis}
+
+When the anyons are part of a longer chain with definite fusion channels, the exchange involves R-symbols:
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % Before exchange
+    \begin{scope}[xshift=0cm]
+        \node at (1.5, -0.8) {Before};
+        \draw[thick, AnyonBlue] (0, 0) -- (0, 1);
+        \draw[thick, AnyonOrange] (1, 0) -- (1, 1);
+        \draw[thick, AnyonTeal] (2, 0) -- (2, 1);
+        \draw[thick, AnyonBlue] (0, 1) -- (0.5, 1.5);
+        \draw[thick, AnyonOrange] (1, 1) -- (0.5, 1.5);
+        \draw[thick, AnyonSlate] (0.5, 1.5) -- (0.5, 2);
+        \draw[thick, AnyonSlate] (0.5, 2) -- (1.25, 2.5);
+        \draw[thick, AnyonTeal] (2, 1) -- (1.25, 2.5);
+        \draw[thick] (1.25, 2.5) -- (1.25, 3);
+        \node at (0, -0.3) {$a$};
+        \node at (1, -0.3) {$b$};
+        \node at (2, -0.3) {$c$};
+        \node at (0.8, 1.75) {$e$};
+    \end{scope}
+
+    % Arrow
+    \node at (4.5, 1.5) {$\xrightarrow{R_{ab}^e}$};
+
+    % After exchange
+    \begin{scope}[xshift=7cm]
+        \node at (1.5, -0.8) {After};
+        \draw[thick, AnyonOrange] (0, 0) -- (0, 1);
+        \draw[thick, AnyonBlue] (1, 0) -- (1, 1);
+        \draw[thick, AnyonTeal] (2, 0) -- (2, 1);
+        \draw[thick, AnyonOrange] (0, 1) -- (0.5, 1.5);
+        \draw[thick, AnyonBlue] (1, 1) -- (0.5, 1.5);
+        \draw[thick, AnyonSlate] (0.5, 1.5) -- (0.5, 2);
+        \draw[thick, AnyonSlate] (0.5, 2) -- (1.25, 2.5);
+        \draw[thick, AnyonTeal] (2, 1) -- (1.25, 2.5);
+        \draw[thick] (1.25, 2.5) -- (1.25, 3);
+        \node at (0, -0.3) {$b$};
+        \node at (1, -0.3) {$a$};
+        \node at (2, -0.3) {$c$};
+        \node at (0.8, 1.75) {$e$};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
+The fusion channel $e$ is preserved, but the amplitude acquires a factor of $R_{ab}^e$.
+
+\subsection{Boson and Fermion Limits (\S5.1.3.4)}
+
+The braided anyon framework correctly reproduces bosonic and fermionic statistics in appropriate limits.
+
+\subsubsection{Bosonic Limit: $\mathsf{Vec}$}
+
+\begin{proposition}[Bosonic exchange]\label{prop:bosonic-exchange}
+For the category $\mathsf{Vec}$ (ordinary vector spaces), the braiding is trivial:
+\begin{equation}
+c_{V, W} : V \otimes W \xrightarrow{\sim} W \otimes V, \quad v \otimes w \mapsto w \otimes v
+\end{equation}
+All R-symbols are $R_{ab}^c = 1$.
+\end{proposition}
+
+\begin{corollary}
+In the $\mathsf{Vec}$ limit, the exchange Hamiltonian reduces to a symmetric SWAP:
+\begin{equation}
+h_j^{\mathrm{ex}} = \tau \cdot \mathrm{SWAP}_j
+\end{equation}
+where $\mathrm{SWAP}_j$ exchanges the states at sites $j$ and $j+1$ with no phase.
+\end{corollary}
+
+\subsubsection{Fermionic Limit: $\mathsf{sVec}$}
+
+\begin{proposition}[Fermionic exchange]\label{prop:fermionic-exchange}
+For the category $\mathsf{sVec}$ (super-vector spaces) with simple objects $\mathbf{1}$ (even/bosonic) and $f$ (odd/fermionic), the braiding is:
+\begin{equation}
+c_{f, f} : f \otimes f \to f \otimes f, \quad c_{f,f} = -\mathrm{id}_{f \otimes f}
+\end{equation}
+The R-symbol for two fermions is $R_{ff}^{\mathbf{1}} = -1$.
+\end{proposition}
+
+\begin{corollary}
+In the $\mathsf{sVec}$ limit, exchanging two fermions introduces a minus sign:
+\begin{equation}
+h_j^{\mathrm{ex}} \ket{\ldots, f, f, \ldots} = -\tau \ket{\ldots, f, f, \ldots}
+\end{equation}
+This is the hallmark of Fermi statistics.
+\end{corollary}
+
+\begin{remark}
+The fermionic sign is automatic from the categorical structure---no additional sign factors need to be inserted by hand (compare with Jordan--Wigner transformations in spin chain approaches).
+\end{remark}
+
+\subsubsection{Anyonic Statistics: Fibonacci Example}
+
+\begin{example}[Fibonacci R-symbols]
+For Fibonacci anyons with $\tau \otimes \tau = \mathbf{1} \oplus \tau$, the R-symbols are:
+\begin{equation}
+R_{\tau\tau}^{\mathbf{1}} = e^{-4\pi i/5}, \quad R_{\tau\tau}^{\tau} = e^{3\pi i/5}
+\end{equation}
+These are neither $+1$ (bosonic) nor $-1$ (fermionic)---they are genuine anyonic phases.
+\end{example}
+
+\begin{remark}
+The two different R-symbols for the two fusion channels reflect the non-abelian nature of Fibonacci anyons: the exchange phase depends on which fusion channel the pair is in.
+\end{remark}
+
+\subsubsection{Ising Anyons}
+
+\begin{example}[Ising R-symbols]
+For Ising anyons with $\sigma \otimes \sigma = \mathbf{1} \oplus \psi$:
+\begin{equation}
+R_{\sigma\sigma}^{\mathbf{1}} = e^{-i\pi/8}, \quad R_{\sigma\sigma}^{\psi} = e^{3i\pi/8}
+\end{equation}
+The $\psi$ particle (fermion) has $R_{\psi\psi}^{\mathbf{1}} = -1$.
+\end{example}
+
+\subsection{Full Classification of Two-Site Processes}
+
+Combining hopping (\S\ref{sec:hamiltonian-v0}), interactions (\S\ref{sec:hamiltonian-v1}), and exchange, we obtain the complete set of number-conserving processes:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Process} & \textbf{Morphism space} & \textbf{Requires braiding?} & \textbf{Section} \\
+\hline
+Vacuum identity & $\Mor(\mathbf{1} \otimes \mathbf{1}, \mathbf{1} \otimes \mathbf{1})$ & No & \S5.1.1 \\
+Hop right & $\Mor(\mathbf{1} \otimes X_a, X_a \otimes \mathbf{1})$ & No & \S5.1.1 \\
+Hop left & $\Mor(X_a \otimes \mathbf{1}, \mathbf{1} \otimes X_a)$ & No & \S5.1.1 \\
+Two-anyon interaction & $\Mor(X_a \otimes X_b, X_c \otimes X_d)$ & No & \S5.1.2 \\
+Two-anyon exchange & $c_{X_a, X_b}: X_a \otimes X_b \to X_b \otimes X_a$ & \textbf{Yes} & \S5.1.3 \\
+\hline
+\end{tabular}
+\caption{Classification of number-conserving two-site processes.}
+\end{table}
+
+\subsection{Summary}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Concept} & \textbf{Symbol} & \textbf{Description} \\
+\hline
+Braiding & $c_{X,Y}$ & Isomorphism $X \otimes Y \to Y \otimes X$ \\
+R-symbol & $R_{ab}^c$ & Matrix element of braiding in fusion basis \\
+Exchange term & $h_j^{\mathrm{ex}}$ & Hamiltonian term for anyon exchange \\
+Free anyon Hamiltonian & $H_{\mathrm{free}}$ & Hopping + interaction + exchange \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Next Steps}
+
+\begin{itemize}
+\item \S5.1.4: Creation and annihilation operators---changing particle number
+\item \S5.2: Second-quantised formulation
+\end{itemize}
