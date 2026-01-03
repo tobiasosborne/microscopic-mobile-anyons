@@ -26,19 +26,19 @@ refs-out:
 
 ## §4.1.1 Anyon Positions
 
-**Definition 4.1.1** (Configuration). A *configuration* of $N$ anyons is a tuple
-$$\mathbf{x} = (x_1, x_2, \ldots, x_N) \in \Lambda^N$$
-satisfying $0 \leq x_1 \leq x_2 \leq \cdots \leq x_N \leq n-1$.
+**Definition 4.1.1** (Configuration). A *configuration* of $N$ anyons is a tuple of site indices
+$$\mathbf{s} = (s_1, s_2, \ldots, s_N) \in \Lambda^N$$
+satisfying $0 \leq s_1 \leq s_2 \leq \cdots \leq s_N \leq n-1$.
 
-**Remark.** The ordering $x_1 \leq \cdots \leq x_N$ reflects indistinguishability up to exchange. Distinct orderings related by permutation represent the same physical configuration.
+**Remark.** We use $s_j$ (site index) rather than $x_j$ to distinguish from physical positions $x_j = \epsilon \cdot j$ defined in §3.4.2. The ordering $s_1 \leq \cdots \leq s_N$ reflects indistinguishability up to exchange. Distinct orderings related by permutation represent the same physical configuration.
 
 ---
 
 ## §4.1.2 Anyon Labels
 
-**Definition 4.1.2** (Labelled configuration). A *labelled configuration* is a pair $(\mathbf{x}, \mathbf{k})$ where:
-- $\mathbf{x} = (x_1, \ldots, x_N)$ is a configuration
-- $\mathbf{k} = (k_1, \ldots, k_N)$ with $k_j \in \{2, \ldots, d\}$ labels the anyon type at position $x_j$
+**Definition 4.1.2** (Labelled configuration). A *labelled configuration* is a pair $(\mathbf{s}, \mathbf{k})$ where:
+- $\mathbf{s} = (s_1, \ldots, s_N)$ is a configuration (site indices)
+- $\mathbf{k} = (k_1, \ldots, k_N)$ with $k_j \in \{2, \ldots, d\}$ labels the anyon type at site $s_j$
 
 **Convention.** Label $0$ denotes vacuum (no anyon). Labels $1, \ldots, d-1$ denote the nontrivial simple objects $X_1, \ldots, X_{d-1}$.
 
@@ -46,11 +46,11 @@ satisfying $0 \leq x_1 \leq x_2 \leq \cdots \leq x_N \leq n-1$.
 
 ## §4.1.3 Configuration Space
 
-**Definition 4.1.3** (N-anyon configuration space). 
-$$\mathrm{Conf}_N = \{(\mathbf{x}, \mathbf{k}) : \mathbf{x} \in \Lambda^N \text{ ordered}, \, k_j \in \{2,\ldots,d\}\}$$
+**Definition 4.1.3** (N-anyon configuration space).
+$$\mathrm{Conf}_N = \{(\mathbf{s}, \mathbf{k}) : \mathbf{s} \in \Lambda^N \text{ ordered}, \, k_j \in \{2,\ldots,d\}\}$$
 
 **Definition 4.1.4** (Hard-core configuration space). With hard-core constraint:
-$$\mathrm{Conf}_N^{\mathrm{HC}} = \{(\mathbf{x}, \mathbf{k}) \in \mathrm{Conf}_N : x_1 < x_2 < \cdots < x_N\}$$
+$$\mathrm{Conf}_N^{\mathrm{HC}} = \{(\mathbf{s}, \mathbf{k}) \in \mathrm{Conf}_N : s_1 < s_2 < \cdots < s_N\}$$
 
 **Claim 4.1.1.** $|\mathrm{Conf}_N^{\mathrm{HC}}| = \binom{n}{N}(d-1)^N$.
 
@@ -68,7 +68,7 @@ This is handled by the morphism space structure in §4.2.
 # file: src/julia/MobileAnyons/config.jl
 
 struct LabelledConfig
-    positions::Vector{Int}   # ordered: x₁ ≤ x₂ ≤ ... ≤ xₙ
+    positions::Vector{Int}   # site indices, ordered: s₁ ≤ s₂ ≤ ... ≤ sₙ
     labels::Vector{Int}      # kⱼ ∈ {1,...,d-1}, where 0 = vacuum
 end
 
