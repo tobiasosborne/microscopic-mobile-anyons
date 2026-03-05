@@ -44,8 +44,12 @@ __pycache__/
 *.pyc
 .venv/
 
-# Beads (archived, no longer used)
-.beads/
+# Beads local-only files
+.beads/beads.db
+.beads/beads.db-*
+.beads/bd.sock
+.beads/bd.pipe
+.beads/.exclusive-lock
 
 # Literature PDFs
 literature/pdfs/
