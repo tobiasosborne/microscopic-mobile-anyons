@@ -1,14 +1,14 @@
 # Research Project PRD: Microscopic Models for Mobile Anyons from Fusion Categories
 
-**Status:** Draft
+**Status:** v1 (revised from v0 Dec 2025)
 **Author:** Tobias
-**Date:** December 2025
+**Date:** March 2026
 
 ---
 
 ## Problem Statement
 
-Existing microscopic many-body models based on fusion categories—such as the golden chain—are defined with a fixed number of anyons at fixed positions. This is analogous to the tightly-packed Mott insulating phase in condensed matter systems. There is currently no systematic framework for constructing microscopic lattice models that describe **mobile (itinerant) anyons** arising from an arbitrary fusion category, where both the positions and number of anyons can fluctuate.
+Existing microscopic many-body models based on fusion categories -- such as the golden chain -- are defined with a fixed number of anyons at fixed positions. This is analogous to the tightly-packed Mott insulating phase in condensed matter systems. There is currently no systematic framework for constructing microscopic lattice models that describe **mobile (itinerant) anyons** arising from an arbitrary fusion category, where both the positions and number of anyons can fluctuate.
 
 ## Motivation
 
@@ -26,56 +26,81 @@ Understanding mobile anyons is essential for:
 3. Define microscopic Hamiltonians for physically motivated scenarios, including models both with and without braiding
 4. Validate the framework by reduction to known limiting cases, in particular fermion Fock space for sVec
 
+## Approach (v1)
+
+**Code-first, compute-first.** The previous attempt (v0, archived) produced extensive documentation but never implemented the core computation (matrix elements via F-symbol contraction). This version reverses the priority:
+
+1. **Get matrix elements working** for sVec (fermions) on small lattices first
+2. **Validate against known results** (free fermion spectrum, Jordan-Wigner signs)
+3. **Extend to Fibonacci** and verify Hilbert space dimensions / fusion tree counting
+4. **Compute spectra** via exact diagonalisation for small systems
+5. **Write the paper** from working code, not the other way around
+
+**Tooling:**
+- `af` CLI for workflow
+- `TensorCategories.jl` directly (no wrapper modules) for all categorical data
+- `Oscar.jl` for exact arithmetic
+
 ## Core Requirements
 
 | ID | Requirement |
 |----|-------------|
-| **R1** | The model must describe a 1D chain of sites with open boundary conditions (no PBCs). |
-| **R2** | The Hilbert space must support (a) variable anyon number and (b) anyon mobility between sites. |
-| **R3** | Microscopic Hamiltonians must be constructible for: hard-core anyons, "free" (non-interacting) anyons, and interacting anyons—in both braiding and non-braiding variants. |
-| **R4** | In appropriate limits, the models must reduce to standard models: bosonic/fermionic systems, tightly-packed fusion chains (golden chain, etc.). |
-| **R5** | The framework must yield physical understanding of: dilute/low-N limits, fully-filled sector, partition functions, and scattering/braiding effects. |
-| **R6** | Connection to known exactly-solvable models (e.g., 1D anyons via Bethe ansatz) must be established where applicable. |
+| **R1** | 1D chain with open boundary conditions. |
+| **R2** | Hilbert space supports variable anyon number and mobility. |
+| **R3** | Constructible Hamiltonians: hard-core, free, interacting; braided and non-braided. |
+| **R4** | Reduces to standard models in limits (bosons, fermions, golden chain). |
+| **R5** | Computable physical observables: spectra, ground states, partition functions. |
 
 ## Fundamental Constraints
 
 | ID | Constraint |
 |----|------------|
-| **C1** | **Braiding required to identify particle orderings.** The $N$-anyon Hilbert space is built from morphism spaces $\mathrm{Mor}(\mathbf{1}, X_{i_1} \otimes \cdots \otimes X_{i_N})$ for particles at ordered positions. Without braiding, morphism spaces for *different* position orderings cannot be unitarily identified—there is no canonical isomorphism. Braiding (R-symbols) provides exactly this: a unitary identification between spaces with different particle orderings. Consequently, (a) particle exchange is only meaningful for braided categories, (b) processes that change particle ordering require braiding, and (c) non-braided models must work within fixed-ordering sectors. |
-| **C2** | **F-moves vs R-moves.** Reassociation (F-moves) unitarily transforms between different *associativity patterns* (parenthesisations) for the same particle ordering. Braiding (R-moves) unitarily identifies spaces with different *particle orderings*. These are independent structures: F handles $(X \otimes Y) \otimes Z \leftrightarrow X \otimes (Y \otimes Z)$; R handles $X \otimes Y \leftrightarrow Y \otimes X$. |
-| **C3** | **Fusion processes are not unitary.** Morphisms in $\mathrm{Mor}(X \otimes Y, Z)$ relate morphism spaces of different particle content—but these are Hamiltonian interaction terms, not unitary identifications. They represent physical processes: pair creation/annihilation, fusion, and splitting. The distinction between unitary (braiding, F-moves) and non-unitary (fusion vertices in Hamiltonians) operations is essential. |
-| **C4** | **Collision processes vs passing.** Hamiltonian terms in $\mathrm{Mor}(X \otimes Y, Y \otimes X)$ exist even without braiding, but they represent *collision processes*: $X$ and $Y$ meet, fuse to an intermediate channel $Z \in X \otimes Y$, then dissociate as $Y$ and $X$. This is physically distinct from "passing by"—the latter requires unitary identification of orderings (i.e., braiding). In a non-braided model, such terms describe scattering with intermediate fusion, not free passage. The amplitude depends on fusion channels, not just exchange statistics. |
-| **C5** | **Associativity patterns under local operations.** Creating an anyon at site $j$ or applying local terms produces states in non-standard associativity patterns. F-moves are required to bring states to canonical form. For fermionic categories (sVec), $F = 1$ and this cost vanishes; for non-abelian anyons (e.g., Fibonacci), the F-move transformation is nontrivial. |
+| **C1** | **First quantisation only.** No creation/annihilation operators. Fock space = direct sum of N-particle sectors. Operators act on sectors directly. |
+| **C2** | **Braiding required for ordering identification.** Without R-symbols, morphism spaces for different particle orderings are not canonically isomorphic. Non-braided models work within fixed-ordering sectors. |
+| **C3** | **F-moves vs R-moves are independent.** F handles reassociation (parenthesisation); R handles particle reordering. |
+| **C4** | **Fusion vertices are Hamiltonian terms, not unitary.** Mor(X tensor Y, Z) gives interaction terms, not basis changes. |
+| **C5** | **Local operations require F-moves to canonical form.** For sVec F=1 (trivial); for Fibonacci, nontrivial. |
+
+## Indexing Convention (Canonical)
+
+**One convention, everywhere:**
+- Sites: 1-based (`1, 2, ..., L`)
+- Simple objects: 1-based indices into `simples(C)` where **index 1 = vacuum (trivial object)**
+- Nontrivial anyons: indices `2, 3, ..., d` where `d = length(simples(C))`
+- Fusion trees: intermediate charges as 1-based indices into `simples(C)`
+
+This matches TensorCategories.jl's convention where `simples(C)[1]` is the unit object.
 
 ## Success Criteria
 
-- **SC1:** Explicit construction of the Hilbert space for at least one non-trivial fusion category (e.g., Fibonacci) with mobile anyons.
-- **SC2:** Well-defined hopping and interaction terms in the Hamiltonian with clear physical interpretation.
-- **SC3:** Demonstrated recovery of known models in limiting cases (e.g., Ising anyons → fermions, trivial fusion rules → bosons).
-- **SC4:** For sVec (super-vector spaces), the construction must reduce exactly to fermionic Fock space with standard anticommutation relations. This is a critical consistency check.
-- **SC5:** Calculable physical quantities: ground state properties in tractable limits, structure of low-energy spectrum, partition function in simple cases.
-- **SC6:** Characterisation of how braiding statistics manifest in scattering or dynamical processes.
+- **SC1:** Working matrix elements for sVec that reproduce free fermion hopping Hamiltonian
+- **SC2:** Correct Hilbert space dimensions: sVec on L sites = 2^L states
+- **SC3:** Fibonacci Hilbert space dimensions match known fusion tree counting
+- **SC4:** Exact diagonalisation spectra for L=3..6 sites match expectations
+- **SC5:** Clear physical interpretation of all Hamiltonian terms
 
 ## Scope
 
 **In scope:**
-- 1D lattice models with open boundaries
-- Arbitrary (modular) fusion categories as input
-- Equilibrium properties and spectral analysis
+- 1D lattice, open boundaries
+- Hard-core regime (at most one anyon per site)
+- sVec, Fibonacci, Ising as target categories
+- Exact diagonalisation for small systems (L <= 8 or so)
+- Paper draft from working results
 
-**Out of scope (for this phase):**
-- Higher-dimensional generalisations
-- Periodic boundary conditions and topological ground state degeneracy on closed manifolds
-- Non-equilibrium dynamics and transport (beyond basic scattering analysis)
-- Numerical implementation and large-scale simulations
+**Out of scope:**
+- Soft-core (multiple anyons per site)
+- Periodic boundary conditions
+- Large-scale numerics / DMRG
+- Higher dimensions
 
 ## Open Questions
 
-1. What is the correct notion of "vacuum" and particle-number sectors for a general fusion category?
-2. How should hopping operators be defined to respect fusion constraints and associativity (F-moves)?
-3. Under what conditions is the resulting model integrable or amenable to Bethe ansatz?
-4. How do non-Abelian braiding phases enter observable quantities in a 1D open chain?
+1. How exactly do TensorCategories.jl associator morphisms encode F-matrices numerically?
+2. What is the most efficient way to contract F-symbols for matrix elements?
+3. For which categories does the resulting model become integrable?
+4. How do braiding phases manifest in the spectrum of a finite open chain?
 
 ---
 
-*Technical specifications and proposed solutions to be developed in a separate document.*
+*Previous version (v0) archived in `archive/v0/`.*

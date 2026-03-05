@@ -1,10 +1,5 @@
-name = "MobileAnyons"
-uuid = "f8a2c3d1-4e5b-6a7c-8d9e-0f1234567890"
-version = "0.1.0"
-
 [deps]
 Combinatorics = "861a8166-3701-5b0c-9a16-15d98fcdc6aa"
-LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 Oscar = "f1435218-dba5-11e9-1e4d-f1a5fab5fc13"
 TensorCategories = "258c694e-7338-4d4d-b524-4851272a75cf"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
