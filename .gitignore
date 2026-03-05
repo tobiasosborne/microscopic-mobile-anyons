@@ -57,6 +57,9 @@ literature/pdfs/
 # Archived beads (v0)
 archive/v0/.beads/
 
+# Python venv
+.venv/
+
 # Build output
 /out/
 /build/
