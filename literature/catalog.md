@@ -67,6 +67,20 @@ Citation chase completed 2026-03-05 via Google Scholar (Playwright) + Semantic S
 |-------|---------|-------|------|--------|
 | 2301.02164 | Gamayun, Quinn, Bidzhiev, Zvonarev | Emergence of anyonic correlations | 2023 | Abelian stat. transmutation, no fusion categories |
 
+### Discovered via golden chain citation chase — need download + review
+
+| arXiv | Authors | Title | Year | Notes |
+|-------|---------|-------|------|-------|
+| 2206.14730 | Kirchner, Millar, Ayeni, Smith, Slingerland, Pollmann | Numerical simulation of non-Abelian anyons | 2022 | Anyonic tight-binding H on 2D lattices |
+| 1712.04179 | Ayeni, Pfeifer, Brennen | Phase transitions on a ladder of braided non-Abelian anyons | 2017 | Anyonic Hubbard model with braiding |
+| 1509.00903 | Ayeni, Singh, Pfeifer, Brennen | Simulation of braiding anyons using MPS | 2016 | Anyonic MPS with U(1) for variable N |
+| 1009.2036 | Keilmann, Lanzmich, McCulloch, Roncaglia | Statistically induced phase transitions (abelian, optical lattice) | 2011 | Abelian anyons via occupation-dependent hopping |
+| 2410.00089 | Bonkhoff et al. | Anyonic phase transitions in 1D extended Hubbard | 2025 | Full phase diagram, abelian |
+| 2410.18175 | Divic, Crepel, Soejima, Song, Millis, Zaletel, Vishwanath | Anyon SC from topological criticality in Hofstadter-Hubbard | 2025 | Mobile semions |
+| 1701.02800 | Buican, Gromov | Anyonic chains, topological defects, and CFT | 2017 | General MTCs for anyon chains |
+| 1006.3532 | Pfeifer, Corboz, Buerschaper, Aguado, Troyer, Vidal | Simulation of anyons with tensor network algorithms | 2010 | MERA for anyon chains |
+| 1408.1282 | Frahm, Gainutdinov et al. | Integrable anyon chains: fusion rules to face models | 2014 | Yang-Baxter for SO(5)_2 |
+
 ## Citation Chase Summary
 
 | Seed paper | Total citations | Relevant | Key discoveries |
@@ -74,7 +88,7 @@ Citation chase completed 2026-03-05 via Google Scholar (Playwright) + Semantic S
 | Poilblanc 2012 | 18 (GS) | 13 | Kirchner 2025, Ayeni 2017, Finch-Osborne 2014 |
 | Garjani-Ardonne 2016 | 4 (GS) | 0 | **Pair creation direction unexplored** |
 | Shi-Zhang-Senthil 2025 | 17 (S2) | 7 | Burst of 2025 papers on mobile anyons in FCI context |
-| Golden chain 2006 | (GS blocked) | — | Too many citations to chase manually |
+| Golden chain 2006 | 30 filtered | 6 mobile + 24 dense/methods | Ayeni-Pfeifer-Brennen group, Kirchner-Pollmann group, abelian anyon-Hubbard |
 
 ## Reference papers (downloaded but not primary)
 
