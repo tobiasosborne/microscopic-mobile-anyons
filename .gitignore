@@ -54,6 +54,9 @@ __pycache__/
 # Literature PDFs
 literature/pdfs/
 
+# Archived beads (v0)
+archive/v0/.beads/
+
 # Build output
 /out/
 /build/
