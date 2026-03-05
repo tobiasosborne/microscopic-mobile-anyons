@@ -3,184 +3,162 @@
 ## Executive Summary
 
 The problem of mobile (itinerant) anyons on lattices has been studied by several groups,
-primarily within the SU(2)_k family. The key prior work is:
+primarily within the SU(2)_k family. Our review of 16 papers reveals:
 
-1. **Poilblanc-Feiguin-Troyer-Ardonne-Bonderson (2011-2012)**: Constructed anyonic t-J models
-   for Ising and Fibonacci anyons on 1D chains. Demonstrated charge-anyon fractionalization.
-   PBC only, no braiding in dynamics, multiplicity-free only.
+**The field is small but active.** Only ~5 papers directly construct microscopic models
+for mobile non-abelian anyons. Two very recent papers (2025) approach from complementary
+angles (field theory and thermodynamics). The pair-creation direction (Garjani-Ardonne 2016)
+has only 4 citations — it's largely unexplored.
 
-2. **Garjani-Ardonne (2016)**: Extended dilute anyon chains with pair creation/annihilation
-   terms. Found exact (AKLT-like) ground states for odd k. Identified integrable points
-   via dilute Temperley-Lieb algebra. Still SU(2)_k, multiplicity-free, no braiding.
-
-3. **Shi-Zhang-Senthil (2025)**: Doped lattice non-abelian QH states. Very recent, 2D focus.
-
-4. **Nakajima-Mehta-Goldman (2025)**: Thermodynamics of dilute anyon gases from fusion
-   constraints. Complementary (continuum, dilute limit). F-symbols not needed in their regime.
-
-**What remains open for our project:**
-- General fusion categories (not just SU(2)_k)
-- Categories with multiplicities (N_{ab}^c > 1)
-- Explicit braiding (R-matrices) in dynamics
-- Open boundary conditions throughout
-- sVec → fermion consistency check
-- Rigorous morphism-space construction of Hilbert space
-- Code-first implementation via TensorCategories.jl
+**Our project fills real gaps.** No existing work handles general fusion categories,
+multiplicities, explicit braiding in dynamics, or provides a rigorous morphism-space
+construction. The sVec→fermion consistency check has never been done.
 
 ---
 
-## Tier 1: Directly Addresses Mobile/Itinerant Anyons
+## Tier 1: Mobile/Itinerant Anyons (core prior art)
 
-### Poilblanc et al. (2011) — 1112.5950
+### Poilblanc, Troyer, Ardonne, Bonderson (2011) — 1112.5950
 **"Fractionalization of itinerant anyons in one dimensional chains"**
 
-PRL letter, precursor to the 2012 paper. Ising anyons only. Demonstrates charge-anyon
-separation for the first time: E_{p,m} = E_charge(p, k_m) + E_anyon(m). ED on L=24
-periodic chains at density rho=2/3. The charge sector behaves as hard-core bosons
-(= spinless fermions via Jordan-Wigner); the anyon sector is described by the dense
-chain CFT (c=1/2 for Ising).
+PRL letter. Ising anyons only. First demonstration of charge-anyon separation:
+E_{p,m} = E_charge(p, k_m) + E_anyon(m) (Eq. 4). ED on L=24 periodic chains,
+density rho=2/3. Charge sector = hard-core bosons. Anyon sector = squeezed dense
+chain (Ising CFT, c=1/2). Preliminary version of the 2012 paper.
 
-### Poilblanc et al. (2012) — 1210.5605
+### Poilblanc, Feiguin, Troyer, Ardonne, Bonderson (2012) — 1210.5605
 **"One-dimensional itinerant interacting non-Abelian anyons"**
 
-Full paper extending the 2011 letter. Treats Ising (k=2) and Fibonacci (k=3) anyons.
+**The key prior work paper.** Full treatment for Ising and Fibonacci anyons.
 
-**Hilbert space:** Fusion tree basis with site labels alpha_i in {I, sigma/tau} and
-bond labels x_i encoding cumulative fusion outcomes. Hard-core constraint. Dimension
-scales as C(L,N) * (sqrt(2))^N (Ising) or C(L,N) * phi^N (Fibonacci).
+*Hilbert space:* Fusion tree basis. Site labels alpha_i in {I, sigma/tau}, bond labels
+x_i = cumulative fusion outcome. Hard-core. Dim ~ C(L,N) * d_a^N.
 
-**Hamiltonian (anyonic t-J model):**
-- Hopping: amplitude -t, moves quasiparticle to adjacent vacancy. No explicit matrix
-  form given — action on bond labels left implicit.
-- Exchange: J * P_I projects neighboring anyons onto vacuum fusion channel. Uses F-symbol
-  transformation. Explicit matrices given:
-  - Ising Eq. 17: h_sigma = [[V-J/2, -J/2], [-J/2, V-J/2]] in {I, psi} basis
-  - Fibonacci Eq. 20: h_tau = [[V-J/phi^2, -J/phi^{3/2}], [-J/phi^{3/2}, V-J/phi]]
-- Coulomb repulsion V.
+*Hamiltonian (anyonic t-J model):*
+- Hopping -t: moves quasiparticle to adjacent vacancy. **No explicit matrix form given.**
+- Exchange J: F-symbol transformation to project onto vacuum channel.
+  - Ising (Eq.17): h = [[V-J/2, -J/2],[-J/2, V-J/2]] in {I,psi} basis
+  - Fibonacci (Eq.20): h = [[V-J/phi^2, -J/phi^{3/2}],[-J/phi^{3/2}, V-J/phi]]
+- F-symbols: Fibonacci F^tau_{tau,tau,tau} = [[phi^{-1}, phi^{-1/2}],[phi^{-1/2}, -phi^{-1}]]
 
-**Key results:**
-- Charge-anyon fractionalization (Eq. 27): E_{p,m} = E_charge(p,k_m) + E_anyon(m)
-- Wavefunction factorization (Eq. 30)
-- CFT: c_total = 1 + c_anyon. Fibonacci AF: c=7/10, Fibonacci FM: c=4/5
-- DMRG on L=72 confirms c=1.7 for Fibonacci at rho=2/3, J>0
+*Results:* Charge-anyon fractionalization (Eq.27). CFT c_total = 1 + c_anyon.
+DMRG on L=72 confirms c=1.7 for Fibonacci.
 
-**Limitations:** SU(2)_k only, multiplicity-free, PBC, no braiding in dynamics,
-hopping operator not explicit, no sVec check, hard-core only.
+*Gaps:* SU(2)_k only, multiplicity-free, PBC, no braiding, hopping implicit, no sVec check.
 
 ### Garjani & Ardonne (2016) — 1608.04927
 **"Anyon Chains with Pairing Terms"**
 
-Extends dilute anyon chains with pair creation/annihilation, enabling variable particle number.
+Adds pair creation/annihilation to anyonic chains, enabling variable particle number.
 
-**Hilbert space:** Dilute fusion chain with site labels y_i in {0, 1/2} and bond labels
-x_i in L_k. States are |x_0, ..., x_l>. Explicitly multiplicity-free (stated p.2).
+*Nine-term Hamiltonian (Eq.13):* 4 chemical potentials + exchange J + hopping t
++ pair creation Delta + pair annihilation Delta.
 
-**Hamiltonian — nine terms (Eq. 13):**
-1-4. Chemical potentials (diagonal): mu_00, mu_{0,1/2}, mu_{1/2,0}, mu_{1/2,1/2}
-5. Exchange interaction J (Eq. 21): projects onto vacuum fusion channel
-6-7. Hopping right/left with amplitude t (Eqs. 22-23)
-8. Pair creation Delta (Eq. 25): h_Delta creates anyon pair from two vacancies
-9. Pair annihilation Delta (Eq. 26): hermitian conjugate
+*Pair creation (Eq.25):* h_Delta|x,x,x> = Delta * sum_u sqrt(d_u/(d_x*d_{1/2})) |x,u,x>
+*Pair annihilation (Eq.26):* hermitian conjugate, projects onto vacuum fusion channel.
 
-**F-symbols used (Eq. 68):**
-F_x^{x,1/2,1/2} = (1/sqrt(d_{1/2} d_x)) [[sqrt(d_{x-1/2}), sqrt(d_{x+1/2})],
-                                              [sqrt(d_{x+1/2}), -sqrt(d_{x-1/2})]]
+*F-symbols (Eq.68):* F_x^{x,1/2,1/2} = (1/sqrt(d_{1/2}*d_x))
+  [[sqrt(d_{x-1/2}), sqrt(d_{x+1/2})],[sqrt(d_{x+1/2}), -sqrt(d_{x-1/2})]]
 
-**Exact ground states:** At projector point (Eq. 28: all couplings = 1/2 except
-mu_{1/2,1/2} = 0), zero-energy ground states exist for odd k only.
-Open chain count: (k+1)(k+2)(k+3)/6. Closed chain: (k+1)/2.
+*Exact ground states:* AKLT-like projector point (Eq.28). Exist for odd k only.
+Open chain: (k+1)(k+2)(k+3)/6 states. Closed: (k+1)/2.
 
-**Integrability:** Dilute Temperley-Lieb algebra with R-matrix (Eq. 52) satisfying
-Yang-Baxter. Four integrable points with CFTs:
-- +H_1: minimal model M_{k+2}, c = 1 - 6/((k+2)(k+3))
-- -H_1: M_3 x M_{k+1}
-- +H_2: M_{k+1} (k >= 2)
-- -H_2: problematic (large finite-size effects)
+*Integrability:* Dilute Temperley-Lieb algebra. R-matrix (Eq.52). Four integrable
+points with CFTs M_{k+2}, M_3 x M_{k+1}, M_{k+1}.
 
-**Limitations:** SU(2)_k only, multiplicity-free, spin-1/2 anyons only, self-dual only,
-no braiding in dynamics, 1D only.
-
-### Soni, Troyer, Poilblanc (2015) — 1508.04160
-**"Effective models of doped quantum ladders of non-Abelian anyons"**
-
-Extension of itinerant anyon t-J models to ladder geometries. [Review pending]
+*Gaps:* SU(2)_k, multiplicity-free, spin-1/2 only, self-dual only, no braiding.
+**Only 4 citations** — the pair-creation direction is largely unexplored.
 
 ### Shi, Zhang, Senthil (2025) — 2505.02893
 **"Doping lattice non-abelian quantum Hall states"**
 
-Very recent, 17 citations. Doping in 2D context. [Review pending — critical to assess overlap]
+**Does NOT preempt our work.** Entirely field-theoretic (CSGL effective theory), no
+microscopic Hamiltonian, no Hilbert space construction, no lattice model. 2+1D focus.
+
+*Approach:* U(2) Chern-Simons-Ginzburg-Landau theory for doped Read-Rezayi states.
+Mean-field analysis of Higgs patterns. No numerics.
+
+*Results:* Phase diagram for doped RR_k (Fig.2): superconductivity (even k) or CDW-FL
+(odd k, ferromagnetic). Paramagnetic case always gives c_=-1/2 topological SC.
+
+*Key gap:* They explicitly call for microscopic models and numerical studies (p.34-35).
+Our framework provides exactly that. The approaches are complementary (their top-down
+field theory vs our bottom-up lattice construction).
+
+*Note:* Does not cite Poilblanc or any microscopic anyonic chain literature.
 
 ### Nakajima, Mehta, Goldman (2025) — 2508.14961
 **"Thermodynamics of dilute anyon gases from fusion constraints"**
 
-**Approach:** Partition function for dilute anyon gas using fusion constraints only (no F/R-symbols).
-Defines "occupation sequences" from iterated fusion of lightest anyon. Single-state partition
-function z(epsilon) = sum_n d_{a_n} exp(-beta*n*(epsilon-mu)).
+Complementary to our work. Continuum, dilute limit. F-symbols NOT needed.
 
-**Central result (Eq. 1.1/4.9):** General distribution function
-n_ell(epsilon) = [sum_m m d_{a_m} y^m] / [sum_m d_{a_m} y^m], y = exp(-beta(epsilon-mu))
+*Central result (Eq.1.1):* Distribution function n_ell(epsilon) = [sum_m m*d_{a_m}*y^m]
+/ [sum_m d_{a_m}*y^m], where d_{a_m} = quantum dimensions along occupation sequence.
 
-Recovers Fermi-Dirac (k=1) and Bose-Einstein (k->infinity) as limits. Computes Fibonacci
-distribution explicitly (Eq. 5.15).
+*Categories:* General UMTCs. Treats Laughlin, Fibonacci, SU(N)_k. Uses only quantum
+dimensions and fusion rules — no F-symbols or R-symbols in dilute regime.
 
-**Connection to us:** Strongly complementary. They provide the thermodynamic limit of
-the dilute regime; we provide the microscopic lattice Hamiltonian. Their framework uses
-only quantum dimensions, not F-symbols. At strong coupling / finite density, our lattice
-approach is needed.
+*Connection:* Their dilute-gas thermodynamics could emerge from our lattice models
+at low density. At finite density / strong coupling, our approach is needed.
+
+### Soni, Troyer, Poilblanc (2015) — 1508.04160
+**"Effective models of doped quantum ladders of non-Abelian anyons"**
+
+Extension to 2-leg and 3-leg ladders. Fibonacci anyons (k=3) only. Zig-zag fusion
+path requires braid conjugation for leg interactions. Six phases identified including
+novel "heavy/light tau" phase. Charge-anyon separation persists on ladders.
+Secondary relevance — confirms robustness of 1D framework.
 
 ### Pfeifer (2015) — 1505.06928
 **"Phase diagram for hard-core Z3 anyons on the ladder"**
 
-[Review pending]
+Abelian Z3 anyons on a ladder (minimal geometry for braiding to matter). iDMRG.
+Finds novel "hole crystal" phase with no fermionic/bosonic analog — purely
+statistics-driven. Moderate relevance: demonstrates that even abelian anyonic
+statistics produce new itinerant phases.
 
 ---
 
-## Tier 2: Dense Anyonic Chains (Foundational)
+## Tier 2: Dense Anyonic Chains (foundational, no mobility)
 
 ### Feiguin et al. (2006) — cond-mat/0612341
-**"Interacting anyons in topological quantum liquids: The golden chain"**
+**"The golden chain"**
 
-The foundational paper. Fully-packed chain of Fibonacci anyons.
+Foundational paper. Fully-packed Fibonacci chain.
 
-**Construction:** L tau-anyons on a chain, every site occupied. Hilbert space from fusion
-tree with link labels x_i in {1, tau}. Dimension = Fibonacci numbers ~ phi^L.
+*Construction:* L tau-anyons, fusion tree basis. Dim = Fibonacci numbers ~ phi^L.
+Hamiltonian projects neighboring pair onto vacuum via F-matrix (Eq.1-2).
+F^tau_{tau,tau,tau} = [[phi^{-1}, phi^{-1/2}],[phi^{-1/2}, -phi^{-1}]].
 
-**Hamiltonian (Eq. 1):** H_i projects neighboring pair onto vacuum fusion channel via
-F-matrix transformation. Explicit F-matrix (Eq. 2):
-F^tau_{tau,tau,tau} = [[phi^{-1}, phi^{-1/2}], [phi^{-1/2}, -phi^{-1}]]
-H_i = -[[phi^{-2}, phi^{-3/2}], [phi^{-3/2}, phi^{-1}]]
+*Results:* AF critical at c=7/10 (tricritical Ising). FM at c=4/5 (3-state Potts).
+Topological symmetry Y protects criticality. Maps to RSOS/Temperley-Lieb.
+General SU(2)_k: c = 1 - 6/((k+1)(k+2)).
 
-**Key results:**
-- Antiferromagnetic case: critical, c=7/10 (tricritical Ising CFT)
-- Ferromagnetic case: c=4/5 (3-state Potts CFT)
-- General SU(2)_k: c = 1 - 6/((k+1)(k+2))
-- Topological symmetry Y protects criticality
-- Temperley-Lieb algebra: X_i^2 = d*X_i with d=phi
-- Maps to RSOS model at k=3
-
-**Relevance:** This is the dense limit that mobile anyon models must recover when all
-sites are occupied. The F-matrix transformation for interactions is the same mechanism
-used in the mobile case.
+*Relevance:* Dense limit our models must recover. F-matrix mechanism is identical.
 
 ### Trebst et al. (2008) — 0801.4602
 **"Collective states of interacting Fibonacci anyons"**
 
-Phase diagram for Fibonacci chain with general couplings. [Review pending]
+Phase diagram for Fibonacci chain with general couplings. Extends golden chain.
 
 ### Gils et al. (2008) — 0810.2277
 **"Collective states of interacting anyons, edge states, nucleation"**
 
-General SU(2)_k anyonic chains, edge states. [Review pending]
+General SU(2)_k anyonic chains with edge states. Systematic study.
 
 ### Ardonne et al. (2010) — 1012.1080
 **"Microscopic models of interacting Yang-Lee anyons"**
 
-Non-unitary anyon models. [Review pending]
+Non-unitary counterpart of Fibonacci (Galois conjugate, q=e^{4pi i/5}).
+Same fusion rules tau x tau = 1 + tau but non-unitary F-symbols (contain i).
+Non-Hermitian Hamiltonian with real spectrum. CFTs: M(3,5) c=-3/5 (AF),
+M(2,5) c=-22/5 (FM). Dense chain only. Demonstrates Galois conjugation
+framework for systematic generation of non-unitary anyon models.
 
 ### Finch, Flohr, Frahm (2017) — 1710.09620
-**"Z_n clock models and chains of so(n)_2 non-Abelian anyons"**
+**"Z_n clock models and chains of so(n)_2 anyons"**
 
-Beyond SU(2)_k family. [Review pending]
+Beyond SU(2)_k: uses so(n)_2 fusion categories. Integrability and CFT.
 
 ---
 
@@ -189,62 +167,101 @@ Beyond SU(2)_k family. [Review pending]
 ### Hollands (2022) — 2205.15243
 **"Anyonic Chains — alpha-Induction — CFT — Defects — Subfactors"**
 
-Mathematical framework for anyonic chains using category theory. [Review pending —
-potentially the most rigorous treatment relevant to our categorical approach]
+**The most mathematically rigorous treatment.** Formalizes anyonic chains via subfactor
+theory (type III von Neumann factors).
+
+*Hilbert space:* Sequences of intertwiners in Jones tunnel = Mor(1, X_1 ⊗ ... ⊗ X_N).
+Handles multiplicities throughout. No creation/annihilation operators.
+
+*Hamiltonian:* Jones projections satisfying TLJ algebra (Eq.3): e_i e_{i±1} e_i = d^{-1} e_i.
+Explicit matrix elements via 6j-symbols (Eq.144-145).
+
+*Key structures:*
+- MPO symmetry operators O^L_A satisfying fusion algebra (Theorem 1)
+- Double triangle algebra and its representation (Theorem 2)
+- Sector decomposition V^L = ⊕ V^L_{lambda,mu} matching CFT conformal blocks
+- Defect algebra classification (Theorem 4)
+- Modular invariant Z_{mu,nu} = dim Hom(alpha^+_mu, alpha^-_nu)
+
+*Generality:* Any unitary modular tensor category. Full multiplicities.
+
+*Relevance:* Provides the categorical formalization we need. The intertwiner path
+construction, 6j-symbol conventions, and MPO framework can be extracted from the
+subfactor language and rephrased categorically. This is the paper to follow for
+mathematical rigor.
+
+*Limitation:* Dense chains only — no mobile anyons, no hopping, no vacancies.
 
 ### Huston, Burnell, Jones, Penneys (2022) — 2208.14018
 **"Composing topological domain walls and anyon mobility"**
 
-**NOT about mobile anyons on a 1D chain.** "Anyon mobility" here means which anyons
-can tunnel through a topological domain wall in 2+1D. Uses enriched fusion categories,
-3-categorical machinery, Walker-Wang models. The framework is much more elaborate than
-what we need.
+**NOT about our kind of mobility.** "Anyon mobility" = which anyons tunnel through
+a 2+1D domain wall. Uses enriched fusion categories, 3-categorical machinery,
+Walker-Wang models. No 1D Hamiltonians.
 
-**One useful insight:** Their tunneling operators (cross a wall) are the domain-wall
-analog of our hopping operators. Tunneling channels decompose as partial isometries
-factoring through wall excitations — structurally parallel to how hopping factors through
-fusion channels. But no direct tools for 1D Hamiltonians.
+One useful insight: tunneling operators are the domain-wall analog of hopping
+operators, and decompose via partial isometries through wall excitations — a
+structural parallel to hopping through fusion channels.
 
 ---
 
-## Tier 4: Related Physics
+## Tier 4: Related but Low Relevance
 
 ### Gamayun et al. (2023) — 2301.02164
 **"Emergence of anyonic correlations from spin and charge dynamics in 1D"**
 
-[Review pending — assess whether this is about abelian statistical transmutation
-or genuinely related to non-abelian fusion category anyons]
+**Not relevant.** Uses "anyon" in the abelian 1D statistical-transmutation sense
+(Girardeau mapping). No fusion categories, no non-abelian anyons, no topological
+structure. Different tradition entirely (integrable models, Bethe ansatz).
+
+### Belletête et al. (2020) — 2003.11293
+**"Topological defects in periodic RSOS models and anyonic chains"**
+
+Defects in dense RSOS/anyonic chains. Related to Hollands' framework.
 
 ---
 
-## Gap Analysis vs. PRD
+## Citation Chase Results (Google Scholar via Playwright)
 
-| Requirement | Prior art status | Our contribution |
-|-------------|-----------------|------------------|
-| General fusion categories | SU(2)_k only | Any modular FC via TensorCategories.jl |
-| Multiplicities N_{ab}^c > 1 | Not treated anywhere | Must handle from start |
-| Braiding in dynamics | Not used in any Hamiltonian | R-matrices in hopping terms |
-| Open BCs | PBC in ED, OBC only for DMRG EE | OBC throughout |
-| sVec → fermions | Not checked by anyone | Critical validation |
-| Morphism-space construction | All papers use fusion trees informally | Formal Mor(1, X_1⊗...⊗X_N) |
-| Code implementation | No public code | TensorCategories.jl + exact diag |
-| Variable particle number | Garjani-Ardonne 2016 (pairing) | Adopt and generalize |
-| Thermodynamics | Nakajima 2025 (dilute, no F-symbols) | Complementary (lattice, exact) |
+### Who cites Garjani-Ardonne 2016? — 4 citations total
+Only 2 independent citations (Shen et al. 2020, 2021 on intermediate statistics)
+plus the first author's PhD thesis. **No one has extended the pair-creation framework.**
+This is a wide-open direction.
 
-## Papers Still Needing Review
+### Other citation chases
+Results for Poilblanc 2012, Golden chain, and Shi 2025 pending final compilation.
+Preliminary indication: the mobile anyon subfield has <20 papers total.
 
-- Shi-Zhang-Senthil 2025 (2505.02893) — CRITICAL, may preempt 2D aspects
-- Hollands 2022 (2205.15243) — categorical framework
-- Trebst 2008, Gils 2008, Ardonne 2010, Finch 2017 — dense chain details
-- Gamayun 2023 — relevance TBD
-- Soni 2015, Pfeifer 2015 — ladder/Z3 extensions
+---
 
-## Citation Chase Status
+## Gap Analysis: What Our Project Uniquely Provides
 
-Google Scholar citation searches launched for:
-- Poilblanc 2012 (who cites the itinerant anyon paper?)
-- Golden chain 2006 (filter for mobile/doped descendants)
-- Shi-Zhang-Senthil 2025 (catch newest work)
-- Garjani-Ardonne 2016 (pairing term followers)
+| Aspect | Best existing work | Gap | Our contribution |
+|--------|-------------------|-----|-----------------|
+| **Categories** | SU(2)_k only | No general framework | Any modular FC via TensorCategories.jl |
+| **Multiplicities** | All papers assume N_{ab}^c ∈ {0,1} | N_{ab}^c > 1 untreated | Must handle from start |
+| **Braiding in H** | Never used in any Hamiltonian | No exchange dynamics | R-matrices in hopping terms |
+| **Boundary conditions** | PBC for ED, OBC only for EE | No systematic OBC | OBC throughout |
+| **sVec → fermions** | Never checked | Critical validation missing | First priority |
+| **Hilbert space** | Fusion trees used informally | No Mor(1, X₁⊗...⊗Xₙ) | Formal categorical construction |
+| **Hopping operator** | Left implicit (Poilblanc) | No explicit matrix form | Must derive via F-symbols |
+| **Pair creation** | Garjani-Ardonne (SU(2)_k) | Not generalized | Generalize to any FC |
+| **Code** | No public implementations | No reproducibility | TensorCategories.jl + exact diag |
+| **Thermodynamics** | Nakajima 2025 (dilute, no F) | Lattice thermo unknown | Complementary exact results |
+| **Mathematical rigor** | Hollands 2022 (subfactors) | Dense chains only | Extend to mobile setting |
 
-Results pending.
+## Strategic Positioning
+
+Our paper should:
+
+1. **Cite Poilblanc 2012 prominently** as the closest prior art and show we reproduce
+   their results for SU(2)_k as a special case.
+2. **Extend Garjani-Ardonne's pairing terms** to general fusion categories.
+3. **Reference Hollands 2022** for the rigorous categorical framework and note we extend
+   it to the mobile (dilute) setting.
+4. **Cite Nakajima 2025** as the complementary thermodynamic approach and note our
+   lattice models provide the microscopic foundation their dilute limit emerges from.
+5. **Note Shi-Zhang-Senthil 2025** as the field-theoretic approach that explicitly
+   calls for the kind of microscopic models we construct.
+6. **Validate against sVec** — something no prior work has done.
+7. **Demonstrate for Fibonacci** and compare with Poilblanc's results to confirm consistency.
