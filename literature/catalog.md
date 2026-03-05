@@ -90,6 +90,15 @@ Citation chase completed 2026-03-05 via Google Scholar (Playwright) + Semantic S
 | Shi-Zhang-Senthil 2025 | 17 (S2) | 7 | Burst of 2025 papers on mobile anyons in FCI context |
 | Golden chain 2006 | 30 filtered | 6 mobile + 24 dense/methods | Ayeni-Pfeifer-Brennen group, Kirchner-Pollmann group, abelian anyon-Hubbard |
 
+## Tier 6: Operator Algebraic Renormalization (continuum limit framework)
+
+| arXiv | Authors | Title | Year | PDF | Reviewed |
+|-------|---------|-------|------|-----|----------|
+| 1901.06124 | Osborne | Continuum Limits of Quantum Lattice Systems | 2019 | 1901_06124.pdf | YES |
+| 2002.01442 | Stottmeister, Morinelli, Morsella, Tanimoto | Operator-algebraic renormalization and wavelets | 2021 | 2002_01442.pdf | YES |
+| 2107.13834 | Osborne, Stottmeister | Conformal field theory from lattice fermions | 2022 | 2107_13834.pdf | YES |
+| 2201.11562 | Stottmeister | Anyon braiding and the renormalization group | 2022 | — | NEED |
+
 ## Reference papers (downloaded but not primary)
 
 | arXiv | Authors | Title | Year | PDF |
