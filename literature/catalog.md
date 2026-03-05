@@ -97,7 +97,7 @@ Citation chase completed 2026-03-05 via Google Scholar (Playwright) + Semantic S
 | 1901.06124 | Osborne | Continuum Limits of Quantum Lattice Systems | 2019 | 1901_06124.pdf | YES |
 | 2002.01442 | Stottmeister, Morinelli, Morsella, Tanimoto | Operator-algebraic renormalization and wavelets | 2021 | 2002_01442.pdf | YES |
 | 2107.13834 | Osborne, Stottmeister | Conformal field theory from lattice fermions | 2022 | 2107_13834.pdf | YES |
-| 2201.11562 | Stottmeister | Anyon braiding and the renormalization group | 2022 | — | NEED |
+| 2201.11562 | Stottmeister | Anyon braiding and the renormalization group | 2022 | 2201_11562.pdf | YES |
 
 ## Reference papers (downloaded but not primary)
 
