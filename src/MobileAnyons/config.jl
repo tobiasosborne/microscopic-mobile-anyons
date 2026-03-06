@@ -4,7 +4,6 @@
 # Hard-core: at most one anyon per site.
 # Labels are 1-based indices into simples(C); label 1 = vacuum.
 
-using Combinatorics
 
 """
     LabelledConfig(positions, labels)
@@ -33,7 +32,7 @@ function enumerate_configs_hc(L::Int, N::Int, C)
     N == 0 && return [LabelledConfig(Int[], Int[])]
 
     configs = LabelledConfig[]
-    for pos in combinations(1:L, N)
+    for pos in Combinatorics.combinations(1:L, N)
         for labels in Iterators.product(fill(2:d, N)...)
             push!(configs, LabelledConfig(collect(pos), collect(labels)))
         end

@@ -55,7 +55,7 @@ function enumerate_fusion_trees(C, labels::Vector{Int}, c::Int)
             return
         end
         for s in 1:d
-            dim(Hom(S[current_charge] ⊗ S[labels[k]], S[s])) > 0 || continue
+            iszero(dim(Hom(S[current_charge] ⊗ S[labels[k]], S[s]))) && continue
             push!(partial, s)
             recurse(k + 1, partial, s)
             pop!(partial)
