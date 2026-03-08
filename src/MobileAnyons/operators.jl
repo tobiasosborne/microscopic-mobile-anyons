@@ -95,9 +95,10 @@ function hopping_hamiltonian_sector(basis::AnyonBasis, N::Int, c::Int; t=1.0)
     states = basis.states[range]
     n = length(states)
 
-    state_index = Dict{Vector{Int}, Int}()
+    # Index by (positions, intermediates) to handle multiple fusion trees per config
+    state_index = Dict{Tuple{Vector{Int}, Vector{Int}}, Int}()
     for (idx, st) in enumerate(states)
-        state_index[st.config.positions] = idx
+        state_index[(st.config.positions, st.intermediates)] = idx
     end
 
     I_idx = Int[]
@@ -122,7 +123,8 @@ function hopping_hamiltonian_sector(basis::AnyonBasis, N::Int, c::Int; t=1.0)
                 new_pos[p] = new_site
                 sort!(new_pos)
 
-                bra_idx = get(state_index, new_pos, 0)
+                # Hopping preserves fusion tree (labels + intermediates)
+                bra_idx = get(state_index, (new_pos, ket.intermediates), 0)
                 if bra_idx > 0
                     push!(I_idx, bra_idx)
                     push!(J_idx, ket_idx)
