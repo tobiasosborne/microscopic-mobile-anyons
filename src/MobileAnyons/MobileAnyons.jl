@@ -11,6 +11,8 @@ include("interaction.jl")
 include("braiding.jl")
 include("paircreation.jl")
 include("wavelets.jl")
+include("finegraining.jl")
+include("virasoro.jl")
 
 export LabelledConfig, enumerate_configs_hc
 export FusionTree, AnyonBasis, build_basis, enumerate_fusion_trees
@@ -23,5 +25,7 @@ export braiding_hamiltonian, braiding_hamiltonian_sector, tv_model_spectrum
 export dual_pairs, pair_creation_operator, pair_hamiltonian
 export daubechies_filter, one_particle_scaling_map, one_particle_scaling_map_haar
 export fine_graining_isometry_svec
+export fine_graining_isometry, trivial_embedding
+export bond_projectors_dense, hamiltonian_fourier_modes, virasoro_commutator_check
 
 end # module
