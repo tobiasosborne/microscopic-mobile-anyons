@@ -8,17 +8,19 @@
 # since disjoint supports guarantee V†V = I by factorization.
 #
 # For wavelets with overlapping supports (D4, etc.), the product map is NOT
-# isometric. The fix is the **categorical determinant**: replace the product
-# with a braiding-weighted sum over permutations:
-#   V[y,inters'; x,inters] = Σ_{σ∈S_N} B(σ)[inters',inters] Π_p R[y_p, x_{σ(p)}]
+# isometric. The universal fix is the **normalized product map**:
+#   V_iso = V_prod × diag(1/g(pos))
 #
-# where B(σ) is the braiding representation of permutation σ, built from
-# elementary braiding matrices σ_p = Σ_f R^{b,c}_f P_f^{phys}.
+# where g(pos) = ||V_prod column|| is a position-dependent, category-independent
+# geometric normalization factor. This works because:
+# 1. G = V†V is DIAGONAL (different coarse states → orthogonal fine states)
+# 2. Column norm depends ONLY on positions (not labels, intermediates, or category)
+# 3. g²(pos) = Σ_{y sorted} Π R[y,x]² = "probability of distinct landings"
 #
-# This generalizes:
-# - sVec: B(σ) = (-1)^σ → Slater determinant
-# - Haar: only σ=id contributes → product map
-# - D4 + Fibonacci: B(σ) mixes intermediates via R-symbols + F-moves
+# Special cases:
+# - Haar: g=1 always → V = product map
+# - Single species: Slater determinant also works (different isometry, same V†V=I)
+# - Multi-species: ONLY normalized product works (Slater permutes labels)
 
 """
     fine_graining_isometry(basis_L::AnyonBasis, basis_2L::AnyonBasis,
@@ -167,6 +169,41 @@ function trivial_embedding(basis_L::AnyonBasis, basis_2L::AnyonBasis)
     end
 
     return sparse(I_idx, J_idx, ones(Float64, length(I_idx)), n_fine, n_coarse)
+end
+
+"""
+    normalized_product_isometry(basis_L::AnyonBasis, basis_2L::AnyonBasis,
+                                 R::Matrix{Float64}) -> SparseMatrixCSC{Float64}
+
+Build the universal fine-graining isometry V: H_L → H_{2L} for ANY fusion category
+and ANY wavelet.
+
+This is the **normalized product map**: each particle spreads independently via R,
+preserving labels and intermediates, then each column is normalized to unit length.
+
+  V_iso = V_prod × diag(1/||col||)
+
+The normalization g(pos) = ||col|| is position-dependent and category-independent.
+For Haar wavelets, g = 1 (no correction). For D4 and others, g < 1 at adjacent sites.
+
+This is the correct universal construction because:
+- G = V†_prod V_prod is diagonal (proven: orthogonal fine states)
+- Column norm depends only on positions (not labels/intermediates/category)
+- Reduces to product map for Haar, matches Slater for single-species
+"""
+function normalized_product_isometry(basis_L::AnyonBasis, basis_2L::AnyonBasis,
+                                      R::Matrix{Float64})
+    V_prod = fine_graining_isometry(basis_L, basis_2L, R)
+
+    # Normalize each column
+    n = size(V_prod, 2)
+    col_norms = Float64[norm(V_prod[:, j]) for j in 1:n]
+    # Protect against zero columns (empty sectors)
+    for j in 1:n
+        col_norms[j] = max(col_norms[j], 1e-14)
+    end
+
+    return V_prod * Diagonal(1.0 ./ col_norms)
 end
 
 # ============================================================

@@ -25,9 +25,9 @@ export braiding_hamiltonian, braiding_hamiltonian_sector, tv_model_spectrum
 export dual_pairs, pair_creation_operator, pair_hamiltonian
 export daubechies_filter, one_particle_scaling_map, one_particle_scaling_map_haar
 export fine_graining_isometry_svec
-export fine_graining_isometry, trivial_embedding
-export categorical_determinant_isometry  # partial correction, not isometric for non-abelian
-export fine_graining_isometry_svec  # = Slater lift, works for ALL categories (the correct answer)
+export fine_graining_isometry, trivial_embedding, normalized_product_isometry
+export categorical_determinant_isometry  # partial correction only (non-abelian)
+export fine_graining_isometry_svec  # Slater lift (single-species only)
 export bond_projectors_dense, hamiltonian_fourier_modes, virasoro_commutator_check
 
 end # module

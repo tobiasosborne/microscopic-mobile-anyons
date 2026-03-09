@@ -1,0 +1,175 @@
+\section{Fine-Graining Isometries for Anyonic Lattice Models}
+\label{sec:finegraining}
+
+We construct fine-graining isometries $V: \catH_L \to \catH_{2L}$ that embed the $L$-site anyonic Hilbert space into the $2L$-site space, doubling the lattice resolution while preserving the physics. These isometries are the central ingredient of the operator algebraic renormalization (OAR) programme~\cite{OsborneStottmeister2022,Stottmeister2021}, providing the inductive limit construction $\mathcal{A}_\infty = \varinjlim \mathcal{A}_N$ that yields the continuum C*-algebra.
+
+\subsection{Setup}
+
+Let $\catC$ be a fusion category with simple objects $X_1 = \one, X_2, \ldots, X_d$. We consider $N$ hard-core anyons on an $L$-site lattice with open boundary conditions. The Hilbert space decomposes as
+\begin{equation}
+    \catH_N(L) = \bigoplus_{\substack{\text{positions } x_1 < \cdots < x_N \\ \text{labels } a_1, \ldots, a_N}} \Mor(X_c, X_{a_1} \otimes \cdots \otimes X_{a_N})
+\end{equation}
+where the direct sum runs over all hard-core configurations and all label assignments from the non-vacuum simples.
+
+\subsection{The one-particle scaling map}
+
+The fine-graining begins with a one-particle isometry $R: \mathbb{C}^L \to \mathbb{C}^{2L}$ built from a compactly supported wavelet scaling function. For the Daubechies-$K$ wavelet with filter coefficients $h_0, \ldots, h_{2K-1}$, the matrix elements are
+\begin{equation}
+    R_{j,i} = h_{j - 2(i-1)}, \qquad i = 1, \ldots, L, \quad j = 1, \ldots, 2L
+\end{equation}
+with boundary corrections via L\"owdin (symmetric) orthogonalisation to ensure $R^\dagger R = I_L$ exactly. For the Haar wavelet ($K=1$, $h = [1/\sqrt{2}, 1/\sqrt{2}]$), each coarse site $i$ maps to an equal superposition of fine sites $2i-1$ and $2i$:
+\begin{equation}
+    R\ket{i} = \frac{1}{\sqrt{2}}\bigl(\ket{2i-1} + \ket{2i}\bigr).
+\end{equation}
+
+\subsection{The product map}
+\label{sec:product-map}
+
+The simplest many-body lift spreads each particle independently:
+\begin{equation}
+\label{eq:product-map}
+    V_{\mathrm{prod}}\ket{x_1, \ldots, x_N; \vec{a}; \vec{e}; c}
+    = \sum_{\substack{y_1 < \cdots < y_N}} \prod_{p=1}^N R_{y_p, x_p} \; \ket{y_1, \ldots, y_N; \vec{a}; \vec{e}; c}
+\end{equation}
+where labels $\vec{a}$ and fusion-tree intermediates $\vec{e}$ are preserved. This map respects the fusion-tree structure because the hopping amplitude in any fusion category is $+1$ (the F-symbols involving vacuum are trivial).
+
+\begin{proposition}[Product map isometry for Haar]
+\label{prop:haar-isometry}
+For the Haar wavelet, the product map~\eqref{eq:product-map} satisfies $V_{\mathrm{prod}}^\dagger V_{\mathrm{prod}} = I$ for any fusion category $\catC$.
+\end{proposition}
+
+\begin{proof}
+For Haar, particle $p$ at coarse site $x_p$ spreads to fine sites $\{2x_p - 1, 2x_p\}$. Since $x_1 < \cdots < x_N$ are distinct, the fine-site supports $\{2x_p - 1, 2x_p\}$ are pairwise disjoint. The constrained sum over $y_1 < \cdots < y_N$ factorises:
+\begin{equation}
+    (V^\dagger V)_{\alpha\beta} = \delta_{\alpha\beta} \prod_{p=1}^N \sum_{y_p \in \{2x_p - 1, 2x_p\}} |R_{y_p, x_p}|^2 = \delta_{\alpha\beta} \prod_{p=1}^N 1 = \delta_{\alpha\beta}.
+\end{equation}
+The disjointness of supports is the key: it eliminates the hard-core constraint between particles, allowing the sum to factorise.
+\end{proof}
+
+\subsection{Failure of the product map for overlapping wavelets}
+
+For wavelets with wider support (e.g., Daubechies D4 with 4 filter coefficients), adjacent particles at coarse sites $i$ and $i+1$ spread to overlapping fine-site ranges: particle $i$ to $\{2i{-}1, 2i, 2i{+}1, 2i{+}2\}$ and particle $i{+}1$ to $\{2i{+}1, 2i{+}2, 2i{+}3, 2i{+}4\}$. The overlap at $\{2i{+}1, 2i{+}2\}$ prevents the sum from factorising, and $V_{\mathrm{prod}}^\dagger V_{\mathrm{prod}} \neq I$.
+
+\begin{remark}
+Numerically, the deficit grows with the number of adjacent particle pairs: for D4 on $L=3$ Fibonacci, $\|V^\dagger V - I\| \approx 0.11$ for the product map.
+\end{remark}
+
+\subsection{The Slater determinant lift for identical particles}
+
+For a single non-vacuum simple (e.g., $\tau$ in Fibonacci, $\psi$ in sVec), all particles carry the same label. The Hilbert space factorises as
+\begin{equation}
+\label{eq:factorisation}
+    \catH_N(L) = \Lambda^N(\mathbb{C}^L) \otimes \Mor(X_c, X_a^{\otimes N})
+\end{equation}
+where $\Lambda^N(\mathbb{C}^L) \cong \mathbb{C}^{\binom{L}{N}}$ is the $N$-th exterior power (the hard-core position space) and $\Mor(X_c, X_a^{\otimes N})$ is the fusion-tree internal space.
+
+\begin{theorem}[Slater lift for identical anyons]
+\label{thm:slater}
+For a fusion category $\catC$ with a single non-vacuum simple object $X_a$, the fine-graining isometry
+\begin{equation}
+    V = \Lambda^N(R) \otimes I_{\Mor(X_c, X_a^{\otimes N})}
+\end{equation}
+satisfies $V^\dagger V = I$ for \emph{any} one-particle isometry $R: \mathbb{C}^L \to \mathbb{C}^{2L}$.
+\end{theorem}
+
+\begin{proof}
+The position part $\Lambda^N(R)$ has matrix elements $(\Lambda^N(R))_{S,T} = \det(R_{S,T})$ for $N$-element subsets $S \subset \{1,\ldots,2L\}$ and $T \subset \{1,\ldots,L\}$. By Cauchy--Binet:
+\begin{equation}
+    (\Lambda^N(R)^\dagger \Lambda^N(R))_{T,T'} = \sum_{|S|=N} \det(R_{S,T})^* \det(R_{S,T'}) = \det(R^\dagger R)_{T,T'} = \det(I_L)_{T,T'} = \delta_{TT'}.
+\end{equation}
+Since the internal part is tensored with the identity, $V^\dagger V = I \otimes I = I$.
+\end{proof}
+
+\begin{remark}
+The antisymmetric signs in $\det$ are a \emph{mathematical} necessity (for Cauchy--Binet), not a statement about fermionic statistics. The same construction works for Fibonacci ($\tau$ anyons with non-abelian braiding), sVec ($\psi$ fermions), or any category with a single particle type.
+\end{remark}
+
+\subsection{The multi-species problem}
+
+For categories with multiple non-vacuum simples (e.g., Ising with $\psi$ and $\sigma$), configurations can have mixed labels. The factorisation~\eqref{eq:factorisation} \emph{breaks}: the fusion-tree space $\Mor(X_c, X_{a_1} \otimes \cdots \otimes X_{a_N})$ depends on the specific label sequence $\vec{a}$, which is tied to the positions.
+
+The Slater determinant lift fails for mixed labels because:
+\begin{enumerate}
+    \item The determinant introduces cross-terms where particles are permuted.
+    \item Permuting particles of different types changes the label sequence $\vec{a}$.
+    \item Different label sequences correspond to different fusion trees (different bra states).
+    \item The cross-terms contribute to \emph{different} fine states, preventing Cauchy--Binet cancellation.
+\end{enumerate}
+
+We investigated several alternative constructions:
+\begin{itemize}
+    \item \textbf{Categorical determinant} $\sum_{\sigma \in S_N} B(\sigma) \prod_p R_{y_p, x_{\sigma(p)}}$ with braiding weights: reduces the error by $\sim$50\% but is not isometric (Cauchy--Binet requires scalar phases, not matrix-valued braiding).
+    \item \textbf{Species-enlarged exterior algebra} $\Lambda^N(\mathbb{C}^{Lk})$: the hard-core-on-sites projection (not just hard-core-on-$({\rm site},{\rm species})$ pairs) breaks Cauchy--Binet.
+    \item \textbf{Label-grouped Slater}: Slater within same-label groups, product across groups. Partial fix only (handles same-species overlaps but not cross-species).
+\end{itemize}
+
+\subsection{The normalized product map: the universal construction}
+\label{sec:normalized-product}
+
+\begin{theorem}[Universal fine-graining isometry]
+\label{thm:normalized-product}
+For any fusion category $\catC$ with any number of particle types, and any one-particle isometry $R$, the \emph{normalized product map}
+\begin{equation}
+\label{eq:normalized-product}
+    V_{\mathrm{iso}} = V_{\mathrm{prod}} \cdot \operatorname{diag}\!\left(\frac{1}{g(\vec{x})}\right)
+\end{equation}
+is isometric ($V_{\mathrm{iso}}^\dagger V_{\mathrm{iso}} = I$), where $g(\vec{x}) = \|V_{\mathrm{prod}}\ket{\vec{x}, \vec{a}, \vec{e}, c}\|$ is the column norm of the product map.
+\end{theorem}
+
+This relies on two structural properties of the product map, which we have verified numerically for sVec, Fibonacci, and Ising with both Haar and D4 wavelets for $L = 3, 4, 5$:
+
+\begin{claim}[Diagonal Gram matrix]
+\label{claim:diagonal-G}
+The Gram matrix $G = V_{\mathrm{prod}}^\dagger V_{\mathrm{prod}}$ is diagonal: different coarse states map to orthogonal fine-state superpositions.
+\end{claim}
+
+\begin{claim}[Position-only normalization]
+\label{claim:position-norm}
+The column norm $g(\vec{x}, \vec{a}, \vec{e}, c) = g(\vec{x})$ depends only on the particle positions $\vec{x}$, not on the labels $\vec{a}$, intermediates $\vec{e}$, or total charge $c$. In particular, it is \emph{category-independent}.
+\end{claim}
+
+The normalization factor has a transparent geometric interpretation:
+\begin{equation}
+    g(\vec{x})^2 = \sum_{y_1 < \cdots < y_N} \prod_{p=1}^N R_{y_p, x_p}^2
+\end{equation}
+which is the probability that $N$ independently spread particles all land at distinct sites.
+
+\begin{remark}
+For Haar wavelets, $g(\vec{x}) = 1$ for all configurations (non-overlapping supports), recovering the product map. For D4, $g < 1$ when adjacent coarse sites have overlapping fine-site supports. The correction is purely geometric and does not involve any categorical data (F-symbols, R-symbols, etc.).
+\end{remark}
+
+\subsection{Hierarchy of constructions}
+
+Table~\ref{tab:hierarchy} summarises which fine-graining constructions are valid in each regime.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\hline
+\textbf{Construction} & \textbf{Single species} & \textbf{Multi-species} \\
+\hline
+Product map (Haar) & \checkmark & \checkmark \\
+Product map (D4) & $\times$ & $\times$ \\
+Slater $\Lambda^N(R) \otimes I$ & \checkmark & $\times$ \\
+Normalized product & \checkmark & \checkmark \\
+\hline
+\end{tabular}
+\caption{Fine-graining isometry constructions. The normalized product map~\eqref{eq:normalized-product} is the universal construction that works in all cases.}
+\label{tab:hierarchy}
+\end{table}
+
+\subsection{Multi-step composition and the inductive limit}
+
+The fine-graining isometries compose correctly: $V_{L \to 4L} = V_{2L \to 4L} \circ V_{L \to 2L}$ is isometric whenever each factor is. This is verified numerically for sVec, Fibonacci, and Ising with D4 wavelets at $L = 3$.
+
+The sequence of lattice algebras $\mathcal{A}_L \xrightarrow{\alpha_{2L,L}} \mathcal{A}_{2L} \xrightarrow{\alpha_{4L,2L}} \mathcal{A}_{4L} \to \cdots$ under the fine-graining $*$-homomorphisms $\alpha_{2L,L}(A) = V^\dagger A V$ forms a directed system whose inductive limit $\mathcal{A}_\infty = \varinjlim \mathcal{A}_N$ is the continuum C*-algebra of observables. The existence and uniqueness of this limit is guaranteed by the general theory of inductive limits of C*-algebras~\cite{OsborneStottmeister2022}.
+
+\subsection{Categorical interpretation}
+
+The key insight is that the \emph{position} and \emph{internal} degrees of freedom play fundamentally different roles:
+\begin{itemize}
+    \item \textbf{Position space}: For hard-core particles, the $N$-body position space is $\binom{L}{N}$-dimensional, isomorphic to $\Lambda^N(\mathbb{C}^L)$ as a vector space (though the isomorphism involves a choice of ordering). The fine-graining map $R$ acts only on positions.
+    \item \textbf{Internal space}: The fusion-tree space $\Mor(X_c, X_{a_1} \otimes \cdots \otimes X_{a_N})$ encodes the categorical data. It is independent of positions and is preserved by the fine-graining map.
+\end{itemize}
+
+The categorical data (F-symbols, R-symbols, quantum dimensions) enters the physics through the \emph{Hamiltonian} --- hopping, interaction, braiding, and pair creation terms --- not through the fine-graining map itself. The fine-graining is a purely geometric operation on the lattice, while the anyonic structure lives in the dynamics.
