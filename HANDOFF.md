@@ -14,6 +14,7 @@
 - **Intertwining**: number-changing isometry gives ~3% better residual than normalized product (0.378 vs 0.393 at L=4 Fibonacci)
 - New test file: `test/test_number_changing_finegraining.jl`
 - Helper function `build_number_changing_isometry()` in test file (not yet in src/)
+- LaTeX writeup: new Section 1.8 in `tex/sections/finegraining.tex` with proof, deficit table, numerical results, physical interpretation, updated hierarchy table
 
 ## Current state
 
@@ -37,7 +38,6 @@
 - Consider multi-step composition with number-changing isometry (V_{2L→4L} ∘ V_{L→2L})
 
 ### Medium term
-- LaTeX writeup of number-changing isometry result
 - Compare continuum limit convergence rates: normalized product vs number-changing
 - Explore whether higher-order pair terms (N→N+4) further improve things
 
@@ -52,3 +52,4 @@
 - `src/MobileAnyons/finegraining.jl` — product map, normalized product, categorical determinant
 - `src/MobileAnyons/paircreation.jl` — pair creation operator h†
 - `src/MobileAnyons/wavelets.jl` — Daubechies filters, one-particle scaling maps
+- `tex/sections/finegraining.tex` — LaTeX writeup (7 pages, includes number-changing isometry)
