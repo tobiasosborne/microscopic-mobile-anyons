@@ -138,23 +138,138 @@ which is the probability that $N$ independently spread particles all land at dis
 For Haar wavelets, $g(\vec{x}) = 1$ for all configurations (non-overlapping supports), recovering the product map. For D4, $g < 1$ when adjacent coarse sites have overlapping fine-site supports. The correction is purely geometric and does not involve any categorical data (F-symbols, R-symbols, etc.).
 \end{remark}
 
+\subsection{Number-changing fine-graining isometry}
+\label{sec:number-changing}
+
+The normalized product map~\eqref{eq:normalized-product} fixes the deficit $D = I - V_{\mathrm{prod}}^\dagger V_{\mathrm{prod}}$ by rescaling columns, which is mathematically clean but physically artificial. We now show that the deficit can be filled \emph{physically} by pair-creation terms, yielding a number-changing isometry
+\begin{equation}
+\label{eq:number-changing}
+    V = V_0 + V_2, \qquad V_0: \catH_N(L) \to \catH_N(2L), \quad V_2: \catH_N(L) \to \catH_{N+2}(2L)
+\end{equation}
+where $V_0 = V_{\mathrm{prod}}$ is the raw product map and $V_2$ is built from the pair-creation operator $h^\dagger$~\cite{GarjaniArdonne2016} applied on the fine lattice.
+
+\subsubsection{The deficit}
+
+The Gram matrix $G = V_0^\dagger V_0$ is diagonal with entries $g(\vec{x})^2 \le 1$. The deficit
+\begin{equation}
+    D = I - G = \operatorname{diag}\bigl(1 - g(\vec{x})^2\bigr)
+\end{equation}
+vanishes for $N = 0, 1$ (no hard-core collisions possible) and grows with the number of adjacent particle pairs. For D4 wavelets, the deficit values are approximately
+\begin{center}
+\begin{tabular}{cc}
+$N$ & max deficit \\
+\hline
+0, 1 & 0 \\
+2 & 0.029 \\
+3 & 0.057 \\
+4 & 0.083
+\end{tabular}
+\end{center}
+These values are \emph{category-independent}: Fibonacci and Ising produce identical deficit spectra.
+
+\subsubsection{Composition with pair creation}
+
+The pair-creation operator $h^\dagger$ on the fine lattice maps $\catH_N(2L) \to \catH_{N+2}(2L)$ by creating vacuum pairs at adjacent vacant sites~\cite{GarjaniArdonne2016}. The raw composition $h^\dagger V_0$ maps $\catH_N(L) \to \catH_{N+2}(2L)$, spreading coarse particles via $R$ and then inserting pairs at the newly created vacant fine sites.
+
+The naive construction $V = V_0 + \alpha\, h^\dagger V_0$ fails for two reasons:
+\begin{enumerate}
+    \item \textbf{Cross-sector overlap}: $V_0$ also maps coarse $(N{+}2)$-particle states into the fine $(N{+}2)$-particle sector, so $V_0^\dagger (h^\dagger V_0) \neq 0$.
+    \item \textbf{Column interference}: the $h^\dagger V_0$ columns for different coarse states are not orthogonal (different coarse states can produce the same fine state via pair creation at different bonds).
+\end{enumerate}
+
+\subsubsection{Three-step orthogonalisation}
+
+Both obstructions are resolved by a systematic orthogonalisation procedure:
+
+\medskip\noindent
+\textbf{Step 1: Projection.} Let $\Pi_{V_0} = V_0 G^{-1} V_0^\dagger$ be the projector onto $\operatorname{Im}(V_0)$, where $G^{-1} = \operatorname{diag}(1/g(\vec{x})^2)$ (well-defined since $g > 0$ for all occupied states). Define
+\begin{equation}
+    V_2^{\perp} = (I - \Pi_{V_0})\, h^\dagger V_0.
+\end{equation}
+This ensures $V_0^\dagger V_2^{\perp} = 0$ exactly.
+
+\medskip\noindent
+\textbf{Step 2: L\"owdin orthogonalisation.} Restrict to the columns $J = \{j : D_{jj} > 0\}$ with nonzero deficit. The Gram matrix of the projected columns,
+\begin{equation}
+    G_2 = (V_2^{\perp})_J^\dagger (V_2^{\perp})_J,
+\end{equation}
+is positive definite (verified numerically). Apply symmetric orthogonalisation:
+\begin{equation}
+    (V_2^{\perp})_J \;\longmapsto\; (V_2^{\perp})_J \cdot G_2^{-1/2}.
+\end{equation}
+This gives orthonormal $V_2$ columns within the complement of $\operatorname{Im}(V_0)$.
+
+\medskip\noindent
+\textbf{Step 3: Scaling.} Multiply each column $j \in J$ by $\sqrt{D_{jj}}$ to fill the deficit:
+\begin{equation}
+\label{eq:V2-formula}
+    V_2 = (I - \Pi_{V_0})\, h^\dagger V_0 \cdot G_2^{-1/2} \cdot D_J^{1/2}.
+\end{equation}
+
+\begin{proposition}[Number-changing isometry]
+\label{prop:number-changing}
+The map $V = V_0 + V_2$ with $V_2$ given by~\eqref{eq:V2-formula} satisfies $V^\dagger V = I$.
+\end{proposition}
+
+\begin{proof}
+By construction:
+\begin{equation}
+    V^\dagger V = V_0^\dagger V_0 + \underbrace{V_0^\dagger V_2}_{= 0} + \underbrace{V_2^\dagger V_0}_{= 0} + V_2^\dagger V_2 = G + D = I.
+\end{equation}
+The cross-terms vanish by Step~1. The diagonal term $V_2^\dagger V_2 = D$ by Steps~2--3: the L\"owdin orthogonalisation makes the columns orthonormal, and the scaling adjusts each to have squared norm $D_{jj}$.
+\end{proof}
+
+\begin{remark}
+The construction requires $G_2$ to be positive definite on the deficit subspace, i.e., the pair-creation operator must generate enough independent fine-state components orthogonal to $\operatorname{Im}(V_0)$. This has been verified numerically for Fibonacci and Ising at $L = 3, 4$ with D4 wavelets.
+\end{remark}
+
+\subsubsection{Numerical results}
+
+We have verified $\|V^\dagger V - I\| < 10^{-14}$ (machine precision) for:
+\begin{itemize}
+    \item Fibonacci category, $L = 3, 4$, D4 wavelet
+    \item Ising category (multi-species: $\sigma, \psi$), $L = 3, 4$, D4 wavelet
+\end{itemize}
+
+\noindent
+For the Hamiltonian intertwining $V^\dagger H_{2L} V \approx a H_L + b I$, the number-changing isometry gives slightly better residuals than the normalized product map:
+
+\begin{center}
+\begin{tabular}{lccc}
+& $L$ & Normalized product & Number-changing \\
+\hline
+Fibonacci & 3 & 0.448 & 0.434 \\
+Fibonacci & 4 & 0.393 & 0.378
+\end{tabular}
+\end{center}
+
+\subsubsection{Physical interpretation}
+
+The number-changing isometry realises the fine-graining as a two-step physical process:
+\begin{enumerate}
+    \item \textbf{Spread}: each coarse particle spreads to fine sites via the wavelet filter $R$ (preserving $N$).
+    \item \textbf{Pair creation}: vacuum pairs are created at vacant fine sites to fill the deficit left by hard-core collisions (changing $N \to N+2$).
+\end{enumerate}
+The pair-creation contribution is small (scaling factors $\sim \sqrt{D/\|h^\dagger V_0\|^2} \sim 0.1$) but structurally necessary. This provides the first concrete evidence that Garjani--Ardonne pair creation~\cite{GarjaniArdonne2016} plays a role in the OAR continuum limit~\cite{Stottmeister2022}, not just in the lattice Hamiltonian.
+
 \subsection{Hierarchy of constructions}
 
 Table~\ref{tab:hierarchy} summarises which fine-graining constructions are valid in each regime.
 
 \begin{table}[h]
 \centering
-\begin{tabular}{lcc}
+\begin{tabular}{lccc}
 \hline
-\textbf{Construction} & \textbf{Single species} & \textbf{Multi-species} \\
+\textbf{Construction} & \textbf{Single species} & \textbf{Multi-species} & \textbf{Number-preserving} \\
 \hline
-Product map (Haar) & \checkmark & \checkmark \\
-Product map (D4) & $\times$ & $\times$ \\
-Slater $\Lambda^N(R) \otimes I$ & \checkmark & $\times$ \\
-Normalized product & \checkmark & \checkmark \\
+Product map (Haar) & \checkmark & \checkmark & yes \\
+Product map (D4) & $\times$ & $\times$ & yes \\
+Slater $\Lambda^N(R) \otimes I$ & \checkmark & $\times$ & yes \\
+Normalized product & \checkmark & \checkmark & yes \\
+Number-changing~\eqref{eq:number-changing} & \checkmark & \checkmark & no \\
 \hline
 \end{tabular}
-\caption{Fine-graining isometry constructions. The normalized product map~\eqref{eq:normalized-product} is the universal construction that works in all cases.}
+\caption{Fine-graining isometry constructions. The normalized product map~\eqref{eq:normalized-product} and number-changing isometry~\eqref{eq:number-changing} are both universal. The former is simpler; the latter is physically motivated and gives slightly better Hamiltonian intertwining.}
 \label{tab:hierarchy}
 \end{table}
 
