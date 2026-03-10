@@ -1,63 +1,54 @@
-# Session Handoff — 2026-03-05
+# Session Handoff — 2026-03-10
 
-## What was done
+## What was done this session
 
-### Project restructuring
-- Archived entire v0 (Dec 2025 - Jan 2026) into `archive/v0/`
-- Created clean v1 project: `src/MobileAnyons/`, `test/`, `tex/`, `literature/`
-- Set up TensorCategories.jl directly (no wrappers), 1-based indexing everywhere
-- Initialized beads (`ma-` prefix), installed hooks, adapted CLAUDE.md from Lyr.jl
+### Number-changing fine-graining isometry experiment
+- **Goal**: test whether pair-creation h† can fill the deficit D = I - V₀†V₀ of the raw product map physically (without artificial normalization)
+- **Phase 1 (Deficit Analysis)**: confirmed G = V₀†V₀ is diagonal, deficit depends only on positions, zero for N≤1. Deficit grows with N: ~0.029 (N=2), ~0.057 (N=3), ~0.083 (N=4)
+- **Phase 2 (Composition h†V₀)**: naive composition fails because V₀†(h†V₀) ≠ 0 — cross-sector overlap where V₀ maps coarse (N+2) states to the same fine sector as h†V₀ maps coarse N states
+- **Three-step fix** gives V†V = I exactly:
+  1. Project: V₂_orth = (I - Π_{V₀}) h†V₀ → eliminates V₀†V₂
+  2. Löwdin: V₂_J · G₂^{-1/2} → orthogonalizes V₂ columns against each other
+  3. Scale: · D_J^{1/2} → fills deficit exactly
+- **Result**: V†V = I to machine precision for Fibonacci and Ising, L=3,4 with D4 wavelet
+- **Intertwining**: number-changing isometry gives ~3% better residual than normalized product (0.378 vs 0.393 at L=4 Fibonacci)
+- New test file: `test/test_number_changing_finegraining.jl`
+- Helper function `build_number_changing_isometry()` in test file (not yet in src/)
 
-### Literature review (comprehensive)
-- Built tooling: `scripts/litreview.py` (arXiv/Semantic Scholar/PDF extraction/ref verification)
-- Built tooling: `scripts/scholar_cite.js` (Google Scholar via Playwright)
-- Downloaded 50 papers to `literature/pdfs/`
-- 16 papers reviewed in depth via subagents
-- 4 Google Scholar citation chases (Poilblanc 2012, Golden chain, Shi 2025, Garjani-Ardonne 2016)
-- Full catalog in `literature/catalog.md`, consolidated review in `literature/review.md`
+## Current state
 
-### Key findings from literature
-- Mobile anyon problem partially solved for SU(2)_k by Poilblanc group (2011-2015)
-- Garjani-Ardonne pair creation (2016) has almost zero follow-up — wide open
-- 2025 burst of ~15 papers on doped FCIs, all field-theoretic, explicitly calling for microscopic models
-- Shi-Zhang-Senthil 2025 does NOT preempt us (no lattice Hamiltonian, no Hilbert space)
-- Hollands 2022 provides rigorous categorical framework but dense chains only
-- Stottmeister 2201.11562 confirms fixed-N obstruction in braiding RG
+### Completed
+- M1-M5: All lattice operators (hopping, interaction, braiding, pair creation)
+- M6: Pair creation/annihilation (622 tests)
+- Phase 1 (OAR): sVec fine-graining, Haar + D4 wavelets
+- Phase 2-3 (OAR): Universal normalized product map for any category/wavelet
+- Phase 4 (OAR): Convergence tests, multi-step composition, spectral convergence
+- **NEW**: Number-changing isometry V = V₀ + V₂ proven to work
 
-### PRD v2: continuum limits via OAR
-- Central insight: variable anyon number decouples lattice spacing from inter-particle spacing
-- Dense chain is a Mott insulator (ℓ = a forever) — no continuum limit possible
-- Variable N enables: lattice refinement with vacancies → OAR fine-graining isometries → inductive limit → continuum QFT
-- Stottmeister's braiding RG blocked by fixed N; our Fock space ⊕_N H_N resolves the obstruction
-- Garjani-Ardonne pair creation populates new sites during fine-graining
+### Two isometry approaches now validated
+1. **Normalized product** (number-preserving): V = V_prod / ||col||. Simple, universal, no category data needed beyond basis.
+2. **Number-changing**: V = V₀ + (I-Π_{V₀})h†V₀ · G₂^{-1/2}D^{1/2}. Uses pair creation, slightly better intertwining, physically motivated (pairs fill vacancies).
 
 ## What's next
 
-### Immediate (code-first)
-1. Get TensorCategories.jl working: extract numerical F-matrices from `associator()`
-2. sVec matrix elements → free fermion hopping Hamiltonian (SC1)
-3. Fibonacci Hilbert space dimensions (SC3)
-4. Exact diag spectra for L=3..6 (SC4)
+### Immediate
+- Decide whether to promote `build_number_changing_isometry` to `src/MobileAnyons/finegraining.jl` (currently only in test)
+- Investigate whether the intertwining improvement scales with L (is 3% at L=4 growing or shrinking?)
+- Consider multi-step composition with number-changing isometry (V_{2L→4L} ∘ V_{L→2L})
 
 ### Medium term
-5. Generalize Garjani-Ardonne pair creation to arbitrary fusion categories
-6. Dense limit → golden chain recovery (SC5)
-7. Construct fine-graining isometries for anyonic Fock space (SC6)
+- LaTeX writeup of number-changing isometry result
+- Compare continuum limit convergence rates: normalized product vs number-changing
+- Explore whether higher-order pair terms (N→N+4) further improve things
 
 ### Long term
-8. Continuum limit via OAR (SC7)
-9. Identify resulting QFTs
-10. Paper
+- Full OAR continuum limit construction
+- Identify resulting QFTs
+- Paper
 
-## Key papers to build on
-- Poilblanc 2012 (1210.5605): anyonic t-J model, F-symbol exchange matrices
-- Garjani-Ardonne 2016 (1608.04927): nine-term Hamiltonian with pair creation
-- Hollands 2022 (2205.15243): rigorous categorical framework (subfactors, MPOs)
-- Osborne-Stottmeister OAR series: 1901.06124, 2002.01442, 2107.13834
-- Stottmeister 2201.11562: braiding RG (blocked by fixed N — we unblock it)
-
-## Open issues
-```
-bd stats → 1 issue (ma-zbn, closed)
-```
-No open issues. Create issues for the immediate code tasks when starting next session.
+## Key files
+- `test/test_number_changing_finegraining.jl` — this session's experiment (Phases 1-5)
+- `test/test_convergence.jl` — Phase 4 convergence tests
+- `src/MobileAnyons/finegraining.jl` — product map, normalized product, categorical determinant
+- `src/MobileAnyons/paircreation.jl` — pair creation operator h†
+- `src/MobileAnyons/wavelets.jl` — Daubechies filters, one-particle scaling maps
