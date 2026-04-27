@@ -45,6 +45,7 @@
 - **DOI**: 10.1103/physrevlett.108.207201
 - **Venue**: Phys. Rev. Lett. 108, 207201 (2012)
 - **PDF status**: have_pdf (`literature/pdfs/1112.5950.pdf`)
+- **Notes**: PRL letter, Ising anyons only. First demonstration of charge-anyon separation: E_{p,m} = E_charge(p,k_m) + E_anyon(m). ED on L=24 periodic chains, density rho=2/3. Charge sector = hard-core bosons. Anyon sector = squeezed dense chain (Ising CFT, c=1/2). Hilbert space: fusion-tree basis, hard-core, dim ~ C(L,N)*d_a^N. Preliminary version of the 2012 paper.
 
 ### [PoilblancFeiguinTroyerArdonneBonderson2013] Poilblanc, Feiguin, Troyer, Ardonne, Bonderson (2012) — One-dimensional itinerant interacting non-Abelian anyons 🔑
 
@@ -52,12 +53,14 @@
 - **DOI**: 10.1103/physrevb.87.085106
 - **Venue**: Phys. Rev. B 87, 085106 (2013)
 - **PDF status**: have_pdf (`literature/pdfs/1210.5605.pdf`)
+- **Notes**: Closest prior art on itinerant non-abelian anyons. Full treatment for Ising and Fibonacci. Hilbert space: fusion tree basis with site labels alpha_i in {I, sigma/tau} and bond labels x_i = cumulative fusion outcome; hard-core; dim ~ C(L,N)*d_a^N. Hamiltonian (anyonic t-J): hopping -t (no explicit matrix form given); exchange J via F-symbol projection onto vacuum channel (Eq.17 Ising, Eq.20 Fibonacci with phi^-1, phi^-1/2, phi^-3/2). Result: charge-anyon fractionalization (Eq.27); CFT c_total = 1 + c_anyon; DMRG on L=72 confirms c=1.7 for Fibonacci. Gaps: SU(2)_k only, multiplicity-free, PBC, no braiding in H, hopping implicit, no sVec check.
 
 ### [SoniTroyerPoilblanc2016] Soni, Troyer, Poilblanc (2015) — Effective models of doped quantum ladders of non-Abelian anyons
 
 - **arXiv**: 1508.04160
 - **DOI**: 10.1103/physrevb.93.035124
 - **PDF status**: have_pdf (`literature/pdfs/1508.04160.pdf`)
+- **Notes**: Extension to 2-leg and 3-leg ladders. Fibonacci anyons (k=3) only. Zig-zag fusion path requires braid conjugation for leg interactions. Six phases identified including novel "heavy/light tau" phase. Charge-anyon separation persists on ladders. Secondary relevance — confirms robustness of 1D framework on quasi-1D geometries.
 
 ### [GarjaniArdonne2017] Garjani, Ardonne (2016) — Anyon chains with pairing terms 🔑
 
@@ -65,7 +68,7 @@
 - **DOI**: 10.1088/1751-8121/aa5fba
 - **Venue**: J. Phys. A: Math. Theor. 50 135201 (2017)
 - **PDF status**: have_pdf (`literature/pdfs/1608.04927.pdf`)
-- **Notes**: Adds pair creation/annihilation to anyonic chains for SU(2)_k. Only 4 GS citations as of catalog.md.
+- **Notes**: Adds pair creation/annihilation to anyonic chains for SU(2)_k. Nine-term H (Eq.13): 4 chemical potentials + exchange J + hopping t + pair creation Delta + pair annihilation Delta. Pair creation (Eq.25): h_Delta|x,x,x> = Delta sum_u sqrt(d_u/(d_x*d_{1/2})) |x,u,x>. AKLT-like exact ground states for odd k (Eq.28). Integrability: dilute Temperley-Lieb algebra (Eq.52). Four integrable points: M_{k+2}, M_3 x M_{k+1}, M_{k+1}. Gaps: SU(2)_k, multiplicity-free, spin-1/2 only, self-dual only, no braiding. Only 4 GS citations as of 2026 — pair-creation direction unexplored. Variable-N anchor for our project.
 
 ### [WildeboerPatraMannaNielsen2020] Wildeboer, Patra, Manna, Nielsen (2017) — Anyonic quasiparticles of hardcore anyons
 
@@ -126,12 +129,13 @@
 
 - **arXiv**: 2508.14961
 - **PDF status**: have_pdf (`literature/pdfs/2508.14961.pdf`)
+- **Notes**: Complementary continuum/dilute approach. Distribution function (Eq.1.1): n_ell(epsilon) = [sum_m m*d_{a_m}*y^m] / [sum_m d_{a_m}*y^m] where d_{a_m} = quantum dimensions along occupation sequence. General UMTCs; Laughlin, Fibonacci, SU(N)_k. Uses ONLY quantum dimensions and fusion rules — no F-symbols, no R-symbols. Their dilute-gas thermodynamics could emerge from our lattice models at low density. At finite density / strong coupling, our lattice approach is needed.
 
 ### [ShiZhangSenthil2025] Shi, Zhang, Senthil (2025) — Doping lattice non-abelian quantum Hall states 🔑
 
 - **arXiv**: 2505.02893
 - **PDF status**: have_pdf (`literature/pdfs/2505.02893.pdf`)
-- **Notes**: PDF not yet downloaded.
+- **Notes**: Field-theoretic (CSGL effective theory) for doped Read-Rezayi states; no microscopic Hamiltonian, no Hilbert space construction, no lattice model. 2+1D focus. Approach: U(2) Chern-Simons-Ginzburg-Landau, mean-field analysis of Higgs patterns, no numerics. Phase diagram for doped RR_k (Fig.2): superconductivity (even k) or CDW-FL (odd k, ferromagnetic). Paramagnetic case always gives c=-1/2 topological SC. Explicitly calls for microscopic models (p.34-35) — our framework provides exactly that. Anchor for the 2025 FCI burst.
 
 ### [paper457] Ya-Hui Zhang (2025) — Holon metal, charge-density-wave and chiral superconductor from doping fractional Chern insulator and SU(3)$_1$ chiral spin liquid
 
@@ -164,6 +168,7 @@
 - **arXiv**: cond-mat/0612341
 - **DOI**: 10.1103/physrevlett.98.160409
 - **PDF status**: have_pdf (`literature/pdfs/cond-mat_0612341.pdf`)
+- **Notes**: Dense Fibonacci chain. Fusion tree basis, dim ~ phi^L. Hamiltonian projects neighboring pair onto vacuum via F-matrix (Eq.1-2). F^tau_{tau,tau,tau} = [[phi^-1, phi^-1/2],[phi^-1/2, -phi^-1]]. AF critical at c=7/10 (tricritical Ising). FM at c=4/5 (3-state Potts). Topological Y-symmetry protects criticality. Maps to RSOS/Temperley-Lieb. General SU(2)_k: c = 1 - 6/((k+1)(k+2)). Dense limit our models must recover. F-matrix mechanism is identical.
 
 ### [Trebst2008] Trebst, Ardonne, Feiguin, Huse, Ludwig, Troyer (2008) — Collective states of interacting Fibonacci anyons
 
@@ -282,13 +287,13 @@
 - **DOI**: 10.1007/s00220-022-04581-w
 - **Venue**: Communications in Mathematical Physics
 - **PDF status**: have_pdf (`literature/pdfs/2205.15243.pdf`)
-- **Notes**: PDF not yet downloaded. Will fetch via lit pdf when T3 lands.
+- **Notes**: Most rigorous categorical / subfactor formalisation of (DENSE) anyonic chains. Hilbert space: sequences of intertwiners in Jones tunnel = Mor(1, X_1 tensor ... tensor X_N). Handles multiplicities throughout. NO creation/annihilation — fixed N. Hamiltonian: Jones projections satisfying TLJ algebra (Eq.3): e_i e_{i±1} e_i = d^-1 e_i. Explicit matrix elements via 6j-symbols (Eq.144-145). Key structures: MPO symmetries (Theorem 1), double triangle algebra (Theorem 2), sector decomposition matching CFT conformal blocks, defect algebra classification (Theorem 4), modular invariant Z_{mu,nu} = dim Hom(alpha^+_mu, alpha^-_nu). Generality: any unitary modular tensor category, full multiplicities. Provides the categorical formalization we need; the intertwiner path construction can be extracted from subfactor language. Limitation: dense chains only — no mobile anyons, no hopping, no vacancies.
 
 ### [Stottmeister2022Anyon] Stottmeister (2022) — Anyon braiding and the renormalization group 🔑
 
 - **arXiv**: 2201.11562
 - **PDF status**: have_pdf (`literature/pdfs/2201.11562.pdf`)
-- **Notes**: PDF not yet downloaded.
+- **Notes**: Closest prior art on the OAR continuum-limit side. Braiding operation defines a real-space RG step on anyonic chains; OAR (operator-algebraic renormalization) defines a quantum scaling limit via the resulting RG flow. Worked example: Ising chain (transverse-field Ising) -> vacuum state of Ising CFT. Distinguishing braiding vs inverse -> chiral sectors of Ising CFT. Direct implications for simulating CFTs on topological quantum computers. Builds on Osborne-Stottmeister 2107.13834, Stottmeister-Morinelli-Morsella-Tanimoto 2002.01442, Osborne 1901.06124. Dense chain only; no variable-N.
 
 ## Tier 4 — numerical methods for anyonic systems
 
