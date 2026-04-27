@@ -179,6 +179,18 @@
 - **DOI**: 10.1103/physrevlett.101.050401
 - **PDF status**: have_pdf (`literature/pdfs/0801.4602.pdf`)
 
+### [paper72] ? (2009) — Collective States of Interacting Anyons, Edge States, and the Nucleation of Topological Liquids
+
+- **arXiv**: 0810.2277
+- **DOI**: 10.1103/physrevlett.103.070401
+- **PDF status**: have_pdf (`literature/pdfs/0810.2277.pdf`)
+
+### [paper209] ? (2011) — Microscopic models of interacting Yang–Lee anyons
+
+- **arXiv**: 1012.1080
+- **DOI**: 10.1088/1367-2630/13/4/045006
+- **PDF status**: have_pdf (`literature/pdfs/1012.1080.pdf`)
+
 ### [DeGottardi2014] DeGottardi (2014) — Topological Insulating Phases of Non-Abelian Anyonic Chains
 
 - **arXiv**: 1403.3101
@@ -209,6 +221,17 @@
 - **DOI**: 10.1103/physrevb.98.045432
 - **Venue**: Phys. Rev. B 98, 045432 (2018)
 - **PDF status**: have_pdf (`literature/pdfs/1712.04179.pdf`)
+
+### [paper636] P. Finch, M. Flohr, H. Frahm (2017) — $\mathbf{Z}_{n}$ clock models and chains of $so(n)_2$ non-Abelian anyons: symmetries, integrable points and low energy properties
+
+- **arXiv**: 1710.09620
+- **DOI**: 10.1088/1742-5468/aaa788
+- **PDF status**: metadata_only
+
+### [paper635] J. Belletête, A. Gainutdinov, J. Jacobsen, H. Saleur, T. S. Tavares (2020) — Topological defects in periodic RSOS models and anyonic chains
+
+- **arXiv**: 2003.11293
+- **PDF status**: metadata_only
 
 ## Tier 3 — categorical / mathematical foundations
 
@@ -273,6 +296,12 @@
 - **PDF status**: have_pdf (`literature/pdfs/etingof_tensor_categories_book_2015.pdf`)
 - **Notes**: Standard reference book.
 
+### [paper192] ? (2017) — Anyonic Chains, Topological Defects, and Conformal Field Theory
+
+- **arXiv**: 1701.02800
+- **DOI**: 10.1007/s00220-017-2995-6
+- **PDF status**: have_pdf (`literature/pdfs/1701.02800.pdf`)
+
 ### [paper519] T. Osborne (2019) — Continuum Limits of Quantum Lattice Systems 🔑
 
 - **arXiv**: 1901.06124
@@ -318,6 +347,11 @@
 
 ## Tier 4 — numerical methods for anyonic systems
 
+### [paper634] Robert N. C. Pfeifer, Philippe Corboz, Oliver Buerschaper, Miguel Aguado, Matthias Troyer, Guifre Vidal (2010) — Simulation of anyons with tensor network algorithms
+
+- **arXiv**: 1006.3532
+- **PDF status**: metadata_only
+
 ### [SinghPfeiferVidalBrennen2014] Singh, Pfeifer, Vidal, Brennen (2013) — Matrix product states for anyonic systems
 
 - **arXiv**: 1311.0967
@@ -329,6 +363,12 @@
 - **arXiv**: 1509.00903
 - **DOI**: 10.1103/physrevb.93.165128
 - **PDF status**: have_pdf (`literature/pdfs/1509.00903.pdf`)
+
+### [paper172] ? (2016) — The eigenstate thermalization hypothesis in constrained Hilbert spaces: A case study in non-Abelian anyon chains
+
+- **arXiv**: 1607.00388
+- **DOI**: 10.1103/physrevb.94.235122
+- **PDF status**: have_pdf (`literature/pdfs/1607.00388.pdf`)
 
 ### [AyeniThesis2017] Ayeni (2017) — Studies of braided non-Abelian anyons using anyonic tensor networks
 
@@ -410,6 +450,13 @@
 - **DOI**: 10.1103/physrevlett.105.177002
 - **PDF status**: have_pdf (`literature/pdfs/1003.1145.pdf`)
 
+### [paper632] T. Keilmann, Simon A Lanzmich, I. McCulloch, M. Roncaglia (2010) — Statistically induced Phase Transitions and Anyons in 1D Optical Lattices
+
+- **arXiv**: 1009.2036
+- **DOI**: 10.1038/ncomms1353
+- **Venue**: Nature Communications
+- **PDF status**: metadata_only
+
 ### [paper47] ? (2012) — Signatures of Majorana Fermions in Hybrid Superconductor-Semiconductor Nanowire Devices
 
 - **arXiv**: 1204.2792
@@ -461,6 +508,11 @@
 - **DOI**: 10.21468/scipostphyscore.6.4.079
 - **PDF status**: have_pdf (`literature/pdfs/scipost_core_6_4_079_2023.pdf`)
 - **Notes**: Abelian Tonks-Girardeau anyons, not categorical.
+
+### [paper633] Martin Bonkhoff, Kevin Jägering, Shijie Hu, Axel Pelster, Sebastian Eggert, Imke Schneider (2024) — Anyonic phase transitions in the 1D extended Hubbard model with fractional statistics
+
+- **arXiv**: 2410.00089
+- **PDF status**: metadata_only
 
 
 ---
