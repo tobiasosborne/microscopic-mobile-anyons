@@ -54,11 +54,22 @@ H3 → H4 → {H5, T6}; T1..T4 → all C*; C1..C8 → C9 → S1 → S2; H5 + T6 
   best-effort enrichment. For T2 (cite chase) we may need an S2 API key,
   or pure OpenAlex.
 
+- **T2 (ma-vwq) DONE**: `lit fetch-cites <id>` via OpenAlex (DOI-first
+  resolution; arXiv-search and title-search fallbacks). Backward via
+  `referenced_works` (bulk-fetched, 50/call); forward via `cites` filter,
+  cursor-paginated. Idempotent. Ran on the 8 seeds: **502 citation edges,
+  411 new stub papers** created. DB now 451 papers.
+- Caveat: OpenAlex returns 0 backward refs for some recent arXiv-only
+  preprints (Stottmeister 2201.11562 shows 0/0). Need S2 or PDF parsing
+  to fill those gaps.
+
 ### What's next
-- T2 (ma-vwq): `lit fetch-cites` — bidirectional via S2 + OpenAlex.
-  Lean on OpenAlex first (referenced_works + cites filter both work).
-- T3 (ma-o7h): `lit pdf` — arXiv direct + paywalled-via-Playwright on TIB
-  VPN. Three stub seeds need PDFs.
+- T3 (ma-o7h): `lit pdf` — arXiv direct first, then headed-Playwright
+  through TIB VPN for paywalled. PDFs needed for: Hollands 2205.15243,
+  Stottmeister 2201.11562, Shi-Senthil 2505.02893, plus the high-value
+  stubs (Huston-Penneys 2208.14018 already most-cited node; Bonderson
+  interferometry; etc.).
+- T4 (ma-ah9): `lit md` — wrap marker for PDF→md.
 
 ---
 

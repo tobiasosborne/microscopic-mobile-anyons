@@ -529,6 +529,232 @@ def _upsert_paper_from_s2(conn: sqlite3.Connection, s2: dict) -> int:
     return paper_id
 
 
+# ---------- cite-graph helpers ----------
+
+def _doi_from_openalex(work_or_id) -> str | None:
+    if isinstance(work_or_id, dict):
+        ids = work_or_id.get("ids") or {}
+        d = ids.get("doi")
+    else:
+        d = work_or_id
+    if not d:
+        return None
+    return d.split("doi.org/")[-1] if "doi.org/" in d else d
+
+
+def _arxiv_from_openalex(work: dict) -> str | None:
+    for loc in (work.get("locations") or []):
+        landing = loc.get("landing_page_url") or ""
+        m = re.search(r"arxiv\.org/abs/([\w\-/.]+?)(?:v\d+)?$", landing)
+        if m:
+            return m.group(1)
+    return None
+
+
+def _ensure_stub_from_openalex(conn: sqlite3.Connection, work: dict) -> int:
+    """Create or update a paper row from a partial OpenAlex work record.
+
+    Used during cite-chase so we have a node even before full enrichment.
+    """
+    openalex_id = (work.get("ids") or {}).get("openalex") or work.get("id")
+    if openalex_id and openalex_id.startswith("https://"):
+        openalex_id = openalex_id.rsplit("/", 1)[-1]
+    doi = _doi_from_openalex(work)
+    arxiv_id = _arxiv_from_openalex(work)
+    title = work.get("title") or work.get("display_name")
+    year = work.get("publication_year")
+
+    cur = conn.cursor()
+    existing = None
+    for col, val in (("openalex_id", openalex_id), ("arxiv_id", arxiv_id),
+                     ("doi", doi)):
+        if val:
+            row = cur.execute(
+                f"SELECT id FROM papers WHERE {col} = ?", (val,)
+            ).fetchone()
+            if row:
+                existing = row["id"]
+                break
+
+    if existing:
+        # Backfill missing fields without overwriting curated data.
+        cur.execute(
+            "UPDATE papers SET "
+            "openalex_id = COALESCE(openalex_id, ?), "
+            "arxiv_id = COALESCE(arxiv_id, ?), "
+            "doi = COALESCE(doi, ?), "
+            "year = COALESCE(year, ?) "
+            "WHERE id = ?",
+            (openalex_id, arxiv_id, doi, year, existing),
+        )
+        return existing
+
+    cur.execute(
+        "INSERT INTO papers (openalex_id, arxiv_id, doi, title, year, status) "
+        "VALUES (?, ?, ?, ?, ?, 'stub')",
+        (openalex_id, arxiv_id, doi, title or "(unknown)", year),
+    )
+    return cur.lastrowid
+
+
+def _add_citation(conn: sqlite3.Connection, src_id: int, dst_id: int,
+                  source: str) -> bool:
+    """Insert a citation edge if not already present. Returns True if new."""
+    if src_id == dst_id:
+        return False
+    cur = conn.cursor()
+    try:
+        cur.execute(
+            "INSERT INTO citations (src_paper_id, dst_paper_id, source) "
+            "VALUES (?, ?, ?)",
+            (src_id, dst_id, source),
+        )
+        return True
+    except sqlite3.IntegrityError:
+        return False
+
+
+def _openalex_works_by_ids(ids: list[str]) -> list[dict]:
+    """Bulk-fetch up to 50 OpenAlex works by their W-ids in a single call."""
+    out = []
+    for i in range(0, len(ids), 50):
+        chunk = ids[i:i + 50]
+        f = "openalex:" + "|".join(chunk)
+        url = (f"{OPENALEX_BASE}/works?filter={urllib.parse.quote(f)}"
+               "&per_page=50&select=id,ids,title,display_name,publication_year,"
+               "doi,locations,authorships,cited_by_count")
+        data = _http_get_json(url)
+        if data and data.get("results"):
+            out.extend(data["results"])
+        time.sleep(0.3)
+    return out
+
+
+def _openalex_cited_by(openalex_id: str) -> list[dict]:
+    """Paginate forward citations for a paper."""
+    out = []
+    cursor = "*"
+    while cursor:
+        url = (f"{OPENALEX_BASE}/works?filter=cites:{openalex_id}"
+               f"&per_page=200&cursor={cursor}"
+               "&select=id,ids,title,display_name,publication_year,doi,"
+               "locations,authorships,cited_by_count")
+        data = _http_get_json(url)
+        if not data:
+            break
+        out.extend(data.get("results") or [])
+        cursor = (data.get("meta") or {}).get("next_cursor")
+        if not cursor or not data.get("results"):
+            break
+        time.sleep(0.3)
+    return out
+
+
+# ---------- cmd_fetch_cites ----------
+
+def cmd_fetch_cites(args: argparse.Namespace) -> None:
+    kind, ident = parse_ident(args.ident)
+    conn = connect()
+    cur = conn.cursor()
+
+    # Resolve to a paper in our DB.
+    if kind == "arxiv":
+        row = cur.execute(
+            "SELECT id, openalex_id, arxiv_id, doi FROM papers "
+            "WHERE arxiv_id = ?", (ident,)
+        ).fetchone()
+    else:
+        row = cur.execute(
+            "SELECT id, openalex_id, arxiv_id, doi FROM papers "
+            "WHERE doi = ?", (ident,)
+        ).fetchone()
+    if not row:
+        sys.exit(f"paper {ident!r} not in DB; run lit add {ident} first")
+    paper_id = row["id"]
+    openalex_id = row["openalex_id"]
+
+    # Need an OpenAlex id for both directions. Try DOI first (most reliable),
+    # then arXiv-id search, then title search as last resort.
+    if not openalex_id:
+        oa = None
+        if row["doi"]:
+            oa = openalex_lookup("doi", row["doi"])
+        if not oa and row["arxiv_id"]:
+            oa = openalex_lookup("arxiv", row["arxiv_id"])
+        if not oa:
+            # Title fallback.
+            t = cur.execute(
+                "SELECT title FROM papers WHERE id = ?", (paper_id,)
+            ).fetchone()["title"]
+            if t:
+                url = (f"{OPENALEX_BASE}/works?search="
+                       f"{urllib.parse.quote(t[:200])}&per_page=5")
+                data = _http_get_json(url)
+                if data and data.get("results"):
+                    oa = data["results"][0]
+        if not oa:
+            sys.exit("no OpenAlex hit; cannot fetch cites this way")
+        oa_id = (oa.get("ids") or {}).get("openalex") or oa.get("id")
+        if oa_id and oa_id.startswith("https://"):
+            oa_id = oa_id.rsplit("/", 1)[-1]
+        openalex_id = oa_id
+        cur.execute("UPDATE papers SET openalex_id = ? WHERE id = ?",
+                    (openalex_id, paper_id))
+        conn.commit()
+        # Reuse the same work blob for refs.
+        oa_full = oa
+    else:
+        # Fetch full record so we have referenced_works.
+        oa_full = _http_get_json(f"{OPENALEX_BASE}/works/{openalex_id}")
+        if not oa_full:
+            sys.exit("could not fetch OpenAlex work")
+
+    direction = args.direction
+    n_back_new = n_back_seen = 0
+    n_fwd_new = n_fwd_seen = 0
+
+    # Backward citations: referenced_works gives OpenAlex IDs only.
+    if direction in ("backward", "both"):
+        ref_ids = oa_full.get("referenced_works") or []
+        # Strip URL prefix.
+        ref_ids = [r.rsplit("/", 1)[-1] for r in ref_ids]
+        if ref_ids:
+            print(f"  backward: {len(ref_ids)} referenced works")
+            works = _openalex_works_by_ids(ref_ids)
+            for w in works:
+                dst_id = _ensure_stub_from_openalex(conn, w)
+                if _add_citation(conn, paper_id, dst_id, "openalex"):
+                    n_back_new += 1
+                else:
+                    n_back_seen += 1
+            conn.commit()
+
+    # Forward citations: cites filter.
+    if direction in ("forward", "both"):
+        works = _openalex_cited_by(openalex_id)
+        print(f"  forward: {len(works)} citing works")
+        for w in works:
+            src_id = _ensure_stub_from_openalex(conn, w)
+            if _add_citation(conn, src_id, paper_id, "openalex"):
+                n_fwd_new += 1
+            else:
+                n_fwd_seen += 1
+        conn.commit()
+
+    cur.execute(
+        "INSERT INTO crawl_log (source, query, n_found, n_new, notes) "
+        "VALUES (?, ?, ?, ?, ?)",
+        ("openalex", f"cites {ident}", n_back_seen + n_back_new + n_fwd_seen + n_fwd_new,
+         n_back_new + n_fwd_new,
+         f"backward: {n_back_new} new / {n_back_seen} seen; "
+         f"forward: {n_fwd_new} new / {n_fwd_seen} seen"),
+    )
+    conn.commit()
+    conn.close()
+    print(f"  done: backward {n_back_new}+{n_back_seen}, "
+          f"forward {n_fwd_new}+{n_fwd_seen} (new+seen)")
+
+
 # ---------- cmd_add ----------
 
 def cmd_add(args: argparse.Namespace) -> None:
@@ -794,13 +1020,13 @@ def build_parser() -> argparse.ArgumentParser:
     p_add.add_argument("ident", help="arXiv id or DOI")
     p_add.set_defaults(func=cmd_add)
 
-    p_cites = sub.add_parser("fetch-cites", help="Pull citations [T2]")
+    p_cites = sub.add_parser("fetch-cites", help="Pull citations bidirectionally")
     p_cites.add_argument("ident")
     p_cites.add_argument("--source", choices=["s2", "openalex", "both"],
-                         default="both")
+                         default="openalex")
     p_cites.add_argument("--direction",
                          choices=["forward", "backward", "both"], default="both")
-    p_cites.set_defaults(func=_not_yet("ma-vwq"))
+    p_cites.set_defaults(func=cmd_fetch_cites)
 
     p_pdf = sub.add_parser("pdf", help="Download PDF [T3]")
     p_pdf.add_argument("ident")

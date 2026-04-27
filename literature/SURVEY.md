@@ -40,7 +40,7 @@
 ### [GarjaniArdonne2017] Garjani, Ardonne (2016) — Anyon chains with pairing terms 🔑
 
 - **arXiv**: 1608.04927
-- **DOI**: 10.1088/1751-8121/aaa9b2
+- **DOI**: 10.1088/1751-8121/aa5fba
 - **Venue**: J. Phys. A: Math. Theor. 50 135201 (2017)
 - **PDF status**: have_pdf (`literature/pdfs/1608.04927.pdf`)
 - **Notes**: Adds pair creation/annihilation to anyonic chains for SU(2)_k. Only 4 GS citations as of catalog.md.
@@ -84,16 +84,19 @@
 ### [FeiguinTrebstLudwigTroyerKitaevWangFreedman2007] Feiguin, Trebst, Ludwig, Troyer, Kitaev, Wang, Freedman (2006) — Interacting anyons in topological quantum liquids: The golden chain
 
 - **arXiv**: cond-mat/0612341
+- **DOI**: 10.1103/physrevlett.98.160409
 - **PDF status**: have_pdf (`literature/pdfs/cond-mat_0612341.pdf`)
 
 ### [Trebst2008] Trebst, Ardonne, Feiguin, Huse, Ludwig, Troyer (2008) — Collective states of interacting Fibonacci anyons
 
 - **arXiv**: 0801.4602
+- **DOI**: 10.1103/physrevlett.101.050401
 - **PDF status**: have_pdf (`literature/pdfs/0801.4602.pdf`)
 
 ### [DeGottardi2014] DeGottardi (2014) — Topological Insulating Phases of Non-Abelian Anyonic Chains
 
 - **arXiv**: 1403.3101
+- **DOI**: 10.1103/physrevb.90.075129
 - **PDF status**: have_pdf (`literature/pdfs/1403.3101.pdf`)
 
 ### [FinchFrahmGainutdinovKorff2014] Finch, Frahm, Gainutdinov, Korff (2014) — Integrable anyon chains: From fusion rules to face models to C*-algebras
@@ -105,6 +108,7 @@
 ### [FinchFrahmLewerenzMilstedOsborne2014] Finch, Frahm, Lewerenz, Milsted, Osborne (2014) — Quantum phases of a chain of strongly interacting anyons
 
 - **arXiv**: 1404.2439
+- **DOI**: 10.1103/physrevb.90.081111
 - **PDF status**: have_pdf (`literature/pdfs/1404.2439.pdf`)
 
 ### [SoniThesis2016] Soni (2016) — Etude d'etats exotiques correles de la matiere en basse dimension
@@ -138,6 +142,7 @@
 ### [Kitaev2006] Kitaev (2005) — Anyons in an exactly solved model and beyond
 
 - **arXiv**: cond-mat/0506438
+- **DOI**: 10.1016/j.aop.2005.10.005
 - **PDF status**: have_pdf (`literature/pdfs/cond-mat_0506438.pdf`)
 
 ### [EtingofLectures2009] Etingof (2009) — Tensor Categories (Lecture Notes)
