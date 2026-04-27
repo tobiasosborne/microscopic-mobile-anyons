@@ -498,6 +498,22 @@ def _upsert_paper_from_s2(conn: sqlite3.Connection, s2: dict) -> int:
 
     if existing:
         paper_id = existing["id"]
+        # If S2 returned a different DOI/arxiv-id than what's on this row, AND
+        # that other identifier already belongs to a *different* paper, defer
+        # to manual merge instead of crashing.
+        for k in ("doi", "arxiv_id", "s2_paper_id"):
+            v = fields.get(k)
+            if not v:
+                continue
+            other = cur.execute(
+                f"SELECT id FROM papers WHERE {k} = ? AND id != ?",
+                (v, paper_id),
+            ).fetchone()
+            if other:
+                print(f"  WARN: {k}={v} already on paper id={other['id']}; "
+                      f"leaving paper id={paper_id} unchanged for that field",
+                      file=sys.stderr)
+                fields[k] = None
         sets, params = [], []
         for k, v in fields.items():
             if v is not None:
@@ -518,13 +534,20 @@ def _upsert_paper_from_s2(conn: sqlite3.Connection, s2: dict) -> int:
         )
         paper_id = cur.lastrowid
 
-    # Authors: refresh paper_authors mapping.
+    # Authors: refresh paper_authors mapping. Dedup by author_id so multiple
+    # name variants (e.g. "P. Bonderson" + "Parsa Bonderson") collapse cleanly.
     cur.execute("DELETE FROM paper_authors WHERE paper_id = ?", (paper_id,))
-    for pos, a in enumerate(authors, start=1):
+    seen_author_ids: set[int] = set()
+    pos = 0
+    for a in authors:
         if not a.get("name"):
             continue
         orcid = (a.get("externalIds") or {}).get("ORCID")
         author_id = _ensure_author(conn, a["name"], orcid)
+        if author_id in seen_author_ids:
+            continue
+        seen_author_ids.add(author_id)
+        pos += 1
         cur.execute(
             "INSERT INTO paper_authors (paper_id, author_id, position) "
             "VALUES (?, ?, ?)",
@@ -831,14 +854,36 @@ def cmd_add(args: argparse.Namespace) -> None:
             else:
                 # arXiv title is authoritative for arXiv-id-keyed papers
                 # (S2 sometimes returns titles with leftover LaTeX noise).
+                authors_str = ", ".join(ax["authors"]) or None
                 cur.execute(
                     "UPDATE papers SET "
                     "abstract = COALESCE(abstract, ?), "
                     "title = COALESCE(?, title), "
-                    "year = COALESCE(year, ?) "
+                    "year = COALESCE(year, ?), "
+                    "authors_str = COALESCE(authors_str, ?) "
                     "WHERE id = ?",
-                    (ax["abstract"], ax["title"], ax["year"], paper_id),
+                    (ax["abstract"], ax["title"], ax["year"],
+                     authors_str, paper_id),
                 )
+                # Populate paper_authors when missing.
+                has_authors = cur.execute(
+                    "SELECT 1 FROM paper_authors WHERE paper_id = ? LIMIT 1",
+                    (paper_id,),
+                ).fetchone()
+                if not has_authors and ax["authors"]:
+                    seen: set[int] = set()
+                    pos = 0
+                    for name in ax["authors"]:
+                        author_id = _ensure_author(conn, name, None)
+                        if author_id in seen:
+                            continue
+                        seen.add(author_id)
+                        pos += 1
+                        cur.execute(
+                            "INSERT INTO paper_authors (paper_id, author_id, position) "
+                            "VALUES (?, ?, ?)",
+                            (paper_id, author_id, pos),
+                        )
                 print(f"  arXiv enriched: id={paper_id}")
             conn.commit()
 

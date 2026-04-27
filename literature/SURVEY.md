@@ -27,13 +27,13 @@
 - **DOI**: 10.1016/0550-3213(91)90407-o
 - **PDF status**: stub
 
-### [paper56] ? (1999) — Beyond paired quantum Hall states: Parafermions and incompressible states in the first excited Landau level
+### [paper56] N. Read, E. Rezayi (1998) — Beyond paired quantum Hall states: parafermions and incompressible states in the first excited Landau level
 
 - **arXiv**: cond-mat/9809384
 - **DOI**: 10.1103/physrevb.59.8084
 - **PDF status**: have_pdf (`literature/pdfs/cond-mat_9809384.pdf`)
 
-### [paper94] ? (2000) — Paired states of fermions in two dimensions with breaking of parity and time-reversal symmetries and the fractional quantum Hall effect
+### [paper94] N. Read, D. Green (1999) — Paired states of fermions in two dimensions with breaking of parity and time-reversal symmetries, and the fractional quantum Hall effect
 
 - **arXiv**: cond-mat/9906453
 - **DOI**: 10.1103/physrevb.61.10267
@@ -82,12 +82,12 @@
 - **PDF status**: have_pdf (`literature/pdfs/1910.10619.pdf`)
 - **Notes**: Original review.md / overview.md tagged this as Anyonic Fock Space (1910.10619). Verify after marker conversion.
 
-### [paper317] ? (2024) — Anyon Superconductivity from Topological Criticality in a Hofstadter-Hubbard Model
+### [paper287] Stefan Divic, V. Cr'epel, T. Soejima, Xue Song, Andrew J. Millis, M. Zaletel, A. Vishwanath (2024) — Anyon Superconductivity from Topological Criticality in a Hofstadter-Hubbard Model
 
 - **arXiv**: 2410.18175
-- **DOI**: 10.48550/arxiv.2410.18175
+- **DOI**: 10.1073/pnas.2426680122
+- **Venue**: Proceedings of the National Academy of Sciences of the United States of America
 - **PDF status**: have_pdf (`literature/pdfs/2410.18175.pdf`)
-- **Notes**:  [2025 FCI burst]
 
 ### [paper319] ? (2025) — Anyon delocalization transitions out of a disordered FQAH insulator
 
@@ -243,13 +243,13 @@
 - **DOI**: 10.1016/j.aop.2005.10.005
 - **PDF status**: have_pdf (`literature/pdfs/cond-mat_0506438.pdf`)
 
-### [paper66] ? (2008) — A Short Introduction to Fibonacci Anyon Models
+### [paper66] ? (2008) — A short introduction to Fibonacci anyon models
 
 - **arXiv**: 0902.3275
 - **DOI**: 10.1143/ptps.176.384
 - **PDF status**: have_pdf (`literature/pdfs/0902.3275.pdf`)
 
-### [paper114] ? (2008) — Interferometry of non-Abelian anyons
+### [paper114] Parsa Bonderson, Kirill Shtengel, J. K. Slingerland (2008) — Interferometry of non-Abelian Anyons
 
 - **arXiv**: 0707.4206
 - **DOI**: 10.1016/j.aop.2008.01.012
