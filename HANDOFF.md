@@ -42,11 +42,23 @@ H3 → H4 → {H5, T6}; T1..T4 → all C*; C1..C8 → C9 → S1 → S2; H5 + T6 
 7. `2508.14961` Nakajima-Mehta-Goldman 2025
 8. Eck PhD thesis Oxford 2025 — newly discovered T1 candidate
 
+### Phase T — tooling
+- **T1 (ma-957) DONE**: `lit add <arxiv|doi>` implemented (stdlib only —
+  urllib + xml.etree, no third-party deps). S2 → OpenAlex → arXiv API
+  with idempotent upsert. Authors normalised. arXiv title is authoritative
+  for arXiv-id papers (S2 leaks LaTeX into titles). Stub seeds Hollands /
+  Stottmeister / Shi-Senthil enriched; Huston-Burnell-Jones-Penneys 2022
+  added (arxiv 2208.14018). 40 papers in DB.
+- **S2 rate-limit caveat**: unauthenticated S2 returns 429 immediately on
+  bursts. arXiv API + OpenAlex DOI lookup is the reliable path; S2 is
+  best-effort enrichment. For T2 (cite chase) we may need an S2 API key,
+  or pure OpenAlex.
+
 ### What's next
-- T1 (ma-957): `lit add` (arXiv + Semantic Scholar metadata fetch). Need a
-  project-local venv with `httpx`, `arxiv` (or just stdlib + S2 API).
-- T3 (ma-o7h): `lit pdf` — pull PDFs for the three stub seeds (Hollands,
-  Stottmeister, Shi-Senthil). TIB VPN active per user.
+- T2 (ma-vwq): `lit fetch-cites` — bidirectional via S2 + OpenAlex.
+  Lean on OpenAlex first (referenced_works + cites filter both work).
+- T3 (ma-o7h): `lit pdf` — arXiv direct + paywalled-via-Playwright on TIB
+  VPN. Three stub seeds need PDFs.
 
 ---
 

@@ -9,7 +9,7 @@
 | 1112.5950 | Poilblanc, Troyer, Ardonne, Bonderson | 2011 | Fractionalization of itinerant anyons in one dimensional chains | first demonstration of charge-anyon fractionalization for itinerant anyons |
 | 1210.5605 | Poilblanc, Feiguin, Troyer, Ardonne, Bonderson | 2012 | One-dimensional itinerant interacting non-Abelian anyons | closest prior art on itinerant non-abelian anyons |
 | 1608.04927 | Garjani, Ardonne | 2016 | Anyon chains with pairing terms | variable-N pair-creation anchor |
-| 2205.15243 | Hollands | 2022 | Anyonic Chains - alpha-Induction - CFT - Defects - Subfactors | most rigorous categorical / subfactor formalisation of (dense) anyonic chains |
+| 2205.15243 | S. Hollands | 2022 | Anyonic Chains, alpha-Induction, CFT, Defects, Subfactors | most rigorous categorical / subfactor formalisation of (dense) anyonic chains |
 | 2201.11562 | Stottmeister | 2022 | Anyon braiding and the renormalization group | closest prior art on anyon-side of OAR continuum limit |
 | — | Eck | 2025 | Quantum Lattice Models from Fusion Categories | directly named PhD thesis on lattice models from fusion categories; supervisor Fendley |
 | 2508.14961 | Nakajima, Mehta, Goldman | 2025 | Thermodynamics of dilute anyon gases from fusion constraints | complementary thermodynamic / dilute approach to var-N anyon gas |
@@ -156,9 +156,11 @@
 - **PDF status**: have_pdf (`literature/pdfs/penneys_math8800_unitary_fusion_categories.pdf`)
 - **Notes**: Course material reference.
 
-### [Hollands2022] Hollands (2022) — Anyonic Chains - alpha-Induction - CFT - Defects - Subfactors 🔑
+### [Hollands2022] S. Hollands (2022) — Anyonic Chains, alpha-Induction, CFT, Defects, Subfactors 🔑
 
 - **arXiv**: 2205.15243
+- **DOI**: 10.1007/s00220-022-04581-w
+- **Venue**: Communications in Mathematical Physics
 - **PDF status**: metadata_only
 - **Notes**: PDF not yet downloaded. Will fetch via lit pdf when T3 lands.
 
