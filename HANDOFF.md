@@ -73,19 +73,35 @@ H3 → H4 → {H5, T6}; T1..T4 → all C*; C1..C8 → C9 → S1 → S2; H5 + T6 
 - **T4 (ma-ah9) DONE**: `lit md <id>` wraps `marker_single` (archivum venv).
   Output at `literature/md/{slug}/{slug}.md` + `{slug}_meta.json`. Image
   extraction off — outputs are compact (~30–50 KB per paper). `--all`
-  bulk-converts. Smoke-tested on Stottmeister 2201.11562 in 64 s (5 pages).
-- **In flight**: bulk arxiv PDF pull (`nohup ... pdf --all-arxiv`) — at
-  172 PDFs already, ~73 to go.
+  bulk-converts. Smoke-tested on Stottmeister 2201.11562 in 64 s.
+- **Phase C — in flight**:
+  - 9 anchor seeds chased (8 + Pichler-Vishwanath 2506.08000): **575+
+    citation edges**, 462 stub papers. Cite chase has automatically
+    surfaced almost the entire pre-2013 lineage (Moore-Read 1991,
+    Read-Rezayi 1999, Wilczek 1982, Witten 1989, Frohlich-Marchetti
+    1990 "Braid statistics in local QFT", Fredenhagen-Rehren-Schroer
+    1989, Bonderson thesis, Trebst-Troyer-Wang Fibonacci intro,
+    Halperin 1984 fractional statistics).
+  - Tier 1 = 23, T2 = 7, T3 = 18, T4 = 6, T5 = 17. Full distribution
+    in `literature/SURVEY.md` (regenerated from DB).
+  - OAR foundation papers added as seeds (1901.06124, 2002.01442,
+    2107.13834); Osborne-Stottmeister 2107.13834 has 125 backward refs.
+- **DB now: 515 papers, ~700 citations, 272+ PDFs**.
+
+### Background processes (long-running)
+- `/tmp/bulk_marker.log` — bulk marker conversion (5/270 done; Eck thesis
+  hit timeout once and got skipped, will retry manually).
+- `/tmp/bulk_arxiv_pdfs2.log` — second bulk PDF pull picking up the new
+  stubs surfaced by cite chase.
 
 ### What's next
-- T6 (ma-6st): polish `lit export` and `gaps`; consider S2 fallback for
-  papers with empty OpenAlex backward refs (Stottmeister anyon-RG had 0).
-- T5 (ma-7k0): GS fallback (low priority).
-- Phase C: most seeds already cite-chased. Real work is **C9 (triage)**:
-  read each tier-1/2 stub via marker output, classify into the final tier
-  ladder, mark not-relevant ones excluded. C7 (pre-2013 lineage sweep)
-  still has manual seeds to add (Wilczek, Frohlich-Marchetti, Bonderson
-  thesis, Read, etc.).
+- C9 triage: marker outputs of high-cite tier-1 stubs (Moore-Read,
+  Read-Rezayi, Wilczek, Frohlich, Witten) once marker finishes them.
+- S1: per-tier write-up. Notes for the 10 anchor papers already in DB.
+  Need similar for new T1/T3 entries.
+- Manual seeds still missing: Bonderson PhD thesis (Caltech 2007), Pachos
+  book, Wen book (or Wen+Niu textbook chapters); Goldin-Menikoff-Sharp
+  1981 (J. Math. Phys., DOI-only).
 
 ---
 

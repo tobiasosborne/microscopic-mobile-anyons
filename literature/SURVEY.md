@@ -9,6 +9,9 @@
 | 1112.5950 | Poilblanc, Troyer, Ardonne, Bonderson | 2011 | Fractionalization of itinerant anyons in one dimensional chains | first demonstration of charge-anyon fractionalization for itinerant anyons |
 | 1210.5605 | Poilblanc, Feiguin, Troyer, Ardonne, Bonderson | 2012 | One-dimensional itinerant interacting non-Abelian anyons | closest prior art on itinerant non-abelian anyons |
 | 1608.04927 | Garjani, Ardonne | 2016 | Anyon chains with pairing terms | variable-N pair-creation anchor |
+| 1901.06124 | T. Osborne | 2019 | Continuum Limits of Quantum Lattice Systems | OAR continuum-limit foundation |
+| 2002.01442 | Alexander Stottmeister, Vincenzo Morinelli, Gerardo Morsella, Yoh Tanimoto | 2020 | Operator-algebraic renormalization and wavelets | OAR continuum-limit foundation |
+| 2107.13834 | T. Osborne, Alexander Stottmeister | 2021 | Conformal field theory from lattice fermions | OAR continuum-limit foundation |
 | 2205.15243 | S. Hollands | 2022 | Anyonic Chains, alpha-Induction, CFT, Defects, Subfactors | most rigorous categorical / subfactor formalisation of (dense) anyonic chains |
 | 2201.11562 | Stottmeister | 2022 | Anyon braiding and the renormalization group | closest prior art on anyon-side of OAR continuum limit |
 | — | Eck | 2025 | Quantum Lattice Models from Fusion Categories | directly named PhD thesis on lattice models from fusion categories; supervisor Fendley |
@@ -99,7 +102,7 @@
 ### [paper456] Clemens Kuhlenkamp, Stefan Divic, Michael P. Zaletel, Tomohiro Soejima, Ashvin Vishwanath (2025) — Robust superconductivity upon doping chiral spin liquid and Chern insulators in a Hubbard-Hofstadter model
 
 - **arXiv**: 2509.02675
-- **PDF status**: metadata_only
+- **PDF status**: have_pdf (`literature/pdfs/2509.02675.pdf`)
 - **Notes**:  [2025 FCI burst]
 
 ### [EckThesis2025] Eck (2025) — Quantum Lattice Models from Fusion Categories 🔑
@@ -111,7 +114,7 @@
 ### [paper452] Fabian Pichler, Clemens Kuhlenkamp, Michael Knap, Ashvin Vishwanath (2025) — Microscopic Mechanism of Anyon Superconductivity Emerging from Fractional Chern Insulators
 
 - **arXiv**: 2506.08000
-- **PDF status**: metadata_only
+- **PDF status**: have_pdf (`literature/pdfs/2506.08000.pdf`)
 - **Notes**:  [2025 FCI burst]
 
 ### [KirchnerMoessnerPollmannGammonSmith2025] Kirchner, Moessner, Pollmann, Gammon-Smith (2025) — Phases of Interacting Fibonacci Anyons on a Ladder at Half-Filling
@@ -122,7 +125,7 @@
 ### [paper454] Mina-Lou Schleith, Tomohiro Soejima, Eslam Khalaf (2025) — Anyon dispersion from non-uniform magnetic field on the sphere
 
 - **arXiv**: 2506.11211
-- **PDF status**: metadata_only
+- **PDF status**: have_pdf (`literature/pdfs/2506.11211.pdf`)
 - **Notes**:  [2025 FCI burst]
 
 ### [NakajimaMehtaGoldman2025] Nakajima, Mehta, Goldman (2025) — Thermodynamics of dilute anyon gases from fusion constraints 🔑
@@ -140,25 +143,25 @@
 ### [paper457] Ya-Hui Zhang (2025) — Holon metal, charge-density-wave and chiral superconductor from doping fractional Chern insulator and SU(3)$_1$ chiral spin liquid
 
 - **arXiv**: 2506.00110
-- **PDF status**: metadata_only
+- **PDF status**: have_pdf (`literature/pdfs/2506.00110.pdf`)
 - **Notes**:  [2025 FCI burst]
 
 ### [paper453] Zhaoyu Han, Taige Wang, Zhihuan Dong, Michael P. Zaletel, Ashvin Vishwanath (2025) — Anyon superfluidity of excitons in quantum Hall bilayers
 
 - **arXiv**: 2508.14894
-- **PDF status**: metadata_only
+- **PDF status**: have_pdf (`literature/pdfs/2508.14894.pdf`)
 - **Notes**:  [2025 FCI burst]
 
 ### [paper455] Zhengyan Darius Shi, T. Senthil (2025) — Non-Abelian topological superconductivity from melting Abelian fractional Chern insulators
 
 - **arXiv**: 2512.17996
-- **PDF status**: metadata_only
+- **PDF status**: have_pdf (`literature/pdfs/2512.17996.pdf`)
 - **Notes**:  [2025 FCI burst]
 
 ### [paper458] Donghae Seo, Taegon Lee, Gil Young Cho (2026) — A Unified Categorical Description of Quantum Hall Hierarchy and Anyon Superconductivity
 
 - **arXiv**: 2602.03848
-- **PDF status**: metadata_only
+- **PDF status**: have_pdf (`literature/pdfs/2602.03848.pdf`)
 - **Notes**:  [2025 FCI burst]
 
 ## Tier 2 — dense anyonic chain ancestry
@@ -270,11 +273,29 @@
 - **PDF status**: have_pdf (`literature/pdfs/etingof_tensor_categories_book_2015.pdf`)
 - **Notes**: Standard reference book.
 
+### [paper519] T. Osborne (2019) — Continuum Limits of Quantum Lattice Systems 🔑
+
+- **arXiv**: 1901.06124
+- **PDF status**: have_pdf (`literature/pdfs/1901.06124.pdf`)
+
+### [paper520] Alexander Stottmeister, Vincenzo Morinelli, Gerardo Morsella, Yoh Tanimoto (2020) — Operator-algebraic renormalization and wavelets 🔑
+
+- **arXiv**: 2002.01442
+- **DOI**: 10.1103/physrevlett.127.230601
+- **PDF status**: have_pdf (`literature/pdfs/2002.01442.pdf`)
+
 ### [PenneysNotes] Penneys (2020) — Unitary fusion categories (Math 8800 lecture notes)
 
 - **Venue**: OSU Math 8800 lecture notes
 - **PDF status**: have_pdf (`literature/pdfs/penneys_math8800_unitary_fusion_categories.pdf`)
 - **Notes**: Course material reference.
+
+### [paper521] T. Osborne, Alexander Stottmeister (2021) — Conformal field theory from lattice fermions 🔑
+
+- **arXiv**: 2107.13834
+- **DOI**: 10.1007/s00220-022-04521-8
+- **Venue**: Communications in Mathematical Physics
+- **PDF status**: have_pdf (`literature/pdfs/2107.13834.pdf`)
 
 ### [paper40] Peter Huston, Fiona Burnell, Corey Jones, David Penneys (2022) — Composing topological domain walls and anyon mobility
 
