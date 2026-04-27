@@ -1,0 +1,991 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Mapping between Morita equivalent string-net states with a constant depth quantum circuit",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          150.0,
+          52.98046875
+        ],
+        [
+          465.0,
+          52.98046875
+        ],
+        [
+          465.0,
+          76.95703125
+        ],
+        [
+          150.0,
+          76.95703125
+        ]
+      ]
+    },
+    {
+      "title": "I. INTRODUCTION",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          123.416015625,
+          237.75
+        ],
+        [
+          228.75,
+          237.75
+        ],
+        [
+          228.75,
+          246.75
+        ],
+        [
+          123.416015625,
+          246.75
+        ]
+      ]
+    },
+    {
+      "title": "II. STRING-NETS",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          127.30078125,
+          500.02734375
+        ],
+        [
+          224.25,
+          500.02734375
+        ],
+        [
+          224.25,
+          509.25
+        ],
+        [
+          127.30078125,
+          509.25
+        ]
+      ]
+    },
+    {
+      "title": "A. Levin and Wen's string-nets",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          99.0,
+          642.0
+        ],
+        [
+          252.75,
+          642.0
+        ],
+        [
+          252.75,
+          650.84765625
+        ],
+        [
+          99.0,
+          650.84765625
+        ]
+      ]
+    },
+    {
+      "title": "B. Extended string-nets",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          116.54296875,
+          441.24609375
+        ],
+        [
+          235.5,
+          441.24609375
+        ],
+        [
+          235.5,
+          450.75
+        ],
+        [
+          116.54296875,
+          450.75
+        ]
+      ]
+    },
+    {
+      "title": "C. Tube algebra",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          399.234375,
+          521.25
+        ],
+        [
+          480.75,
+          521.25
+        ],
+        [
+          480.75,
+          530.19140625
+        ],
+        [
+          399.234375,
+          530.19140625
+        ]
+      ]
+    },
+    {
+      "title": "III. BIMODULE CATEGORIES",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          95.25,
+          629.96484375
+        ],
+        [
+          255.796875,
+          629.96484375
+        ],
+        [
+          255.796875,
+          639.75
+        ],
+        [
+          95.25,
+          639.75
+        ]
+      ]
+    },
+    {
+      "title": "A. Bimodule categories",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          379.51171875,
+          118.3359375
+        ],
+        [
+          498.0,
+          118.3359375
+        ],
+        [
+          498.0,
+          127.6171875
+        ],
+        [
+          379.51171875,
+          127.6171875
+        ]
+      ]
+    },
+    {
+      "title": "B. Tube algebra bimodules",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          373.236328125,
+          159.0
+        ],
+        [
+          506.513671875,
+          159.0
+        ],
+        [
+          506.513671875,
+          168.75
+        ],
+        [
+          373.236328125,
+          168.75
+        ]
+      ]
+    },
+    {
+      "title": "IV. QUANTUM CIRCUIT",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          108.474609375,
+          361.5
+        ],
+        [
+          243.0,
+          361.5
+        ],
+        [
+          243.0,
+          370.86328125
+        ],
+        [
+          108.474609375,
+          370.86328125
+        ]
+      ]
+    },
+    {
+      "title": "A. Ground state",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          398.63671875,
+          571.18359375
+        ],
+        [
+          481.5,
+          571.18359375
+        ],
+        [
+          481.5,
+          581.25
+        ],
+        [
+          398.63671875,
+          581.25
+        ]
+      ]
+    },
+    {
+      "title": "B. Excited states",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          395.25,
+          199.16015625
+        ],
+        [
+          484.1015625,
+          199.16015625
+        ],
+        [
+          484.1015625,
+          208.5
+        ],
+        [
+          395.25,
+          208.5
+        ]
+      ]
+    },
+    {
+      "title": "V. EXAMPLES",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          135.66796875,
+          154.6875
+        ],
+        [
+          216.75,
+          154.6875
+        ],
+        [
+          216.75,
+          165.0
+        ],
+        [
+          135.66796875,
+          165.0
+        ]
+      ]
+    },
+    {
+      "title": "A. Toric code to toric code",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          109.669921875,
+          282.69140625
+        ],
+        [
+          243.0,
+          282.69140625
+        ],
+        [
+          243.0,
+          291.0
+        ],
+        [
+          109.669921875,
+          291.0
+        ]
+      ]
+    },
+    {
+      "title": "B. Ground states of Kitaev's quantum doubles to string-nets",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          57.97265625,
+          149.25
+        ],
+        [
+          295.83984375,
+          149.25
+        ],
+        [
+          295.83984375,
+          169.76953125
+        ],
+        [
+          57.97265625,
+          169.76953125
+        ]
+      ]
+    },
+    {
+      "title": "VI. CONCLUSION AND OUTLOOK",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          345.4453125,
+          248.25
+        ],
+        [
+          531.75,
+          248.25
+        ],
+        [
+          531.75,
+          257.25
+        ],
+        [
+          345.4453125,
+          257.25
+        ]
+      ]
+    },
+    {
+      "title": "ACKNOWLEDGMENTS",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          378.017578125,
+          651.62109375
+        ],
+        [
+          499.5,
+          651.62109375
+        ],
+        [
+          499.5,
+          661.5
+        ],
+        [
+          378.017578125,
+          663.0
+        ]
+      ]
+    },
+    {
+      "title": "Appendix A: The quantum circuit for the extended string-net",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          162.0,
+          54.52734375
+        ],
+        [
+          453.0,
+          54.52734375
+        ],
+        [
+          453.0,
+          63.75
+        ],
+        [
+          162.0,
+          63.75
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          112
+        ],
+        [
+          "Span",
+          110
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          85
+        ],
+        [
+          "Span",
+          81
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "Equation",
+          5
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          73
+        ],
+        [
+          "Span",
+          71
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "Equation",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Picture",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          112
+        ],
+        [
+          "Line",
+          80
+        ],
+        [
+          "Text",
+          12
+        ],
+        [
+          "Equation",
+          8
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          89
+        ],
+        [
+          "Line",
+          69
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "Equation",
+          8
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          95
+        ],
+        [
+          "Span",
+          91
+        ],
+        [
+          "Text",
+          13
+        ],
+        [
+          "Equation",
+          8
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          76
+        ],
+        [
+          "Span",
+          55
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "Equation",
+          5
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          79
+        ],
+        [
+          "Span",
+          76
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "Equation",
+          6
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          85
+        ],
+        [
+          "Span",
+          55
+        ],
+        [
+          "Text",
+          12
+        ],
+        [
+          "Equation",
+          10
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          124
+        ],
+        [
+          "Line",
+          112
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "ListItem",
+          5
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Equation",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          312
+        ],
+        [
+          "Line",
+          100
+        ],
+        [
+          "ListItem",
+          26
+        ],
+        [
+          "Reference",
+          23
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          9
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Span",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          4
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Span",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/2112.12757"
+}

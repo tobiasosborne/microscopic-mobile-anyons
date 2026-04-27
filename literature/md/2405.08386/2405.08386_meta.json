@@ -1,0 +1,1510 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Robust non-Abelian even-denominator fractional Chern insulator in twisted bilayer MoTe2",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          76.34700775146484,
+          52.59375
+        ],
+        [
+          540.28125,
+          52.59375
+        ],
+        [
+          540.28125,
+          65.57220458984375
+        ],
+        [
+          76.34700775146484,
+          65.57220458984375
+        ]
+      ]
+    },
+    {
+      "title": "ABSTRACT",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          283.88299560546875,
+          151.20703125
+        ],
+        [
+          332.89453125,
+          151.20703125
+        ],
+        [
+          332.89453125,
+          161.75555419921875
+        ],
+        [
+          283.88299560546875,
+          161.75555419921875
+        ]
+      ]
+    },
+    {
+      "title": "INTRODUCTION",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          139.25390625,
+          334.7821350097656
+        ],
+        [
+          212.2722625732422,
+          334.7821350097656
+        ],
+        [
+          212.2722625732422,
+          343.74853515625
+        ],
+        [
+          139.25390625,
+          343.74853515625
+        ]
+      ]
+    },
+    {
+      "title": "RESULTS",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          155.390625,
+          206.25
+        ],
+        [
+          196.5,
+          206.25
+        ],
+        [
+          196.5,
+          214.5
+        ],
+        [
+          155.390625,
+          214.5
+        ]
+      ]
+    },
+    {
+      "title": "Band topology",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          147.75,
+          231.75
+        ],
+        [
+          204.0,
+          231.75
+        ],
+        [
+          204.0,
+          240.75
+        ],
+        [
+          147.75,
+          240.75
+        ]
+      ]
+    },
+    {
+      "title": "Many-body Interaction",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          130.5,
+          371.25
+        ],
+        [
+          222.0,
+          371.25
+        ],
+        [
+          222.0,
+          379.7578125
+        ],
+        [
+          130.5,
+          379.7578125
+        ]
+      ]
+    },
+    {
+      "title": "Spontaneous spin polarization at \\nu = 3/2",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          358.5,
+          54.140625
+        ],
+        [
+          519.9609375,
+          54.140625
+        ],
+        [
+          519.9609375,
+          63.75
+        ],
+        [
+          358.5,
+          63.75
+        ]
+      ]
+    },
+    {
+      "title": "Many-body energy spectrum",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          382.5,
+          487.65234375
+        ],
+        [
+          495.0,
+          487.65234375
+        ],
+        [
+          495.0,
+          496.5
+        ],
+        [
+          382.5,
+          496.5
+        ]
+      ]
+    },
+    {
+      "title": "Many-body Chern number",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          385.189453125,
+          537.15234375
+        ],
+        [
+          491.25,
+          537.15234375
+        ],
+        [
+          491.25,
+          546.75
+        ],
+        [
+          385.189453125,
+          546.75
+        ]
+      ]
+    },
+    {
+      "title": "Non-Abelian quasiparticle statistics",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          107.279296875,
+          356.16796875
+        ],
+        [
+          244.5384063720703,
+          356.16796875
+        ],
+        [
+          244.5384063720703,
+          366.14349365234375
+        ],
+        [
+          107.279296875,
+          366.14349365234375
+        ]
+      ]
+    },
+    {
+      "title": "Structure factors",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          406.705078125,
+          375.1171875
+        ],
+        [
+          473.044921875,
+          375.1171875
+        ],
+        [
+          473.044921875,
+          384.6434326171875
+        ],
+        [
+          406.705078125,
+          384.6434326171875
+        ]
+      ]
+    },
+    {
+      "title": "Robustness of non-Abelian FCI",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          377.12109375,
+          602.12109375
+        ],
+        [
+          499.6206970214844,
+          602.12109375
+        ],
+        [
+          499.6206970214844,
+          613.2384948730469
+        ],
+        [
+          377.12109375,
+          613.2384948730469
+        ]
+      ]
+    },
+    {
+      "title": "DISCUSSION",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          147.75,
+          603.75
+        ],
+        [
+          204.0,
+          603.75
+        ],
+        [
+          204.0,
+          613.72265625
+        ],
+        [
+          147.75,
+          613.72265625
+        ]
+      ]
+    },
+    {
+      "title": "METHODS",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          413.876953125,
+          611.40234375
+        ],
+        [
+          462.0,
+          611.40234375
+        ],
+        [
+          462.0,
+          621.0
+        ],
+        [
+          413.876953125,
+          621.0
+        ]
+      ]
+    },
+    {
+      "title": "Calculation of Chern number for many-body state",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          78.75,
+          54.52734375
+        ],
+        [
+          273.75,
+          54.52734375
+        ],
+        [
+          273.75,
+          63.75
+        ],
+        [
+          78.75,
+          63.75
+        ]
+      ]
+    },
+    {
+      "title": "Projected structure factor",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          125.25,
+          224.25
+        ],
+        [
+          225.75,
+          224.25
+        ],
+        [
+          225.75,
+          234.73828125
+        ],
+        [
+          125.25,
+          234.73828125
+        ]
+      ]
+    },
+    {
+      "title": "SUPPLEMENTARY INFORMATION",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          100.705078125,
+          343.40625
+        ],
+        [
+          250.716796875,
+          343.40625
+        ],
+        [
+          250.716796875,
+          351.75
+        ],
+        [
+          100.705078125,
+          351.75
+        ]
+      ]
+    },
+    {
+      "title": "AUTHOR CONTRIBUTIONS",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          115.646484375,
+          660.90234375
+        ],
+        [
+          235.5,
+          660.90234375
+        ],
+        [
+          235.5,
+          671.25
+        ],
+        [
+          115.646484375,
+          671.25
+        ]
+      ]
+    },
+    {
+      "title": "DATA AVAILABILITY",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          393.0,
+          54.75
+        ],
+        [
+          485.296875,
+          54.75
+        ],
+        [
+          485.296875,
+          63.0
+        ],
+        [
+          393.0,
+          63.0
+        ]
+      ]
+    },
+    {
+      "title": "CODE AVAILABILITY",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          390.8671875,
+          149.25
+        ],
+        [
+          486.0,
+          149.25
+        ],
+        [
+          486.0,
+          158.25
+        ],
+        [
+          390.8671875,
+          158.25
+        ]
+      ]
+    },
+    {
+      "title": "ACKNOWLEDGEMENT",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          387.87890625,
+          232.5
+        ],
+        [
+          489.75,
+          232.5
+        ],
+        [
+          489.75,
+          240.75
+        ],
+        [
+          387.87890625,
+          240.75
+        ]
+      ]
+    },
+    {
+      "title": "NOTE ADDED",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          409.39453125,
+          410.30859375
+        ],
+        [
+          471.0,
+          410.30859375
+        ],
+        [
+          471.0,
+          420.0
+        ],
+        [
+          409.39453125,
+          420.0
+        ]
+      ]
+    },
+    {
+      "title": "Supplementary Information for: \"Robust non-Abelian even-denominator fractional Chern insulator in twisted bilayer MoTe<sub>2</sub>\"",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          75.3046875,
+          411.75
+        ],
+        [
+          538.5,
+          411.75
+        ],
+        [
+          538.5,
+          435.05859375
+        ],
+        [
+          75.3046875,
+          435.05859375
+        ]
+      ]
+    },
+    {
+      "title": "Supplementary Note 1: Non-Abelian topological phase with reduced kinetic energies: from flatband limit to realistic moir\u00e9 model for MoTe<sub>2</sub> system",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          54.0,
+          609.0
+        ],
+        [
+          562.5,
+          609.0
+        ],
+        [
+          562.5,
+          628.41796875
+        ],
+        [
+          54.0,
+          628.41796875
+        ]
+      ]
+    },
+    {
+      "title": "Supplementary Note 2: Renormalized band structure and interband interaction",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          154.5,
+          610.5
+        ],
+        [
+          461.390625,
+          610.5
+        ],
+        [
+          461.390625,
+          620.25
+        ],
+        [
+          154.5,
+          620.25
+        ]
+      ]
+    },
+    {
+      "title": "Supplementary Note 3: Energy spectra for different system sizes",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          184.5,
+          639.0
+        ],
+        [
+          432.75,
+          639.0
+        ],
+        [
+          432.75,
+          648.75
+        ],
+        [
+          184.5,
+          648.75
+        ]
+      ]
+    },
+    {
+      "title": "Supplementary Note 4: Additional results for Berry curvature and Chern number",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          149.4140625,
+          53.75390625
+        ],
+        [
+          464.79132080078125,
+          53.75390625
+        ],
+        [
+          464.79132080078125,
+          64.12158203125
+        ],
+        [
+          149.4140625,
+          64.12158203125
+        ]
+      ]
+    },
+    {
+      "title": "Supplementary Note 5: Additional results for density structure factor and momentum distribution function",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          103.9921875,
+          278.82421875
+        ],
+        [
+          514.04443359375,
+          278.82421875
+        ],
+        [
+          514.04443359375,
+          287.9385070800781
+        ],
+        [
+          103.9921875,
+          287.9385070800781
+        ]
+      ]
+    },
+    {
+      "title": "Supplementary Note 6: Non-Abelian quasiparticle statistics from PES",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          174.515625,
+          380.6820983886719
+        ],
+        [
+          442.72894287109375,
+          380.6820983886719
+        ],
+        [
+          442.72894287109375,
+          389.64849853515625
+        ],
+        [
+          174.515625,
+          389.64849853515625
+        ]
+      ]
+    },
+    {
+      "title": "Supplementary Note 7: Energy spectrum for a different twist angle \u03b8 = 2.1\no",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          161.96484375,
+          547.9762878417969
+        ],
+        [
+          454.81640625,
+          547.9762878417969
+        ],
+        [
+          454.81640625,
+          558.5414886474609
+        ],
+        [
+          161.96484375,
+          558.5414886474609
+        ]
+      ]
+    },
+    {
+      "title": "\u2020\ndonna.sheng1@csun.edu",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          63.3515625,
+          53.4788818359375
+        ],
+        [
+          162.5625,
+          53.4788818359375
+        ],
+        [
+          162.5625,
+          64.20343017578125
+        ],
+        [
+          63.3515625,
+          64.20343017578125
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          384
+        ],
+        [
+          "Line",
+          92
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          170
+        ],
+        [
+          "Line",
+          103
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Equation",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          171
+        ],
+        [
+          "Line",
+          113
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "Equation",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          124
+        ],
+        [
+          "Span",
+          115
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "FigureGroup",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          568
+        ],
+        [
+          "Line",
+          98
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "FigureGroup",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Equation",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          114
+        ],
+        [
+          "Span",
+          95
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          98
+        ],
+        [
+          "Span",
+          54
+        ],
+        [
+          "Text",
+          17
+        ],
+        [
+          "SectionHeader",
+          8
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          67
+        ],
+        [
+          "Span",
+          35
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Equation",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          115
+        ],
+        [
+          "Line",
+          75
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Equation",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          45
+        ],
+        [
+          "Line",
+          26
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "Equation",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          40
+        ],
+        [
+          "Span",
+          14
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          46
+        ],
+        [
+          "Span",
+          39
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "Equation",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          193
+        ],
+        [
+          "Line",
+          18
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "FigureGroup",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          443
+        ],
+        [
+          "Line",
+          49
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 14,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          163
+        ],
+        [
+          "Line",
+          20
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 15,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          400
+        ],
+        [
+          "Line",
+          71
+        ],
+        [
+          "ListItem",
+          34
+        ],
+        [
+          "Reference",
+          27
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 16,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          214
+        ],
+        [
+          "Line",
+          36
+        ],
+        [
+          "ListItem",
+          22
+        ],
+        [
+          "Reference",
+          20
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/2405.08386"
+}

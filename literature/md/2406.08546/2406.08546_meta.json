@@ -1,0 +1,1028 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Parafermions in moire minibands \u00b4",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          221.88929748535156,
+          72.31640625
+        ],
+        [
+          394.453125,
+          72.31640625
+        ],
+        [
+          394.453125,
+          84.95025634765625
+        ],
+        [
+          221.88929748535156,
+          84.95025634765625
+        ]
+      ]
+    },
+    {
+      "title": "Abstract",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          108.474609375,
+          138.83203125
+        ],
+        [
+          142.08180236816406,
+          138.83203125
+        ],
+        [
+          142.08180236816406,
+          150.44873046875
+        ],
+        [
+          108.474609375,
+          150.44873046875
+        ]
+      ]
+    },
+    {
+      "title": "INTRODUCTION",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          140.44921875,
+          276.50390625
+        ],
+        [
+          212.22799682617188,
+          276.50390625
+        ],
+        [
+          212.22799682617188,
+          286.949951171875
+        ],
+        [
+          140.44921875,
+          286.949951171875
+        ]
+      ]
+    },
+    {
+      "title": "RESULTS",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          154.5,
+          415.5
+        ],
+        [
+          196.5,
+          415.5
+        ],
+        [
+          196.5,
+          425.00390625
+        ],
+        [
+          154.5,
+          425.00390625
+        ]
+      ]
+    },
+    {
+      "title": "Stability of parafermion FCIs and quantum geometry.",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          314.96484375,
+          582.0
+        ],
+        [
+          563.25,
+          582.0
+        ],
+        [
+          563.25,
+          592.06640625
+        ],
+        [
+          314.96484375,
+          592.06640625
+        ]
+      ]
+    },
+    {
+      "title": "Particle-hole asymmetry and hole entanglement spectrum.",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          52.5,
+          534.0
+        ],
+        [
+          300.0,
+          534.0
+        ],
+        [
+          300.0,
+          545.66015625
+        ],
+        [
+          52.5,
+          545.66015625
+        ]
+      ]
+    },
+    {
+      "title": "DISCUSSION",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          411.0,
+          530.25
+        ],
+        [
+          467.666015625,
+          530.25
+        ],
+        [
+          467.666015625,
+          539.47265625
+        ],
+        [
+          411.0,
+          539.47265625
+        ]
+      ]
+    },
+    {
+      "title": "METHODS",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          415.5,
+          54.0
+        ],
+        [
+          463.5,
+          54.0
+        ],
+        [
+          463.5,
+          63.0
+        ],
+        [
+          415.5,
+          63.0
+        ]
+      ]
+    },
+    {
+      "title": "Quantum metric of the single-particle band",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          315.75,
+          81.2109375
+        ],
+        [
+          501.75,
+          81.2109375
+        ],
+        [
+          501.75,
+          90.75
+        ],
+        [
+          315.75,
+          90.75
+        ]
+      ]
+    },
+    {
+      "title": "Exact diagonalization",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          315.0,
+          286.5
+        ],
+        [
+          410.25,
+          286.5
+        ],
+        [
+          410.25,
+          297.0
+        ],
+        [
+          315.0,
+          297.0
+        ]
+      ]
+    },
+    {
+      "title": "Structure factor and pair correlation",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          315.0,
+          567.0
+        ],
+        [
+          475.13671875,
+          567.0
+        ],
+        [
+          475.13671875,
+          576.75
+        ],
+        [
+          315.0,
+          576.75
+        ]
+      ]
+    },
+    {
+      "title": "Data availability",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          53.490234375,
+          90.10546875
+        ],
+        [
+          124.14071655273438,
+          90.10546875
+        ],
+        [
+          124.14071655273438,
+          100.46942138671875
+        ],
+        [
+          53.490234375,
+          100.46942138671875
+        ]
+      ]
+    },
+    {
+      "title": "Code availability",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          53.7890625,
+          136.51171875
+        ],
+        [
+          125.80525207519531,
+          136.51171875
+        ],
+        [
+          125.80525207519531,
+          148.406005859375
+        ],
+        [
+          53.7890625,
+          148.406005859375
+        ]
+      ]
+    },
+    {
+      "title": "ACKNOWLEDGEMENTS",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          122.818359375,
+          194.51953125
+        ],
+        [
+          228.8412628173828,
+          194.51953125
+        ],
+        [
+          228.8412628173828,
+          205.73681640625
+        ],
+        [
+          122.818359375,
+          205.73681640625
+        ]
+      ]
+    },
+    {
+      "title": "AUTHOR CONTRIBUTIONS",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          116.841796875,
+          375.1171875
+        ],
+        [
+          235.14796447753906,
+          375.1171875
+        ],
+        [
+          235.14796447753906,
+          385.25018310546875
+        ],
+        [
+          116.841796875,
+          385.25018310546875
+        ]
+      ]
+    },
+    {
+      "title": "COMPETING INTERESTS",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          120.7265625,
+          469.08984375
+        ],
+        [
+          230.93653869628906,
+          469.08984375
+        ],
+        [
+          230.93653869628906,
+          481.03717041015625
+        ],
+        [
+          120.7265625,
+          481.03717041015625
+        ]
+      ]
+    },
+    {
+      "title": "REFERENCES",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          145.23046875,
+          540.24609375
+        ],
+        [
+          206.63417053222656,
+          540.24609375
+        ],
+        [
+          206.63417053222656,
+          552.9029083251953
+        ],
+        [
+          145.23046875,
+          552.9029083251953
+        ]
+      ]
+    },
+    {
+      "title": "Supplementary Information for \n'Parafermions in moir\u00e9 minibands'",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          217.5,
+          52.59375
+        ],
+        [
+          398.63671875,
+          52.59375
+        ],
+        [
+          398.63671875,
+          76.5
+        ],
+        [
+          217.5,
+          76.5
+        ]
+      ]
+    },
+    {
+      "title": "Supplementary Note 1. Band structure and quantum geometry",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          183.0,
+          154.30078125
+        ],
+        [
+          431.5078125,
+          154.30078125
+        ],
+        [
+          431.5078125,
+          164.25
+        ],
+        [
+          183.0,
+          164.25
+        ]
+      ]
+    },
+    {
+      "title": "Supplementary Note 2. Counting of quasi-hole excitations in Read-Rezayi states",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          149.4140625,
+          273.75
+        ],
+        [
+          465.0,
+          273.75
+        ],
+        [
+          465.0,
+          282.75
+        ],
+        [
+          149.4140625,
+          282.75
+        ]
+      ]
+    },
+    {
+      "title": "Supplementary Note 3. Hierarchical states at weak coupling",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          188.859375,
+          496.93359375
+        ],
+        [
+          426.75,
+          496.93359375
+        ],
+        [
+          426.75,
+          507.0
+        ],
+        [
+          188.859375,
+          507.0
+        ]
+      ]
+    },
+    {
+      "title": "Supplementary Note 4. Additional data for Read-Rezayi states",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          181.08984375,
+          675.75
+        ],
+        [
+          432.0,
+          675.75
+        ],
+        [
+          432.0,
+          684.87890625
+        ],
+        [
+          181.08984375,
+          684.87890625
+        ]
+      ]
+    },
+    {
+      "title": "Supplementary References",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          255.0,
+          218.49609375
+        ],
+        [
+          360.087890625,
+          218.49609375
+        ],
+        [
+          360.087890625,
+          228.0
+        ],
+        [
+          255.0,
+          228.0
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          222
+        ],
+        [
+          "Line",
+          88
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          97
+        ],
+        [
+          "Line",
+          96
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Equation",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          128
+        ],
+        [
+          "Line",
+          108
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          120
+        ],
+        [
+          "Span",
+          114
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          120
+        ],
+        [
+          "Span",
+          103
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          366
+        ],
+        [
+          "Line",
+          107
+        ],
+        [
+          "ListItem",
+          23
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          6
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          523
+        ],
+        [
+          "Line",
+          127
+        ],
+        [
+          "ListItem",
+          42
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          371
+        ],
+        [
+          "Line",
+          87
+        ],
+        [
+          "ListItem",
+          28
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          76
+        ],
+        [
+          "Line",
+          58
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          51
+        ],
+        [
+          "Span",
+          39
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          166
+        ],
+        [
+          "Line",
+          12
+        ],
+        [
+          "Figure",
+          3
+        ],
+        [
+          "Caption",
+          3
+        ],
+        [
+          "FigureGroup",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          33
+        ],
+        [
+          "Line",
+          4
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/2406.08546"
+}

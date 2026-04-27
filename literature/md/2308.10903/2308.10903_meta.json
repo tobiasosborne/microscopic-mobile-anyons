@@ -1,0 +1,1686 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Phase transitions out of quantum Hall states in moir\u00e9 materials",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          118.3359375,
+          52.7054443359375
+        ],
+        [
+          495.83343505859375,
+          52.7054443359375
+        ],
+        [
+          495.83343505859375,
+          64.66064453125
+        ],
+        [
+          118.3359375,
+          64.66064453125
+        ]
+      ]
+    },
+    {
+      "title": "Ya-Hui Zhang",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          273.427734375,
+          112.1484375
+        ],
+        [
+          339.7666320800781,
+          112.1484375
+        ],
+        [
+          339.7666320800781,
+          122.50787353515625
+        ],
+        [
+          273.427734375,
+          122.50787353515625
+        ]
+      ]
+    },
+    {
+      "title": "T. Senthil",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          283.2890625,
+          146.1796875
+        ],
+        [
+          330.9776611328125,
+          146.1796875
+        ],
+        [
+          330.9776611328125,
+          156.87884521484375
+        ],
+        [
+          283.2890625,
+          156.87884521484375
+        ]
+      ]
+    },
+    {
+      "title": "I. INTRODUCTION",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          122.51953125,
+          425.77734375
+        ],
+        [
+          228.6859588623047,
+          425.77734375
+        ],
+        [
+          228.6859588623047,
+          434.86370849609375
+        ],
+        [
+          122.51953125,
+          434.86370849609375
+        ]
+      ]
+    },
+    {
+      "title": "II. PRELIMINARIES AND SUMMARY OF\nRESULTS",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          68.1328125,
+          481.5
+        ],
+        [
+          285.0,
+          481.5
+        ],
+        [
+          285.0,
+          500.80078125
+        ],
+        [
+          68.1328125,
+          500.80078125
+        ]
+      ]
+    },
+    {
+      "title": "A. Summary of results",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          382.5,
+          54.0
+        ],
+        [
+          495.755859375,
+          54.0
+        ],
+        [
+          495.755859375,
+          63.75
+        ],
+        [
+          382.5,
+          63.75
+        ]
+      ]
+    },
+    {
+      "title": "III. GENERAL PARTON FRAMEWORK FOR THE PHASE TRANSITIONS",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          59.765625,
+          213.75
+        ],
+        [
+          293.25,
+          213.75
+        ],
+        [
+          293.25,
+          233.25
+        ],
+        [
+          59.765625,
+          233.25
+        ]
+      ]
+    },
+    {
+      "title": "IV. PHASE TRANSITIONS OUT OF THE FQAH\nSTATE",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          52.59375,
+          513.94921875
+        ],
+        [
+          298.9440612792969,
+          513.94921875
+        ],
+        [
+          298.9440612792969,
+          534.3913879394531
+        ],
+        [
+          52.59375,
+          534.3913879394531
+        ]
+      ]
+    },
+    {
+      "title": "A. Warm-up: FQAH to CDW transition at \u03bd =\n1\n3",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          57.375,
+          548.7119750976562
+        ],
+        [
+          294.046875,
+          548.7119750976562
+        ],
+        [
+          294.046875,
+          561.4059295654297
+        ],
+        [
+          57.375,
+          561.4059295654297
+        ]
+      ]
+    },
+    {
+      "title": "B. FQAH to CDW-IQAH state at \\nu = -\\frac{2}{3}",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          77.09765625,
+          445.5
+        ],
+        [
+          276.0,
+          445.5
+        ],
+        [
+          276.0,
+          457.5
+        ],
+        [
+          77.09765625,
+          457.5
+        ]
+      ]
+    },
+    {
+      "title": "C. FQAH -CDW* transition at \\nu = -\\frac{2}{3}",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          345.0,
+          52.98046875
+        ],
+        [
+          533.70703125,
+          52.98046875
+        ],
+        [
+          533.70703125,
+          64.58203125
+        ],
+        [
+          345.0,
+          64.58203125
+        ]
+      ]
+    },
+    {
+      "title": "V. CFL TO FL TRANSITION",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          100.705078125,
+          258.75
+        ],
+        [
+          251.25,
+          258.75
+        ],
+        [
+          251.25,
+          267.75
+        ],
+        [
+          100.705078125,
+          267.75
+        ]
+      ]
+    },
+    {
+      "title": "A. Resistivity and compressibility around the CFL to FL transition",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          316.16015625,
+          588.75
+        ],
+        [
+          561.0,
+          588.75
+        ],
+        [
+          561.0,
+          609.08203125
+        ],
+        [
+          316.16015625,
+          609.08203125
+        ]
+      ]
+    },
+    {
+      "title": "B. Fluctuating CDW order and SO(3) symmetry",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          57.97265625,
+          258.75
+        ],
+        [
+          294.0,
+          258.75
+        ],
+        [
+          294.0,
+          269.15625
+        ],
+        [
+          57.97265625,
+          269.15625
+        ]
+      ]
+    },
+    {
+      "title": "C. Disorder effects",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          128.25,
+          549.52734375
+        ],
+        [
+          223.5,
+          549.52734375
+        ],
+        [
+          223.5,
+          559.5
+        ],
+        [
+          128.25,
+          559.5
+        ]
+      ]
+    },
+    {
+      "title": "VI. CFL TO CDW* TRANSITION AT \\nu = -\\frac{1}{2}",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          325.125,
+          226.5
+        ],
+        [
+          551.25,
+          226.5
+        ],
+        [
+          551.25,
+          237.0
+        ],
+        [
+          325.125,
+          237.0
+        ]
+      ]
+    },
+    {
+      "title": "A. CDW*: construction, properties and transition to CFL",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          316.16015625,
+          436.60546875
+        ],
+        [
+          561.0,
+          436.60546875
+        ],
+        [
+          561.0,
+          456.0
+        ],
+        [
+          316.16015625,
+          456.0
+        ]
+      ]
+    },
+    {
+      "title": "B. Remarks on the CFL-CDW* phase transition",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          59.765625,
+          583.55859375
+        ],
+        [
+          293.25,
+          583.55859375
+        ],
+        [
+          293.25,
+          594.0
+        ],
+        [
+          59.765625,
+          594.0
+        ]
+      ]
+    },
+    {
+      "title": "C. Experimental signatures",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          370.248046875,
+          213.75
+        ],
+        [
+          506.25,
+          213.75
+        ],
+        [
+          506.25,
+          223.91015625
+        ],
+        [
+          370.248046875,
+          223.91015625
+        ]
+      ]
+    },
+    {
+      "title": "VII. CFL TO FL TRANSITION AT \\nu = -\\frac{3}{4}",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          70.5234375,
+          433.5
+        ],
+        [
+          282.0,
+          433.5
+        ],
+        [
+          282.0,
+          451.30078125
+        ],
+        [
+          70.5234375,
+          451.30078125
+        ]
+      ]
+    },
+    {
+      "title": "A. Critical theory",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          130.88671875,
+          53.75390625
+        ],
+        [
+          221.25,
+          53.75390625
+        ],
+        [
+          221.25,
+          63.75
+        ],
+        [
+          130.88671875,
+          63.75
+        ]
+      ]
+    },
+    {
+      "title": "B. A different intermediate composite fermi liquid",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          55.58203125,
+          180.59765625
+        ],
+        [
+          298.23046875,
+          180.59765625
+        ],
+        [
+          298.23046875,
+          190.5
+        ],
+        [
+          55.58203125,
+          190.5
+        ]
+      ]
+    },
+    {
+      "title": "VIII. DISCUSSION",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          387.28125,
+          169.5
+        ],
+        [
+          489.0,
+          169.5
+        ],
+        [
+          489.0,
+          179.25
+        ],
+        [
+          387.28125,
+          179.25
+        ]
+      ]
+    },
+    {
+      "title": "IX. CONCLUSION",
+      "heading_level": null,
+      "page_id": 16,
+      "polygon": [
+        [
+          387.87890625,
+          53.75390625
+        ],
+        [
+          488.4056701660156,
+          53.75390625
+        ],
+        [
+          488.4056701660156,
+          64.00439453125
+        ],
+        [
+          387.87890625,
+          64.00439453125
+        ]
+      ]
+    },
+    {
+      "title": "X. ACKNOWLEDGEMENT",
+      "heading_level": null,
+      "page_id": 16,
+      "polygon": [
+        [
+          366.36328125,
+          364.2890625
+        ],
+        [
+          510.2647399902344,
+          364.2890625
+        ],
+        [
+          510.2647399902344,
+          374.8269348144531
+        ],
+        [
+          366.36328125,
+          374.8269348144531
+        ]
+      ]
+    },
+    {
+      "title": "Appendix A: Dual theories of the bosonic superfluid-Laughlin transition at half-filling",
+      "heading_level": null,
+      "page_id": 18,
+      "polygon": [
+        [
+          107.25,
+          419.58984375
+        ],
+        [
+          509.203125,
+          419.58984375
+        ],
+        [
+          509.203125,
+          429.0
+        ],
+        [
+          107.25,
+          429.0
+        ]
+      ]
+    },
+    {
+      "title": "Appendix B: CDW* to FL transition and tri-critical theory",
+      "heading_level": null,
+      "page_id": 20,
+      "polygon": [
+        [
+          166.1484375,
+          180.59765625
+        ],
+        [
+          444.75,
+          180.59765625
+        ],
+        [
+          444.75,
+          189.75
+        ],
+        [
+          166.1484375,
+          189.75
+        ]
+      ]
+    },
+    {
+      "title": "1. CDW* to FL transition",
+      "heading_level": null,
+      "page_id": 20,
+      "polygon": [
+        [
+          242.25,
+          273.75
+        ],
+        [
+          372.75,
+          273.75
+        ],
+        [
+          372.75,
+          283.5
+        ],
+        [
+          242.25,
+          283.5
+        ]
+      ]
+    },
+    {
+      "title": "2. Tri-critical theory",
+      "heading_level": null,
+      "page_id": 20,
+      "polygon": [
+        [
+          257.291015625,
+          486.0
+        ],
+        [
+          359.490234375,
+          486.0
+        ],
+        [
+          359.490234375,
+          496.16015625
+        ],
+        [
+          257.291015625,
+          496.16015625
+        ]
+      ]
+    },
+    {
+      "title": "Appendix C: Mean-field to realize Chern number changing transition at \\nu = 1/4",
+      "heading_level": null,
+      "page_id": 21,
+      "polygon": [
+        [
+          120.7265625,
+          54.0
+        ],
+        [
+          493.5,
+          54.0
+        ],
+        [
+          493.5,
+          63.75
+        ],
+        [
+          120.7265625,
+          63.75
+        ]
+      ]
+    },
+    {
+      "title": "Appendix D: Fixing parton and flux densities across the CFL-FL transition",
+      "heading_level": null,
+      "page_id": 21,
+      "polygon": [
+        [
+          132.0,
+          470.25
+        ],
+        [
+          483.0,
+          470.25
+        ],
+        [
+          483.0,
+          480.69140625
+        ],
+        [
+          132.0,
+          480.69140625
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          239
+        ],
+        [
+          "Line",
+          86
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          132
+        ],
+        [
+          "Line",
+          121
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          102
+        ],
+        [
+          "Span",
+          55
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "Figure",
+          3
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "FigureGroup",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          97
+        ],
+        [
+          "Span",
+          67
+        ],
+        [
+          "ListItem",
+          5
+        ],
+        [
+          "Figure",
+          3
+        ],
+        [
+          "Caption",
+          3
+        ],
+        [
+          "FigureGroup",
+          3
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          125
+        ],
+        [
+          "Span",
+          106
+        ],
+        [
+          "Text",
+          13
+        ],
+        [
+          "Equation",
+          5
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          800
+        ],
+        [
+          "Line",
+          169
+        ],
+        [
+          "Text",
+          14
+        ],
+        [
+          "Equation",
+          8
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          122
+        ],
+        [
+          "Span",
+          110
+        ],
+        [
+          "Text",
+          14
+        ],
+        [
+          "Equation",
+          10
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          116
+        ],
+        [
+          "Span",
+          109
+        ],
+        [
+          "Text",
+          14
+        ],
+        [
+          "Equation",
+          6
+        ],
+        [
+          "Reference",
+          4
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          168
+        ],
+        [
+          "Line",
+          121
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "Equation",
+          4
+        ],
+        [
+          "Reference",
+          4
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          121
+        ],
+        [
+          "Line",
+          113
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "Equation",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          171
+        ],
+        [
+          "Line",
+          121
+        ],
+        [
+          "Text",
+          15
+        ],
+        [
+          "Equation",
+          7
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          113
+        ],
+        [
+          "Span",
+          69
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Equation",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          118
+        ],
+        [
+          "Span",
+          110
+        ],
+        [
+          "Text",
+          12
+        ],
+        [
+          "Equation",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          161
+        ],
+        [
+          "Line",
+          104
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "Equation",
+          3
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 14,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          142
+        ],
+        [
+          "Line",
+          114
+        ],
+        [
+          "Text",
+          13
+        ],
+        [
+          "Equation",
+          10
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 15,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          126
+        ],
+        [
+          "Line",
+          125
+        ],
+        [
+          "Text",
+          12
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Equation",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 16,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          243
+        ],
+        [
+          "Line",
+          104
+        ],
+        [
+          "Footnote",
+          10
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "Reference",
+          4
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 17,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          478
+        ],
+        [
+          "Line",
+          127
+        ],
+        [
+          "ListItem",
+          47
+        ],
+        [
+          "Reference",
+          41
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 18,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          138
+        ],
+        [
+          "Line",
+          130
+        ],
+        [
+          "ListItem",
+          25
+        ],
+        [
+          "Reference",
+          23
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Equation",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 19,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          198
+        ],
+        [
+          "Line",
+          67
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Equation",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 20,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          124
+        ],
+        [
+          "Line",
+          53
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Equation",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 21,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          114
+        ],
+        [
+          "Line",
+          55
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "Equation",
+          4
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 22,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          70
+        ],
+        [
+          "Line",
+          29
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "Equation",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/2308.10903"
+}
