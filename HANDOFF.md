@@ -88,20 +88,39 @@ H3 → H4 → {H5, T6}; T1..T4 → all C*; C1..C8 → C9 → S1 → S2; H5 + T6 
     2107.13834); Osborne-Stottmeister 2107.13834 has 125 backward refs.
 - **DB now: 515 papers, ~700 citations, 272+ PDFs**.
 
-### Background processes (long-running)
-- `/tmp/bulk_marker.log` — bulk marker conversion (5/270 done; Eck thesis
-  hit timeout once and got skipped, will retry manually).
-- `/tmp/bulk_arxiv_pdfs2.log` — second bulk PDF pull picking up the new
-  stubs surfaced by cite chase.
+### All Lit-* beads closed (23/23)
+- Phase H (5): SQLite schema + lit.py CLI + ingest + first export.
+- Phase T (6): lit add (S2+OpenAlex+arXiv), fetch-cites (OpenAlex bidirectional),
+  pdf (arXiv direct + headed-Playwright fallback for paywalled), md (marker),
+  export (bib + survey), gaps. T5 (gscholar fallback) deferred.
+- Phase C (9): all 8 anchor seeds chased; Pichler-Vishwanath also chased;
+  pre-2013 lineage automatically harvested; 5 missing adjacent-tradition
+  papers manually added; high-impact stubs tiered.
+- Phase S (3): per-paper deep notes in papers.notes for the 10 anchors;
+  hand-written `literature/SYNTHESIS.md` (narrative review with gap
+  diagram). S3 (BibTeX integration into tex/main.tex) deferred until
+  paper writeup advances.
 
-### What's next
-- C9 triage: marker outputs of high-cite tier-1 stubs (Moore-Read,
-  Read-Rezayi, Wilczek, Frohlich, Witten) once marker finishes them.
-- S1: per-tier write-up. Notes for the 10 anchor papers already in DB.
-  Need similar for new T1/T3 entries.
-- Manual seeds still missing: Bonderson PhD thesis (Caltech 2007), Pachos
-  book, Wen book (or Wen+Niu textbook chapters); Goldin-Menikoff-Sharp
-  1981 (J. Math. Phys., DOI-only).
+### Final state
+- **DB**: 630 papers, 702 citation edges, 350+ local PDFs, 16 anchor
+  seeds. T1=23, T2=11, T3=19, T4=8, T5=19, untiered=550 cite-chase stubs.
+- **Outputs**: `literature/SURVEY.md` (auto-generated catalog),
+  `literature/SYNTHESIS.md` (hand-written narrative), `literature/references.bib`.
+- **Background**: marker still grinding (~10 PDFs converted, will keep
+  going). Bulk arxiv PDF pull (2nd run) picking up new stubs.
+
+### Open follow-ups
+- Eck PhD thesis 2025 markdown conversion (200+ pages, hit 5min timeout).
+  Retry with `--timeout 1800` or chunk by `--page_range`.
+- Bonderson PhD thesis (Caltech 2007), Pachos *Intro to Topological QC*
+  (Cambridge 2012), Wen *QFT of Many-Body Systems* (OUP 2004) — non-arXiv,
+  non-DOI; need manual ingest.
+- `lit citations-from-md` subcommand for parsing arxiv refs out of marker
+  output — fills the OpenAlex backward-refs gap on recent preprints
+  (Stottmeister anyon-RG, Nakajima, the burst papers).
+- S2 cite-chase fallback once rate limit cools.
+- Replace `tex/main.tex` inline `\bibitem` block with bibtex against the
+  generated `references.bib`.
 
 ---
 
