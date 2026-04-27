@@ -63,13 +63,21 @@ H3 → H4 → {H5, T6}; T1..T4 → all C*; C1..C8 → C9 → S1 → S2; H5 + T6 
   preprints (Stottmeister 2201.11562 shows 0/0). Need S2 or PDF parsing
   to fill those gaps.
 
+- **T3 (ma-o7h) DONE**: `lit pdf <id>` arxiv-direct works (no auth, no
+  rate limit). `--all-arxiv` bulk-pulls every arxiv stub. 4 stub seeds
+  + bulk pull running in background (`nohup ... > /tmp/bulk_arxiv_pdfs.log`).
+  `scripts/lit_fetch_pdf.mjs` is the headed-Playwright fallback for
+  paywalled (TIB VPN); pattern adapted from `FQHE/scripts/fetch_aps_papers.mjs`,
+  not yet exercised end-to-end.
+
 ### What's next
-- T3 (ma-o7h): `lit pdf` — arXiv direct first, then headed-Playwright
-  through TIB VPN for paywalled. PDFs needed for: Hollands 2205.15243,
-  Stottmeister 2201.11562, Shi-Senthil 2505.02893, plus the high-value
-  stubs (Huston-Penneys 2208.14018 already most-cited node; Bonderson
-  interferometry; etc.).
-- T4 (ma-ah9): `lit md` — wrap marker for PDF→md.
+- T4 (ma-ah9): `lit md` — wrap marker for PDF→md. Uses
+  `/home/tobiasosborne/Projects/archivum/.venv/bin/marker_single`.
+- T6 (ma-6st): expand `lit export` (already v0); add `gaps` polish, S2
+  cite-chase fallback for papers with empty OpenAlex backward refs.
+- The C* tasks (cite chase) can technically start now that T1+T2+T3 work,
+  but for the seeds we already chased (8 of 8) the citations are in DB.
+  Phase C is mostly enrichment + triage in C9 now.
 
 ---
 

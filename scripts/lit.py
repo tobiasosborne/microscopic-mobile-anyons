@@ -844,6 +844,182 @@ def cmd_add(args: argparse.Namespace) -> None:
     conn.close()
 
 
+# ---------- cmd_pdf ----------
+
+ARXIV_PDF_BASE = "https://arxiv.org/pdf"
+PDFS_DIR_REL = Path("literature") / "pdfs"
+
+
+def _slug_from_paper(rec: sqlite3.Row) -> str:
+    if rec["arxiv_id"]:
+        return rec["arxiv_id"].replace("/", "_")
+    if rec["doi"]:
+        return rec["doi"].replace("/", "_").replace(".", "_")
+    if rec["bib_key"]:
+        return rec["bib_key"].lower()
+    return f"paper{rec['id']}"
+
+
+def _download_to(url: str, dest: Path, expect_pdf: bool = True) -> bool:
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            ctype = resp.headers.get("Content-Type", "")
+            data = resp.read()
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as e:
+        print(f"  fetch failed: {e}", file=sys.stderr)
+        return False
+    if expect_pdf and not (data.startswith(b"%PDF") or "pdf" in ctype.lower()):
+        print(f"  unexpected content-type {ctype!r}; first bytes "
+              f"{data[:8]!r}", file=sys.stderr)
+        return False
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_bytes(data)
+    return True
+
+
+def cmd_pdf(args: argparse.Namespace) -> None:
+    if args.all_arxiv:
+        return _cmd_pdf_all_arxiv(args)
+
+    conn = connect()
+    cur = conn.cursor()
+
+    # Resolve identifier.
+    try:
+        kind, ident = parse_ident(args.ident)
+    except ValueError:
+        # Treat as bib_key or numeric paper id.
+        if args.ident.isdigit():
+            row = cur.execute(
+                "SELECT * FROM papers WHERE id = ?", (int(args.ident),)
+            ).fetchone()
+        else:
+            row = cur.execute(
+                "SELECT * FROM papers WHERE bib_key = ?", (args.ident,)
+            ).fetchone()
+        if not row:
+            sys.exit(f"could not resolve {args.ident!r}")
+    else:
+        col = "arxiv_id" if kind == "arxiv" else "doi"
+        row = cur.execute(
+            f"SELECT * FROM papers WHERE {col} = ?", (ident,)
+        ).fetchone()
+        if not row:
+            sys.exit(f"paper {args.ident!r} not in DB; run lit add first")
+
+    if row["pdf_path"] and not args.force:
+        existing = REPO_ROOT / row["pdf_path"]
+        if existing.exists():
+            print(f"  already have PDF at {row['pdf_path']}; "
+                  "pass --force to refetch")
+            return
+
+    slug = _slug_from_paper(row)
+    dest = REPO_ROOT / PDFS_DIR_REL / f"{slug}.pdf"
+
+    fetched = False
+
+    if row["arxiv_id"]:
+        # Direct from arxiv.org (no rate limits, no auth).
+        url = f"{ARXIV_PDF_BASE}/{row['arxiv_id']}.pdf"
+        print(f"  arxiv: {url}")
+        fetched = _download_to(url, dest)
+
+    if not fetched and row["doi"]:
+        # Last try: OpenAlex best_oa_location.pdf_url, if any.
+        oa_id = row["openalex_id"]
+        if oa_id:
+            full = _http_get_json(f"{OPENALEX_BASE}/works/{oa_id}")
+        else:
+            full = openalex_lookup("doi", row["doi"])
+        oa_pdf = None
+        if full:
+            best = full.get("best_oa_location") or {}
+            oa_pdf = best.get("pdf_url")
+        if oa_pdf:
+            print(f"  openalex pdf_url: {oa_pdf}")
+            fetched = _download_to(oa_pdf, dest)
+
+    if not fetched:
+        # Paywalled fallback. Hand off to the headed-Playwright script.
+        playwright_script = REPO_ROOT / "scripts" / "lit_fetch_pdf.mjs"
+        url_hint = (f"https://doi.org/{row['doi']}" if row["doi"]
+                    else "(no URL available)")
+        print(
+            f"  no free PDF route. To fetch via headed Playwright on TIB VPN:\n"
+            f"      node {playwright_script.relative_to(REPO_ROOT)} "
+            f"\"{url_hint}\" \"{dest.relative_to(REPO_ROOT)}\"",
+            file=sys.stderr,
+        )
+        sys.exit(3)
+
+    rel = str(dest.relative_to(REPO_ROOT))
+    cur.execute(
+        "UPDATE papers SET pdf_path = ?, status = 'have_pdf' WHERE id = ?",
+        (rel, row["id"]),
+    )
+    # Provenance.
+    sha = _sha256(dest)
+    cur.execute(
+        "INSERT INTO file_provenance "
+        "(paper_id, original_filename, canonical_path, file_kind, sha256) "
+        "VALUES (?, ?, ?, 'pdf', ?)",
+        (row["id"], dest.name, rel, sha),
+    )
+    conn.commit()
+    conn.close()
+    print(f"  saved {rel}  ({dest.stat().st_size} bytes)")
+
+
+def _cmd_pdf_all_arxiv(args: argparse.Namespace) -> None:
+    """Bulk-fetch arxiv PDFs for every paper with arxiv_id and no pdf_path."""
+    conn = connect()
+    cur = conn.cursor()
+    rows = cur.execute(
+        "SELECT id, arxiv_id, doi, bib_key FROM papers "
+        "WHERE arxiv_id IS NOT NULL AND pdf_path IS NULL "
+        "ORDER BY year DESC, id"
+    ).fetchall()
+    print(f"  pulling {len(rows)} arxiv stubs")
+    ok = fail = 0
+    for r in rows:
+        slug = r["arxiv_id"].replace("/", "_")
+        dest = REPO_ROOT / PDFS_DIR_REL / f"{slug}.pdf"
+        if dest.exists():
+            cur.execute(
+                "UPDATE papers SET pdf_path = ?, status = 'have_pdf' WHERE id = ?",
+                (str(dest.relative_to(REPO_ROOT)), r["id"]),
+            )
+            conn.commit()
+            ok += 1
+            continue
+        url = f"{ARXIV_PDF_BASE}/{r['arxiv_id']}.pdf"
+        if _download_to(url, dest):
+            cur.execute(
+                "UPDATE papers SET pdf_path = ?, status = 'have_pdf' WHERE id = ?",
+                (str(dest.relative_to(REPO_ROOT)), r["id"]),
+            )
+            conn.commit()
+            ok += 1
+            print(f"    [{ok+fail:>3d}/{len(rows)}] {slug}.pdf")
+        else:
+            fail += 1
+            print(f"    FAIL {slug}", file=sys.stderr)
+        time.sleep(args.sleep)
+    conn.close()
+    print(f"  done: {ok} ok, {fail} failed")
+
+
+def _sha256(p: Path) -> str:
+    import hashlib
+    h = hashlib.sha256()
+    with p.open("rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
 # ---------- export bib / survey (v0; T6 will expand) ----------
 
 TIER_NAMES = {
@@ -1028,9 +1204,16 @@ def build_parser() -> argparse.ArgumentParser:
                          choices=["forward", "backward", "both"], default="both")
     p_cites.set_defaults(func=cmd_fetch_cites)
 
-    p_pdf = sub.add_parser("pdf", help="Download PDF [T3]")
-    p_pdf.add_argument("ident")
-    p_pdf.set_defaults(func=_not_yet("ma-o7h"))
+    p_pdf = sub.add_parser("pdf", help="Download PDF (arXiv direct + OA + Playwright fallback)")
+    p_pdf.add_argument("ident", nargs="?",
+                       help="arXiv id, DOI, bib_key, or numeric paper id")
+    p_pdf.add_argument("--force", action="store_true",
+                       help="Refetch even if pdf_path already set")
+    p_pdf.add_argument("--all-arxiv", action="store_true",
+                       help="Pull every arxiv stub that has no PDF yet")
+    p_pdf.add_argument("--sleep", type=float, default=2.0,
+                       help="Per-request delay for --all-arxiv (default 2s)")
+    p_pdf.set_defaults(func=cmd_pdf)
 
     p_md = sub.add_parser("md", help="Convert PDF -> markdown [T4]")
     p_md.add_argument("ident")
