@@ -17,6 +17,28 @@
 
 ## Tier 1 — directly defines variable-N anyon Hilbert space from a fusion category
 
+### [paper100] ? (1984) — Fractional Statistics and the Quantum Hall Effect
+
+- **DOI**: 10.1103/physrevlett.53.722
+- **PDF status**: stub
+
+### [paper50] ? (1991) — Nonabelions in the fractional quantum hall effect
+
+- **DOI**: 10.1016/0550-3213(91)90407-o
+- **PDF status**: stub
+
+### [paper56] ? (1999) — Beyond paired quantum Hall states: Parafermions and incompressible states in the first excited Landau level
+
+- **arXiv**: cond-mat/9809384
+- **DOI**: 10.1103/physrevb.59.8084
+- **PDF status**: have_pdf (`literature/pdfs/cond-mat_9809384.pdf`)
+
+### [paper94] ? (2000) — Paired states of fermions in two dimensions with breaking of parity and time-reversal symmetries and the fractional quantum Hall effect
+
+- **arXiv**: cond-mat/9906453
+- **DOI**: 10.1103/physrevb.61.10267
+- **PDF status**: have_pdf (`literature/pdfs/cond-mat_9906453.pdf`)
+
 ### [PoilblancTroyerArdonneBonderson2012] Poilblanc, Troyer, Ardonne, Bonderson (2011) — Fractionalization of itinerant anyons in one dimensional chains 🔑
 
 - **arXiv**: 1112.5950
@@ -189,6 +211,21 @@
 - **PDF status**: have_pdf (`literature/pdfs/leinaas_myrheim_nuovo_cimento_1977.pdf`)
 - **Notes**: Foundational identical-particle / anyon configuration-space formalism.
 
+### [paper177] ? (1982) — Quantum Mechanics of Fractional-Spin Particles
+
+- **DOI**: 10.1103/physrevlett.49.957
+- **PDF status**: stub
+
+### [paper103] ? (1989) — Superselection sectors with braid group statistics and exchange algebras
+
+- **DOI**: 10.1007/bf01217906
+- **PDF status**: stub
+
+### [paper128] ? (1989) — Quantum field theory and the Jones polynomial
+
+- **DOI**: 10.1007/bf01217730
+- **PDF status**: stub
+
 ### [EtingofNikshychOstrik2005] Etingof, Nikshych, Ostrik (2005) — On fusion categories
 
 - **arXiv**: math/0203060
@@ -201,9 +238,26 @@
 - **DOI**: 10.1016/j.aop.2005.10.005
 - **PDF status**: have_pdf (`literature/pdfs/cond-mat_0506438.pdf`)
 
+### [paper66] ? (2008) — A Short Introduction to Fibonacci Anyon Models
+
+- **arXiv**: 0902.3275
+- **DOI**: 10.1143/ptps.176.384
+- **PDF status**: have_pdf (`literature/pdfs/0902.3275.pdf`)
+
+### [paper114] ? (2008) — Interferometry of non-Abelian anyons
+
+- **arXiv**: 0707.4206
+- **DOI**: 10.1016/j.aop.2008.01.012
+- **PDF status**: have_pdf (`literature/pdfs/0707.4206.pdf`)
+
 ### [EtingofLectures2009] Etingof (2009) — Tensor Categories (Lecture Notes)
 
 - **PDF status**: have_pdf (`literature/pdfs/etingof_tensor_categories_lectures_2009.pdf`)
+
+### [paper59] ? (2010) — Topological Quantum Computation
+
+- **DOI**: 10.1090/cbms/112
+- **PDF status**: stub
 
 ### [EGNO2015] Etingof, Gelaki, Nikshych, Ostrik (2015) — Tensor Categories
 
@@ -216,6 +270,11 @@
 - **Venue**: OSU Math 8800 lecture notes
 - **PDF status**: have_pdf (`literature/pdfs/penneys_math8800_unitary_fusion_categories.pdf`)
 - **Notes**: Course material reference.
+
+### [paper40] Peter Huston, Fiona Burnell, Corey Jones, David Penneys (2022) — Composing topological domain walls and anyon mobility
+
+- **arXiv**: 2208.14018
+- **PDF status**: have_pdf (`literature/pdfs/2208.14018.pdf`)
 
 ### [Hollands2022] S. Hollands (2022) — Anyonic Chains, alpha-Induction, CFT, Defects, Subfactors 🔑
 
@@ -280,6 +339,27 @@
 - **PDF status**: have_pdf (`literature/pdfs/girardeau_jmp_1_516_1960.pdf`)
 - **Notes**: Foundational hard-core boson paper. Pre-anyon.
 
+### [paper44] ? (1982) — Two-Dimensional Magnetotransport in the Extreme Quantum Limit
+
+- **DOI**: 10.1103/physrevlett.48.1559
+- **PDF status**: stub
+
+### [paper42] ? (1983) — Anomalous Quantum Hall Effect: An Incompressible Quantum Fluid with Fractionally Charged Excitations
+
+- **DOI**: 10.1103/physrevlett.50.1395
+- **PDF status**: stub
+
+### [paper135] ? (1987) — Observation of an even-denominator quantum number in the fractional quantum Hall effect
+
+- **DOI**: 10.1103/physrevlett.59.1776
+- **PDF status**: stub
+
+### [paper45] ? (2001) — Unpaired Majorana fermions in quantum wires
+
+- **arXiv**: cond-mat/0010440
+- **DOI**: 10.1070/1063-7869/44/10s/s29
+- **PDF status**: have_pdf (`literature/pdfs/cond-mat_0010440.pdf`)
+
 ### [Girardeau2006] Girardeau (2006) — Anyon-Fermion Mapping and Applications to Ultracold Gases in Tight Waveguides
 
 - **DOI**: 10.1103/physrevlett.97.100402
@@ -291,6 +371,36 @@
 - **Venue**: J. Phys. A: Math. Theor. 41 465201
 - **PDF status**: have_pdf (`literature/pdfs/jphysa_41_465201_2008.pdf`)
 - **Notes**: Abelian anyonic grading in QISM.
+
+### [paper48] ? (2010) — Majorana Fermions and a Topological Phase Transition in Semiconductor-Superconductor Heterostructures
+
+- **arXiv**: 1002.4033
+- **DOI**: 10.1103/physrevlett.105.077001
+- **PDF status**: have_pdf (`literature/pdfs/1002.4033.pdf`)
+
+### [paper49] ? (2010) — Helical Liquids and Majorana Bound States in Quantum Wires
+
+- **arXiv**: 1003.1145
+- **DOI**: 10.1103/physrevlett.105.177002
+- **PDF status**: have_pdf (`literature/pdfs/1003.1145.pdf`)
+
+### [paper47] ? (2012) — Signatures of Majorana Fermions in Hybrid Superconductor-Semiconductor Nanowire Devices
+
+- **arXiv**: 1204.2792
+- **DOI**: 10.1126/science.1222360
+- **PDF status**: have_pdf (`literature/pdfs/1204.2792.pdf`)
+
+### [paper52] ? (2012) — Zero-bias peaks and splitting in an Al–InAs nanowire topological superconductor as a signature of Majorana fermions
+
+- **arXiv**: 1205.7073
+- **DOI**: 10.1038/nphys2479
+- **PDF status**: have_pdf (`literature/pdfs/1205.7073.pdf`)
+
+### [paper54] ? (2012) — Anomalous Zero-Bias Conductance Peak in a Nb–InSb Nanowire–Nb Hybrid Device
+
+- **arXiv**: 1204.4130
+- **DOI**: 10.1021/nl303758w
+- **PDF status**: have_pdf (`literature/pdfs/1204.4130.pdf`)
 
 ### [SciPost5_5_052_2018] (SciPost; defer) (2018) — Analysis of the buildup of spatiotemporal correlations after a quantum quench
 
