@@ -192,6 +192,157 @@ def _not_yet(task_id: str):
     return _impl
 
 
+# ---------- export bib / survey (v0; T6 will expand) ----------
+
+TIER_NAMES = {
+    1: "Tier 1 — directly defines variable-N anyon Hilbert space "
+       "from a fusion category",
+    2: "Tier 2 — dense anyonic chain ancestry",
+    3: "Tier 3 — categorical / mathematical foundations",
+    4: "Tier 4 — numerical methods for anyonic systems",
+    5: "Tier 5 — adjacent / abelian / triage",
+}
+
+
+def _entry_kind(rec: sqlite3.Row) -> str:
+    venue = (rec["venue"] or "").lower()
+    if "thesis" in venue:
+        return "phdthesis"
+    if "lecture" in venue or "notes" in venue:
+        return "misc"
+    if "monograph" in venue or "ams" in venue or "book" in venue:
+        return "book"
+    return "article"
+
+
+def _bib_entry(rec: sqlite3.Row) -> str:
+    key = rec["bib_key"] or (rec["arxiv_id"] or rec["doi"] or f"paper{rec['id']}")
+    fields = []
+    if rec["authors_str"]:
+        fields.append(("author", rec["authors_str"]))
+    if rec["title"]:
+        fields.append(("title", rec["title"]))
+    if rec["year"]:
+        fields.append(("year", str(rec["year"])))
+    if rec["venue"]:
+        fields.append(("journal", rec["venue"]))
+    if rec["doi"]:
+        fields.append(("doi", rec["doi"]))
+    if rec["arxiv_id"]:
+        fields.append(("eprint", rec["arxiv_id"]))
+        fields.append(("archivePrefix", "arXiv"))
+    if rec["notes"]:
+        fields.append(("note", rec["notes"]))
+    body = ",\n  ".join(f"{k} = {{{v}}}" for k, v in fields)
+    return f"@{_entry_kind(rec)}{{{key},\n  {body}\n}}"
+
+
+def cmd_export(args: argparse.Namespace) -> None:
+    conn = connect()
+    cur = conn.cursor()
+
+    if args.kind in ("bib", "all"):
+        rows = cur.execute(
+            "SELECT * FROM papers ORDER BY year, authors_str"
+        ).fetchall()
+        out = REPO_ROOT / "literature" / "references.bib"
+        with out.open("w") as f:
+            f.write("% Generated from literature/db/papers.sqlite\n")
+            f.write("% Edit the DB; do not hand-edit this file.\n\n")
+            for r in rows:
+                f.write(_bib_entry(r) + "\n\n")
+        print(f"wrote {out.relative_to(REPO_ROOT)}  ({len(rows)} entries)")
+
+    if args.kind in ("survey", "all"):
+        out = REPO_ROOT / "literature" / "SURVEY.md"
+        rows = cur.execute(
+            "SELECT * FROM papers ORDER BY tier, year, authors_str"
+        ).fetchall()
+        seed_ids = {
+            r["paper_id"]
+            for r in cur.execute("SELECT paper_id FROM seeds").fetchall()
+        }
+        with out.open("w") as f:
+            f.write("# Literature Survey — Mobile Anyons from Fusion Categories\n\n")
+            f.write("> Generated from `literature/db/papers.sqlite`. ")
+            f.write("Edit the DB, not this file.\n\n")
+
+            f.write("## Anchor seeds\n\n")
+            f.write("| arXiv/DOI | Authors | Year | Title | Reason |\n")
+            f.write("|-----------|---------|------|-------|--------|\n")
+            seeds = cur.execute(
+                "SELECT p.*, s.reason FROM papers p JOIN seeds s ON s.paper_id = p.id "
+                "ORDER BY p.year"
+            ).fetchall()
+            for r in seeds:
+                ident = r["arxiv_id"] or r["doi"] or "—"
+                f.write(
+                    f"| {ident} | {r['authors_str'] or ''} | {r['year'] or ''} | "
+                    f"{r['title']} | {r['reason']} |\n"
+                )
+            f.write("\n")
+
+            for tier in (1, 2, 3, 4, 5):
+                tier_rows = [r for r in rows if r["tier"] == tier]
+                if not tier_rows:
+                    continue
+                f.write(f"## {TIER_NAMES[tier]}\n\n")
+                for r in tier_rows:
+                    seed_marker = " 🔑" if r["id"] in seed_ids else ""
+                    tag = r["bib_key"] or f"paper{r['id']}"
+                    authors = r["authors_str"] or "?"
+                    year = r["year"] or "????"
+                    f.write(f"### [{tag}] {authors} ({year}) — {r['title']}{seed_marker}\n\n")
+                    if r["arxiv_id"]:
+                        f.write(f"- **arXiv**: {r['arxiv_id']}\n")
+                    if r["doi"]:
+                        f.write(f"- **DOI**: {r['doi']}\n")
+                    if r["venue"]:
+                        f.write(f"- **Venue**: {r['venue']}\n")
+                    f.write(f"- **PDF status**: {r['status']}")
+                    if r["pdf_path"]:
+                        f.write(f" (`{r['pdf_path']}`)")
+                    f.write("\n")
+                    if r["notes"]:
+                        f.write(f"- **Notes**: {r['notes']}\n")
+                    f.write("\n")
+
+            f.write(
+                "\n---\n\nReporting standard borrowed from "
+                "`Bennett.jl/docs/literature/SURVEY.md` and "
+                "`Sturm.jl/docs/literature/REPORTING_STANDARD.md`. "
+                "Tier definitions are in this file's section headers.\n"
+            )
+        print(f"wrote {out.relative_to(REPO_ROOT)}  ({len(rows)} papers)")
+
+    conn.close()
+
+
+def cmd_gaps(_args: argparse.Namespace) -> None:
+    conn = connect()
+    cur = conn.cursor()
+    print("=== papers without PDF ===")
+    for r in cur.execute(
+        "SELECT id, arxiv_id, doi, title FROM papers "
+        "WHERE pdf_path IS NULL ORDER BY year DESC"
+    ):
+        ident = r["arxiv_id"] or r["doi"] or "—"
+        print(f"  {ident:25s}  {r['title'][:80]}")
+    print()
+    print("=== papers without tier (need triage) ===")
+    for r in cur.execute(
+        "SELECT id, arxiv_id, title FROM papers WHERE tier IS NULL"
+    ):
+        print(f"  {r['arxiv_id'] or '—':25s}  {r['title'][:80]}")
+    print()
+    print("=== stub papers (no metadata yet) ===")
+    for r in cur.execute(
+        "SELECT id, arxiv_id, title FROM papers WHERE status = 'stub'"
+    ):
+        print(f"  {r['arxiv_id'] or '—':25s}  {r['title'][:80]}")
+    conn.close()
+
+
 # ---------- argparse ----------
 
 def build_parser() -> argparse.ArgumentParser:
@@ -237,12 +388,12 @@ def build_parser() -> argparse.ArgumentParser:
     p_gs.add_argument("query", nargs="+")
     p_gs.set_defaults(func=_not_yet("ma-7k0"))
 
-    p_exp = sub.add_parser("export", help="Regenerate references.bib / SURVEY.md [T6]")
+    p_exp = sub.add_parser("export", help="Regenerate references.bib / SURVEY.md")
     p_exp.add_argument("kind", choices=["bib", "survey", "all"])
-    p_exp.set_defaults(func=_not_yet("ma-6st"))
+    p_exp.set_defaults(func=cmd_export)
 
-    p_gaps = sub.add_parser("gaps", help="Audit DB for unfinished work [T6]")
-    p_gaps.set_defaults(func=_not_yet("ma-6st"))
+    p_gaps = sub.add_parser("gaps", help="Audit DB for unfinished work")
+    p_gaps.set_defaults(func=cmd_gaps)
 
     return p
 

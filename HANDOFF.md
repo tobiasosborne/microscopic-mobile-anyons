@@ -19,10 +19,34 @@ H3 → H4 → {H5, T6}; T1..T4 → all C*; C1..C8 → C9 → S1 → S2; H5 + T6 
   `literature/md/rwolfthesis/tex/`. Stray jpegs were already in their proper
   subfolder; just untracked.
 
+### Phase H — harmonise (cont.)
+- **H3 (ma-xbi) DONE** + **H4 (ma-3kx) DONE**: built
+  `literature/db/seed_existing_pdfs.json` manifest mapping each of the 40 PDFs
+  to a canonical slug + arxiv/doi/title/year/tier/bib_key. Ran
+  `scripts/lit_ingest_existing.py`: renamed 36 files to `{arxiv_id_or_slug}.pdf`,
+  deleted 4 duplicates, recorded full file_provenance (sha256), and inserted
+  all 36 into the DB at status=have_pdf.
+- **H5 (ma-qv6) DONE**: extended `lit.py` with `export bib`, `export survey`,
+  `gaps`. Generated `literature/SURVEY.md` (39 papers grouped by tier 1–5,
+  Bennett.jl-style entries) and `literature/references.bib` (39 entries).
+  Moved the old `catalog.md`, `overview.md`, `review.md` into
+  `literature/_archive/` with a README explaining the supersession.
+
+### Anchor seeds (8)
+1. `1112.5950` Poilblanc-Troyer-Ardonne-Bonderson 2011
+2. `1210.5605` Poilblanc-Feiguin-Troyer-Ardonne-Bonderson 2012
+3. `1608.04927` Garjani-Ardonne 2016 (variable-N pair creation; only 4 GS cites)
+4. `2205.15243` Hollands 2022 (categorical / subfactor) — stub, no PDF yet
+5. `2201.11562` Stottmeister 2022 anyon-RG — stub, no PDF yet
+6. `2505.02893` Shi-Zhang-Senthil 2025 — stub, no PDF yet
+7. `2508.14961` Nakajima-Mehta-Goldman 2025
+8. Eck PhD thesis Oxford 2025 — newly discovered T1 candidate
+
 ### What's next
-- H3 (ma-xbi): dedupe `literature/pdfs/`, rename to `{arxiv_id}.pdf`.
-- H4 (ma-3kx): ingest into SQLite; mark seven anchor seeds.
-- H5 (ma-qv6): first export of `SURVEY.md` + `references.bib`; archive old docs.
+- T1 (ma-957): `lit add` (arXiv + Semantic Scholar metadata fetch). Need a
+  project-local venv with `httpx`, `arxiv` (or just stdlib + S2 API).
+- T3 (ma-o7h): `lit pdf` — pull PDFs for the three stub seeds (Hollands,
+  Stottmeister, Shi-Senthil). TIB VPN active per user.
 
 ---
 
