@@ -264,14 +264,17 @@ DOI_RE = re.compile(r"^(?:doi:|https?://(?:dx\.)?doi\.org/)?(?P<id>10\.\d{4,9}/.
 
 
 def parse_ident(ident: str) -> tuple[str, str]:
-    """Parse 'arXiv:1234.5678' or '10.1103/...' -> ('arxiv'|'doi', clean_id)."""
+    """Parse 'arXiv:1234.5678' or '10.1103/...' -> ('arxiv'|'doi', clean_id).
+
+    DOIs are normalised to lowercase to avoid collation duplicates in the DB.
+    """
     s = ident.strip()
     m = ARXIV_ID_RE.match(s)
     if m:
         return "arxiv", m.group("id")
     m = DOI_RE.match(s)
     if m:
-        return "doi", m.group("id")
+        return "doi", m.group("id").lower()
     raise ValueError(f"could not parse identifier: {ident!r}")
 
 
@@ -456,6 +459,8 @@ def _upsert_paper_from_s2(conn: sqlite3.Connection, s2: dict) -> int:
     ext = s2.get("externalIds") or {}
     arxiv = ext.get("ArXiv")
     doi = ext.get("DOI")
+    if doi:
+        doi = doi.lower()
     s2id = s2.get("paperId")
 
     # Match priority: s2_paper_id -> arxiv_id -> doi.
@@ -539,7 +544,8 @@ def _doi_from_openalex(work_or_id) -> str | None:
         d = work_or_id
     if not d:
         return None
-    return d.split("doi.org/")[-1] if "doi.org/" in d else d
+    d = d.split("doi.org/")[-1] if "doi.org/" in d else d
+    return d.lower()
 
 
 def _arxiv_from_openalex(work: dict) -> str | None:

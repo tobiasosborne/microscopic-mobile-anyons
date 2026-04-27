@@ -20,21 +20,21 @@
 ### [PoilblancTroyerArdonneBonderson2012] Poilblanc, Troyer, Ardonne, Bonderson (2011) — Fractionalization of itinerant anyons in one dimensional chains 🔑
 
 - **arXiv**: 1112.5950
-- **DOI**: 10.1103/PhysRevLett.108.207201
+- **DOI**: 10.1103/physrevlett.108.207201
 - **Venue**: Phys. Rev. Lett. 108, 207201 (2012)
 - **PDF status**: have_pdf (`literature/pdfs/1112.5950.pdf`)
 
 ### [PoilblancFeiguinTroyerArdonneBonderson2013] Poilblanc, Feiguin, Troyer, Ardonne, Bonderson (2012) — One-dimensional itinerant interacting non-Abelian anyons 🔑
 
 - **arXiv**: 1210.5605
-- **DOI**: 10.1103/PhysRevB.87.085106
+- **DOI**: 10.1103/physrevb.87.085106
 - **Venue**: Phys. Rev. B 87, 085106 (2013)
 - **PDF status**: have_pdf (`literature/pdfs/1210.5605.pdf`)
 
 ### [SoniTroyerPoilblanc2016] Soni, Troyer, Poilblanc (2015) — Effective models of doped quantum ladders of non-Abelian anyons
 
 - **arXiv**: 1508.04160
-- **DOI**: 10.1103/PhysRevB.93.035124
+- **DOI**: 10.1103/physrevb.93.035124
 - **PDF status**: have_pdf (`literature/pdfs/1508.04160.pdf`)
 
 ### [GarjaniArdonne2017] Garjani, Ardonne (2016) — Anyon chains with pairing terms 🔑
@@ -48,7 +48,7 @@
 ### [WildeboerPatraMannaNielsen2020] Wildeboer, Patra, Manna, Nielsen (2017) — Anyonic quasiparticles of hardcore anyons
 
 - **arXiv**: 1711.00845
-- **DOI**: 10.1103/PhysRevB.102.125117
+- **DOI**: 10.1103/physrevb.102.125117
 - **PDF status**: have_pdf (`literature/pdfs/1711.00845.pdf`)
 
 ### [AnyonicFockSpace2019] Osborne et al. (2019) — Anyonic Fock space (note: filename misnamed; arXiv 1910.10619)
@@ -57,16 +57,48 @@
 - **PDF status**: have_pdf (`literature/pdfs/1910.10619.pdf`)
 - **Notes**: Original review.md / overview.md tagged this as Anyonic Fock Space (1910.10619). Verify after marker conversion.
 
+### [paper317] ? (2024) — Anyon Superconductivity from Topological Criticality in a Hofstadter-Hubbard Model
+
+- **arXiv**: 2410.18175
+- **DOI**: 10.48550/arxiv.2410.18175
+- **PDF status**: have_pdf (`literature/pdfs/2410.18175.pdf`)
+- **Notes**:  [2025 FCI burst]
+
+### [paper319] ? (2025) — Anyon delocalization transitions out of a disordered FQAH insulator
+
+- **arXiv**: 2506.02128
+- **DOI**: 10.48550/arxiv.2506.02128
+- **PDF status**: have_pdf (`literature/pdfs/2506.02128.pdf`)
+- **Notes**:  [2025 FCI burst]
+
+### [paper456] Clemens Kuhlenkamp, Stefan Divic, Michael P. Zaletel, Tomohiro Soejima, Ashvin Vishwanath (2025) — Robust superconductivity upon doping chiral spin liquid and Chern insulators in a Hubbard-Hofstadter model
+
+- **arXiv**: 2509.02675
+- **PDF status**: metadata_only
+- **Notes**:  [2025 FCI burst]
+
 ### [EckThesis2025] Eck (2025) — Quantum Lattice Models from Fusion Categories 🔑
 
 - **Venue**: PhD thesis, University of Oxford (Balliol)
 - **PDF status**: have_pdf (`literature/pdfs/eck_phd_thesis_oxford_2025.pdf`)
 - **Notes**: Newly discovered. Directly relevant. Need to extract her papers (per acknowledgements: 2 papers with Fendley + 1 in 2+1d).
 
+### [paper452] Fabian Pichler, Clemens Kuhlenkamp, Michael Knap, Ashvin Vishwanath (2025) — Microscopic Mechanism of Anyon Superconductivity Emerging from Fractional Chern Insulators
+
+- **arXiv**: 2506.08000
+- **PDF status**: metadata_only
+- **Notes**:  [2025 FCI burst]
+
 ### [KirchnerMoessnerPollmannGammonSmith2025] Kirchner, Moessner, Pollmann, Gammon-Smith (2025) — Phases of Interacting Fibonacci Anyons on a Ladder at Half-Filling
 
 - **arXiv**: 2507.22115
 - **PDF status**: have_pdf (`literature/pdfs/2507.22115.pdf`)
+
+### [paper454] Mina-Lou Schleith, Tomohiro Soejima, Eslam Khalaf (2025) — Anyon dispersion from non-uniform magnetic field on the sphere
+
+- **arXiv**: 2506.11211
+- **PDF status**: metadata_only
+- **Notes**:  [2025 FCI burst]
 
 ### [NakajimaMehtaGoldman2025] Nakajima, Mehta, Goldman (2025) — Thermodynamics of dilute anyon gases from fusion constraints 🔑
 
@@ -76,8 +108,32 @@
 ### [ShiZhangSenthil2025] Shi, Zhang, Senthil (2025) — Doping lattice non-abelian quantum Hall states 🔑
 
 - **arXiv**: 2505.02893
-- **PDF status**: metadata_only
+- **PDF status**: have_pdf (`literature/pdfs/2505.02893.pdf`)
 - **Notes**: PDF not yet downloaded.
+
+### [paper457] Ya-Hui Zhang (2025) — Holon metal, charge-density-wave and chiral superconductor from doping fractional Chern insulator and SU(3)$_1$ chiral spin liquid
+
+- **arXiv**: 2506.00110
+- **PDF status**: metadata_only
+- **Notes**:  [2025 FCI burst]
+
+### [paper453] Zhaoyu Han, Taige Wang, Zhihuan Dong, Michael P. Zaletel, Ashvin Vishwanath (2025) — Anyon superfluidity of excitons in quantum Hall bilayers
+
+- **arXiv**: 2508.14894
+- **PDF status**: metadata_only
+- **Notes**:  [2025 FCI burst]
+
+### [paper455] Zhengyan Darius Shi, T. Senthil (2025) — Non-Abelian topological superconductivity from melting Abelian fractional Chern insulators
+
+- **arXiv**: 2512.17996
+- **PDF status**: metadata_only
+- **Notes**:  [2025 FCI burst]
+
+### [paper458] Donghae Seo, Taegon Lee, Gil Young Cho (2026) — A Unified Categorical Description of Quantum Hall Hierarchy and Anyon Superconductivity
+
+- **arXiv**: 2602.03848
+- **PDF status**: metadata_only
+- **Notes**:  [2025 FCI burst]
 
 ## Tier 2 — dense anyonic chain ancestry
 
@@ -120,7 +176,7 @@
 ### [AyeniPfeiferBrennen2018] Ayeni, Pfeifer, Brennen (2017) — Phase transitions on a ladder of braided non-Abelian anyons
 
 - **arXiv**: 1712.04179
-- **DOI**: 10.1103/PhysRevB.98.045432
+- **DOI**: 10.1103/physrevb.98.045432
 - **Venue**: Phys. Rev. B 98, 045432 (2018)
 - **PDF status**: have_pdf (`literature/pdfs/1712.04179.pdf`)
 
@@ -128,7 +184,7 @@
 
 ### [LeinaasMyrheim1977] Leinaas, Myrheim (1977) — On the theory of identical particles
 
-- **DOI**: 10.1007/BF02727953
+- **DOI**: 10.1007/bf02727953
 - **Venue**: Nuovo Cimento B 37, 1-23
 - **PDF status**: have_pdf (`literature/pdfs/leinaas_myrheim_nuovo_cimento_1977.pdf`)
 - **Notes**: Foundational identical-particle / anyon configuration-space formalism.
@@ -166,13 +222,13 @@
 - **arXiv**: 2205.15243
 - **DOI**: 10.1007/s00220-022-04581-w
 - **Venue**: Communications in Mathematical Physics
-- **PDF status**: metadata_only
+- **PDF status**: have_pdf (`literature/pdfs/2205.15243.pdf`)
 - **Notes**: PDF not yet downloaded. Will fetch via lit pdf when T3 lands.
 
 ### [Stottmeister2022Anyon] Stottmeister (2022) — Anyon braiding and the renormalization group 🔑
 
 - **arXiv**: 2201.11562
-- **PDF status**: metadata_only
+- **PDF status**: have_pdf (`literature/pdfs/2201.11562.pdf`)
 - **Notes**: PDF not yet downloaded.
 
 ## Tier 4 — numerical methods for anyonic systems
@@ -180,13 +236,13 @@
 ### [SinghPfeiferVidalBrennen2014] Singh, Pfeifer, Vidal, Brennen (2013) — Matrix product states for anyonic systems
 
 - **arXiv**: 1311.0967
-- **DOI**: 10.1103/PhysRevB.89.075112
+- **DOI**: 10.1103/physrevb.89.075112
 - **PDF status**: have_pdf (`literature/pdfs/1311.0967.pdf`)
 
 ### [AyeniSinghPfeiferBrennen2016] Ayeni, Singh, Pfeifer, Brennen (2015) — Simulation of braiding anyons using matrix product states
 
 - **arXiv**: 1509.00903
-- **DOI**: 10.1103/PhysRevB.93.165128
+- **DOI**: 10.1103/physrevb.93.165128
 - **PDF status**: have_pdf (`literature/pdfs/1509.00903.pdf`)
 
 ### [AyeniThesis2017] Ayeni (2017) — Studies of braided non-Abelian anyons using anyonic tensor networks
@@ -197,20 +253,22 @@
 
 ### [Mila2019] Mila group (2019) — DMRG investigation of constrained models
 
-- **DOI**: 10.21468/SciPostPhys.6.3.033
-- **PDF status**: have_pdf (`literature/pdfs/scipost_6_3_033_2019.pdf`)
+- **arXiv**: 1809.00746
+- **DOI**: 10.21468/scipostphys.6.3.033
+- **PDF status**: have_pdf (`literature/pdfs/1809.00746.pdf`)
 - **Notes**: Defer arxiv lookup.
 
 ### [Ware2021] Ware et al. (2021) — Perturbative instability of nonergodic phases in non-Abelian quantum chains
 
-- **DOI**: 10.1103/PhysRevB.103.094203
-- **PDF status**: have_pdf (`literature/pdfs/prb_103_094203_2021.pdf`)
+- **arXiv**: 2010.10550
+- **DOI**: 10.1103/physrevb.103.094203
+- **PDF status**: have_pdf (`literature/pdfs/2010.10550.pdf`)
 - **Notes**: Defer arxiv lookup.
 
 ### [Kirchner2022] Kirchner, Millar, Ayeni, Smith, Slingerland, Pollmann (2022) — Numerical simulation of non-Abelian anyons
 
 - **arXiv**: 2206.14730
-- **DOI**: 10.1103/PhysRevB.107.195129
+- **DOI**: 10.1103/physrevb.107.195129
 - **PDF status**: have_pdf (`literature/pdfs/2206.14730.pdf`)
 
 ## Tier 5 — adjacent / abelian / triage
@@ -224,7 +282,7 @@
 
 ### [Girardeau2006] Girardeau (2006) — Anyon-Fermion Mapping and Applications to Ultracold Gases in Tight Waveguides
 
-- **DOI**: 10.1103/PhysRevLett.97.100402
+- **DOI**: 10.1103/physrevlett.97.100402
 - **PDF status**: have_pdf (`literature/pdfs/girardeau_prl_97_100402_2006.pdf`)
 - **Notes**: Abelian Girardeau-style anyons.
 
@@ -236,7 +294,7 @@
 
 ### [SciPost5_5_052_2018] (SciPost; defer) (2018) — Analysis of the buildup of spatiotemporal correlations after a quantum quench
 
-- **DOI**: 10.21468/SciPostPhys.5.5.052
+- **DOI**: 10.21468/scipostphys.5.5.052
 - **PDF status**: have_pdf (`literature/pdfs/scipost_5_5_052_2018.pdf`)
 - **Notes**: Possibly misfiled — quench dynamics, not anyon Hilbert space. Triage in C9.
 
@@ -249,21 +307,22 @@
 
 ### [Manna2018] Manna et al. (2018) — Non-Abelian Quasiholes in Lattice Moore-Read States
 
-- **DOI**: 10.1103/PhysRevB.98.165147
-- **PDF status**: have_pdf (`literature/pdfs/prb_98_165147_2018.pdf`)
+- **arXiv**: 1807.11222
+- **DOI**: 10.1103/physrevb.98.165147
+- **PDF status**: have_pdf (`literature/pdfs/1807.11222.pdf`)
 - **Notes**: Defer arxiv lookup; likely fixed-N quasihole construction.
 
 ### [Bonkhoff2021] Bonkhoff et al. (2020) — Bosonic Continuum Theory of One-Dimensional Lattice Anyons
 
 - **arXiv**: 2008.00003
-- **DOI**: 10.1103/PhysRevLett.126.163201
+- **DOI**: 10.1103/physrevlett.126.163201
 - **Venue**: Phys. Rev. Lett. 126, 163201 (2021)
 - **PDF status**: have_pdf (`literature/pdfs/2008.00003.pdf`)
 - **Notes**: Abelian (anyon-Hubbard) continuum theory; triage in C9.
 
 ### [Yang2023] Yang et al. (2023) — Anyons in a tight wave-guide and the Tonks-Girardeau gas
 
-- **DOI**: 10.21468/SciPostPhysCore.6.4.079
+- **DOI**: 10.21468/scipostphyscore.6.4.079
 - **PDF status**: have_pdf (`literature/pdfs/scipost_core_6_4_079_2023.pdf`)
 - **Notes**: Abelian Tonks-Girardeau anyons, not categorical.
 
