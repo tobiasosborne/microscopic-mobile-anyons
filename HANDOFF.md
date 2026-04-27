@@ -1,3 +1,31 @@
+# Session Handoff — 2026-04-27
+
+## Literature crawl: Phase H started
+
+Pivoting from the fine-graining work to a deep literature review on the project's
+core contribution: **Fock space H = ⊕_N H_N for an indeterminate number of anyons
+from an arbitrary fusion category**, with morphism-space N-particle sectors and
+pair creation/annihilation between sectors.
+
+Beads issues created (`Lit-H/T/C/S` prefix, ma-* IDs). DAG wired: H1 → {H3, T*},
+H3 → H4 → {H5, T6}; T1..T4 → all C*; C1..C8 → C9 → S1 → S2; H5 + T6 → S3.
+
+### Phase H — harmonise existing state
+- **H1 (ma-c3a) DONE**: `literature/db/schema.sql` + `scripts/lit.py` CLI skeleton.
+  SQLite at `literature/db/papers.sqlite` (gitignored). Subcommands `init`,
+  `status`, `seed` work; `add`/`fetch-cites`/`pdf`/`md`/`gscholar`/`export`/`gaps`
+  stubbed and pointing at their owning beads task IDs.
+- **H2 (ma-vig) DONE**: moved `literature/tex/` (rwolfthesis source) →
+  `literature/md/rwolfthesis/tex/`. Stray jpegs were already in their proper
+  subfolder; just untracked.
+
+### What's next
+- H3 (ma-xbi): dedupe `literature/pdfs/`, rename to `{arxiv_id}.pdf`.
+- H4 (ma-3kx): ingest into SQLite; mark seven anchor seeds.
+- H5 (ma-qv6): first export of `SURVEY.md` + `references.bib`; archive old docs.
+
+---
+
 # Session Handoff — 2026-03-10
 
 ## What was done this session

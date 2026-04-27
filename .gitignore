@@ -51,8 +51,12 @@ __pycache__/
 .beads/bd.pipe
 .beads/.exclusive-lock
 
-# Literature PDFs
+# Literature PDFs (large; not version-controlled)
 literature/pdfs/
+
+# Literature DB (regeneratable from references.bib + arXiv/S2)
+literature/db/papers.sqlite
+literature/db/papers.sqlite-*
 
 # Archived beads (v0)
 archive/v0/.beads/

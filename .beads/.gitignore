@@ -5,6 +5,12 @@
 *.db-wal
 *.db-shm
 
+# Embedded Dolt working directory (machine-state)
+embeddeddolt/
+
+# Backup snapshots (regeneratable; keeps git diffs tractable)
+backup/
+
 # Daemon runtime files
 daemon.lock
 daemon.log

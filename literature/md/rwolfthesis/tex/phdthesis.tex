@@ -1,0 +1,325 @@
+\documentclass[a4paper,twoside,11pt]{amsbook}
+%\documentclass[a4paper,onecolumn,twoside,11pt,unpublished]{quantumarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,french,main=english]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts,amssymb}
+\usepackage[foot]{amsaddr}
+\usepackage{mathtools}
+\usepackage{mathshortcuts}
+\usepackage{enumitem}
+\usepackage[hypertexnames=false,backref=page]{hyperref}
+\usepackage{cleveref}
+\usepackage{autonum}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{mleftright}
+\usepackage{todonotes}
+\usepackage[left=3cm,right=3cm,top=3.5cm,bottom=3.5cm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes.geometric,decorations.markings,arrows,knots,calc,decorations.pathmorphing,decorations.pathreplacing,calc,shapes}
+\usepackage{lipsum}
+\usepackage{etoolbox}
+\usepackage{bm}
+\usepackage{blkarray,bigstrut}
+
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{colormaps}
+
+\makeindex
+
+\mleftright
+
+\allowdisplaybreaks
+
+\numberwithin{section}{chapter}
+\numberwithin{equation}{chapter}
+
+\newcommand{\alpharho}{{{}_\alpha\rho}}
+\newcommand{\alphastarrho}{{}_{\alpha^*}\!\rho}
+\newcommand{\C}{{\mathcal{C}}}
+\newcommand{\Hi}{{\mathcal{H}}}
+\newcommand{\Hd}{{\mathcal{H}_3}}
+\newcommand{\Obj}{\mathsf{Obj}}
+\newcommand{\Hom}{\mathsf{Hom}}
+\newcommand{\End}{\mathsf{End}}
+\renewcommand{\id}{\mathsf{id}}
+\newcommand{\ev}{\mathsf{ev}}
+\newcommand{\coev}{\mathsf{coev}}
+\newcommand{\Aut}{\mathsf{Aut}}
+\newcommand{\Tr}{\mathsf{Tr}}
+\newcommand{\lstar}{\ {}\!\!^*}
+\newcommand{\ldstar}{\ {}\!\!^{**}}
+
+\tikzset{->-/.style={decoration={
+			markings,
+			mark=at position .6 with {\arrow[>=stealth]{>}}},postaction={decorate}}}
+\tikzset{-->--/.style={decoration={
+			markings,
+			mark=at position .52 with {\arrow[>=stealth]{>}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={
+			markings,
+			mark=at position .6 with {\arrow[>=stealth]{<}}},postaction={decorate}}}
+		
+\tikzset{->>-/.style={decoration={
+			markings,
+			mark=at position .5 with {\arrow[>=stealth]{>}}},postaction={decorate}}}
+\tikzset{-<<-/.style={decoration={
+			markings,
+			mark=at position .5 with {\arrow[>=stealth]{<}}},postaction={decorate}}}
+\tikzset{->>>-/.style={decoration={
+			markings,
+			mark=at position .5 with {\arrow[>=stealth]{>}}},postaction={decorate}}}
+\tikzset{-<<<-/.style={decoration={
+			markings,
+			mark=at position .4 with {\arrow[>=stealth]{<}}},postaction={decorate}}}
+		
+
+
+
+\newcommand{\Cfourone}{\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)}]
+	\draw (0,0) to [bend right=60] (0,1);
+	\draw (1,0) to [bend left=60] (1,1);
+	\end{tikzpicture}}
+\newcommand{\Cfourtwo}{\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)}]
+	\draw (0,0) to [bend left=60] (1,0);
+	\draw (0,1) to [bend right=60] (1,1);
+	\end{tikzpicture}}
+\newcommand{\Cfourthree}{\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)}]
+	\draw (0,0) to (0.5,0.3) to (1,0);
+	\draw (0,1) to (0.5,0.7) to (1,1);
+	\draw (0.5,0.3) to (0.5,0.7);
+	\end{tikzpicture}}
+\newcommand{\Cfourfour}{\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)}]
+	\draw (0,0) to (0.3,0.5) to (0,1);
+	\draw (1,0) to (0.7,0.5) to (1,1);
+	\draw (0.3,0.5) to (0.7,0.5);
+	\end{tikzpicture}}
+
+\newcommand{\vertex}[3]{\begin{tikzpicture}[scale=0.7,baseline={(0,0.2)}]
+	\draw (0,0) -- +(90:1) node[above] {\small $#3$};
+	\draw (0,0) -- +(225:1) node[below] {\small $#1$};
+	\draw (0,0) -- +(315:1) node[below] {\small $#2$};
+	\end{tikzpicture}}
+
+\newcommand{\fuselefttree}[5]{\begin{tikzpicture}[scale = 0.425,baseline={(0,0.4)}]
+	\draw (0,0) node[below] {\small $#1$} -- (1.5,1.5) -- (3,0) node[below] {\small $#4$};
+	\draw (0.75,0.75) -- (1.5,0) node[below] {\small $#2$};
+	\draw (0.7,1.6) node {\small $#3$};
+	\draw (1.5,1.5) -- (1.5,2.25) node[above] {\small $#5$};
+	\end{tikzpicture}}
+
+\newcommand{\fuserighttree}[5]{\begin{tikzpicture}[font=\scriptsize,scale = 0.425,baseline={(0,0.4)}]
+	\draw (0,0) node[below] {\small $#1$} -- (1.5,1.5) -- (3,0) node[below] {\small $#4$};
+	\draw (2.25,0.75) -- (1.5,0) node[below] {\small $#2$};
+	\draw (2.3,1.6) node {\small $#3$};
+	\draw (1.5,1.5) -- (1.5,2.25) node[above] {\small $#5$};
+	\end{tikzpicture}}
+
+\newcommand\topstrut[1][1.2ex]{\setlength\bigstrutjot{#1}{\bigstrut[t]}}
+\newcommand\botstrut[1][0.9ex]{\setlength\bigstrutjot{#1}{\bigstrut[b]}}
+
+\newcommand{\itemone}{\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)}]\node[circle,scale=0.6,draw,LinkColor] at (0,0) {$1$};\end{tikzpicture}}
+\newcommand{\itemtwo}{\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)}]\node[circle,scale=0.6,draw,LinkColor] at (0,0) {$2$};\end{tikzpicture}}
+\newcommand{\itemthree}{\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)}]\node[circle,scale=0.6,draw,LinkColor] at (0,0) {$3$};\end{tikzpicture}}
+\newcommand{\itemfour}{\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)}]\node[circle,scale=0.6,draw,LinkColor] at (0,0) {$4$};\end{tikzpicture}}
+\newcommand{\itemfive}{\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)}]\node[circle,scale=0.6,draw,LinkColor] at (0,0) {$5$};\end{tikzpicture}}
+\newcommand{\itemsix}{\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)}]\node[circle,scale=0.6,draw,LinkColor] at (0,0) {$6$};\end{tikzpicture}}
+
+\newcommand{\Fone}{\,\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)},scale=1]\node[diamond,scale=0.35,draw,black] at (0,0) {\huge $1$};\end{tikzpicture}\,}
+\newcommand{\Ftwo}{\,\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)},scale=1]\node[diamond,scale=0.35,draw,black] at (0,0) {\huge $2$};\end{tikzpicture}\,}
+\newcommand{\Fthree}{\,\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)},scale=1]\node[diamond,scale=0.35,draw,black] at (0,0) {\huge $3$};\end{tikzpicture}\,}
+\newcommand{\Ffour}{\,\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)},scale=1]\node[diamond,scale=0.35,draw,black] at (0,0) {\huge $4$};\end{tikzpicture}\,}
+\newcommand{\Fx}{\,\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)},scale=1]\node[diamond,scale=0.35,draw,black] at (0,0) {\huge $x$};\end{tikzpicture}\,}
+\newcommand{\Fy}{\,\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)},scale=1]\node[diamond,scale=0.35,draw,black] at (0,0) {\huge $y$};\end{tikzpicture}\,}
+
+\newcommand{\VecZ}{\mathbf{Vec}(\mathbb{Z}/p\mathbb{Z})}
+
+
+\newcommand{\loopi}{\begin{tikzpicture}[baseline={([yshift=-3pt]current bounding box.center)}]\node[circle,scale=0.6,draw] at (0,0) {};\end{tikzpicture}}
+
+%original
+%\definecolor{LinkColor}{RGB}{167,20,49}
+%\definecolor{LinkColor2}{RGB}{14,118,89}
+%\definecolor{LinkColor3}{RGB}{136,171,20}
+%\definecolor{LinkColor4}{RGB}{237, 144, 92}
+
+%\definecolor{LinkColor}{RGB}{219, 53, 49}
+%\definecolor{LinkColor2}{RGB}{40, 91, 143}
+%\definecolor{LinkColor3}{RGB}{38, 172, 47}
+%\definecolor{LinkColor4}{RGB}{255, 153, 0}
+
+\definecolor{LinkColor}{RGB}{221, 6, 0}
+\definecolor{LinkColor2}{RGB}{15, 105, 197}
+\definecolor{LinkColor3}{RGB}{11, 170, 21}
+\definecolor{LinkColor4}{RGB}{238, 143, 0}
+\hypersetup{
+	colorlinks, 
+	linkcolor=black, 
+	citecolor=black,
+	filecolor=black, 
+	urlcolor=black,
+}
+
+\definecolor{plotcolor5}{rgb}{0.3455162, 0.39577619999999997, 0.29713619999999996}%FallColors
+\definecolor{plotcolor6}{rgb}{0.737738, 0.790457, 0.29265842999999997}
+\definecolor{plotcolor7}{rgb}{0.740646, 0.768237, 0.291835335}
+\definecolor{plotcolor8}{rgb}{0.74355452, 0.7460161599999999, 0.29101224}
+\definecolor{plotcolor9}{rgb}{0.746463, 0.723795, 0.290189145}
+\definecolor{plotcolor10}{rgb}{0.425297, 0.338621, 0.2466408}%FallColors
+\definecolor{plotcolor15}{rgb}{0.539404, 0.328498, 0.22511240000000002}%FallColors
+\definecolor{plotcolor20}{rgb}{0.691761, 0.409259, 0.22008260000000002}%FallColors
+\definecolor{plotcolor25}{rgb}{0.8499, 0.564538, 0.22587000000000002}%FallColors
+\definecolor{plotcolor30}{rgb}{0.944952, 0.717748, 0.24357699999999996}%FallColors
+\definecolor{plotcolor35}{rgb}{0.849015, 0.315572, 0.268106}
+\definecolor{plotcolor50}{rgb}{0.844732, 0.300941, 0.48150175000000006}
+\definecolor{plotcolor60}{rgb}{0.821381, 0.245522, 0.6544543999999999}
+
+\newcommand{\dothis}[1]{{\color{red}#1}}
+
+\definecolor{LightGray}{RGB}{220,220,220}
+
+\pgfplotsset{compat=newest}
+
+% 'Table of contents' instead of 'Contents'
+\renewcommand{\contentsname}{Table of contents}
+% Use the next line if you want capital letters
+\renewcommand{\contentsname}{\MakeUppercase{Table of contents}}
+
+% Uppercase 'CHAPTER' label in toc
+%\patchcmd{\tocchapter}{#1}{\MakeUppercase{#1}}{}{}
+
+% Leader dots in toc
+%\makeatletter
+%\renewcommand\@pnumwidth{1em} % <-- depending on the total number of pages
+%\patchcmd{\@tocline}
+%{\hfil}
+%{\leaders\hbox{\,.\,}\hfil}
+%{}{}
+%\makeatother
+
+
+
+
+% Define amsthm environments:
+\theoremstyle{definition}
+\newtheorem{hlp}{Helper}[chapter]
+\newtheorem{defn}[hlp]{Definition}
+\newtheorem{thm}[hlp]{Theorem}
+\newtheorem{lem}[hlp]{Lemma}
+\newtheorem{prop}[hlp]{Proposition}
+\newtheorem{cor}[hlp]{Corollary}
+\newtheorem{exmp}[hlp]{Example}
+\newtheorem{rem}[hlp]{Remark}
+
+% Define cleveref labels:
+\crefname{defn}{Definition}{Definitions}
+\Crefname{defn}{Definition}{Definitions}
+\crefname{thm}{Theorem}{Theorems}
+\Crefname{thm}{Theorem}{Theorems}
+\crefname{lem}{Lemma}{Lemmas}
+\Crefname{lem}{Lemma}{Lemmas}
+\crefname{rem}{Remark}{Remarks}
+\Crefname{rem}{Remark}{Remarks}
+\crefname{prop}{Proposition}{Propositions}
+\Crefname{prop}{Proposition}{Propositions}
+\crefname{cor}{Corollary}{Corollaries}
+\Crefname{cor}{Corollary}{Corollaries}
+\crefname{section}{Section}{Sections}
+\Crefname{section}{Section}{Sections}
+\crefname{equation}{}{}
+\Crefname{equation}{}{}
+\crefname{figure}{Figure}{Figures}
+\Crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\Crefname{table}{Table}{Tables}
+\crefname{appendix}{Appendix}{Appendices}
+\Crefname{appendix}{Appendix}{Appendices}
+\crefname{exmp}{Example}{examples}
+\Crefname{exmp}{Example}{examples}
+\crefname{chapter}{Chapter}{Chapters}
+\Crefname{chapter}{Chapter}{Chapters}
+
+\labelcrefformat{subequation}{#2(#1)#3}
+\labelcrefrangeformat{subequation}{#3(#1)#4 to #5(#2)#6}
+
+\title{Thesis}
+\author{Ramona Wolf}
+
+\begin{document}
+
+
+\input{titlepage.tex}
+\newpage
+
+\frontmatter
+\input{Abstract}
+\newpage
+\input{Kurzzusammenfassung}
+\newpage
+\input{acknowledgemants}
+\newpage
+\input{Publications}
+
+
+\newpage
+%{\hypersetup{
+%		colorlinks, 
+%		linkcolor=black, 
+%		citecolor=black, 
+%		filecolor=LinkColor, 
+%		urlcolor=LinkColor,
+%	}
+\tableofcontents
+%}
+\newpage
+
+\mainmatter
+
+
+\input{1_Introduction}
+
+
+\part{Mathematical tools}
+
+
+\input{2_CategoryTheory}
+\input{21_TrivalentCats}
+\input{3_Subfactors}
+\input{4_Drinfeld}
+
+
+\part{Microscopic models}
+
+%
+\input{5_AnyonChains}
+\input{8_GaugingDefects}
+\input{9_LevinWen}
+\input{10_Conclusion}
+
+
+\part*{Appendix}
+\appendix
+\input{A_Fsymbols}
+\input{B_H3chain}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\backmatter
+
+\def\backref#1{{\scriptsize $\hookrightarrow$ [#1]}}
+
+\bibliographystyle{amsalpha}
+\bibliography{PhDbib}
+
+\printindex
+
+\input{CV}
+
+\end{document}

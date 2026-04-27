@@ -1,0 +1,296 @@
+\chapter{Tensor network representation of the Levin-Wen model}
+
+\subsection*{Tensor network representation of string-nets.} We follow the technique described in \cite{Buerschaper2009} and generalise it to fusion categories that do not fulfill the tetrahedral symmetry condition. The goal is to find a tensor network representation of the ground state of the Levin-Wen model in order to efficiently calculate the excitations of the model. In the tensor network representation, plaquettes in the hexagonal lattice are of the form \cref{fig:TNplaquette}. Hence, we have to construct two types of operators:
+	\begin{equation}
+		\begin{tikzpicture}
+		\draw[->-,LinkColor,thick] (30:0.15) -- (30:0.75);
+			\draw[->-] (90:0.25) -- (47:0.75);
+			\draw[-<-] (330:0.25) -- (13:0.75);
+			\draw[->-,LinkColor,thick] (150:0.15) -- (150:0.75);
+			\draw[->-] (210:0.25) -- (167:0.75);
+			\draw[-<-] (90:0.25) -- (133:0.75);
+			\draw[-<-,LinkColor,thick] (270:0.15) -- (270:0.75);
+			\draw[->-] (330:0.25) -- (287:0.75);
+			\draw[-<-] (210:0.25) -- (253:0.75);
+			\draw[fill=LinkColor2!60!white] (90:0.5) -- (210:0.5) -- (330:0.5) -- cycle;
+		\end{tikzpicture}\hspace{30pt}
+		\begin{tikzpicture}[yscale=-1]
+			\draw[-<-,LinkColor,thick] (30:0.15) -- (30:0.75);
+			\draw[-<-] (90:0.25) -- (47:0.75);
+			\draw[->-] (330:0.25) -- (13:0.75);
+			\draw[-<-,LinkColor,thick] (150:0.15) -- (150:0.75);
+			\draw[-<-] (210:0.25) -- (167:0.75);
+			\draw[->-] (90:0.25) -- (133:0.75);
+			\draw[->-,LinkColor,thick] (270:0.15) -- (270:0.75);
+			\draw[-<-] (330:0.25) -- (287:0.75);
+			\draw[->-] (210:0.25) -- (253:0.75);
+			\draw[fill=LinkColor3!60!white] (90:0.5) -- (210:0.5) -- (330:0.5) -- cycle;
+		\end{tikzpicture}
+	\end{equation}
+These two types of operators split the lattice into an \emph{even} sublattice (dark green) $\Lambda_\mathbf{even}$ and an \emph{odd} sublattice $\Lambda_\mathbf{odd}$ (light green). For the case of unitary fusion categories that fulfill tetrahedral symmetry, the formulas for these operators are given in \cite{Buerschaper2009}. 
+
+	\begin{figure}[t]
+		\centering
+		\begin{tikzpicture}[scale=1]
+		\draw[->-,LinkColor,thick] (30:1.5) -- (90:1.5);
+		\draw[->-,LinkColor,thick] (150:1.5) -- (90:1.5);
+		\draw[->-,LinkColor,thick] (330:1.5) -- (30:1.5);
+		\draw[->-,LinkColor,thick] (210:1.5) -- (150:1.5);
+		\draw[->-,LinkColor,thick] (270:1.5) -- (210:1.5);
+		\draw[->-,LinkColor,thick] (270:1.5) -- (330:1.5);
+		\draw[->>-] (30:1.25) -- (90:1.25);
+		\draw[->>-] (90:1.25) -- (150:1.25);
+		\draw[->>-] (150:1.25) -- (210:1.25);
+		\draw[->>-] (210:1.25) -- (270:1.25);
+		\draw[->>-] (270:1.25) -- (330:1.25);
+		\draw[->>-] (330:1.25) -- (30:1.25);
+		\draw[-<<-] (30:1.75) -- (90:1.75);
+		\draw[-<<-] (90:1.75) -- (150:1.75);
+		\draw[-<<-] (150:1.75) -- (210:1.75);
+		\draw[-<<-] (210:1.75) -- (270:1.75);
+		\draw[-<<-] (270:1.75) -- (330:1.75);
+		\draw[-<<-] (330:1.75) -- (30:1.75);
+		\draw[->-,LinkColor,thick] (30:1.75) -- (30:2.25);
+		\draw[->-] (37.5:1.75) -- (36:2.25);
+		\draw[-<<-] (22.5:1.75) -- (24:2.25);
+		\draw[->-,LinkColor,thick] (90:1.75) -- (90:2.25);
+		\draw[->-] (97.5:1.75) -- (96:2.25);
+		\draw[-<<-] (82.5:1.75) -- (84:2.25);
+		\draw[->-,LinkColor,thick] (150:1.75) -- (150:2.25);
+		\draw[->-] (157.5:1.75) -- (156:2.25);
+		\draw[-<<-] (142.5:1.75) -- (144:2.25);
+		\draw[-<<-,LinkColor,thick] (210:1.75) -- (210:2.25);
+		\draw[->-] (217.5:1.75) -- (216:2.25);
+		\draw[-<<-] (202.5:1.75) -- (204:2.25);
+		\draw[-<<-,LinkColor,thick] (270:1.75) -- (270:2.25);
+		\draw[->-] (277.5:1.75) -- (276:2.25);
+		\draw[-<<-] (262.5:1.75) -- (264:2.25);
+		\draw[-<<-,LinkColor,thick] (330:1.75) -- (330:2.25);
+		\draw[->-] (337.5:1.75) -- (336:2.25);
+		\draw[-<<-] (322.5:1.75) -- (324:2.25);
+		\draw[fill=LinkColor2!60!white] ($(90:0.5)+(30:1.5)$) -- ($(210:0.5)+(30:1.5)$) -- ($(330:0.5)+(30:1.5)$) -- cycle; %30
+		\draw[fill=LinkColor2!60!white] ($(90:0.5)+(150:1.5)$) -- ($(210:0.5)+(150:1.5)$) -- ($(330:0.5)+(150:1.5)$) -- cycle; %150
+		\draw[fill=LinkColor2!60!white] ($(90:0.5)+(270:1.5)$) -- ($(210:0.5)+(270:1.5)$) -- ($(330:0.5)+(270:1.5)$) -- cycle; %270
+		\draw[fill=LinkColor3!60!white] ($(30:0.5)+(90:1.5)$) --($(150:0.5)+(90:1.5)$) --($(270:0.5)+(90:1.5)$) -- cycle; %90
+		\draw[fill=LinkColor3!60!white] ($(30:0.5)+(210:1.5)$) --($(150:0.5)+(210:1.5)$) --($(270:0.5)+(210:1.5)$) -- cycle; %210
+		\draw[fill=LinkColor3!60!white] ($(30:0.5)+(330:1.5)$) --($(150:0.5)+(330:1.5)$) --($(270:0.5)+(330:1.5)$) -- cycle; %330
+		\end{tikzpicture}
+		\caption{\label{fig:TNplaquette} A plaquette in the tensor network representation of the ground state of the Levin-Wen Hamiltonian. Two types of tensors appear, depicted in light and dark green, respectively. The black edges (which are virtual bonds in the TN) are contracted while the red edges (that correspond to physical indices) are left uncontracted.}                                              
+	\end{figure}
+
+For general unitary fusion categories, we can make use of the calculations we have done to derive the matrix elements of the operator $B_\mathbf{p}^s$. The construction goes as follows: Consider a hexagonal lattice (also referred to as the \emph{physical lattice}). To obtain the ground state $|\Psi_0\rangle$ of the Levin-Wen model, we apply the plaquette operator $B_\mathbf{p}$ to each plaquette of the lattice. As described above, this operator is given by
+	\begin{equation}
+		B_\mathbf{p}=\sum_{\alpha_\mathbf{p}}\frac{d_{\alpha_\mathbf{p}}}{D^2} B_\mathbf{p}^{\alpha_\mathbf{p}},
+	\end{equation}
+where $D^2=\sum_s d_s$. Applying the operator $B_\mathbf{p}^{\alpha_\mathbf{p}}$ corresponds to inserting a loop of type $\alpha_\mathbf{p}$ into the plaquette. As a result, we get a lattice with loops inserted at plaquette as depicted in \cref{fig:TNplaquette}. While a loop in a plaquette $\mathbf{p}$ carries a label $\alpha_\mathbf{p}$, the edges of the hexagonal lattice all carry the vacuum label $0$. The ground state is hence given by
+	\begin{equation}
+		|\Psi_0\rangle=\frac{1}{D^2}\left(\prod_\mathbf{p}d_{\alpha_\mathbf{p}}\right)|\{\alpha_\mathbf{p}\}\rangle,
+	\end{equation}
+where $|\{\alpha_\mathbf{p}\}\rangle$ denotes the configuration of the lattice with loops inserted (as in \cref{fig:fatlattice}). The first step in the reduction process is fusing the loops into the lattice by applying the completeness relation at each edge. As a result, the form of the ground state is
+	\begin{equation}
+		|\Psi_0\rangle=\frac{1}{D^2}\sum_{\{\alpha_\mathbf{p},i_\mathbf{p},j_\mathbf{p},k_\mathbf{p}\}}\left(\prod_\mathbf{p}\frac{\sqrt{d_{i_\mathbf{p}}d_{j_\mathbf{p}}d_{k_\mathbf{p}}}}{d_{\alpha_\mathbf{p}}^2}\right)|\{\alpha_\mathbf{p},i_\mathbf{p},j_\mathbf{p},k_\mathbf{p}\}\rangle,
+	\end{equation}
+where $\{\alpha_\mathbf{p},i_\mathbf{p},j_\mathbf{p},k_\mathbf{p}\}$ denotes that state of the lattice after having applied the completeness relation to every edge. For further reduction, we have to distinguish between vertices of the even lattice and vertices of the odd lattice.
+
+	\begin{figure}[t]
+		\centering
+		\begin{tikzpicture} [scale=1.5,hexa/.style= {shape=regular polygon,
+			regular polygon sides=6,
+			minimum size=1.5cm, draw,
+			inner sep=0,anchor=south,
+			fill=white,draw=gray}]	
+		\foreach \j in {0,...,5}{% 
+			\ifodd\j 
+			\foreach \i in {0,...,2}{\node[hexa] (h\j;\i) at ({\j/2+\j/4},{(\i+1/2)*sin(60)}) {\loopi};}        
+			\else
+			\foreach \i in {0,...,2}{\node[hexa] (h\j;\i) at ({\j/2+\j/4},{\i*sin(60)}) {\loopi};}
+			\fi}
+		\end{tikzpicture}
+		\caption{\label{fig:fatlattice}Lattice with loops inserted. An isolated loop at plaquette $\mathbf{p}$ carries a label $\alpha_\mathbf{p}$, while all edges og the hexagonal lattice (grey) carry the vacuum label $0$.}
+	\end{figure}
+
+For calculations, we use the following convention: At a plaquette $\mathbf{p}$, we label the edges on the right side by $k_\mathbf{p}$, $i_\mathbf{p}$, $j_\mathbf{p}$:
+	\begin{equation}
+		\begin{tikzpicture}[scale=0.75,baseline=(current bounding box.center)]
+			\draw[->-] (270:1) -- (210:1);
+			\draw[->-] (210:1) -- (150:1);
+			\draw[->-] (150:1) -- (90:1);
+			\draw[->-] (270:1) to node[below,pos=0.7] {\small $j_\mathbf{p}$} (330:1);
+			\draw[->-] (330:1) to node[right] {\small $i_\mathbf{p}$} (30:1);
+			\draw[->-] (30:1) to node[above,pos=0.3] {\small $k_\mathbf{p}$} (90:1);
+			\draw[->-] (90:1) -- (90:1.5);
+			\draw[->-] (150:1) -- (150:1.5);
+			\draw[->-] (30:1) -- (30:1.5);
+			\draw[->-] (210:1.5) -- (210:1);
+			\draw[->-] (270:1.5) -- (270:1);
+			\draw[->-] (330:1.5) -- (330:1);
+		\end{tikzpicture}.
+	\end{equation}
+Note that by using this notation, the sum over configurations $\{i_\mathbf{p},j_\mathbf{p},k_\mathbf{p}\}$ includes all edges of the physical lattice. After applying the completeness relation to every edge, the situation at the vertices of the odd sublattice is the following:
+	\begin{equation}
+		\begin{tikzpicture}[scale=1,baseline=(current bounding box.center)]
+			\draw[gray] (0,0) -- (90:0.5);
+			\draw[gray] (0,0) -- (210:0.5);
+			\draw[gray] (0,0) -- (330:0.75);
+			\draw (90:0.5) -- (90:0.75);
+			\draw (330:0.75) -- (330:1);
+			\draw (210:0.5) -- (210:1);
+			\draw[->-] (90:0.75) -- (90:1.25);
+			\draw[-<-] (330:1) -- (330:1.5);
+			\draw[-<-] (210:1) -- (210:1.5);
+			\draw[-<-] (90:0.5) to node[above,pos=0.9] {\small $\alpha_\mathbf{p}$} (150:0.5);
+			\draw[-<-] (150:0.5) -- (210:0.5);
+			\draw[->-] (90:0.75) -- (30:0.75);
+			\draw[->-] (30:0.75) to node[right] {\small $\alpha_\mathbf{q}$} (330:0.75);
+			\draw[->-] (270:1) to node[right] {\small $\alpha_\mathbf{r}$} (210:1);
+			\draw[->-] (330:1) -- (270:1);
+			\node at (150:1.3) {$\mathbf{p}$};
+			\node at (30:1.3) {$\mathbf{q}$};
+			\node at (270:1.3) {$\mathbf{r}$};
+			\node at (90:1.5) {\small $i_\mathbf{p}$};
+			\node at (330:1.75) {\small $k_\mathbf{r}$};
+			\node at (210:1.75) {\small $j_\mathbf{p}$};
+		\end{tikzpicture}\ =\ 
+		\begin{tikzpicture}[scale=1,baseline=(current bounding box.center)]
+			\draw[->-] (90:0.75) -- (90:1.25);
+			\draw[-<-] (330:0.75) -- (330:1.25);
+			\draw[-<-] (210:0.75) -- (210:1.25);
+			\draw[-<-] (90:0.75) -- (150:0.75);
+			\draw[-<-] (150:0.75) -- (210:0.75);
+			\draw[->-] (90:0.75) -- (30:0.75);
+			\draw[->-] (30:0.75) -- (330:0.75);
+			\draw[->-] (270:0.75) -- (210:0.75);
+			\draw[->-] (330:0.75) -- (270:0.75);
+			\node at (150:1) {\small $\alpha_\mathbf{p}$};
+			\node at (30:1) {\small $\alpha_\mathbf{q}$};
+			\node at (270:1) {\small $\alpha_\mathbf{r}$};
+			\node at (90:1.5) {\small $i_\mathbf{p}$};
+			\node at (330:1.5) {\small $k_\mathbf{r}$};
+			\node at (210:1.5) {\small $j_\mathbf{p}$};
+		\end{tikzpicture}.
+	\end{equation}
+The diagram on the right hand side of the equation can be simplified by applying an $F$-move:
+	\begin{align}
+		\begin{tikzpicture}[scale=1,baseline=(current bounding box.center)]
+			\draw[->-] (90:0.75) -- (90:1.25);
+			\draw[-<-] (330:0.75) -- (330:1.25);
+			\draw[-<-] (210:0.75) -- (210:1.25);
+			\draw[-<-] (90:0.75) -- (150:0.75);
+			\draw[-<-] (150:0.75) -- (210:0.75);
+			\draw[->-] (90:0.75) -- (30:0.75);
+			\draw[->-] (30:0.75) -- (330:0.75);
+			\draw[->-] (270:0.75) -- (210:0.75);
+			\draw[->-] (330:0.75) -- (270:0.75);
+			\node at (150:1) {\small $\alpha_\mathbf{p}$};
+			\node at (30:1) {\small $\alpha_\mathbf{q}$};
+			\node at (270:1) {\small $\alpha_\mathbf{r}$};
+			\node at (90:1.5) {\small $i_\mathbf{p}$};
+			\node at (330:1.5) {\small $k_\mathbf{r}$};
+			\node at (210:1.5) {\small $j_\mathbf{p}$};
+		\end{tikzpicture}&=\sum_\beta\overline{\left(F_{i_\mathbf{p}}^{j_\mathbf{p}\alpha_\mathbf{r}\alpha_\mathbf{q}^*}\right)}_{k_\mathbf{r}\alpha_\mathbf{p}}
+		\begin{tikzpicture}[scale=1,baseline=(current bounding box.center)]
+			\draw[->-] (0,0) -- (90:1);
+			\draw[->-] (330:0.5) to node[above,pos=0.3] {\small $\beta$} (330:0);
+			\draw[->-] (330:1.5) -- (330:1);
+			\draw[->-] (330:1) to[bend left=80] node[below] {\small $\alpha_\mathbf{r}$} (330:0.5);
+			\draw[->-] (330:0.5) to[bend left=80] node[above,pos=0.7] {\small $\alpha_\mathbf{q}$} (330:1);
+			\node at (330:1.75) {\small $k_\mathbf{r}$};
+			\draw[->-] (210:1) -- (210:0);
+			\node at (210:1.25) {\small $j_\mathbf{p}$};
+			\node at (90:1.25) {\small $i_\mathbf{p}$};
+		\end{tikzpicture}\\
+		&=\sum_\beta\overline{\left(F_{i_\mathbf{p}}^{j_\mathbf{p}\alpha_\mathbf{r}\alpha_\mathbf{q}^*}\right)}_{\beta\alpha_\mathbf{p}}\sqrt{\frac{d_{\alpha_\mathbf{q}}d_{\alpha_\mathbf{r}}}{d_{k_\mathbf{r}}}}\ \delta_{\beta,k_\mathbf{r}}
+		\begin{tikzpicture}[scale=1,baseline=(current bounding box.center)]
+			\draw[->-] (0,0) -- (90:0.75);
+			\draw[->-] (210:0.75) -- (210:0);
+			\draw[->-] (330:0.75) -- (330:0);
+			\node at (210:1) {\small $j_\mathbf{p}$};
+			\node at (90:1) {\small $i_\mathbf{p}$};
+			\node at (330:1) {\small $k_\mathbf{r}$};
+		\end{tikzpicture}\\
+		&=\overline{\left(F_{i_\mathbf{p}}^{j_\mathbf{p}\alpha_\mathbf{r}\alpha_\mathbf{q}^*}\right)}_{k_\mathbf{r}\alpha_\mathbf{p}}\sqrt{\frac{d_{\alpha_\mathbf{q}}d_{\alpha_\mathbf{r}}}{d_{k_\mathbf{r}}}}
+		\begin{tikzpicture}[scale=1,baseline=(current bounding box.center)]
+			\draw[->-] (0,0) -- (90:0.75);
+			\draw[->-] (210:0.75) -- (210:0);
+			\draw[->-] (330:0.75) -- (330:0);
+			\node at (210:1) {\small $j_\mathbf{p}$};
+			\node at (90:1) {\small $i_\mathbf{p}$};
+			\node at (330:1) {\small $k_\mathbf{r}$};
+		\end{tikzpicture}.
+	\end{align}
+	
+A similar calculation yields the following expression for the vertices in the even sublattice:
+	\begin{equation}
+		\begin{tikzpicture}[yscale=-1,baseline=(current bounding box.center)]
+			\draw[-<-] (90:0.75) -- (90:1.25);
+			\draw[->-] (330:0.75) -- (330:1.25);
+			\draw[->-] (210:0.75) -- (210:1.25);
+			\draw[->-] (90:0.75) -- (150:0.75);
+			\draw[->-] (150:0.75) -- (210:0.75);
+			\draw[-<-] (90:0.75) -- (30:0.75);
+			\draw[-<-] (30:0.75) -- (330:0.75);
+			\draw[-<-] (270:0.75) -- (210:0.75);
+			\draw[-<-] (330:0.75) -- (270:0.75);
+			\node at (150:1) {\small $\alpha_\mathbf{p}$};
+			\node at (30:1) {\small $\alpha_\mathbf{r}$};
+			\node at (270:1) {\small $\alpha_\mathbf{q}$};
+			\node at (90:1.5) {\small $i_\mathbf{p}$};
+			\node at (330:1.5) {\small $j_\mathbf{q}$};
+			\node at (210:1.5) {\small $k_\mathbf{p}$};
+		\end{tikzpicture}=\left(F_{i_\mathbf{p}}^{k_\mathbf{p}\alpha_\mathbf{q}\alpha_\mathbf{r}^*}\right)_{j_\mathbf{q}\alpha_\mathbf{p}}\sqrt{\frac{d_{\alpha_\mathbf{q}}d_{\alpha_\mathbf{r}}}{d_{j_\mathbf{r}}}}\ 
+		\begin{tikzpicture}[yscale=-1,baseline=(current bounding box.center)]
+			\draw[-<-] (0,0) -- (90:0.75);
+			\draw[-<-] (210:0.75) -- (210:0);
+			\draw[-<-] (330:0.75) -- (330:0);
+			\node at (210:1) {\small $k_\mathbf{p}$};
+			\node at (90:1) {\small $i_\mathbf{p}$};
+			\node at (330:1) {\small $j_\mathbf{q}$};
+		\end{tikzpicture}.
+	\end{equation}
+
+In summary, we can now write the ground state as follows:
+	\begin{equation}
+		|\Psi_0\rangle=\frac{1}{D^2}\sum_{\{\alpha_\mathbf{p},i_\mathbf{p},j_\mathbf{p},k_\mathbf{p}\}}\left(\prod_\mathbf{p}\sqrt{d_{i_\mathbf{p}}}\right)\prod_{v\in\Lambda_\mathrm{even}}f(v)\prod_{w\in\Lambda_\mathrm{odd}}g(w)
+	\end{equation}
+with
+	\begin{align}
+		f(v)&=\overline{\left(F_{i_\mathbf{p}}^{j_\mathbf{p}\alpha_\mathbf{r}\alpha_\mathbf{q}^*}\right)}_{k_\mathbf{p}\alpha_\mathbf{p}}\\
+		g(w)&=\left(F_{i_\mathbf{p}}^{k_\mathbf{p}\alpha_\mathbf{q}\alpha_\mathbf{r}^*}\right)_{j_\mathbf{p}\alpha_\mathbf{p}}.
+	\end{align}
+
+This lets us define vertex tensors in the tensor network built from the plaquettes depicted in \cref{fig:TNplaquette}. They are given by
+	\begin{align}
+		\begin{tikzpicture}[yscale=-1,baseline=(current bounding box.center)]
+			\draw[-<-,LinkColor,thick] (30:0.15) -- (30:0.75);
+			\draw[-<-] (90:0.25) -- (47:0.75);
+			\draw[->-] (330:0.25) -- (13:0.75);
+			\draw[-<-,LinkColor,thick] (150:0.15) -- (150:0.75);
+			\draw[-<-] (210:0.25) -- (167:0.75);
+			\draw[->-] (90:0.25) -- (133:0.75);
+			\draw[->-,LinkColor,thick] (270:0.15) -- (270:0.75);
+			\draw[-<-] (330:0.25) -- (287:0.75);
+			\draw[->-] (210:0.25) -- (253:0.75);
+			\draw[fill=LinkColor3!60!white] (90:0.5) -- (210:0.5) -- (330:0.5) -- cycle;
+		\end{tikzpicture}&=T_{\mu\mu'\nu\nu'\lambda\lambda'}^{[ijk]}\\[5pt]
+		\begin{tikzpicture}[baseline=(current bounding box.center)]
+			\draw[->-,LinkColor,thick] (30:0.15) -- (30:0.75);
+			\draw[->-] (90:0.25) -- (47:0.75);
+			\draw[-<-] (330:0.25) -- (13:0.75);
+			\draw[->-,LinkColor,thick] (150:0.15) -- (150:0.75);
+			\draw[->-] (210:0.25) -- (167:0.75);
+			\draw[-<-] (90:0.25) -- (133:0.75);
+			\draw[-<-,LinkColor,thick] (270:0.15) -- (270:0.75);
+			\draw[->-] (330:0.25) -- (287:0.75);
+			\draw[-<-] (210:0.25) -- (253:0.75);
+			\draw[fill=LinkColor2!60!white] (90:0.5) -- (210:0.5) -- (330:0.5) -- cycle;
+		\end{tikzpicture}&=\tilde{T}_{\mu\mu'\nu\nu'\lambda\lambda'}^{[ijk]}
+	\end{align}
+with
+	\begin{align}
+	\label{eq:TensorOdd}
+		T_{\mu\mu'\nu\nu'\lambda\lambda'}^{[ijk]}&=\sqrt{d_{i_\mathbf{p}}}\ \overline{\left(F_i^{j\lambda\mu^*}\right)}_{k\nu}\delta_{\mu\mu'}\delta_{\lambda\lambda'}\delta_{\nu\nu'}\\
+	\label{eq:TensorEven}
+		\tilde{T}_{\mu\mu'\nu\nu'\lambda\lambda'}^{[ijk]}&=\left(F_i^{k\lambda\nu^*}\right)_{j\mu}\delta_{\mu\mu'}\delta_{\lambda\lambda'}\delta_{\nu\nu'}.
+	\end{align}
+
+Thus, we have found a tensor network representation of the ground state of the Levin-Wen model for general unitary fusion categories, which includes those that do not fulfill the tetrahedral symmetry condition. A quick calculation shows that the formulas for the tensors in \cref{eq:TensorOdd} and \cref{eq:TensorEven} can be transformed into the ones given in \cite{Buerschaper2009} when assuming tetrahedral symmetry. The next step in order to obtain the excitations of the model (and hence the UMTC) is to construct the tensors that represent the open string operators.

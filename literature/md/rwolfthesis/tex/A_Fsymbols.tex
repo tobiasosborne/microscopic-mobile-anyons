@@ -1,0 +1,28 @@
+\chapter{$F$-symbols for the $\mathcal{H}_3$ fusion category}
+\label{app:Fsymbols}
+
+This solution and the code which was used to calculate it can be found under \url{https://github.com/R8monaW/H3Fsymbols}. It is a real solution with two parameters, $p_1,p_2\in\{-1,+1\}$. Additionally, we use the following notation:
+	\begin{align}
+		A&=\frac{1}{2} \left(\sqrt{13}-3\right),\\
+		B&=\frac{1}{3} \left(\sqrt{13}-2\right),\\
+		C&=\frac{1}{6} \left(\sqrt{13}+1\right),\\
+		D_{\pm}&=\frac{1}{12} \left(5-\sqrt{13}\pm\sqrt{6 \left(\sqrt{13}+1\right)}\right).
+	\end{align}
+In the following, all $F$-symbols are listed. They are first ordered by their dimension and within that, they are ordered by their labels. The $3$- and $4$-dimensional matrices are depicted as tables where the first row and the first column indicate the admissible labels for the matrix.
+
+Since all occurring values of the $F$-symbols are in the interval $[-1,+1]$, we can visualise this solution as follows: We represent the value $+1$ with a black pixel and the value $-1$ with a white pixel. The values in between are depicted by a green pixel whose darkness depends on where the value lies in the interval $[-1,+1]$, e.g., a value close to $+1$ is depicted by a very dark green pixel, while a value close to $-1$ is depicted by a very light green pixel. For parameter values $p_1=p_2=+1$, this is shown in \cref{fig:pixels}, where the order of the $F$-symbols is chosen randomly.
+
+\begin{figure}[H]
+	\includegraphics[width=0.65\textwidth]{solution_pic.pdf}
+	\caption{\small \textbf{A visualisation of the $F$-symbols.} To generate this picture, we set the parameters to $p_1=p_2=+1$ and choose a random ordering of the $F$-symbols.}
+	\label{fig:pixels}
+\end{figure}
+
+\section{$1$-dimensional $F$-symbols}
+\input{fsymbols1dim.tex}
+
+\section{$3$-dimensional $F$-symbols}
+\input{fsymbols3by3.tex}
+
+\section{$4$-dimensional $F$-symbols}
+\input{fsymbols4by4.tex}

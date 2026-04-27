@@ -1,0 +1,229 @@
+\begin{figure}[H]
+	\vspace{20pt}
+	\begin{tikzpicture}[yscale=1.4,xscale=1.3]
+	\node at (0,-0.15) {\small $u$};
+	\node at (0,2.15) {\small $b$};
+	\node at (-0.5,2.15) {\small $a$};
+	\node at (0.5,2.15) {\small $c$};
+	\node at (-0.25,0.5) {\small $p$};
+	\draw (0,0) -- (0,0.5);
+	\draw (0,0.5) -- (-0.25,0.75);
+	\draw (0,0.5) -- (0.5,1);
+	\draw (-0.25,0.75) -- (-0.5,1);
+	\draw (-0.25,0.75) -- (0,1);
+	\begin{knot}[consider self intersections=true,ignore endpoint intersections=false]
+	\strand (-0.5,1)to[out=135,in=270](0.5,2);
+	\strand (0,1)to[out=45,in=270](-0.5,2);
+	\strand (0.5,1)to[out=45,in=270](0,2);				
+	\end{knot}
+	\begin{scope}[yshift=0cm]
+	\draw[->,>=stealth] (0.75,1.5) to node[above] {\small $R^{ca}_p\ \ \ $} (1.75,2.5);
+	\draw[->,>=stealth] (3.35,3) to node[above] {\small $F_u^{acb}$} (4.65,3);
+	\draw[->,>=stealth] (6.25,2.5) to node[above] {\small $\ \ \ R^{cb}_q$} (7.25,1.5);
+	\end{scope}
+	\begin{scope}[yshift=2cm]
+	\draw[->,>=stealth] (0.75,-1.5) to node[below] {\small $F_u^{cab}\ \ \ \ $} (1.75,-2.5);
+	\draw[->,>=stealth] (3.35,-3) to node[above] {\small $R^{cr}_u$} (4.65,-3);
+	\draw[->,>=stealth] (6.25,-2.5) to node[below] {\small $\ \ \ F_u^{abc}$} (7.25,-1.5);
+	\end{scope}
+	\begin{scope}[xshift=2.5cm,yshift=2cm]
+	\node at (0,-0.15) {\small $u$};
+	\node at (0,2.15) {\small $b$};
+	\node at (-0.5,2.15) {\small $a$};
+	\node at (0.5,2.15) {\small $c$};
+	\node at (-0.25,0.5) {\small $p$};
+	\draw (0,0) -- (0,0.5);
+	\draw (0,0.5) -- (-0.25,0.75);
+	\draw (0,0.5) -- (0.5,1);
+	\draw (-0.25,0.75) -- (-0.5,1);
+	\draw (-0.25,0.75) -- (0,1);
+	\begin{knot}[consider self intersections=true,ignore endpoint intersections=false]
+	\strand (-0.5,1)to[out=135,in=270](-0.5,2);
+	\strand (0,1)to[out=45,in=270](0.5,2);
+	\strand (0.5,1)to[out=45,in=270](0,2);				
+	\end{knot}
+	\end{scope}
+	\begin{scope}[xshift=5.5cm,yshift=2cm]
+	\node at (0,-0.15) {\small $u$};
+	\node at (0,2.15) {\small $b$};
+	\node at (-0.5,2.15) {\small $a$};
+	\node at (0.5,2.15) {\small $c$};
+	\node at (0.25,0.5) {\small $q$};
+	\draw (0,0) -- (0,0.5);
+	\draw (0,0.5) -- (-0.25,0.75);
+	\draw (0,0.5) -- (0.5,1);
+	\draw (-0.25,0.75) -- (-0.5,1);
+	\draw (0.25,0.75) -- (0,1);
+	\begin{knot}[consider self intersections=true,ignore endpoint intersections=false]
+	\strand (-0.5,1)to[out=135,in=270](-0.5,2);
+	\strand (0,1)to[out=135,in=270](0.5,2);
+	\strand (0.5,1)to[out=45,in=270](0,2);				
+	\end{knot}
+	\end{scope}
+	\begin{scope}[xshift=8cm,yshift=0cm]
+	\node at (0,-0.15) {\small $u$};
+	\node at (0,2.15) {\small $b$};
+	\node at (-0.5,2.15) {\small $a$};
+	\node at (0.5,2.15) {\small $c$};
+	\node at (0.25,0.5) {\small $q$};
+	\draw (0,0) -- (0,0.5);
+	\draw (0,0.5) -- (-0.25,0.75);
+	\draw (0,0.5) -- (0.5,1);
+	\draw (-0.25,0.75) -- (-0.5,1);
+	\draw (0.25,0.75) -- (0,1);
+	\begin{knot}[consider self intersections=true,ignore endpoint intersections=false]
+	\strand (-0.5,1)to[out=135,in=270](-0.5,2);
+	\strand (0,1)to[out=135,in=270](0,2);
+	\strand (0.5,1)to[out=45,in=270](0.5,2);				
+	\end{knot}
+	\end{scope}
+	\begin{scope}[xshift=2.5cm,yshift=-2cm]
+	\node at (0,-0.15) {\small $u$};
+	\node at (0,2.15) {\small $b$};
+	\node at (-0.5,2.15) {\small $a$};
+	\node at (0.5,2.15) {\small $c$};
+	\node at (0.25,0.5) {\small $r$};
+	\draw (0,0) -- (0,0.5);
+	\draw (0,0.5) -- (-0.25,0.75);
+	\draw (0,0.5) -- (0.5,1);
+	\draw (-0.25,0.75) -- (-0.5,1);
+	\draw (0.25,0.75) -- (0,1);
+	\begin{knot}[consider self intersections=true,ignore endpoint intersections=false]
+	\strand (-0.5,1)to[out=135,in=270](0.5,2);
+	\strand (0,1)to[out=135,in=270](-0.5,2);
+	\strand (0.5,1)to[out=45,in=270](0,2);				
+	\end{knot}
+	\end{scope}
+	\begin{scope}[xshift=5.5cm,yshift=-2cm]
+	\node at (0,-0.15) {\small $u$};
+	\node at (0,2.15) {\small $b$};
+	\node at (-0.5,2.15) {\small $a$};
+	\node at (0.5,2.15) {\small $c$};
+	\node at (-0.25,0.5) {\small $r$};
+	\draw (0,0) -- (0,0.5);
+	\draw (0,0.5) -- (-0.25,0.75);
+	\draw (0,0.5) -- (0.5,1);
+	\draw (-0.25,0.75) -- (-0.5,1);
+	\draw (-0.25,0.75) -- (0,1);
+	\begin{knot}[consider self intersections=true,ignore endpoint intersections=false]
+	\strand (0.5,1)to[out=45,in=270](0.5,2);
+	\strand (0,1)to[out=45,in=270](0,2);
+	\strand (-0.5,1)to[out=135,in=270](-0.5,2);						
+	\end{knot}
+	\end{scope}
+	\end{tikzpicture}\vspace{30pt}
+	\begin{tikzpicture}[yscale=1.4,xscale=1.3]
+	\node at (0,-0.15) {\small $u$};
+	\node at (0,2.15) {\small $b$};
+	\node at (-0.5,2.15) {\small $a$};
+	\node at (0.5,2.15) {\small $c$};
+	\node at (-0.25,0.5) {\small $p$};
+	\draw (0,0) -- (0,0.5);
+	\draw (0,0.5) -- (-0.25,0.75);
+	\draw (0,0.5) -- (0.5,1);
+	\draw (-0.25,0.75) -- (-0.5,1);
+	\draw (-0.25,0.75) -- (0,1);
+	\begin{knot}[consider self intersections=true,ignore endpoint intersections=false]	
+	\strand (0,1)to[out=45,in=270](-0.5,2);
+	\strand (0.5,1)to[out=45,in=270](0,2);
+	\strand (-0.5,1)to[out=135,in=270](0.5,2);				
+	\end{knot}
+	\begin{scope}[yshift=0cm]
+	\draw[->,>=stealth] (0.75,1.5) to node[above,pos=0.6] {\small $\left(R^{ac}_p\right)^{-1}\ \ \ \ $} (1.75,2.5);
+	\draw[->,>=stealth] (3.35,3) to node[above] {\small $F_u^{acb}$} (4.65,3);
+	\draw[->,>=stealth] (6.25,2.5) to node[above,pos=0.4] {\small $\ \ \ \ \ \ \ \left(R^{bc}_q\right)^{-1}$} (7.25,1.5);
+	\end{scope}
+	\begin{scope}[yshift=2cm]
+	\draw[->,>=stealth] (0.75,-1.5) to node[below] {\small $F_u^{cab}\ \ \ \ $} (1.75,-2.5);
+	\draw[->,>=stealth] (3.35,-3) to node[above] {\small $\left(R^{rc}_u\right)^{-1}$} (4.65,-3);
+	\draw[->,>=stealth] (6.25,-2.5) to node[below] {\small $\ \ \ F_u^{abc}$} (7.25,-1.5);
+	\end{scope}
+	\begin{scope}[xshift=2.5cm,yshift=2cm]
+	\node at (0,-0.15) {\small $u$};
+	\node at (0,2.15) {\small $b$};
+	\node at (-0.5,2.15) {\small $a$};
+	\node at (0.5,2.15) {\small $c$};
+	\node at (-0.25,0.5) {\small $p$};
+	\draw (0,0) -- (0,0.5);
+	\draw (0,0.5) -- (-0.25,0.75);
+	\draw (0,0.5) -- (0.5,1);
+	\draw (-0.25,0.75) -- (-0.5,1);
+	\draw (-0.25,0.75) -- (0,1);
+	\begin{knot}[consider self intersections=true,ignore endpoint intersections=false]
+	\strand (-0.5,1)to[out=135,in=270](-0.5,2);	
+	\strand (0.5,1)to[out=45,in=270](0,2);		
+	\strand (0,1)to[out=45,in=270](0.5,2);		
+	\end{knot}
+	\end{scope}
+	\begin{scope}[xshift=5.5cm,yshift=2cm]
+	\node at (0,-0.15) {\small $u$};
+	\node at (0,2.15) {\small $b$};
+	\node at (-0.5,2.15) {\small $a$};
+	\node at (0.5,2.15) {\small $c$};
+	\node at (0.25,0.5) {\small $q$};
+	\draw (0,0) -- (0,0.5);
+	\draw (0,0.5) -- (-0.25,0.75);
+	\draw (0,0.5) -- (0.5,1);
+	\draw (-0.25,0.75) -- (-0.5,1);
+	\draw (0.25,0.75) -- (0,1);
+	\begin{knot}[consider self intersections=true,ignore endpoint intersections=false]
+	\strand (-0.5,1)to[out=135,in=270](-0.5,2);
+	\strand (0.5,1)to[out=45,in=270](0,2);				
+	\strand (0,1)to[out=135,in=270](0.5,2);
+	\end{knot}
+	\end{scope}
+	\begin{scope}[xshift=8cm,yshift=0cm]
+	\node at (0,-0.15) {\small $u$};
+	\node at (0,2.15) {\small $b$};
+	\node at (-0.5,2.15) {\small $a$};
+	\node at (0.5,2.15) {\small $c$};
+	\node at (0.25,0.5) {\small $q$};
+	\draw (0,0) -- (0,0.5);
+	\draw (0,0.5) -- (-0.25,0.75);
+	\draw (0,0.5) -- (0.5,1);
+	\draw (-0.25,0.75) -- (-0.5,1);
+	\draw (0.25,0.75) -- (0,1);
+	\begin{knot}[consider self intersections=true,ignore endpoint intersections=false]
+	\strand (0,1)to[out=135,in=270](0,2);
+	\strand (0.5,1)to[out=45,in=270](0.5,2);	
+	\strand (-0.5,1)to[out=135,in=270](-0.5,2);			
+	\end{knot}
+	\end{scope}
+	\begin{scope}[xshift=2.5cm,yshift=-2cm]
+	\node at (0,-0.15) {\small $u$};
+	\node at (0,2.15) {\small $b$};
+	\node at (-0.5,2.15) {\small $a$};
+	\node at (0.5,2.15) {\small $c$};
+	\node at (0.25,0.5) {\small $r$};
+	\draw (0,0) -- (0,0.5);
+	\draw (0,0.5) -- (-0.25,0.75);
+	\draw (0,0.5) -- (0.5,1);
+	\draw (-0.25,0.75) -- (-0.5,1);
+	\draw (0.25,0.75) -- (0,1);
+	\begin{knot}[consider self intersections=true,ignore endpoint intersections=false]
+	\strand (0,1)to[out=135,in=270](-0.5,2);
+	\strand (0.5,1)to[out=45,in=270](0,2);		
+	\strand (-0.5,1)to[out=135,in=270](0.5,2);		
+	\end{knot}
+	\end{scope}
+	\begin{scope}[xshift=5.5cm,yshift=-2cm]
+	\node at (0,-0.15) {\small $u$};
+	\node at (0,2.15) {\small $b$};
+	\node at (-0.5,2.15) {\small $a$};
+	\node at (0.5,2.15) {\small $c$};
+	\node at (-0.25,0.5) {\small $r$};
+	\draw (0,0) -- (0,0.5);
+	\draw (0,0.5) -- (-0.25,0.75);
+	\draw (0,0.5) -- (0.5,1);
+	\draw (-0.25,0.75) -- (-0.5,1);
+	\draw (-0.25,0.75) -- (0,1);
+	\begin{knot}[consider self intersections=true,ignore endpoint intersections=false]
+	\strand (-0.5,1)to[out=135,in=270](-0.5,2);
+	\strand (0,1)to[out=45,in=270](0,2);
+	\strand (0.5,1)to[out=45,in=270](0.5,2);						
+	\end{knot}
+	\end{scope}
+	\end{tikzpicture}
+	\vspace{20pt}
+	\caption{\small \label{fig:hex}\textbf{Hexagon identities.} These diagrams have to commute in order to ensure that the braiding operation is consistent with fusion.}
+\end{figure}
