@@ -14,7 +14,6 @@
 | 2107.13834 | T. Osborne, Alexander Stottmeister | 2021 | Conformal field theory from lattice fermions | OAR continuum-limit foundation |
 | 2205.15243 | S. Hollands | 2022 | Anyonic Chains, alpha-Induction, CFT, Defects, Subfactors | most rigorous categorical / subfactor formalisation of (dense) anyonic chains |
 | 2201.11562 | Stottmeister | 2022 | Anyon braiding and the renormalization group | closest prior art on anyon-side of OAR continuum limit |
-| — | Eck | 2025 | Quantum Lattice Models from Fusion Categories | directly named PhD thesis on lattice models from fusion categories; supervisor Fendley |
 | 2508.14961 | Nakajima, Mehta, Goldman | 2025 | Thermodynamics of dilute anyon gases from fusion constraints | complementary thermodynamic / dilute approach to var-N anyon gas |
 | 2505.02893 | Shi, Zhang, Senthil | 2025 | Doping lattice non-abelian quantum Hall states | anchor for the 2025 FCI/FQAH burst on mobile anyons; explicitly calls for microscopic models |
 
@@ -104,12 +103,6 @@
 - **arXiv**: 2509.02675
 - **PDF status**: have_pdf (`literature/pdfs/2509.02675.pdf`)
 - **Notes**:  [2025 FCI burst]
-
-### [EckThesis2025] Eck (2025) — Quantum Lattice Models from Fusion Categories 🔑
-
-- **Venue**: PhD thesis, University of Oxford (Balliol)
-- **PDF status**: have_pdf (`literature/pdfs/eck_phd_thesis_oxford_2025.pdf`)
-- **Notes**: Newly discovered. Directly relevant. Need to extract her papers (per acknowledgements: 2 papers with Fendley + 1 in 2+1d).
 
 ### [paper452] Fabian Pichler, Clemens Kuhlenkamp, Michael Knap, Ashvin Vishwanath (2025) — Microscopic Mechanism of Anyon Superconductivity Emerging from Fractional Chern Insulators
 
@@ -344,6 +337,12 @@
 - **arXiv**: 2201.11562
 - **PDF status**: have_pdf (`literature/pdfs/2201.11562.pdf`)
 - **Notes**: Closest prior art on the OAR continuum-limit side. Braiding operation defines a real-space RG step on anyonic chains; OAR (operator-algebraic renormalization) defines a quantum scaling limit via the resulting RG flow. Worked example: Ising chain (transverse-field Ising) -> vacuum state of Ising CFT. Distinguishing braiding vs inverse -> chiral sectors of Ising CFT. Direct implications for simulating CFTs on topological quantum computers. Builds on Osborne-Stottmeister 2107.13834, Stottmeister-Morinelli-Morsella-Tanimoto 2002.01442, Osborne 1901.06124. Dense chain only; no variable-N.
+
+### [EckThesis2025] Eck (2025) — Quantum Lattice Models from Fusion Categories
+
+- **Venue**: PhD thesis, University of Oxford (Balliol)
+- **PDF status**: have_pdf (`literature/pdfs/eck_phd_thesis_oxford_2025.pdf`)
+- **Notes**: Oxford PhD thesis under Fendley. On adjacent territory (dense anyonic chains in the Fendley tradition: topological defects, generalized symmetries, 1+1d and 2+1d categorical models) but does NOT address variable-N anyon Fock space from arbitrary fusion categories. Confirmed by T. Osborne (knows Fendley and the thesis). Worth reading for context; not prior art for our central definition.
 
 ## Tier 4 — numerical methods for anyonic systems
 
