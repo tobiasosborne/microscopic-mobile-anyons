@@ -70,14 +70,22 @@ H3 → H4 → {H5, T6}; T1..T4 → all C*; C1..C8 → C9 → S1 → S2; H5 + T6 
   paywalled (TIB VPN); pattern adapted from `FQHE/scripts/fetch_aps_papers.mjs`,
   not yet exercised end-to-end.
 
+- **T4 (ma-ah9) DONE**: `lit md <id>` wraps `marker_single` (archivum venv).
+  Output at `literature/md/{slug}/{slug}.md` + `{slug}_meta.json`. Image
+  extraction off — outputs are compact (~30–50 KB per paper). `--all`
+  bulk-converts. Smoke-tested on Stottmeister 2201.11562 in 64 s (5 pages).
+- **In flight**: bulk arxiv PDF pull (`nohup ... pdf --all-arxiv`) — at
+  172 PDFs already, ~73 to go.
+
 ### What's next
-- T4 (ma-ah9): `lit md` — wrap marker for PDF→md. Uses
-  `/home/tobiasosborne/Projects/archivum/.venv/bin/marker_single`.
-- T6 (ma-6st): expand `lit export` (already v0); add `gaps` polish, S2
-  cite-chase fallback for papers with empty OpenAlex backward refs.
-- The C* tasks (cite chase) can technically start now that T1+T2+T3 work,
-  but for the seeds we already chased (8 of 8) the citations are in DB.
-  Phase C is mostly enrichment + triage in C9 now.
+- T6 (ma-6st): polish `lit export` and `gaps`; consider S2 fallback for
+  papers with empty OpenAlex backward refs (Stottmeister anyon-RG had 0).
+- T5 (ma-7k0): GS fallback (low priority).
+- Phase C: most seeds already cite-chased. Real work is **C9 (triage)**:
+  read each tier-1/2 stub via marker output, classify into the final tier
+  ladder, mark not-relevant ones excluded. C7 (pre-2013 lineage sweep)
+  still has manual seeds to add (Wilczek, Frohlich-Marchetti, Bonderson
+  thesis, Read, etc.).
 
 ---
 

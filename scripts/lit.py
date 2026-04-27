@@ -1011,6 +1011,115 @@ def _cmd_pdf_all_arxiv(args: argparse.Namespace) -> None:
     print(f"  done: {ok} ok, {fail} failed")
 
 
+MARKER_BIN = Path(
+    "/home/tobiasosborne/Projects/archivum/.venv/bin/marker_single"
+)
+MD_DIR_REL = Path("literature") / "md"
+
+
+def _convert_one_with_marker(pdf_path: Path, parent_out_dir: Path,
+                             timeout_s: float) -> Path | None:
+    """Run marker_single; return path to the produced .md file, or None.
+
+    marker_single writes to <output_dir>/<pdf_stem>/<pdf_stem>.md, so we pass
+    the *parent* of the desired slug folder as --output_dir.
+    """
+    import subprocess
+    parent_out_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        subprocess.run(
+            [str(MARKER_BIN), str(pdf_path),
+             "--output_dir", str(parent_out_dir),
+             "--output_format", "markdown",
+             "--disable_image_extraction"],
+            check=True, timeout=timeout_s,
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+        )
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
+        print(f"  marker failed: {e.__class__.__name__}", file=sys.stderr)
+        return None
+    md = parent_out_dir / pdf_path.stem / f"{pdf_path.stem}.md"
+    return md if md.exists() else None
+
+
+def cmd_md(args: argparse.Namespace) -> None:
+    if args.all:
+        return _cmd_md_all(args)
+
+    conn = connect()
+    cur = conn.cursor()
+
+    try:
+        kind, ident = parse_ident(args.ident)
+        col = "arxiv_id" if kind == "arxiv" else "doi"
+        row = cur.execute(
+            f"SELECT * FROM papers WHERE {col} = ?", (ident,)
+        ).fetchone()
+    except ValueError:
+        if args.ident.isdigit():
+            row = cur.execute(
+                "SELECT * FROM papers WHERE id = ?", (int(args.ident),)
+            ).fetchone()
+        else:
+            row = cur.execute(
+                "SELECT * FROM papers WHERE bib_key = ?", (args.ident,)
+            ).fetchone()
+
+    if not row:
+        sys.exit(f"could not resolve {args.ident!r}")
+    if not row["pdf_path"]:
+        sys.exit("paper has no PDF; run lit pdf first")
+    if row["md_path"] and not args.force:
+        print(f"  already converted at {row['md_path']}; pass --force to redo")
+        return
+
+    pdf_path = REPO_ROOT / row["pdf_path"]
+    md = _convert_one_with_marker(pdf_path, REPO_ROOT / MD_DIR_REL, args.timeout)
+    if md is None:
+        sys.exit(2)
+    rel = str(md.relative_to(REPO_ROOT))
+    cur.execute(
+        "UPDATE papers SET md_path = ? WHERE id = ?", (rel, row["id"])
+    )
+    conn.commit()
+    conn.close()
+    print(f"  saved {rel}")
+
+
+def _cmd_md_all(args: argparse.Namespace) -> None:
+    conn = connect()
+    cur = conn.cursor()
+    rows = cur.execute(
+        "SELECT * FROM papers WHERE pdf_path IS NOT NULL "
+        "AND (md_path IS NULL OR ? = 1) "
+        "ORDER BY tier NULLS LAST, year DESC, id",
+        (1 if args.force else 0,),
+    ).fetchall()
+    print(f"  converting {len(rows)} papers via marker (timeout {args.timeout}s each)")
+    ok = fail = skipped = 0
+    for r in rows:
+        pdf_path = REPO_ROOT / r["pdf_path"]
+        if not pdf_path.exists():
+            print(f"    SKIP {r['id']}: pdf missing", file=sys.stderr)
+            skipped += 1
+            continue
+        md = _convert_one_with_marker(pdf_path, REPO_ROOT / MD_DIR_REL,
+                                       args.timeout)
+        slug = _slug_from_paper(r)
+        if md is None:
+            fail += 1
+            continue
+        rel = str(md.relative_to(REPO_ROOT))
+        cur.execute(
+            "UPDATE papers SET md_path = ? WHERE id = ?", (rel, r["id"])
+        )
+        conn.commit()
+        ok += 1
+        print(f"    [{ok+fail+skipped:>3d}/{len(rows)}] {slug}")
+    conn.close()
+    print(f"  done: {ok} ok, {fail} failed, {skipped} skipped")
+
+
 def _sha256(p: Path) -> str:
     import hashlib
     h = hashlib.sha256()
@@ -1215,9 +1324,16 @@ def build_parser() -> argparse.ArgumentParser:
                        help="Per-request delay for --all-arxiv (default 2s)")
     p_pdf.set_defaults(func=cmd_pdf)
 
-    p_md = sub.add_parser("md", help="Convert PDF -> markdown [T4]")
-    p_md.add_argument("ident")
-    p_md.set_defaults(func=_not_yet("ma-ah9"))
+    p_md = sub.add_parser("md", help="Convert PDF -> markdown via marker")
+    p_md.add_argument("ident", nargs="?",
+                      help="arXiv id, DOI, bib_key, or numeric paper id")
+    p_md.add_argument("--all", action="store_true",
+                      help="Convert every paper with a PDF and no md_path yet")
+    p_md.add_argument("--force", action="store_true",
+                      help="Reconvert even if md_path already set")
+    p_md.add_argument("--timeout", type=float, default=600.0,
+                      help="Per-PDF marker timeout (seconds, default 600)")
+    p_md.set_defaults(func=cmd_md)
 
     p_gs = sub.add_parser("gscholar", help="Headed Playwright fallback [T5]")
     p_gs.add_argument("query", nargs="+")
